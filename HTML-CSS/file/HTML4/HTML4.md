@@ -64,7 +64,7 @@
 > 
 > 语 言：每一个标记的写法、读音、使用规则，组成了一个标记语言。
 
-### 2. 相关国际组织（了解）
+### 2. 相关国际组织
 
 1. IETF
    全称：Internet Engineering Task Force（国际互联网工程任务组），成立于1985年底，是一个权威的互联网技术标准化组织，主要负责互联网相关技术规范的研发和制定，当前绝大多数国际互联网技术标准均出自IETF。官网：https://www.ietf.org
@@ -73,9 +73,13 @@
 3. WHATWF
    全称：Web Hypertext Application Technology Working Group（网页超文本应用技术工作小组）成立于2004年，是一个以推动网络HTML 5 标准为目的而成立的组织。由Opera、Mozilla基金会、苹果等这些浏览器厂商组成。官网：https://whatwg.org
 
-### 3. HTML 发展历史（了解）
+### 3. HTML 发展历史
 
+从 HTML 1.0 开始发展，期间经历了很多版本，目前HTML的最新标准是：HMTL 5，具体发展史如图
 
+![img_5.png](img_5.png)
+
+## 三、准备工作
 
 
 
