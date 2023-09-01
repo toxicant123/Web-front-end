@@ -66,6 +66,19 @@
 
 ### 2. 相关国际组织（了解）
 
+1. IETF
+   全称：Internet Engineering Task Force（国际互联网工程任务组），成立于1985年底，是一个权威的互联网技术标准化组织，主要负责互联网相关技术规范的研发和制定，当前绝大多数国际互联网技术标准均出自IETF。官网：https://www.ietf.org
+2. W3C
+   全称：World Wide Web Consortium（万维网联盟），创建于1994年，是目前Web技术领域，最具影响力的技术标准机构。共计发布了200多项技术标准和实施指南，对互联网技术的发展和应用起到了基础性和根本性的支撑作用，官网：https://www.w3.org
+3. WHATWF
+   全称：Web Hypertext Application Technology Working Group（网页超文本应用技术工作小组）成立于2004年，是一个以推动网络HTML 5 标准为目的而成立的组织。由Opera、Mozilla基金会、苹果等这些浏览器厂商组成。官网：https://whatwg.org
+
+### 3. HTML 发展历史（了解）
+
+
+
+
+
 
 
 
