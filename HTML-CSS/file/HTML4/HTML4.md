@@ -304,4 +304,43 @@
 
 ### 11. HTML标准结构
 
+1. HTML标准结构如下：
+   ```html
+   <!DOCTYPE html>
+   <html lang="zh-CN">
+   <head>
+       <meta charset="UTF-8">
+       <title>我是一个标题</title>
+   </head>
+   <body>
+   </body>
+   </html>
+   ```
+2. 输入`!`，随后回车即可快速生成标准结构。
+   > 生成的结构中，有两个meta标签，我们暂时用不到，可以先删掉。
+3. 配置`VScode`的内置插件`emmet`，可以对生成结构的属性进行定制。
+4. 在存放代码的文件夹中，存放一个`favicon.ico`图片，可配置网站图标。
+
+## 五、HTML 基础
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
