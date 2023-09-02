@@ -282,9 +282,26 @@
 
 ### 10. HTML 设置语言
 
+1. 主要作用：
+   * 让浏览器显示对应的翻译提示。
+   * 有利于搜索引擎优化。
+2. 具体写法：
+   ```html
+   <html lang="zh-CN">
+   ```
+3. 扩展知识：`lang`属性的编写规则（作为一个课外扩展知识，了解即可）。
+   1. 第一种写法（语言-国家/地区），例如：
+      * `zh-CN`：中文-中国大陆（简体中文）
+      * `zh-TW`：中文-中国台湾（繁体中文）
+      * `zh`：中文
+      * `en-US`：英语-美国
+      * `en-GB`：英语-英国
+   2. 第二种写法（ 语言—具体种类）已不推荐使用，例如：
+      * `zh-Hans`：中文—简体
+      * `zh-Hant`：中文—繁体
+   3. W3School 上的说明：[《语言代码参考手册》](https://www.w3school.com.cn/tags/html_ref_language_codes.asp)、[《国家/地区代码参考手册》](https://www.w3school.com.cn/tags/html_ref_country_codes.asp)
+   4. W3C官网上的说明：[《Language tags in HTML》](https://www.w3.org/International/articles/language-tags/)
 
-
-
-
+### 11. HTML标准结构
 
 
