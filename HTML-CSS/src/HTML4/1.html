@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<table>
+    <thead>
+        <tr>
+            <th>已有结构</th>
+            <th>符号</th>
+            <th>含义</th>
+            <th>举例</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td rowspan="3">12</td>
+            <td>./</td>
+            <td>同级</td>
+            <td>引入【怪兽.jpg】：<img src="./怪兽.jpg"></td>
+        </tr>
+        <tr>
+            <td>/</td>
+            <td>下一级</td>
+            <td>引入【喜羊羊.jpg】：<img src="./a/喜羊羊.jpg"></td>
+        </tr>
+        <tr>
+            <td>../</td>
+            <td>上一级</td>
+            <td>引入【奥特曼.jpg】： <img src="../奥特曼.jpg"></td>
+        </tr>
+    </tbody>
+</table>
+
+</body>
+</html>
