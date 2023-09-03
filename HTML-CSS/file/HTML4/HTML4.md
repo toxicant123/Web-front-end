@@ -1165,7 +1165,6 @@ iframe标签的实际应用：
 
 常见字符实体总结：
 
-
 | 字符 | 描述            | 实体名称         | 实体编号        |
 |----|---------------|--------------|-------------|
 |    | 空格            | &amp;nbsp;   | &amp;#160;  |
@@ -1186,6 +1185,40 @@ iframe标签的实际应用：
 
 完整实体列表，请参考：[HTML Standard (whatwg.org)](https://html.spec.whatwg.org/multipage/named-characters.html#named-character-references)
 
+相关代码：[HTML字符实体](../../src/HTML4/HTML字符实体.html)
+
 ### 15.HTML全局属性
+
+常用的全局属性：
+
+| 属性名   | 含义                                                                     |
+|-------|------------------------------------------------------------------------|
+| id    | 给标签指定唯一标识，注意：id是不能重复的。<br>作用：可以让label标签与表单控件相关联；也可以与CSS、JavaScript配合使用 |
+| class | 给标签指定类名，随后通过 CSS 就可以给标签设置样式                                            |
+| style | 给标签设置 CSS 样式                                                           |
+| dir   | 内容的方向，值：ltr、rtl                                                        |
+| title | 给标签设置一个文字提示，一般超链接和图片用得比较多                                              |
+| lang  | 给标签指定语言，具体规范和可选值请参考【10. HTML 设置语言】                                     |
+
+完整的全局属性，请参考：[全局属性 - HTML（超文本标记语言） | MDN (mozilla.org)](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Global_attributes)
+
+### 16. meta 元信息
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
