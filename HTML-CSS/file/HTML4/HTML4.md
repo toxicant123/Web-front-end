@@ -620,6 +620,8 @@
 <a href="sms:10086">短信联系</a>
 ```
 
+相关代码：[超链接_唤起应用](../../src/HTML4/超链接_唤起应用.html)
+
 ### 9. 列表
 
 1. 有序列表
@@ -692,18 +694,88 @@
 </dl>
 ```
 
+相关代码：[列表](../../src/HTML4/列表.html)
 
+### 10. 表格
 
+#### 10.1 基本结构
 
+1. 一个完整的表格由：表格标题、表格头部、表格主体、表格脚注，四部分组成。
+   ![img_11.png](img_11.png)
+2. 表格涉及到的标签：
+   * `table`：表格
+   * `caption`：表格标题
+   * `thead`：表格头部
+   * `tbody`：表格主体
+   * `tfoot`：表格注脚
+   * `tr`：每一行
+   * `th`、`td`：每一个单元格（备注：表格头部中用 th ，表格主体、表格脚注中用： td ）
 
+![img_12.png](img_12.png)
 
+![img_13.png](img_13.png)
 
+![img_14.png](img_14.png)
 
+3. 具体编码：
 
-
-
-
-
+```html
+<table border="1">
+   <!-- 表格标题 -->
+   <caption>学生信息</caption>
+   <!-- 表格头部 -->
+   <thead>
+      <tr>
+         <th>姓名</th>
+         <th>性别</th>
+         <th>年龄</th>
+         <th>民族</th>
+         <th>政治面貌</th>
+      </tr>
+   </thead>
+   <!-- 表格主体 -->
+   <tbody>
+      <tr>
+         <td>张三</td>
+         <td>男</td>
+         <td>18</td>
+         <td>汉族</td>
+         <td>团员</td>
+      </tr>
+      <tr>
+         <td>李四</td>
+         <td>女</td>
+         <td>20</td>
+         <td>满族</td>
+         <td>群众</td>
+      </tr>
+      <tr>
+         <td>王五</td>
+         <td>男</td>
+         <td>20</td>
+         <td>回族</td>
+         <td>党员</td>
+      </tr>
+      <tr>
+         <td>赵六</td>
+         <td>女</td>
+         <td>21</td>
+         <td>壮族</td>
+         <td>团员</td>
+      </tr>
+   </tbody>
+   <!-- 表格脚注 -->
+   <tfoot>
+      <tr>
+         <td></td>
+         <td></td>
+         <td></td>
+         <td></td>
+         <td>共计：4人</td>
+      </tr>
+   </tfoot>
+</table>
+```
 
 
 
