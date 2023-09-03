@@ -801,13 +801,93 @@
 
 #### 10.3 跨行跨列
 
+1. `rowspan`：指定要跨的行数。
+2. `colspan`：指定要跨的列数。
 
+课程表效果：
 
+![img_15.png](img_15.png)
 
+代码：
 
+```html
+<table border="1" cellspacing="0">
+    <caption>课程表</caption>
+    <thead>
+        <tr>
+            <th>项目</th>
+            <th colspan="5">上课</th>
+            <th colspan="2">活动与休息</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>星期</td>
+            <td>星期一</td>
+            <td>星期二</td>
+            <td>星期三</td>
+            <td>星期四</td>
+            <td>星期五</td>
+            <td>星期六</td>
+            <td>星期日</td>
+        </tr>
+        <tr>
+            <td rowspan="4">上午</td>
+            <td>3-2</td>
+            <td>3-3</td>
+            <td>3-4</td>
+            <td>3-5</td>
+            <td>3-6</td>
+            <td>3-7</td>
+            <td rowspan="4">休息</td>
+        </tr>
+        <tr>
+            <td>4-2</td>
+            <td>4-3</td>
+            <td>4-4</td>
+            <td>4-5</td>
+            <td>4-6</td>
+            <td>4-7</td>
+        </tr>
+        <tr>
+            <td>5-2</td>
+            <td>5-3</td>
+            <td>5-4</td>
+            <td>5-5</td>
+            <td>5-6</td>
+            <td>5-7</td>
+        </tr>
+        <tr>
+            <td>6-2</td>
+            <td>6-3</td>
+            <td>6-4</td>
+            <td>6-5</td>
+            <td>6-6</td>
+            <td>6-7</td>
+        </tr>
+        <tr>
+            <td rowspan="2">下午</td>
+            <td>7-2</td>
+            <td>7-3</td>
+            <td>7-4</td>
+            <td>7-5</td>
+            <td>7-6</td>
+            <td>7-7</td>
+            <td rowspan="2">休息</td>
+        </tr>
+        <tr>
+            <td>8-2</td>
+            <td>8-3</td>
+            <td>8-4</td>
+            <td>8-5</td>
+            <td>8-6</td>
+            <td>8-7</td>
+        </tr>
+    </tbody>
+</table>
+```
 
-
-
+相关代码：[表格_跨行与跨列](../../src/HTML4/表格_跨行与跨列.html)
 
 
 
