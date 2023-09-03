@@ -1077,13 +1077,63 @@
 
 #### 12.5 fieldset 与 legend 的使用
 
+`fieldset`可以为表单控件分组、`legend`标签是分组的标题。
 
+示例代码：
 
+```html
+<form action="https://search.jd.com/search">
+    <!--        主要信息-->
+    <fieldset>
+        <legend>主要信息</legend>
+        <label for="zhanghu">账户：</label>
+        <input id="zhanghu" type="text" name="account" maxlength="10">
+        <br>
+        <label>
+            密码：
+            <input type="password" name="pwd" maxlength="6">
+        </label>
+        <br>
+        性别：
+        <input id="nan" type="radio" name="gender" value="male">
+        <label for="nan">男</label>
+        <input id="nv" type="radio" name="gender" value="female">
+        <label for="nv">女</label>
+    </fieldset>
+    <br>
+    <fieldset>
+        <legend>附加信息</legend>
+        爱好：
+        <label>
+            <input type="checkbox" name="hobby" value="smoke">抽烟
+        </label>
+        <label>
+            <input type="checkbox" name="hobby" value="drink">喝酒
+        </label>
+        <label>
+            <input type="checkbox" name="hobby" value="perm">烫头<br>
+        </label>
+        <label for="qita">其他：</label>
+        <textarea id="qita" name="other" cols="23" rows="3"></textarea><br>
+        籍贯：
+        <select name="place" id="">
+            <option value="翼">河北</option>
+            <option value="鲁">山东</option>
+            <option value="晋">山西</option>
+            <option value="粤">河南</option>
+        </select>
+    </fieldset>
+    <input type="hidden" name="tag" value="123">
+    <br>
+    <input type="submit" value="确认">
+    <input type="reset" value="点我重置">
+    <input type="button" value="检测账户是否被注册">
+</form>
+```
 
+相关代码：[表单_fieldset与legend](../../src/HTML4/表单_fieldset与legend.html)
 
-
-
-
+#### 12.6 表单总结
 
 
 
