@@ -1159,13 +1159,33 @@ iframe标签的实际应用：
 
 ### 14.HTML实体
 
+在`HTML`中我们可以用一种特殊的形式的内容，来表示某个符号，这种特殊形式的内容，就是`HTML`实体。比如小于号`<`用于定义 HTML 标签的开始。如果我们希望浏览器正确地显示这些字符，我们必须在`HTML`源码中插入字符实体。
+
+字符实体由三部分组成：一个`&`和一个实体名称（或者一个`#`和 一个实体编号），最后加上一个分号`;`。
+
+常见字符实体总结：
 
 
+| 字符 | 描述            | 实体名称         | 实体编号        |
+|----|---------------|--------------|-------------|
+|    | 空格            | &amp;nbsp;   | &amp;#160;  |
+| <  | 小于号           | &amp;lt;     | &amp;#60;   |
+| \> | 大于号           | &amp;gt;     | &amp;#62;   |
+| &  | 和号            | &amp;amp;    | &amp;#38;   |
+| "  | 引号            | &amp;quot;   | &amp;#34;   |
+| ´  | 反引号           | &amp;acute;  | &amp;#180;  |
+| ￠  | 分（cent）       | &amp;cent;   | &amp;#162;  |
+| £  | 镑（pound）      | &amp;pound;  | &amp;#163;  |
+| ¥  | 元（yen）        | &amp;yen;    | &amp;#165;  |
+| €  | 欧元（euro）      | &amp;euro;   | &amp;#8364; |
+| ©  | 版权（copyright） | &amp;copy;   | &amp;#169;  |
+| ®  | 注册商标          | &amp;reg;    | &amp;#174;  |
+| ™  | 商标            | &amp;trade;  | &amp;#8482; |
+| ×  | 乘号            | &amp;times;  | &amp;#215;  |
+| ÷  | 除号            | &amp;divide; | &amp;#247;  |
 
+完整实体列表，请参考：[HTML Standard (whatwg.org)](https://html.spec.whatwg.org/multipage/named-characters.html#named-character-references)
 
-
-
-
-
+### 15.HTML全局属性
 
 
