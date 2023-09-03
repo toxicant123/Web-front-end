@@ -994,15 +994,30 @@
 * `name`属性：指定数据的名称。
 * `value`属性：指定的是真正提交的数据。
 
+⑥ 提交按钮
 
+```html
+<input type="submit" value="点我提交表单">
+<button>点我提交表单</button>
+```
 
+注意：
+1. `button`标签`type`属性的默认值是`submit`。
+2. `button`不要指定`name`属性
+3. `input`标签编写的按钮，使用`value`属性指定按钮文字。
 
+⑦ 重置按钮
 
+```html
+<input type="reset" value="点我重置">
+<button type="reset">点我重置</button>
+```
 
+注意点：
+1. `button`不要指定`name`属性
+2. `input`标签编写的按钮，使用`value`属性指定按钮文字。
 
-
-
-
+⑧ 普通按钮
 
 
 
