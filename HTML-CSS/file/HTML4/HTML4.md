@@ -1019,12 +1019,41 @@
 
 ⑧ 普通按钮
 
+```html
+<input type="button" value="普通按钮">
+<button type="button">普通按钮</button>
+```
 
+注意点：普通按钮的`type`值为`button`，若不写`type`值是`submit`会引起表单的提交。
 
+⑨文本域
 
+```html
+<textarea name="msg" rows="22" cols="3">我是文本域</textarea>
+```
 
+常用属性如下：
+1. `rows`属性：指定默认显示的行数，会影响文本域的高度。
+2. `cols`属性：指定默认显示的列数，会影响文本域的宽度。
+3. 不能编写`type`属性，其他属性，与普通文本输入框一致。
 
+⑩ 下拉框
 
+```html
+<select name="from">
+    <option value="黑">黑龙江</option>
+    <option value="辽">辽宁</option>
+    <option value="吉">吉林</option>
+    <option value="粤" selected>广东</option>
+</select>
+```
+
+常用属性及注意事项：
+1. `name`属性：指定数据的名称。
+2. `option`标签设置`value`属性， 如果没有`value`属性，提交的数据是`option`中间的文字；如果设置了`value`属性，提交的数据就是`value`的值（建议设置`value`属性）
+3. `option`标签设置了`selected`属性，表示默认选中。
+
+#### 12.3 禁用表单控件
 
 
 
