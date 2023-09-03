@@ -933,6 +933,75 @@
 </form>
 ```
 
+#### 12.2 常用表单控件
 
-&nbsp;&nbsp;&nbsp;&nbsp;abc
+① 文本输入框
+
+```html
+<input type="text">
+```
+
+常用属性如下：
+* `name`属性：数据的名称。
+* `value`属性：输入框的默认输入值。
+* `maxlength`属性：输入框最大可输入长度。
+
+② 密码输入框
+
+```html
+<input type="password">
+```
+
+常用属性如下：
+* `name`属性：数据的名称。
+* `value`属性：输入框的默认输入值（一般不用，无意义）。
+* `maxlength`属性：输入框最大可输入长度。
+
+③ 单选框
+
+```html
+<input type="radio" name="sex" value="female">女
+<input type="radio" name="sex" value="male">男
+```
+
+常用属性如下：
+* `name`属性：数据的名称，注意：想要单选效果，多个`radio`的`name`属性值要保持一致。
+* `value`属性：提交的数据值。
+* `checked`属性：让该单选按钮默认选中。
+
+④ 复选框
+
+```html
+<input type="checkbox" name="hobby" value="smoke">抽烟
+<input type="checkbox" name="hobby" value="drink">喝酒
+<input type="checkbox" name="hobby" value="perm">烫头
+```
+
+常用属性如下：
+* `name`属性：数据的名称。
+* `value`属性：提交的数据值。
+* `checked`属性：让该复选框默认选中。
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
