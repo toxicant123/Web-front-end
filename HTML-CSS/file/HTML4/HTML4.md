@@ -1063,13 +1063,19 @@
 
 `input`、`textarea`、`button`、`select`、`option`都可以设置`disabled`属性
 
+相关代码：[表单_禁用表单控件](../../src/HTML4/表单_禁用表单控件.html)
+
 #### 12.4 label 标签
 
+`label`标签可与表单控件相关联，关联之后点击文字，与之对应的表单控件就会获取焦点。
 
+两种与`label`关联方式如下：
+1. 让`label`标签的`for`属性的值等于表单控件的`id`。
+2. 把表单控件套在`label`标签的里面。
 
+相关代码：[表单_label标签](../../src/HTML4/表单_label标签.html)
 
-
-
+#### 12.5 fieldset 与 legend 的使用
 
 
 
