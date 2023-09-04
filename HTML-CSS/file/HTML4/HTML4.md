@@ -1202,17 +1202,86 @@ iframe标签的实际应用：
 
 完整的全局属性，请参考：[全局属性 - HTML（超文本标记语言） | MDN (mozilla.org)](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Global_attributes)
 
+相关代码：[HTML全局属性](../../src/HTML4/HTML全局属性.html)
+
 ### 16. meta 元信息
 
+1. 配置字符编码
 
+```html
+<meta charset="utf-8">
+```
 
+2. 针对`IE`浏览器的兼容性配置。
 
+```html
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+```
 
+3. 针对移动端的配置
 
+```html
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+```
 
+4. 配置网页关键字
 
+```html
+<meta name="keywords" content="8-12个以英文逗号隔开的单词/词语">
+```
 
+5. 配置网页描述信息
 
+```html
+<meta name="description" content="80字以内的一段话，与网站内容相关">
+```
+
+6. 针对搜索引擎爬虫配置
+
+```html
+<meta name="robots" content="此处可选值见下表">
+```
+
+| 值         | 描述                   |
+|-----------|----------------------|
+| index     | 允许搜索爬虫索引此页面。         |
+| noindex   | 要求搜索爬虫不索引此页面。        |
+| follow    | 允许搜索爬虫跟随此页面上的链接。     |
+| nofollow  | 要求搜索爬虫不跟随此页面上的链接。    |
+| all       | 与index、follow等价。     |
+| none      | 与noindex、nofollow等价。 |
+| noarchive | 要求搜索引擎不缓存页面内容。       |
+| nocache   | noarchive 的替代名称。     |
+
+7. 配置网页作者：
+
+```html
+<meta name="author" content="tony">
+```
+
+8. 配置网页生成工具
+
+```html
+<meta name="generator" content="Visual Studio Code">
+```
+
+9. 配置定义网页版权信息：
+
+```html
+<meta name="copyright" content="2023-2027©版权所有">
+```
+
+10. 配置网页自动刷新
+
+```html
+<meta http-equiv="refresh" content="10;url=http://www.baidu.com">
+```
+
+完整的网页元信息，请参考：[文档级元数据元素 | MDN](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/meta)
+
+相关代码：[meta元信息](../../src/HTML4/meta元信息.html)
+
+### 17. HTML总结
 
 
 
