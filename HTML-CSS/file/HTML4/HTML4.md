@@ -4,7 +4,7 @@
 
 ### 1. 认识两位先驱
 
-![img.png](img.png)
+![img.png](picture/img.png)
 
 ### 2. 计算机基础知识
 
@@ -16,7 +16,7 @@
    1. 系统软件：Windows、Linux、Android、Harmony 等。
    2. 应用软件：微信、QQ、王者荣耀、PhotoShop 等。
 4. 整体图示：  
-   ![img_1.png](img_1.png)
+   ![img_1.png](picture/img_1.png)
 
 ### 3. C/S架构与B/S架构
 
@@ -37,11 +37,11 @@
 
 1. 各大浏览器市场份额：
 
-![img_2.png](img_2.png)
+![img_2.png](picture/img_2.png)
 
 2. 常见浏览器的内核：
 
-![img_3.png](img_3.png)
+![img_3.png](picture/img_3.png)
 
 ### 5. 网页相关概念
 
@@ -50,7 +50,7 @@
 3. 网站：多个网页构成了一个网站。
 4. 网页标准：
 
-![img_4.png](img_4.png)
+![img_4.png](picture/img_4.png)
 
 ## 二、HTML 简介
 
@@ -77,7 +77,7 @@
 
 从 HTML 1.0 开始发展，期间经历了很多版本，目前HTML的最新标准是：HMTL 5，具体发展史如图
 
-![img_5.png](img_5.png)
+![img_5.png](picture/img_5.png)
 
 ## 三、准备工作
 
@@ -115,7 +115,7 @@
 3. 标签名不区分大小写，但推荐小写，因为小写更规范。
 4. 双标签：
 
-![img_6.png](img_6.png)
+![img_6.png](picture/img_6.png)
 
 示例代码：
 
@@ -125,7 +125,7 @@
 
 5. 单标签：
 
-![img_7.png](img_7.png)
+![img_7.png](picture/img_7.png)
 
 示例代码：
 
@@ -148,7 +148,7 @@
 1. 用于给标签提供附加信息。
 2. 可以写在：起始标签或单标签中，形式如下：
 
-![img_8.png](img_8.png)
+![img_8.png](picture/img_8.png)
 
 例如：
 
@@ -187,7 +187,7 @@
    2. `head`标签中的内容不会出现在网页中。
    3. `head`标签中的`title`标签可以指定网页的标题。
    4. 图示：  
-      ![img_9.png](img_9.png)
+      ![img_9.png](picture/img_9.png)
    5. 代码：
       ```html
       <html>
@@ -439,7 +439,7 @@
     </thead>
     <tbody>
         <tr>
-            <td rowspan="3"><img src="img_10.png" alt=""/></td>
+            <td rowspan="3"><img src="picture/img_10.png" alt=""/></td>
             <td>./</td>
             <td>同级</td>
             <td>引入【怪兽.jpg】：&#60;img src="./怪兽.jpg"></td>
@@ -701,7 +701,7 @@
 #### 10.1 基本结构
 
 1. 一个完整的表格由：表格标题、表格头部、表格主体、表格脚注，四部分组成。
-   ![img_11.png](img_11.png)
+   ![img_11.png](picture/img_11.png)
 2. 表格涉及到的标签：
    * `table`：表格
    * `caption`：表格标题
@@ -711,11 +711,11 @@
    * `tr`：每一行
    * `th`、`td`：每一个单元格（备注：表格头部中用 th ，表格主体、表格脚注中用： td ）
 
-![img_12.png](img_12.png)
+![img_12.png](picture/img_12.png)
 
-![img_13.png](img_13.png)
+![img_13.png](picture/img_13.png)
 
-![img_14.png](img_14.png)
+![img_14.png](picture/img_14.png)
 
 3. 具体编码：
 
@@ -806,7 +806,7 @@
 
 课程表效果：
 
-![img_15.png](img_15.png)
+![img_15.png](picture/img_15.png)
 
 代码：
 
@@ -1283,4 +1283,4 @@ iframe标签的实际应用：
 
 ### 17. HTML总结
 
-![img_16.png](img_16.png)
+![img_16.png](picture/img_16.png)
