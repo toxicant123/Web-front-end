@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>伪类选择器_动态伪类</title>
+    <style>
+        a:link {
+            color: orange;
+        }
+
+        a:visited {
+            color: gray;
+        }
+
+        a:hover {
+            color: skyblue;
+        }
+
+        a:active {
+            color: green;
+        }
+
+        span:hover {
+            color: green;
+        }
+
+        span:active {
+            color: red;
+        }
+
+        input {
+            color: orange;
+            background-color: green;
+        }
+
+        input:focus {
+            background-color: red;
+        }
+
+        select:focus {
+            color: orange;
+            background-color: green;
+        }
+    </style>
+</head>
+<body>
+    <a href="https://www.baidu.com">去百度</a>
+    <a href="https://www.jd.com">去京东</a>
+    <span>尚硅谷</span>
+    <br>
+    <input type="text">
+    <br>
+    <input type="text">
+    <br>
+    <input type="text">
+    <select>
+        <option value="beijing">北京</option>
+        <option value="shanghai">上海</option>
+    </select>
+</body>
+</html>
