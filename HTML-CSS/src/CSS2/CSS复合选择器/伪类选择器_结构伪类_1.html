@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>伪类选择器_结构伪类_1</title>
+    <style>
+        .first > p:first-child {
+            color: red;
+        }
+
+        .second > p:first-child {
+            color: red;
+        }
+
+        .third p:first-child {
+            color: red;
+        }
+
+        p:first-child {
+            color: yellow;
+        }
+    </style>
+</head>
+<body>
+    <div class="first">
+        <p>张三：98分</p>
+        <p>李四：88分</p>
+        <p>王五：78分</p>
+        <p>赵六：68分</p>
+    </div>
+
+    <hr>
+
+    <div class="second">
+        <span>张三：98分</span>
+        <p>李四：88分</p>
+        <p>王五：78分</p>
+        <p>赵六：68分</p>
+    </div>
+
+    <hr>
+
+    <p>测试1</p>
+    <div class="third">
+        <p>测试2</p>
+        <marquee>
+            <p>测试3</p>
+            <p>张三：98分</p>
+        </marquee>
+        <p>李四：88分</p>
+        <p>王五：78分</p>
+        <p>赵六：68分</p>
+    </div>
+</body>
+</html>
