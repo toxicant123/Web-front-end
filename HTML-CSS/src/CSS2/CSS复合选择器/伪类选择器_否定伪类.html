@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>伪类选择器_否定伪类</title>
+    <style>
+        div > p:not(:first-child) {
+            color: green;
+        }
+
+        div > p:not(.fail) {
+            background-color: gray;
+        }
+
+        div > p:not([title^="你要加油"], .test) {
+            color: red;
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <p>张三：98分</p>
+        <p class="test">李四：88分</p>
+        <p>王五：78分</p>
+        <p>赵六：68分</p>
+        <p class="fail" title="你要加油啊！孙七">孙七：58分</p>
+        <p class="fail" title="你要加油啊！老八">老八：48分</p>
+    </div>
+</body>
+</html>
