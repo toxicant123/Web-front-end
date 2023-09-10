@@ -870,13 +870,28 @@ div {
 
 相关代码：[文本间距](../../src/CSS2/CSS常用文本属性/文本间距.html)
 
+#### 4.3 文本修饰
 
+* 属性名：`text-decoration`
+* 作用：控制文本的各种装饰线。
+* 可选值：
+  1. `none`：无装饰线（常用）
+  2. `underline`：下划线（常用）
+  3. `overline`：上划线
+  4. `line-through`：删除线
 
+  可搭配如下值使用：
+  1. `dotted`：虚线
+  2. `wavy`：波浪线
+  3. 也可以指定颜色
+* 举例：
+  ```css
+  a {
+      text-decoration: none;
+  }
+  ```
 
-
-
-
-
+相关代码：[文本修饰](../../src/CSS2/CSS常用文本属性/文本修饰.html)
 
 
 
