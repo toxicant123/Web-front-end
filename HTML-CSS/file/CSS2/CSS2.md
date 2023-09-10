@@ -993,14 +993,18 @@ div {
 
 相关代码：[vertical-align](../../src/CSS2/CSS常用文本属性/vertical-align.html)
 
+### 5. CSS列表属性
 
+列表相关的属性，可以作用在`ul`、`ol`、`li`元素上。
 
+| CSS 属性名             | 功能        | 属性值                                                                                                                                                     |
+|---------------------|-----------|---------------------------------------------------------------------------------------------------------------------------------------------------------|
+| list-style-type     | 设置列表符号    | 常用值如下：<br>none：不显示前面的标识（很常用！）<br>square：实心方块<br>disc：圆形<br>decimal：数字<br>lower-roman：小写罗马字<br>upper-roman：大写罗马字<br>lower-alpha：小写字母<br>upper-alpha：大写字母 |
+| list-style-position | 设置列表符号的位置 | inside ：在 li 的里面<br/>outside ：在 li 的外边                                                                                                                  |
+| list-style-image    | 自定义列表符号   | url(图片地址)                                                                                                                                               |
+| list-style          | 复合属性      | 没有数量、顺序的要求                                                                                                                                              |
 
-
-
-
-
-
+相关代码：[列表相关属性](../../src/CSS2/列表相关属性/列表相关属性.html)
 
 
 
