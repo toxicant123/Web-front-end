@@ -1105,12 +1105,24 @@ div {
 
 相关代码：[元素的显示模式](../../src/CSS2/CSS盒子模型/元素的显示模式.html)
 
+### 3. 总结各元素的显示模式
 
+* 块元素（block）
+  1. 主体结构标签： \<html> 、 \<body>
+  2. 排版标签： \<h1> ~ \<h6> 、 \<hr> 、 \<p> 、 \<pre> 、 \<div>
+  3. 列表标签： \<ul> 、 \<ol> 、 \<li> 、 \<dl> 、 \<dt> 、 \<dd>
+  4. 表格相关标签： \<table> 、 \<tbody> 、 \<thead> 、 \<tfoot> 、 \<tr> 、\<caption>
+  5. \<form> 与 \<option>
+* 行内元素（inline）
+  1. 文本标签： \<br> 、 \<em> 、 \<strong> 、 \<sup> 、 \<sub> 、 \<del> 、 \<ins>
+  2. \<a> 与 \<label>
+* 行内块元素（inline-block）
+  1. 图片： \<img>
+  2. 单元格： \<td> 、 \<th>
+  3. 表单控件： \<input> 、 \<textarea> 、 \<select> 、 \<button>
+  4. 框架标签： \<iframe>
 
-
-
-
-
+相关代码：[总结各元素的显示模式](../../src/CSS2/CSS盒子模型/总结各元素的显示模式.html)
 
 
 
