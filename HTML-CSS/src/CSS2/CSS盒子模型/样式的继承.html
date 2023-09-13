@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>样式的继承</title>
+    <style>
+        body {
+            font-size: 40px;
+            color: yellow;
+            font-weight: bold;
+        }
+
+        #d1 {
+            height: 600px;
+            padding: 50px;
+            background-color: gray;
+        }
+
+        #d2 {
+            height: 400px;
+            padding: 50px;
+            background-color: orange;
+        }
+
+        #d3 {
+            height: 200px;
+            background-color: green;
+        }
+    </style>
+</head>
+<body>
+    <div id="d1">
+        <div id="d2">
+            <div id="d3" style="font-family: 隶书;">你好啊</div>
+        </div>
+    </div>
+</body>
+</html>
