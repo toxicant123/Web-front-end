@@ -1252,9 +1252,19 @@ border-style、border-width、border-color其实也是复合属性。
 
 相关代码：[margin的注意事项5](../../src/CSS2/CSS盒子模型/margin的注意事项5.html)
 
+#### 10.2 margin 塌陷问题
 
+什么是 margin 塌陷？
 
+第一个子元素的上 margin 会作用在父元素上，最后一个子元素的下 margin 会作用在父元素上。
 
+如何解决 margin 塌陷？
+
+* 方案一：给父元素设置不为 0 的 padding 。
+* 方案二：给父元素设置宽度不为 0 的 border 。
+* 方案三：给父元素设置 css 样式 overflow:hidden 。
+
+相关代码：[margin塌陷问题](../../src/CSS2/CSS盒子模型/margin塌陷问题.html)
 
 
 
