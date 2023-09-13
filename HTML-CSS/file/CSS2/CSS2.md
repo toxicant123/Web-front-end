@@ -1206,6 +1206,45 @@ padding 复合属性的使用规则：
 
 相关代码：[盒子的内边距](../../src/CSS2/CSS盒子模型/盒子的内边距.html)
 
+### 9. 盒子边框（border）
+
+| CSS 属性名                                                                                                                                                                                                                                                                                                                                  | 功能                    | 属性值                                                          |
+|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|-----------------------|--------------------------------------------------------------|
+| border-style                                                                                                                                                                                                                                                                                                                             | 边框线风格<br>复合了四个方向的边框风格 | none：默认值<br>solid：实线<br>dashed：虚线<br>dotted：点线<br>double：双实线 |
+| border-width                                                                                                                                                                                                                                                                                                                             | 边框线宽度<br>复合了四个方向的边框宽度 | 长度，默认 3px                                                    |
+| border-color                                                                                                                                                                                                                                                                                                                             | 边框线颜色<br>复合了四个方向的边框颜色 | 颜色，默认黑色                                                      |
+| border                                                                                                                                                                                                                                                                                                                                   | 复合属性                  | 值没有顺序和数量要求                                                   |
+| border-left<br>border-left-style<br>border-left-width<br>border-left-color<br><br>border-right<br>border-right-style<br>border-right-width<br>border-right-color<br><br>border-top<br>border-top-style<br>border-top-width<br>border-top-color<br><br>border-bottom<br>border-bottom-style<br>border-bottom-width<br>border-bottom-color | 分别设置各个方向的边框           | 同上                                                           |
+
+边框相关属性共 20 个。
+
+border-style、border-width、border-color其实也是复合属性。
+
+相关代码：[盒子的边框](../../src/CSS2/CSS盒子模型/盒子的边框.html)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
