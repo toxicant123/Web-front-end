@@ -1170,7 +1170,7 @@ div {
 * max-width、min-width一般不与width一起使用。
 * max-height、min-height一般不与height一起使用。
 
-相关代码：[盒子的内容区](../../src/CSS2/CSS盒子模型/盒子的内容区.html)
+相关代码：[盒子的内容区_content](../../src/CSS2/CSS盒子模型/盒子的内容区_content.html)
 
 ### 7. 关于默认宽度
 
@@ -1204,7 +1204,7 @@ padding 复合属性的使用规则：
 2. 行内元素 的 左右内边距是没问题的，上下内边距不能完美的设置。
 3. 块级元素、行内块元素，四个方向内边距都可以完美设置
 
-相关代码：[盒子的内边距](../../src/CSS2/CSS盒子模型/盒子的内边距.html)
+相关代码：[盒子的内边距_padding](../../src/CSS2/CSS盒子模型/盒子的内边距_padding.html)
 
 ### 9. 盒子边框（border）
 
@@ -1220,11 +1220,19 @@ padding 复合属性的使用规则：
 
 border-style、border-width、border-color其实也是复合属性。
 
-相关代码：[盒子的边框](../../src/CSS2/CSS盒子模型/盒子的边框.html)
+相关代码：[盒子的边框_border](../../src/CSS2/CSS盒子模型/盒子的边框_border.html)
 
+### 10. 盒子外边距_margin
 
+| CSS 属性名       | 功能                                | 属性值       |
+|---------------|-----------------------------------|-----------|
+| margin-left   | 左外边距                              | CSS 中的长度值 |
+| margin-right  | 右外边距                              | CSS 中的长度值 |
+| margin-top    | 上外边距                              | CSS 中的长度值 |
+| margin-bottom | 下外边距                              | CSS 中的长度值 |
+| margin        | 复合属性，可以写 1~4 个值，规律同 padding （顺时针） | CSS 中的长度值 |
 
-
+相关代码：[盒子的外边距_margin](../../src/CSS2/CSS盒子模型/盒子的外边距_margin.html)
 
 
 
