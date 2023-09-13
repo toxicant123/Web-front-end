@@ -1266,9 +1266,17 @@ border-style、border-width、border-color其实也是复合属性。
 
 相关代码：[margin塌陷问题](../../src/CSS2/CSS盒子模型/margin塌陷问题.html)
 
+#### 10.3 margin 合并问题
 
+什么是 margin 合并？
 
+上面兄弟元素的下外边距和下面兄弟元素的上外边距会合并，取一个最大的值，而不是相加。
 
+如何解决 margin 塌陷？
+
+无需解决，布局的时候上下的兄弟元素，只给一个设置上下外边距就可以了
+
+相关代码：[margin合并问题](../../src/CSS2/CSS盒子模型/margin合并问题.html)
 
 
 
