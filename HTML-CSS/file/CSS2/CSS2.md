@@ -1234,11 +1234,23 @@ border-style、border-width、border-color其实也是复合属性。
 
 相关代码：[盒子的外边距_margin](../../src/CSS2/CSS盒子模型/盒子的外边距_margin.html)
 
+#### 10.1 margin 注意事项
 
+1. 子元素的 margin ，是参考父元素的 content 计算的。（因为是父亲的 content 中承装着子元素）
+2. 上 margin 、左 margin ：影响自己的位置；下 margin 、右 margin ：影响后面兄弟元素的位置。
+3. 块级元素、行内块元素，均可以完美地设置四个方向的 margin ；但行内元素，左右 margin 可以完美设置，上下 margin 设置无效。
+4. margin 的值也可以是 auto ，如果给一个块级元素设置左右 margin 都为 auto ，该块级元素会在父元素中水平居中。
+5. margin 的值可以是负值。
 
+相关代码：[margin的注意事项1](../../src/CSS2/CSS盒子模型/margin的注意事项1.html)
 
+相关代码：[margin的注意事项2](../../src/CSS2/CSS盒子模型/margin的注意事项2.html)
 
+相关代码：[margin的注意事项3](../../src/CSS2/CSS盒子模型/margin的注意事项3.html)
 
+相关代码：[margin的注意事项4](../../src/CSS2/CSS盒子模型/margin的注意事项4.html)
+
+相关代码：[margin的注意事项5](../../src/CSS2/CSS盒子模型/margin的注意事项5.html)
 
 
 
