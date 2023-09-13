@@ -1278,10 +1278,19 @@ border-style、border-width、border-color其实也是复合属性。
 
 相关代码：[margin合并问题](../../src/CSS2/CSS盒子模型/margin合并问题.html)
 
+### 11. 处理内容溢出
 
+| CSS 属性名    | 功能             | 属性值                                                                           |
+|------------|----------------|-------------------------------------------------------------------------------|
+| overflow   | 溢出内容的处理方式      | visible：显示，默认值<br>hidden：隐藏<br>scroll：显示滚动条，不论内容是否溢出<br>auto：自动显示滚动条，内容不溢出不显示 |
+| overflow-x | 水平方向溢出内容的处理方式  | 同 overflow                                                                    |
+| overflow-y | 垂直方向溢出内容给的处理方式 | 同 overflow                                                                    |
 
+注意：
+1. overflow-x 、 overflow-y 不能一个是 hidden ，一个是 visible ，是实验性属性，不建议使用。
+2. overflow 常用的值是 hidden 和 auto ，除了能处理溢出的显示方式，还可以解决很多疑难杂症。
 
-
+相关代码：[处理内容的溢出](../../src/CSS2/CSS盒子模型/处理内容的溢出.html)
 
 
 
