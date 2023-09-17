@@ -5,6 +5,7 @@
 }
 
 /*顶部导航条start*/
+
 .topbar {
     height: 30px;
     background-color: #ECECEC;
@@ -60,9 +61,9 @@
 /*顶部导航条end*/
 
 /*头部start*/
+
 .header {
     height: 120px;
-    background-color: skyblue;
 }
 
 .header > .container > .search {
@@ -86,10 +87,38 @@
     background-position: 28px 6px;
 }
 
-
 /*头部end*/
 
+/*主导航start*/
 
+.main-nav {
+    height: 48px;
+    border-bottom: 1px solid #DD302D;
+}
+
+.main-nav .all-types {
+    width: 190px;
+    height: 48px;
+
+    line-height: 48px;
+    background-color: #DD302D;
+    text-align: center;
+    color: white;
+    font-size: 16px;
+}
+
+.main-nav-list {
+    height: 48px;
+    line-height: 48px;
+}
+
+.main-nav-list li {
+    float: left;
+    margin: 0 10px;
+    font-size: 16px;
+}
+
+/*主导航end*/
 
 
 
