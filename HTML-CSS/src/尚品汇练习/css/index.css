@@ -120,7 +120,47 @@
 
 /*主导航end*/
 
+/*头部start*/
 
+.main-content {
+    margin-top: 10px;
+}
+
+.main-content .slide-nav {
+    width: 190px;
+    height: 458px;
+    background-color: #F4F4F4;
+}
+
+.main-content .slide-nav > li {
+    height: 28px;
+    padding-left: 16px;
+    font-size: 14px;
+    line-height: 28px;
+}
+
+.main-content .slide-nav > li:hover {
+    background-color: #DD302D;
+}
+
+.main-content .slide-nav > li:hover a {
+    color: white;
+}
+
+.main-content .banner {
+    width: 690px;
+    height: 458px;
+    background-color: green;
+    margin: 0 10px;
+}
+
+.main-content .slide-other {
+    width: 290px;
+    height: 458px;
+    background-color: orange;
+}
+
+/*头部end*/
 
 
 
