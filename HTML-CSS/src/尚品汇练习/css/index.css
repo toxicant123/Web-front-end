@@ -99,7 +99,6 @@
 .main-nav .all-types {
     width: 190px;
     height: 48px;
-
     line-height: 48px;
     background-color: #DD302D;
     text-align: center;
@@ -120,7 +119,7 @@
 
 /*主导航end*/
 
-/*头部start*/
+/*主要内容区start*/
 
 .main-content {
     margin-top: 10px;
@@ -308,9 +307,27 @@
     background-position: -144px -96px;
 }
 
-/*头部end*/
+/*主要内容区end*/
+
+/*秒杀*/
+
+.seckill {
+    margin-top: 10px;
+}
+
+.seckill > .container > img {
+    float: left;
+    margin-right: 11px;
+    cursor: pointer;
+}
+
+.seckill > .container > img:last-child {
+    margin-right: 0;
+}
 
 
+
+/*秒杀end*/
 
 
 
