@@ -428,14 +428,68 @@
 
 /*楼层end*/
 
+/*页脚区*/
 
+.footer {
+    margin-top: 48px;
+    height: 440px;
+    background-color: #483E3E;
+}
 
+.top-links > .links-list {
+    width: 190px;
+    height: 176px;
+    float: left;
+    margin-top: 48px;
+    margin-right: 10px;
+}
 
+.top-links > .links-list:last-child {
+    margin-right: 0;
+}
 
+.links-list a {
+    color: white;
+    font-size: 14px;
+}
 
+.line {
+    margin-top: 22px;
+    height: 1px;
+    background-color: #584D4D;
+}
 
+.bottom-links {
+    text-align: center;
+    margin-top: 47px;
+}
 
+.bottom-links-list {
+    display: inline-block;
+}
 
+.bottom-links-list li {
+    float: left;
+}
 
+.bottom-links-list li a {
+    padding: 0 26px;
+    border-right: 1px solid white;
+    color: white;
+}
 
+.bottom-links-list li:first-child a {
+    padding-left: 0;
+}
 
+.bottom-links-list li:last-child a {
+    padding-right: 0;
+    border: 0;
+}
+
+.copyright {
+    color: white;
+    margin-top: 10px;
+}
+
+/*页脚区end*/
