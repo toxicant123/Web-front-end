@@ -20,11 +20,11 @@
 
 ### 3.HTML5兼容性
 
+支持：`Chrome`、`Safari`、`Opera`、`Firefox`等主流浏览器。
 
+IE 浏览器必须是 9 及以上版本才支持 HTML5 ，且 IE9 仅支持部分 HTML5 新特性。
 
-
-
-
+## 二、新增语义化标签
 
 
 
