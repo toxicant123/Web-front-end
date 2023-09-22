@@ -215,22 +215,45 @@ IE 浏览器必须是 9 及以上版本才支持 HTML5 ，且 IE9 仅支持部�
 
 相关代码：[新增的全局属性](../../src/HTML5/H5_新增的全局属性/新增的全局属性.html)
 
+### 六、HTML5兼容性处理
 
+添加元信息，让浏览器处于最优渲染模式。
 
+```html
+<!--设置IE总是使用最新的文档模式进行渲染-->
+<meta http-equiv="X-UA-Compatible" content="IE=Edge">
 
+<!--优先使用 webkit ( Chromium ) 内核进行渲染, 针对360等壳浏览器-->
+<meta name="renderer" content="webkit">
+```
 
+使用 html5shiv 让低版本浏览器认识 H5 的语义化标签。
 
+```html
+<!--[if lt ie 9]>
+<script src="../sources/js/html5shiv.js"></script>
+<![endif]-->
+```
 
+[html5shiv.js](html5shiv.js)
 
+扩展
 
+* lt：小于
+* lte：小于等于
+* gt：大于
+* gte：大于等于
+* !：逻辑非
 
+示例：
 
+```html
+<!--[if IE 8]>仅IE8可见<![endif]-->
+<!--[if gt IE 8]>仅IE8以上可见<![endif]—>
+<!--[if lt IE 8]>仅IE8以下可见<![endif]—>
+<!--[if gte IE 8]>IE8及以上可见<![endif]—>
+<!--[if lte IE 8]>IE8及以下可见<![endif]—>
+<!--[if !IE 8]>非IE8的IE可见<![endif]-->
+```
 
-
-
-
-
-
-
-
-
+相关代码：[兼容性处理](../../src/HTML5/H5_兼容性处理/兼容性处理.html)
