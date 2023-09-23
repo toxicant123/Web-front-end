@@ -197,3 +197,27 @@ rgba 是颜色的设置方式，用于设置颜色，它的透明度，仅仅是
      `background-size: cover;`
 
 相关代码：[background-size](../../src/CSS3/新增背景相关属性/background-size.html)
+
+#### 5.4. backgorund 复合属性
+
+语法：
+
+`background: color url repeat position / size origin clip`
+
+注意：
+1. origin 和 clip 的值如果一样，如果只写一个值，则 origin 和 clip 都设置；如果设置了两个值，前面的是 origin ，后面的 clip 。
+2. size 的值必须写在 position 值的后面，并且用 / 分开。
+
+相关代码：[background复合属性](../../src/CSS3/新增背景相关属性/background复合属性.html)
+
+
+
+
+
+
+
+
+
+
+
+
