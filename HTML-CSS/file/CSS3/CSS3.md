@@ -226,6 +226,46 @@ CSS3 允许元素设置多个背景图片
 
 相关代码：[多背景图](../../src/CSS3/新增背景相关属性/多背景图.html)
 
+### 6. CSS3新增边框属性
+
+#### 6.1 边框圆角
+
+* 在 CSS3 中，使用 border-radius 属性可以将盒子变为圆角。
+* 同时设置四个角的圆角：  
+  `border-radius:10px;`
+* 分开设置每个角的圆角（几乎不用）：
+
+  | 属性名                        | 作用                                                     |
+  |----------------------------|--------------------------------------------------------|
+  | border-top-left-radius     | 设置左上角圆角半径：<br>1. 一个值是正圆半径，<br>2. 两个值分别是椭圆的 x 半径、 y 半径。 |
+  | border-top-right-radius    | 设置右上角圆角半径：<br>1. 一个值是正圆半径，<br>2. 两个值分别是椭圆的 x 半径、 y 半径。 |
+  | border-bottom-right-radius | 设置右下角圆角半径：<br>1. 一个值是正圆半径，<br>2. 两个值分别是椭圆的 x 半径、 y 半径。 |
+  | border-bottom-left-radius  | 设置左下角圆角半径：<br>1. 一个值是正圆半径，<br>2. 两个值分别是椭圆的 x 半径、 y 半径。 |
+* 分开设置每个角的圆角，综合写法（几乎不用）：  
+  `border-raidus: 左上角x 右上角x 右下角x 左下角x / 左上y 右上y 右下y 左下y`
+
+相关代码：[边框圆角](../../src/CSS3/新增边框相关属性/边框圆角.html)
+
+#### 6.2 边框外轮廓
+
+* outline-width：外轮廓的宽度。
+* outline-color：外轮廓的颜色。
+* outline-style：外轮廓的风格。
+  - none： 无轮廓
+  - dotted： 点状轮廓
+  - dashed： 虚线轮廓
+  - solid： 实线轮廓
+  - double： 双线轮廓
+* outline-offset 设置外轮廓与边框的距离，正负值都可以设置。
+  > 注意：outline-offset 不是 outline 的子属性，是一个独立的属性。
+* outline 复合属性  
+  `outline:50px solid blue;`
+
+相关代码：[边框外轮廓](../../src/CSS3/新增边框相关属性/边框外轮廓.html)
+
+
+
+
 
 
 
