@@ -108,15 +108,42 @@ CSS3 新增的选择器有：动态伪类、目标伪类、语言伪类、 UI �
 
 相关代码：[resize](../../src/CSS3/CSS3_新增盒子模型相关属性/resize.html)
 
+#### 4.3. box-shadow 盒子阴影
 
+使用 box-shadow 属性为盒子添加阴影。
 
+* 语法：  
+  `box-shadow: h-shadow v-shadow blur spread color inset;`
+* 各个值的含义：
 
+  | 值        | 含义                 |
+  |----------|--------------------|
+  | h-shadow | 水平阴影的位置，必须填写，可以为负值 |
+  | v-shadow | 垂直阴影的位置，必须填写，可以为负值 |
+  | blur     | 可选，模糊距离            |
+  | spread   | 可选，阴影的外延值          |
+  | color    | 可选，阴影的颜色           |
+  | inset    | 可选，将外部阴影改为内部阴影     |
+* 默认值：`box-shadow: none`表示没有阴影
+* 示例：
+  ```css
+  .example {
+      /* 写两个值，含义：水平位置、垂直位置 */
+      box-shadow: 10px 10px;
+      /* 写三个值，含义：水平位置、垂直位置、颜色 */
+      box-shadow: 10px 10px red;
+      /* 写三个值，含义：水平位置、垂直位置、模糊值 */
+      box-shadow: 10px 10px 10px;
+      /* 写四个值，含义：水平位置、垂直位置、模糊值、颜色 */
+      box-shadow: 10px 10px 10px red;
+      /* 写五个值，含义：水平位置、垂直位置、模糊值、外延值、颜色 */
+      box-shadow: 10px 10px 10px 10px blue;
+      /* 写六个值，含义：水平位置、垂直位置、模糊值、外延值、颜色、内阴影 */
+      box-shadow: 10px 10px 20px 3px blue inset;
+  }
+  ```
 
-
-
-
-
-
+相关代码：[box-shadow](../../src/CSS3/CSS3_新增盒子模型相关属性/box-shadow.html)
 
 
 
