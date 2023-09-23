@@ -210,8 +210,21 @@ rgba 是颜色的设置方式，用于设置颜色，它的透明度，仅仅是
 
 相关代码：[background复合属性](../../src/CSS3/新增背景相关属性/background复合属性.html)
 
+#### 5.5. 多背景图
 
+CSS3 允许元素设置多个背景图片
 
+```css
+.example {
+    /* 添加多个背景图 */
+    background: url(../../图片/bg-lt.png) no-repeat,
+                url(../../图片/bg-rt.png) no-repeat right top,
+                url(../../图片/bg-lb.png) no-repeat left bottom,
+                url(../../图片/bg-rb.png) no-repeat right bottom;
+}
+```
+
+相关代码：[多背景图](../../src/CSS3/新增背景相关属性/多背景图.html)
 
 
 
