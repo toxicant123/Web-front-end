@@ -169,9 +169,18 @@ rgba 是颜色的设置方式，用于设置颜色，它的透明度，仅仅是
 
 相关代码：[background-origin](../../src/CSS3/新增背景相关属性/background-origin.html)
 
+#### 5.2. background-clip
 
+* 作用：设置背景图的向外裁剪的区域。
+* 语法：
+  1. border-box：从 border 区域开始向外裁剪背景。 —— 默认值
+  2. padding-box：从 padding 区域开始向外裁剪背景。
+  3. content-box：从 content 区域开始向外裁剪背景。
+  4. text：背景图只呈现在文字上。
 
+注意：若值为 text ，那么 backgroun-clip 要加上 -webkit- 前缀。
 
+相关代码：[background-clip](../../src/CSS3/新增背景相关属性/background-clip.html)
 
 
 
