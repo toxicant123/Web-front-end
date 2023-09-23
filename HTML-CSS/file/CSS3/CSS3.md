@@ -157,7 +157,17 @@ rgba 是颜色的设置方式，用于设置颜色，它的透明度，仅仅是
 
 相关代码：[opacity](../../src/CSS3/CSS3_新增盒子模型相关属性/opacity.html)
 
+### 5. CSS3 新增背景属性
 
+#### 5.1. background-origin
+
+* 作用：设置背景图的原点。
+* 语法：
+  1. padding-box：从 padding 区域开始显示背景图像。—— 默认值
+  2. border-box：从 border 区域开始显示背景图像。
+  3. content-box：从 content 区域开始显示背景图像。
+
+相关代码：[background-origin](../../src/CSS3/新增背景相关属性/background-origin.html)
 
 
 
