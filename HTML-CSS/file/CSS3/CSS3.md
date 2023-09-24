@@ -397,6 +397,68 @@ CSS3 允许元素设置多个背景图片
 
 相关代码：[渐变小案例](../../src/CSS3/CSS3_新增渐变/渐变小案例.html)
 
+### 9. web 字体
+
+#### 9.1 基本用法
+
+可以通过 @font-face 指定字体的具体地址，浏览器会自动下载该字体，这样就不依赖用户电脑上的字体了。
+
+* 语法（简写方式）
+  ```css
+  @font-face {
+      font-family: "情书字体";
+      src: url('./方正手迹.ttf');
+  }
+  ```
+* 语法（高兼容性写法）
+  ```css
+  @font-face {
+      font-family: "atguigu";
+      font-display: swap;
+      src: url('webfont.eot'); /* IE9 */
+      src: url('webfont.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */ url('webfont.woff2') format('woff2'),
+      url('webfont.woff') format('woff'), /* chrome、firefox */ url('webfont.ttf') format('truetype'), /* chrome、firefox、opera、Safari,Android*/ url('webfont.svg#webfont') format('svg'); /* iOS 4.1- */
+  }
+  ```
+
+相关代码：[web字体](../../src/CSS3/web字体/web字体.html)
+
+#### 9.2 定制字体
+
+* 中文的字体文件很大，使用完整的字体文件不现实，通常针对某几个文字进行单独定制。
+* 可使用阿里 Web 字体定制工具：https://www.iconfont.cn/webfont
+
+相关代码：[web字体](../../src/CSS3/web字体/web字体.html)
+
+#### 9.3 字体图标
+
+* 相比图片更加清晰。
+* 灵活性高，更方便改变大小、颜色、风格等。
+* 兼容性好， IE 也能支持。
+
+字体图标的具体使用方式，每个平台不尽相同，最好参考平台使用指南，视频中我们是以使用最多的阿里图标库作为演示。
+
+阿里图标官网地址：https://www.iconfont.cn/
+
+相关代码：[字体图标_方式一](../../src/CSS3/web字体/字体图标_方式一.html)
+
+相关代码：[字体图标_方式一_在线使用](../../src/CSS3/web字体/字体图标_方式一_在线使用.html)
+
+相关代码：[字体图标_方式二](../../src/CSS3/web字体/字体图标_方式二.html)
+
+相关代码：[字体图标_方式二_在线使用](../../src/CSS3/web字体/字体图标_方式二_在线使用.html)
+
+相关代码：[字体图标_方式三](../../src/CSS3/web字体/字体图标_方式三.html)
+
+相关代码：[字体图标_方式三_在线使用](../../src/CSS3/web字体/字体图标_方式三_在线使用.html)
+
+
+
+
+
+
+
+
 
 
 
