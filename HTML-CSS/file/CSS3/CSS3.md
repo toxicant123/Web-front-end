@@ -339,6 +339,69 @@ CSS3 允许元素设置多个背景图片
 
 相关代码：[文本描边](../../src/CSS3/CSS3_新增文本属性/文本描边.html)
 
+### 8. CSS3 新增渐变
+
+#### 8.1 线性渐变
+
+* 多个颜色之间的渐变， 默认从上到下渐变。  
+  ![img.png](img.png)  
+  `background-image: linear-gradient(red,yellow,green);`
+* 使用关键词设置线性渐变的方向。  
+  ![img_1.png](img_1.png)  
+  `background-image: linear-gradient(to top,red,yellow,green);`  
+  `background-image: linear-gradient(to right top,red,yellow,green);`
+* 使用角度设置线性渐变的方向。  
+  ![img_2.png](img_2.png)  
+  `background-image: linear-gradient(30deg,red,yellow,green);`
+* 调整开始渐变的位置。  
+  ![img_3.png](img_3.png)  
+  `background-image: linear-gradient(red 50px,yellow 100px ,green 150px);`
+
+相关代码：[线性渐变](../../src/CSS3/CSS3_新增渐变/线性渐变.html)
+
+#### 8.2 径向渐变
+
+* 多个颜色之间的渐变， 默认从圆心四散。（注意：不一定是正圆，要看容器本身宽高比）  
+  ![img_4.png](img_4.png)  
+  `background-image: radial-gradient(red,yellow,green);`
+* 使用关键词调整渐变圆的圆心位置。  
+  ![img_5.png](img_5.png)  
+  `background-image: radial-gradient(at right top,red,yellow,green);`
+* 使用像素值调整渐变圆的圆心位置。  
+  ![img_6.png](img_6.png)  
+  `background-image: radial-gradient(at 100px 50px,red,yellow,green);`
+* 调整渐变形状为正圆。  
+  ![img_7.png](img_7.png)  
+  `background-image: radial-gradient(circle,red,yellow,green);`
+* 调整形状的半径。  
+  ![img_8.png](img_8.png)
+  ![img_9.png](img_9.png)  
+  `background-image: radial-gradient(100px,red,yellow,green);`
+  `background-image: radial-gradient(50px 100px,red,yellow,green);`
+* 调整开始渐变的位置。  
+  ![img_10.png](img_10.png)  
+  `background-image: radial-gradient(red 50px,yellow 100px,green 150px);`
+
+相关代码：[径向渐变](../../src/CSS3/CSS3_新增渐变/径向渐变.html)
+
+#### 8.3 重复渐变
+
+无论线性渐变，还是径向渐变，在没有发生渐变的位置，继续进行渐变，就为重复渐变。
+
+* 使用 repeating-linear-gradient 进行重复线性渐变，具体参数同 linear-gradient 。
+* 使用 repeating-radial-gradient 进行重复径向渐变，具体参数同 radial-gradient 。
+
+> 我们可以利用渐变，做出很多有意思的效果：例如：横格纸、立体球等等。
+
+相关代码：[重复渐变](../../src/CSS3/CSS3_新增渐变/重复渐变.html)
+
+相关代码：[渐变小案例](../../src/CSS3/CSS3_新增渐变/渐变小案例.html)
+
+
+
+
+
+
 
 
 
