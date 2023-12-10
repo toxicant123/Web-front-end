@@ -6,7 +6,7 @@
 
 严格意义上讲，我们在 JavaScript 阶段学习的知识绝大部分属于 ECMAScript 的知识体系，ECMAScript 简称 ES 它提供了一套语言标准规范，如变量、数据类型、表达式、语句、函数等语法规则都是由 ECMAScript 规定的。浏览器将 ECMAScript 大部分的规范加以实现，并且在此基础上又扩展一些实用的功能，这些被扩展出来的内容我们称为 Web APIs。
 
-![guide](./assets/guide.png)
+![guide](../assets/guide.png)
 
 ECMAScript 运行在浏览器中然后再结合 Web APIs 才是真正的 JavaScript，Web APIs 的核心是 DOM 和 BOM。
 
@@ -24,7 +24,7 @@ DOM（Document Object Model）是将整个 HTML 文档的每一个标签元素�
 
 观察一个小例子：
 
-![demo](assets/demo.gif)
+![demo](../assets/demo.gif)
 
 上述的例子中当用户分分别点击【开始】或【结束】按钮后，通过右侧调试窗口可以观察到 html 标签的内容在不断的发生改变，这便是通过 DOM 实现的。
 
@@ -50,7 +50,7 @@ DOM（Document Object Model）是将整个 HTML 文档的每一个标签元素�
 
 如下图所示，将 HTML 文档以树状结构直观的表现出来，我们称之为文档树或 DOM 树，**文档树直观的体现了标签与标签之间的关系。**
 
-![dom](./assets/web-api.jpg)
+![dom](../assets/web-api.jpg)
 
 #### 1.1.2 DOM 节点
 
@@ -86,8 +86,8 @@ DOM（Document Object Model）是将整个 HTML 文档的每一个标签元素�
 
 ## 2 获取DOM对象
 
-1. querySelector   满足条件的第一个元素
-2. querySelectorAll  满足条件的元素集合 返回伪数组
+1. querySelector：满足条件的第一个元素
+2. querySelectorAll：满足条件的元素集合 返回伪数组
 3. 了解其他方式
     1. getElementById
     2. getElementsByTagName
