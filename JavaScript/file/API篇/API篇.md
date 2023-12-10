@@ -1,6 +1,6 @@
 # API篇
 
-## 介绍
+## 1 介绍
 
 > 知道 ECMAScript 与 JavaScript 的关系，Web APIs 是浏览器扩展的功能。
 
@@ -28,9 +28,9 @@ DOM（Document Object Model）是将整个 HTML 文档的每一个标签元素�
 
 上述的例子中当用户分分别点击【开始】或【结束】按钮后，通过右侧调试窗口可以观察到 html 标签的内容在不断的发生改变，这便是通过 DOM 实现的。
 
-### 概念
+### 1.1 概念
 
-#### DOM 树
+#### 1.1.1 DOM 树
 
 ```html
 <!DOCTYPE html>
@@ -52,7 +52,7 @@ DOM（Document Object Model）是将整个 HTML 文档的每一个标签元素�
 
 ![dom](./assets/web-api.jpg)
 
-#### DOM 节点
+#### 1.1.2 DOM 节点
 
 节点是文档树的组成部分，**每一个节点都是一个 DOM 对象**，主要分为元素节点、属性节点、文本节点等。
 
@@ -62,7 +62,7 @@ DOM（Document Object Model）是将整个 HTML 文档的每一个标签元素�
 4. 【根节点】特指 `html` 标签。
 5. 其它...
 
-#### document
+#### 1.1.3 document
 
 `document` 是 JavaScript 内置的专门用于 DOM 的对象，该对象包含了若干的属性和方法，`document` 是学习 DOM 的核心。
 
@@ -84,7 +84,7 @@ DOM（Document Object Model）是将整个 HTML 文档的每一个标签元素�
 
 上述列举了 `document` 对象的部分属性和方法，我们先对 `document` 有一个整体的认识。
 
-## 获取DOM对象
+## 2 获取DOM对象
 
 1. querySelector   满足条件的第一个元素
 2. querySelectorAll  满足条件的元素集合 返回伪数组
@@ -122,7 +122,7 @@ DOM（Document Object Model）是将整个 HTML 文档的每一个标签元素�
 - document.getElementById 专门获取元素类型节点，根据标签的 `id`  属性查找
 - 任意 DOM 对象都包含 nodeType 属性，用来检检测节点类型
 
-## 操作元素内容
+## 3 操作元素内容
 通过修改 DOM 的文本内容，动态改变网页的内容。
 
 1. `innerText` 将文本内容添加/更新到任意标签位置，**文本中包含的标签不会被解析。**
@@ -153,7 +153,7 @@ DOM（Document Object Model）是将整个 HTML 文档的每一个标签元素�
 
 有3种方式可以实现对属性的修改：
 
-#### 常用属性修改
+#### 3.1 常用属性修改
 
 1. 直接能过属性名修改，最简洁的语法
 
@@ -168,7 +168,7 @@ DOM（Document Object Model）是将整个 HTML 文档的每一个标签元素�
 </script>
 ```
 
-#### 控制样式属性
+#### 3.1.1 控制样式属性
 
 1. 应用【修改样式】，通过修改行内样式 `style` 属性，实现对样式的动态修改。
 
@@ -203,7 +203,7 @@ DOM（Document Object Model）是将整个 HTML 文档的每一个标签元素�
 
 如果修改的样式比较多，直接通过style属性修改比较繁琐，我们可以通过借助于css类名的形式。
 
-~~~html
+```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -226,7 +226,7 @@ DOM（Document Object Model）是将整个 HTML 文档的每一个标签元素�
   </script>
 </body>
 </html>
-~~~
+```
 
 >注意：
 >
@@ -238,7 +238,7 @@ DOM（Document Object Model）是将整个 HTML 文档的每一个标签元素�
 
 为了解决className 容易覆盖以前的类名，我们可以通过classList方式追加和删除类名
 
-~~~html
+```html
 
 <!DOCTYPE html>
 <html lang="en">
@@ -281,9 +281,9 @@ DOM（Document Object Model）是将整个 HTML 文档的每一个标签元素�
 </body>
 
 </html>
-~~~
+```
 
-#### 操作表单元素属性
+#### 3.1.2 操作表单元素属性
 
 表单很多情况，也需要修改属性，比如点击眼睛，可以看到密码，本质是把表单类型转换为文本框
 
@@ -293,7 +293,7 @@ DOM（Document Object Model）是将整个 HTML 文档的每一个标签元素�
 
 设置:DOM对象.属性名= 新值
 
-~~~html
+```html
 
 <!DOCTYPE html>
 <html lang="en">
@@ -329,9 +329,9 @@ DOM（Document Object Model）是将整个 HTML 文档的每一个标签元素�
 </body>
 
 </html>
-~~~
+```
 
-#### 自定义属性
+#### 3.1.3 自定义属性
 
 标准属性: 标签天生自带的属性 比如class id title等, 可以直接使用点语法操作比如： disabled、checked、selected
 
@@ -343,7 +343,7 @@ DOM（Document Object Model）是将整个 HTML 文档的每一个标签元素�
 
 在DOM对象上一律以dataset对象方式获取
 
-~~~html
+```html
 <!DOCTYPE html>
 <html lang="en">
 
@@ -367,9 +367,9 @@ DOM（Document Object Model）是将整个 HTML 文档的每一个标签元素�
 </body>
 
 </html>
-~~~
+```
 
-## 间歇函数
+## 4 间歇函数
 
 > 知道间歇函数的作用，利用间歇函数创建定时任务。
 
