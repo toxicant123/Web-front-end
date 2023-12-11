@@ -224,10 +224,8 @@ pic.alt = '图片不见了...'
 为了解决className 容易覆盖以前的类名，我们可以通过classList方式追加和删除类名
 
 ```html
-
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -248,9 +246,7 @@ pic.alt = '图片不见了...'
         }
     </style>
 </head>
-
 <body>
-
     <div class="one"></div>
     <script>
         // 1.获取元素
@@ -264,7 +260,6 @@ pic.alt = '图片不见了...'
         box.classList.toggle('one')
     </script>
 </body>
-
 </html>
 ```
 
@@ -276,7 +271,7 @@ pic.alt = '图片不见了...'
 
 获取：DOM对象.属性名
 
-设置：DOM对象.属性名= 新值
+设置：DOM对象.属性名 = 新值
 
 ```html
 <!DOCTYPE html>
@@ -326,26 +321,22 @@ pic.alt = '图片不见了...'
 ```html
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-
 </head>
-
 <body>
-   <div data-id="1"> 自定义属性 </div>
+    <div data-id="1"> 自定义属性</div>
     <script>
         // 1. 获取元素
         let div = document.querySelector('div')
         // 2. 获取自定义属性值
-         console.log(div.dataset.id)
-      
+        console.log(div.dataset.id)
+
     </script>
 </body>
-
 </html>
 ```
 
