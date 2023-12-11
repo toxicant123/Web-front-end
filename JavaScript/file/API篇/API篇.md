@@ -92,23 +92,23 @@ document.write('Hello World!');
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>DOM - 查找节点</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DOM - 查找节点</title>
 </head>
 <body>
-  <h3>查找元素类型节点</h3>
-  <p>从整个 DOM 树中查找 DOM 节点是学习 DOM 的第一个步骤。</p>
-  <ul>
-      <li>元素</li>
-      <li>元素</li>
-      <li>元素</li>
-      <li>元素</li>
-  </ul>
-  <script>
-  	const p = document.querySelector('p')  // 获取第一个p元素
-  	const lis = document.querySelectorAll('li')  // 获取第一个p元素
-  </script>
+    <h3>查找元素类型节点</h3>
+    <p>从整个 DOM 树中查找 DOM 节点是学习 DOM 的第一个步骤。</p>
+    <ul>
+        <li>元素</li>
+        <li>元素</li>
+        <li>元素</li>
+        <li>元素</li>
+    </ul>
+    <script>
+        const p = document.querySelector('p')  // 获取第一个p元素
+        const lis = document.querySelectorAll('li')  // 获取第一个p元素
+    </script>
 </body>
 </html>
 ```
@@ -119,6 +119,7 @@ document.write('Hello World!');
 - 任意 DOM 对象都包含 nodeType 属性，用来检检测节点类型
 
 ## 3 操作元素内容
+
 通过修改 DOM 的文本内容，动态改变网页的内容。
 
 1. `innerText` 将文本内容添加/更新到任意标签位置，**文本中包含的标签不会被解析。**
