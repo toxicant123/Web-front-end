@@ -14,8 +14,6 @@ ECMAScript 运行在浏览器中然后再结合 Web APIs 才是真正的 JavaScr
 
 关于 JavaScript 历史的[扩展阅读](https://javascript.ruanyifeng.com/introduction/history.html)。
 
-
-
 > 知道 DOM 相关的概念，建立对 DOM 的初步认识，学习 DOM 的基本操作，体会 DOM 的作用
 
 DOM（Document Object Model）是将整个 HTML 文档的每一个标签元素视为一个对象，这个对象下包含了许多的属性和方法，通过操作这些属性或者调用这些方法实现对 HTML 的动态更新，为实现网页特效以及用户交互提供技术支撑。
@@ -36,14 +34,14 @@ DOM（Document Object Model）是将整个 HTML 文档的每一个标签元素�
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>标题</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>标题</title>
 </head>
 <body>
-  文本
-  <a href="">链接名</a>
-  <div id="" class="">文本</div>
+    文本
+    <a href="">链接名</a>
+    <div id="" class="">文本</div>
 </body>
 </html>
 ```
