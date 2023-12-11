@@ -150,15 +150,13 @@ intro.innerHTML = '<h4>嗨~ 我叫韩梅梅！</h4>'
 
 1. 直接能过属性名修改，最简洁的语法
 
-```html
-<script>
-  // 1. 获取 img 对应的 DOM 元素
-  const pic = document.querySelector('.pic')
-	// 2. 修改属性
-  pic.src = './images/lion.webp'
-  pic.width = 400;
-  pic.alt = '图片不见了...'
-</script>
+```javascript
+// 1. 获取 img 对应的 DOM 元素
+const pic = document.querySelector('.pic')
+// 2. 修改属性
+pic.src = './images/lion.webp'
+pic.width = 400;
+pic.alt = '图片不见了...'
 ```
 
 ### 3.2 控制样式属性
@@ -282,23 +280,19 @@ intro.innerHTML = '<h4>嗨~ 我叫韩梅梅！</h4>'
 
 正常的有属性有取值的跟其他的标签属性没有任何区别
 
-获取:DOM对象.属性名
+获取：DOM对象.属性名
 
-设置:DOM对象.属性名= 新值
+设置：DOM对象.属性名= 新值
 
 ```html
-
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-
 </head>
-
 <body>
     <input type="text" value="请输入">
     <button disabled>按钮</button>
@@ -320,7 +314,6 @@ intro.innerHTML = '<h4>嗨~ 我叫韩梅梅！</h4>'
         checkbox.checked = false
     </script>
 </body>
-
 </html>
 ```
 
