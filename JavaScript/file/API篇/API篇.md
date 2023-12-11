@@ -124,24 +124,20 @@ document.write('Hello World!');
 
 1. `innerText` 将文本内容添加/更新到任意标签位置，**文本中包含的标签不会被解析。**
 
-```html
-<script>
-  // innerText 将文本内容添加/更新到任意标签位置
-  const intro = document.querySelector('.intro')
-  // intro.innerText = '嗨~ 我叫李雷！'
-  // intro.innerText = '<h4>嗨~ 我叫李雷！</h4>'
-</script>
+```javascript
+// innerText 将文本内容添加/更新到任意标签位置
+const intro = document.querySelector('.intro')
+// intro.innerText = '嗨~ 我叫李雷！'
+// intro.innerText = '<h4>嗨~ 我叫李雷！</h4>'
 ```
 
 2. `innerHTML` 将文本内容添加/更新到任意标签位置，**文本中包含的标签会被解析。**
 
-```html
-<script>
-  // innerHTML 将文本内容添加/更新到任意标签位置
-  const intro = document.querySelector('.intro')
-  intro.innerHTML = '嗨~ 我叫韩梅梅！'
-  intro.innerHTML = '<h4>嗨~ 我叫韩梅梅！</h4>'
-</script>
+```javascript
+// innerHTML 将文本内容添加/更新到任意标签位置
+const intro = document.querySelector('.intro')
+intro.innerHTML = '嗨~ 我叫韩梅梅！'
+intro.innerHTML = '<h4>嗨~ 我叫韩梅梅！</h4>'
 ```
 
 总结：如果文本内容中包含 `html` 标签时推荐使用 `innerHTML`，否则建议使用 `innerText` 属性。
