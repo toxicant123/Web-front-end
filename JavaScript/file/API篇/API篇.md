@@ -64,20 +64,18 @@ DOM（Document Object Model）是将整个 HTML 文档的每一个标签元素�
 
 `document` 是 JavaScript 内置的专门用于 DOM 的对象，该对象包含了若干的属性和方法，`document` 是学习 DOM 的核心。
 
-```html
-<script>
-  // document 是内置的对象
-  // console.log(typeof document);
+```javascript
+// document 是内置的对象
+// console.log(typeof document);
 
-  // 1. 通过 document 获取根节点
-  console.log(document.documentElement); // 对应 html 标签
+// 1. 通过 document 获取根节点
+console.log(document.documentElement); // 对应 html 标签
 
-  // 2. 通过 document 节取 body 节点
-  console.log(document.body); // 对应 body 标签
+// 2. 通过 document 节取 body 节点
+console.log(document.body); // 对应 body 标签
 
-  // 3. 通过 document.write 方法向网页输出内容
-  document.write('Hello World!');
-</script>
+// 3. 通过 document.write 方法向网页输出内容
+document.write('Hello World!');
 ```
 
 上述列举了 `document` 对象的部分属性和方法，我们先对 `document` 有一个整体的认识。
