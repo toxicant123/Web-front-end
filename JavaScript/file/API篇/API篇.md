@@ -142,10 +142,6 @@ intro.innerHTML = '<h4>嗨~ 我叫韩梅梅！</h4>'
 
 总结：如果文本内容中包含 `html` 标签时推荐使用 `innerHTML`，否则建议使用 `innerText` 属性。
 
-##操作元素属性
-
-有3种方式可以实现对属性的修改：
-
 ### 3.1 常用属性修改
 
 1. 直接能过属性名修改，最简洁的语法
@@ -169,21 +165,21 @@ pic.alt = '图片不见了...'
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>练习 - 修改样式</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>练习 - 修改样式</title>
 </head>
 <body>
-  <div class="box">随便一些文本内容</div>
-  <script>
-    // 获取 DOM 节点
-    const box = document.querySelector('.intro')
-    box.style.color = 'red'
-    box.style.width = '300px'
-    // css 属性的 - 连接符与 JavaScript 的 减运算符
-    // 冲突，所以要改成驼峰法
-    box.style.backgroundColor = 'pink'
-  </script>
+    <div class="box">随便一些文本内容</div>
+    <script>
+        // 获取 DOM 节点
+        const box = document.querySelector('.intro')
+        box.style.color = 'red'
+        box.style.width = '300px'
+        // css 属性的 - 连接符与 JavaScript 的 减运算符
+        // 冲突，所以要改成驼峰法
+        box.style.backgroundColor = 'pink'
+    </script>
 </body>
 </html>
 ```
@@ -198,9 +194,9 @@ pic.alt = '图片不见了...'
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>练习 - 修改样式</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>练习 - 修改样式</title>
     <style>
         .pink {
             background: pink;
@@ -209,21 +205,19 @@ pic.alt = '图片不见了...'
     </style>
 </head>
 <body>
-  <div class="box">随便一些文本内容</div>
-  <script>
-    // 获取 DOM 节点
-    const box = document.querySelector('.intro')
-    box.className = 'pink'
-  </script>
+    <div class="box">随便一些文本内容</div>
+    <script>
+        // 获取 DOM 节点
+        const box = document.querySelector('.intro')
+        box.className = 'pink'
+    </script>
 </body>
 </html>
 ```
 
->注意：
->
->1.由于class是关键字, 所以使用className去代替
->
->2.className是使用新值换旧值, 如果需要添加一个类,需要保留之前的类名
+> 注意：
+> 1. 由于class是关键字，所以使用className去代替
+> 2. className是使用新值换旧值，如果需要添加一个类，需要保留之前的类名
 
 3. 通过 classList 操作类控制CSS
 
@@ -319,7 +313,7 @@ pic.alt = '图片不见了...'
 
 ### 3.4 自定义属性
 
-标准属性: 标签天生自带的属性 比如class id title等, 可以直接使用点语法操作比如： disabled、checked、selected
+标准属性: 标签天生自带的属性 比如class id title等，可以直接使用点语法操作比如：disabled、checked、selected
 
 自定义属性：
 
