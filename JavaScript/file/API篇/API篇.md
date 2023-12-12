@@ -334,7 +334,6 @@ pic.alt = '图片不见了...'
         let div = document.querySelector('div')
         // 2. 获取自定义属性值
         console.log(div.dataset.id)
-
     </script>
 </body>
 </html>
@@ -346,15 +345,13 @@ pic.alt = '图片不见了...'
 
 `setInterval` 是 JavaScript 中内置的函数，它的作用是间隔固定的时间自动重复执行另一个函数，也叫定时器函数。
 
-```html
-<script>
-  // 1. 定义一个普通函数
-  function repeat() {
+```javascript
+// 1. 定义一个普通函数
+function repeat() {
     console.log('不知疲倦的执行下去....')
-  }
+}
 
-  // 2. 使用 setInterval 调用 repeat 函数
-  // 间隔 1000 毫秒，重复调用 repeat
-  setInterval(repeat, 1000)
-</script>
+// 2. 使用 setInterval 调用 repeat 函数
+// 间隔 1000 毫秒，重复调用 repeat
+setInterval(repeat, 1000)
 ```
