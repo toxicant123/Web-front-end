@@ -399,7 +399,6 @@ setInterval(repeat, 1000)
 ```
 
 完成事件监听分成3个步骤：
-
 1. 获取 DOM 元素
 2. 通过 `addEventListener` 方法为 DOM 节点添加事件监听
 3. 等待事件触发，如用户点击了某个按钮时便会触发 `click` 事件类型
@@ -411,18 +410,16 @@ setInterval(repeat, 1000)
 
 `click` 译成中文是【点击】的意思，它的含义是监听（等着）用户鼠标的单击操作，除了【单击】还有【双击】`dblclick`
 
-```html
-<script>
-  // 双击事件类型
-  btn.addEventListener('dblclick', function () {
+```javascript
+// 双击事件类型
+btn.addEventListener('dblclick', function () {
     console.log('等待事件被触发...');
     // 改变 p 标签的文字颜色
     const text = document.querySelector('.text')
     text.style.color = 'red'
-  })
+})
 
-  // 只要用户双击击了按钮，事件便触发了！！！
-</script>
+// 只要用户双击击了按钮，事件便触发了！！！
 ```
 
 结论：【事件类型】决定了事件被触发的方式，如 `click` 代表鼠标单击，`dblclick` 代表鼠标双击。
