@@ -428,19 +428,17 @@ btn.addEventListener('dblclick', function () {
 
 `addEventListener` 的第2个参数是函数，这个函数会在事件被触发时立即被调用，在这个函数中可以编写任意逻辑的代码，如改变 DOM 文本颜色、文本内容等。
 
-```html
-<script>
-  // 双击事件类型
-  btn.addEventListener('dblclick', function () {
+```javascript
+// 双击事件类型
+btn.addEventListener('dblclick', function () {
     console.log('等待事件被触发...')
-    
+
     const text = document.querySelector('.text')
     // 改变 p 标签的文字颜色
     text.style.color = 'red'
     // 改变 p 标签的文本内容
     text.style.fontSize = '20px'
-  })
-</script>
+})
 ```
 
 结论：【事件处理程序】决定了事件触发后应该执行的逻辑。
