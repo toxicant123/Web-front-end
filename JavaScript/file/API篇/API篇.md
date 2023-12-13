@@ -455,22 +455,22 @@ btn.addEventListener('dblclick', function () {
 
 ```html
 <body>
-  <h3>鼠标事件</h3>
-  <p>监听与鼠标相关的操作</p>
-  <hr>
-  <div class="box"></div>
-  <script>
-    // 需要事件监听的 DOM 元素
-    const box = document.querySelector('.box');
+    <h3>鼠标事件</h3>
+    <p>监听与鼠标相关的操作</p>
+    <hr>
+    <div class="box"></div>
+    <script>
+        // 需要事件监听的 DOM 元素
+        const box = document.querySelector('.box');
 
-    // 监听鼠标是移入当前 DOM 元素
-    box.addEventListener('mouseenter', function () {
-      // 修改文本内容
-      this.innerText = '鼠标移入了...';
-      // 修改光标的风格
-      this.style.cursor = 'move';
-    })
-  </script>
+        // 监听鼠标是移入当前 DOM 元素
+        box.addEventListener('mouseenter', function () {
+            // 修改文本内容
+            this.innerText = '鼠标移入了...';
+            // 修改光标的风格
+            this.style.cursor = 'move';
+        })
+    </script>
 </body>
 ```
 
@@ -478,20 +478,20 @@ btn.addEventListener('dblclick', function () {
 
 ```html
 <body>
-  <h3>鼠标事件</h3>
-  <p>监听与鼠标相关的操作</p>
-  <hr>
-  <div class="box"></div>
-  <script>
-    // 需要事件监听的 DOM 元素
-    const box = document.querySelector('.box');
+    <h3>鼠标事件</h3>
+    <p>监听与鼠标相关的操作</p>
+    <hr>
+    <div class="box"></div>
+    <script>
+        // 需要事件监听的 DOM 元素
+        const box = document.querySelector('.box');
 
-    // 监听鼠标是移出当前 DOM 元素
-    box.addEventListener('mouseleave', function () {
-      // 修改文本内容
-      this.innerText = '鼠标移出了...';
-    })
-  </script>
+        // 监听鼠标是移出当前 DOM 元素
+        box.addEventListener('mouseleave', function () {
+            // 修改文本内容
+            this.innerText = '鼠标移出了...';
+        })
+    </script>
 </body>
 ```
 
