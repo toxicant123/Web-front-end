@@ -498,6 +498,7 @@ btn.addEventListener('dblclick', function () {
 ### 6.2 键盘事件
 
 keydown   键盘按下触发
+
 keyup   键盘抬起触发
 
 ### 6.3 焦点事件
@@ -516,22 +517,22 @@ input
 
 ```html
 <body>
-  <h3>事件对象</h3>
-  <p>任意事件类型被触发时与事件相关的信息会被以对象的形式记录下来，我们称这个对象为事件对象。</p>
-  <hr>
-  <div class="box"></div>
-  <script>
-    // 获取 .box 元素
-    const box = document.querySelector('.box')
+    <h3>事件对象</h3>
+    <p>任意事件类型被触发时与事件相关的信息会被以对象的形式记录下来，我们称这个对象为事件对象。</p>
+    <hr>
+    <div class="box"></div>
+    <script>
+        // 获取 .box 元素
+        const box = document.querySelector('.box')
 
-    // 添加事件监听
-    box.addEventListener('click', function (e) {
-      console.log('任意事件类型被触发后，相关信息会以对象形式被记录下来...');
+        // 添加事件监听
+        box.addEventListener('click', function (e) {
+            console.log('任意事件类型被触发后，相关信息会以对象形式被记录下来...');
 
-      // 事件回调函数的第1个参数即所谓的事件对象
-      console.log(e)
-    })
-  </script>
+            // 事件回调函数的第1个参数即所谓的事件对象
+            console.log(e)
+        })
+    </script>
 </body>
 ```
 
