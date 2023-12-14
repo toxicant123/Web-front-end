@@ -580,7 +580,6 @@ person.sayHi()// person
 ```
 
 结论：
-
 1. `this` 本质上是一个变量，数据类型为对象
 2. 函数的调用方式不同 `this` 变量的值也不同
 3. 【谁调用 `this` 就是谁】是判断 `this` 值的粗略规则
@@ -589,38 +588,36 @@ person.sayHi()// person
 
 如果将函数 A 做为参数传递给函数 B 时，我们称函数 A 为回调函数。
 
-```html
-<script>
-  // 声明 foo 函数
-  function foo(arg) {
+```javascript
+// 声明 foo 函数
+function foo(arg) {
     console.log(arg);
-  }
+}
 
-  // 普通的值做为参数
-  foo(10);
-  foo('hello world!');
-  foo(['html', 'css', 'javascript']);
+// 普通的值做为参数
+foo(10);
+foo('hello world!');
+foo(['html', 'css', 'javascript']);
 
-  function bar() {
+function bar() {
     console.log('函数也能当参数...');
-  }
-  // 函数也可以做为参数！！！！
-  foo(bar);
-</script>
+}
+
+// 函数也可以做为参数！！！！
+foo(bar);
 ```
 
 函数 `bar` 做参数传给了 `foo` 函数，`bar` 就是所谓的回调函数了！！！
 
 我们回顾一下间歇函数 `setInterval`
 
-```html
-<script>
-	function fn() {
+```javascript
+function fn() {
     console.log('我是回调函数...');
-  }
-  // 调用定时器
-  setInterval(fn, 1000);
-</script>
+}
+
+// 调用定时器
+setInterval(fn, 1000);
 ```
 
 `fn` 函数做为参数传给了 `setInterval` ，这便是回调函数的实际应用了，结合刚刚学习的函数表达式上述代码还有另一种更常见写法。
