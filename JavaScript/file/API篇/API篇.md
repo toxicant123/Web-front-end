@@ -497,15 +497,15 @@ btn.addEventListener('dblclick', function () {
 
 ### 6.2 键盘事件
 
-keydown   键盘按下触发
+keydown：键盘按下触发
 
-keyup   键盘抬起触发
+keyup：键盘抬起触发
 
 ### 6.3 焦点事件
 
-focus  获得焦点
+focus：获得焦点
 
-blur 失去焦点
+blur：失去焦点
 
 ### 6.4 文本框输入事件
 
@@ -536,10 +536,9 @@ input
 </body>
 ```
 
-事件回调函数的【第1个参数】即所谓的事件对象，通常习惯性的将这个对数命名为 `event`、`ev` 、`ev` 。
+事件回调函数的【第1个参数】即所谓的事件对象，通常习惯性的将这个对数命名为`event`、`ev` 、`ev`。
 
 接下来简单看一下事件对象中包含了哪些有用的信息：
-
 1. `ev.type` 当前事件的类型
 2. `ev.clientX/Y` 光标相对浏览器窗口的位置
 3. `ev.offsetX/Y` 光标相于当前 DOM 元素的位置
@@ -584,6 +583,7 @@ person.sayHi()// person
 2. 函数的调用方式不同 `this` 变量的值也不同
 3. 【谁调用 `this` 就是谁】是判断 `this` 值的粗略规则
 4. 函数直接调用时实际上 `window.sayHi()` 所以 `this` 的值为 `window`
+
 ## 9 回调函数
 
 如果将函数 A 做为参数传递给函数 B 时，我们称函数 A 为回调函数。
