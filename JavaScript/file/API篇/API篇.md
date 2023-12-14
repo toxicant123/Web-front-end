@@ -552,33 +552,31 @@ input
 
 环境对象指的是函数内部特殊的变量 `this` ，它代表着当前函数运行时所处的环境。
 
-```html
-<script>
-  // 声明函数
-  function sayHi() {
+```javascript
+// 声明函数
+function sayHi() {
     // this 是一个变量
     console.log(this);
-  }
+}
 
-  // 声明一个对象
-  let user = {
+// 声明一个对象
+let user = {
     name: '张三',
     sayHi: sayHi // 此处把 sayHi 函数，赋值给 sayHi 属性
-  }
-  
-  let person = {
+}
+
+let person = {
     name: '李四',
     sayHi: sayHi
-  }
+}
 
-  // 直接调用
-  sayHi() // window
-  window.sayHi() // window
+// 直接调用
+sayHi() // window
+window.sayHi() // window
 
-  // 做为对象方法调用
-  user.sayHi()// user
-	person.sayHi()// person
-</script>
+// 做为对象方法调用
+user.sayHi()// user
+person.sayHi()// person
 ```
 
 结论：
