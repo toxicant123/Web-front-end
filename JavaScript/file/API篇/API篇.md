@@ -609,7 +609,7 @@ foo(bar);
 
 函数 `bar` 做参数传给了 `foo` 函数，`bar` 就是所谓的回调函数了！！！
 
-我们回顾一下间歇函数 `setInterval`123
+我们回顾一下间歇函数 `setInterval`
 
 ```javascript
 function fn() {
