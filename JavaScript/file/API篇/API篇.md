@@ -622,13 +622,11 @@ setInterval(fn, 1000);
 
 `fn` 函数做为参数传给了 `setInterval` ，这便是回调函数的实际应用了，结合刚刚学习的函数表达式上述代码还有另一种更常见写法。
 
-```html
-<script>
-  // 调用定时器，匿名函数做为参数
-  setInterval(function () {
+```javascript
+// 调用定时器，匿名函数做为参数
+setInterval(function () {
     console.log('我是回调函数...');
-  }, 1000);
-</script>
+}, 1000);
 ```
 
 结论：
