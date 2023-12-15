@@ -451,7 +451,7 @@ btn.addEventListener('dblclick', function () {
 
 鼠标事件是指跟鼠标操作相关的事件，如单击、双击、移动等。
 
-1. `mouseenter 监听鼠标是否移入 DOM 元素
+1. `mouseenter` 监听鼠标是否移入 DOM 元素
 
 ```html
 <body>
@@ -474,7 +474,7 @@ btn.addEventListener('dblclick', function () {
 </body>
 ```
 
-1. `mouseleave 监听鼠标是否移出 DOM 元素
+2. `mouseleave` 监听鼠标是否移出 DOM 元素
 
 ```html
 <body>
