@@ -702,26 +702,26 @@ setInterval(function () {
 
 ```html
 <body>
-  <h3>事件流</h3>
-  <p>事件流是事件在执行时的底层机制，主要体现在父子盒子之间事件的执行上。</p>
-  <div class="outer">
-    <div class="inner"></div>
-  </div>
-  <script>
-    // 获取嵌套的3个节点
-    const outer = document.querySelector('.outer')
-    const inner = document.querySelector('.inner')
+    <h3>事件流</h3>
+    <p>事件流是事件在执行时的底层机制，主要体现在父子盒子之间事件的执行上。</p>
+    <div class="outer">
+        <div class="inner"></div>
+    </div>
+    <script>
+        // 获取嵌套的3个节点
+        const outer = document.querySelector('.outer')
+        const inner = document.querySelector('.inner')
 
-    // 外层的盒子
-    outer.addEventListener('click', function () {
-      console.log('outer...')
-    }, true) // true 表示在捕获阶段执行事件
-    
-    // 中间的盒子
-    outer.addEventListener('click', function () {
-      console.log('inner...')
-    }, true)
-  </script>
+        // 外层的盒子
+        outer.addEventListener('click', function () {
+            console.log('outer...')
+        }, true) // true 表示在捕获阶段执行事件
+
+        // 中间的盒子
+        outer.addEventListener('click', function () {
+            console.log('inner...')
+        }, true)
+    </script>
 </body>
 ```
 
