@@ -633,12 +633,11 @@ setInterval(function () {
 1. 回调函数本质还是函数，只不过把它当成参数使用
 2. 使用匿名函数做为回调函数比较常见
 
-
 ## 10 事件流
 
 事件流是对事件执行过程的描述，了解事件的执行过程有助于加深对事件的理解，提升开发实践中对事件运用的灵活度。
 
-![event](./assets/event.png)
+![event](../assets/event.png)
 
 如上图所示，任意事件被触发时总会经历两个阶段：【捕获阶段】和【冒泡阶段】。
 
@@ -650,44 +649,44 @@ setInterval(function () {
 
 ```html
 <body>
-  <h3>事件流</h3>
-  <p>事件流是事件在执行时的底层机制，主要体现在父子盒子之间事件的执行上。</p>
-  <div class="outer">
-    <div class="inner">
-      <div class="child"></div>
+    <h3>事件流</h3>
+    <p>事件流是事件在执行时的底层机制，主要体现在父子盒子之间事件的执行上。</p>
+    <div class="outer">
+        <div class="inner">
+            <div class="child"></div>
+        </div>
     </div>
-  </div>
-  <script>
-    // 获取嵌套的3个节点
-    const outer = document.querySelector('.outer');
-    const inner = document.querySelector('.inner');
-    const child = document.querySelector('.child');
-		
-    // html 元素添加事件
-    document.documentElement.addEventListener('click', function () {
-      console.log('html...')
-    })
-		
-    // body 元素添加事件
-    document.body.addEventListener('click', function () {
-      console.log('body...')
-    })
+    <script>
+        // 获取嵌套的3个节点
+        const outer = document.querySelector('.outer');
+        const inner = document.querySelector('.inner');
+        const child = document.querySelector('.child');
 
-    // 外层的盒子添加事件
-    outer.addEventListener('click', function () {
-      console.log('outer...')
-    })
-    
-    // 中间的盒子添加事件
-    outer.addEventListener('click', function () {
-      console.log('inner...')
-    })
-    
-    // 内层的盒子添加事件
-    outer.addEventListener('click', function () {
-      console.log('child...')
-    })
-  </script>
+        // html 元素添加事件
+        document.documentElement.addEventListener('click', function () {
+            console.log('html...')
+        })
+
+        // body 元素添加事件
+        document.body.addEventListener('click', function () {
+            console.log('body...')
+        })
+
+        // 外层的盒子添加事件
+        outer.addEventListener('click', function () {
+            console.log('outer...')
+        })
+
+        // 中间的盒子添加事件
+        outer.addEventListener('click', function () {
+            console.log('inner...')
+        })
+
+        // 内层的盒子添加事件
+        outer.addEventListener('click', function () {
+            console.log('child...')
+        })
+    </script>
 </body>
 ```
 
@@ -821,7 +820,7 @@ setInterval(function () {
 
 我们的最终目的是保证只有点击 button 子元素才去执行事件的回调函数，如何判断用户点击是哪一个子元素呢？
 
-![event](assets/event.png)
+![event](../assets/event.png)
 
 事件对象中的属性 `target` 或 `srcElement`属性表示真正触发事件的元素，它是一个元素类型的节点。
 
