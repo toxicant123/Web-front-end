@@ -789,18 +789,16 @@ setInterval(function () {
 
 大量的事件监听是比较耗费性能的，如下代码所示
 
-```html
-<script>
-  // 假设页面中有 10000 个 button 元素
-  const buttons = document.querySelectorAll('table button');
+```javascript
+// 假设页面中有 10000 个 button 元素
+const buttons = document.querySelectorAll('table button');
 
-  for(let i = 0; i <= buttons.length; i++) {
+for (let i = 0; i <= buttons.length; i++) {
     // 为 10000 个 button 元素添加了事件
     buttons.addEventListener('click', function () {
-      // 省略具体执行逻辑...
+        // 省略具体执行逻辑...
     })
-  }
-</script>
+}
 ```
 
 利用事件流的特征，可以对上述的代码进行优化，事件的的冒泡模式总是会将事件流向其父元素的，如果父元素监听了相同的事件类型，那么父元素的事件就会被触发并执行，正是利用这一特征对上述代码进行优化，如下代码所示：
