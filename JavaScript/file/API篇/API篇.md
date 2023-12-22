@@ -803,17 +803,15 @@ for (let i = 0; i <= buttons.length; i++) {
 
 利用事件流的特征，可以对上述的代码进行优化，事件的的冒泡模式总是会将事件流向其父元素的，如果父元素监听了相同的事件类型，那么父元素的事件就会被触发并执行，正是利用这一特征对上述代码进行优化，如下代码所示：
 
-```html
-<script>
-  // 假设页面中有 10000 个 button 元素
-  let buttons = document.querySelectorAll('table button');
-  
-  // 假设上述的 10000 个 buttom 元素共同的祖先元素是 table
-  let parents = document.querySelector('table');
-  parents.addEventListener('click', function () {
+```javascript
+// 假设页面中有 10000 个 button 元素
+let buttons = document.querySelectorAll('table button');
+
+// 假设上述的 10000 个 buttom 元素共同的祖先元素是 table
+let parents = document.querySelector('table');
+parents.addEventListener('click', function () {
     console.log('点击任意子元素都会触发事件...');
-  })
-</script>
+})
 ```
 
 我们的最终目的是保证只有点击 button 子元素才去执行事件的回调函数，如何判断用户点击是哪一个子元素呢？
