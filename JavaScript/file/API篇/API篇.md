@@ -822,21 +822,19 @@ for (let i = 0; i <= buttons.length; i++) {
 
 事件对象中的属性 `target` 或 `srcElement`属性表示真正触发事件的元素，它是一个元素类型的节点。
 
-```html
-<script>
-  // 假设页面中有 10000 个 button 元素
-  const buttons = document.querySelectorAll('table button')
-  
-  // 假设上述的 10000 个 buttom 元素共同的祖先元素是 table
-  const parents = document.querySelector('table')
-  parents.addEventListener('click', function (ev) {
+```javascript
+// 假设页面中有 10000 个 button 元素
+const buttons = document.querySelectorAll('table button')
+
+// 假设上述的 10000 个 buttom 元素共同的祖先元素是 table
+const parents = document.querySelector('table')
+parents.addEventListener('click', function (ev) {
     // console.log(ev.target);
     // 只有 button 元素才会真正去执行逻辑
-    if(ev.target.tagName === 'BUTTON') {
-      // 执行的逻辑
+    if (ev.target.tagName === 'BUTTON') {
+        // 执行的逻辑
     }
-  })
-</script>
+})
 ```
 
 优化过的代码只对祖先元素添加事件监听，相比对 10000 个元素添加事件监听执行效率要高许多！！！
