@@ -726,7 +726,6 @@ setInterval(function () {
 ```
 
 结论：
-
 1. `addEventListener` 第3个参数决定了事件是在捕获阶段触发还是在冒泡阶段触发
 2. `addEventListener` 第3个参数为  `true` 表示捕获阶段触发，`false` 表示冒泡阶段触发，默认值为 `false`
 3. 事件流只会在父子元素具有相同事件类型时才会产生影响
@@ -777,11 +776,9 @@ setInterval(function () {
 
 结论：事件对象中的 `ev.stopPropagation` 方法，专门用来阻止事件冒泡。
 
->鼠标经过事件：
->
->mouseover 和 mouseout 会有冒泡效果
->
->mouseenter  和 mouseleave   没有冒泡效果 (推荐)
+鼠标经过事件：
+* mouseover和mouseout会有冒泡效果
+* mouseenter和mouseleave没有冒泡效果 (推荐)
 
 ## 11 事件委托
 
