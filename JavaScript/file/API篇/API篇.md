@@ -882,27 +882,17 @@ offsetWidth和offsetHeight
 
 注意：获取的是可视宽高，如果盒子是隐藏的，获取的结果是0
 
-
 ## 14 日期对象
-
-
-掌握 Date 日期对象的使用，动态获取当前计算机的时间。
-
-
-ECMAScript 中内置了获取系统时间的对象 Date，使用 Date 时与之前学习的内置对象 console 和 Math 不同，它需要借助 new 关键字才能使用。
 
 ### 14.1 实例化
 
 ```javascript
-  // 1. 实例化
-  // const date = new Date(); // 系统默认时间
-  const date = new Date('2020-05-01') // 指定时间
-  // date 变量即所谓的时间对象
+// 1. 实例化
+// const date = new Date(); // 系统默认时间
+const date = new Date('2020-05-01') // 指定时间
+// date 变量即所谓的时间对象
 
-  console.log(typeof date)
-
-
-
+console.log(typeof date)
 ```
 
 ### 14.2 方法
