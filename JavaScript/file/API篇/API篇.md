@@ -921,19 +921,17 @@ const month = date.getMonth(); // 0 ~ 11
 注：ECMAScript 中时间戳是以毫秒计的。
 
 ```javascript
-    // 1. 实例化
-  const date = new Date()
-  // 2. 获取时间戳
-  console.log(date.getTime())
+  // 1. 实例化
+const date = new Date()
+// 2. 获取时间戳
+console.log(date.getTime())
 // 还有一种获取时间戳的方法
-  console.log(+new Date())
-  // 还有一种获取时间戳的方法
-  console.log(Date.now())
-
+console.log(+new Date())
+// 还有一种获取时间戳的方法
+console.log(Date.now())
 ```
 
-
-获取时间戳的方法，分别为 getTime 和 Date.now 和  +new Date()
+获取时间戳的方法，分别为`getTime`和`Date.now`和`+new Date()`
 
 ## 15 DOM 节点
 
