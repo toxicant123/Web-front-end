@@ -947,40 +947,37 @@ console.log(Date.now())
 
 ```html
 <body>
-  <h3>插入节点</h3>
-  <p>在现有 dom 结构基础上插入新的元素节点</p>
-  <hr>
-  <!-- 普通盒子 -->
-  <div class="box"></div>
-  <!-- 点击按钮向 box 盒子插入节点 -->
-  <button class="btn">插入节点</button>
-  <script>
-    // 点击按钮，在网页中插入节点
-    const btn = document.querySelector('.btn')
-    btn.addEventListener('click', function () {
-      // 1. 获得一个 DOM 元素节点
-      const p = document.createElement('p')
-      p.innerText = '创建的新的p标签'
-      p.className = 'info'
-      
-      // 复制原有的 DOM 节点
-      const p2 = document.querySelector('p').cloneNode(true)
-      p2.style.color = 'red'
+    <h3>插入节点</h3>
+    <p>在现有 dom 结构基础上插入新的元素节点</p>
+    <hr>
+    <!-- 普通盒子 -->
+    <div class="box"></div>
+    <!-- 点击按钮向 box 盒子插入节点 -->
+    <button class="btn">插入节点</button>
+    <script>
+        // 点击按钮，在网页中插入节点
+        const btn = document.querySelector('.btn')
+        btn.addEventListener('click', function () {
+            // 1. 获得一个 DOM 元素节点
+            const p = document.createElement('p')
+            p.innerText = '创建的新的p标签'
+            p.className = 'info'
 
-      // 2. 插入盒子 box 盒子
-      document.querySelector('.box').appendChild(p)
-      document.querySelector('.box').appendChild(p2)
-    })
-  </script>
+            // 复制原有的 DOM 节点
+            const p2 = document.querySelector('p').cloneNode(true)
+            p2.style.color = 'red'
+
+            // 2. 插入盒子 box 盒子
+            document.querySelector('.box').appendChild(p)
+            document.querySelector('.box').appendChild(p2)
+        })
+    </script>
 </body>
 ```
 
 结论：
-
 - `createElement` 动态创建任意 DOM 节点
-
 - `cloneNode` 复制现有的 DOM 节点，传入参数 true 会复制所有子节点
-
 - `appendChild` 在末尾（结束标签前）插入节点
 
 再来看另一种情形的代码演示：
