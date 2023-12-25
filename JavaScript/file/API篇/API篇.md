@@ -539,9 +539,9 @@ input
 事件回调函数的【第1个参数】即所谓的事件对象，通常习惯性的将这个对数命名为`event`、`ev` 、`ev`。
 
 接下来简单看一下事件对象中包含了哪些有用的信息：
-1. `ev.type` 当前事件的类型
-2. `ev.clientX/Y` 光标相对浏览器窗口的位置
-3. `ev.offsetX/Y` 光标相于当前 DOM 元素的位置
+1. `ev.type`当前事件的类型
+2. `ev.clientX/Y`光标相对浏览器窗口的位置
+3. `ev.offsetX/Y`光标相于当前 DOM 元素的位置
 
 注：在事件回调函数内部通过 window.event 同样可以获取事件对象。
 
@@ -897,31 +897,22 @@ console.log(typeof date)
 
 ### 14.2 方法
 
+~~~javascript
+  // 1. 实例化
+ const date = new Date();
+ // 2. 调用时间对象方法
+ // 通过方法分别获取年、月、日，时、分、秒
+ const year = date.getFullYear(); // 四位年份
+ const month = date.getMonth(); // 0 ~ 11
+~~~
 
-
- ~~~javascript
-   // 1. 实例化
-  const date = new Date();
-  // 2. 调用时间对象方法
-  // 通过方法分别获取年、月、日，时、分、秒
-  const year = date.getFullYear(); // 四位年份
-  const month = date.getMonth(); // 0 ~ 11
- ~~~
-
-
-getFullYear 获取四位年份
-
-getMonth 获取月份，取值为 0 ~ 11
-
-getDate 获取月份中的每一天，不同月份取值也不相同
-
-getDay 获取星期，取值为 0 ~ 6
-
-getHours 获取小时，取值为 0 ~ 23
-
-getMinutes 获取分钟，取值为 0 ~ 59
-
-getSeconds 获取秒，取值为 0 ~ 59
+* getFullYear 获取四位年份
+* getMonth 获取月份，取值为 0 ~ 11
+* getDate 获取月份中的每一天，不同月份取值也不相同
+* getDay 获取星期，取值为 0 ~ 6
+* getHours 获取小时，取值为 0 ~ 23
+* getMinutes 获取分钟，取值为 0 ~ 59
+* getSeconds 获取秒，取值为 0 ~ 59
 
 ### 14.3 时间戳
 
