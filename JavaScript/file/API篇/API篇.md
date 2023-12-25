@@ -897,14 +897,14 @@ console.log(typeof date)
 
 ### 14.2 方法
 
-~~~javascript
-  // 1. 实例化
- const date = new Date();
- // 2. 调用时间对象方法
- // 通过方法分别获取年、月、日，时、分、秒
- const year = date.getFullYear(); // 四位年份
- const month = date.getMonth(); // 0 ~ 11
-~~~
+```javascript
+ // 1. 实例化
+const date = new Date();
+// 2. 调用时间对象方法
+// 通过方法分别获取年、月、日，时、分、秒
+const year = date.getFullYear(); // 四位年份
+const month = date.getMonth(); // 0 ~ 11
+```
 
 * getFullYear 获取四位年份
 * getMonth 获取月份，取值为 0 ~ 11
