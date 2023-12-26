@@ -1019,11 +1019,8 @@ console.log(Date.now())
 ```
 
 结论：
-
 - `createElement` 动态创建任意 DOM 节点
-
 - `cloneNode` 复制现有的 DOM 节点，传入参数 true 会复制所有子节点
-
 - `insertBefore` 在父节点中任意子节点之前插入新节点
 
 ### 15.2 删除节点
@@ -1032,26 +1029,26 @@ console.log(Date.now())
 
 ```html
 <body>
-  <!-- 点击按钮删除节点 -->
-  <button>删除节点</button>
-  <ul>
-    <li>HTML</li>
-    <li>CSS</li>
-    <li>Web APIs</li>
-  </ul>
+    <!-- 点击按钮删除节点 -->
+    <button>删除节点</button>
+    <ul>
+        <li>HTML</li>
+        <li>CSS</li>
+        <li>Web APIs</li>
+    </ul>
 
-  <script>
-    const btn = document.querySelector('button')
-    btn.addEventListener('click', function () {
-      // 获取 ul 父节点
-      let ul = document.querySelector('ul')
-      // 待删除的子节点
-      let lis = document.querySelectorAll('li')
+    <script>
+        const btn = document.querySelector('button')
+        btn.addEventListener('click', function () {
+            // 获取 ul 父节点
+            let ul = document.querySelector('ul')
+            // 待删除的子节点
+            let lis = document.querySelectorAll('li')
 
-      // 删除节点
-      ul.removeChild(lis[0])
-    })
-  </script>
+            // 删除节点
+            ul.removeChild(lis[0])
+        })
+    </script>
 </body>
 ```
 
