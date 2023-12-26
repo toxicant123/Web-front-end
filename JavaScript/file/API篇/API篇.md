@@ -1143,31 +1143,30 @@ DOM 树中的任意节点都不是孤立存在的，它们要么是父子关系�
 
 ```html
 <body>
-  <ul>
-    <li>HTML</li>
-    <li>CSS</li>
-    <li>JavaScript 基础</li>
-    <li>Web APIs</li>
-  </ul>
-  <script>
-    // 获取所有 li 节点
-    const lis = document.querySelectorAll('ul li')
+    <ul>
+        <li>HTML</li>
+        <li>CSS</li>
+        <li>JavaScript 基础</li>
+        <li>Web APIs</li>
+    </ul>
+    <script>
+        // 获取所有 li 节点
+        const lis = document.querySelectorAll('ul li')
 
-    // 对所有的 li 节点添加事件监听
-    for(let i = 0; i < lis.length; i++) {
-      lis[i].addEventListener('click', function () {
-        // 前一个节点
-        console.log(this.previousSibling)
-        // 下一下节点
-        console.log(this.nextSibling)
-      })
-    }
-  </script>
+        // 对所有的 li 节点添加事件监听
+        for (let i = 0; i < lis.length; i++) {
+            lis[i].addEventListener('click', function () {
+                // 前一个节点
+                console.log(this.previousSibling)
+                // 下一下节点
+                console.log(this.nextSibling)
+            })
+        }
+    </script>
 </body>
 ```
 
 结论：
-
 - `previousSibling` 获取前一个节点，以相对位置查找节点，实际应用中非常灵活。
 - `nextSibling` 获取后一个节点，以相对位置查找节点，实际应用中非常灵活。
 
