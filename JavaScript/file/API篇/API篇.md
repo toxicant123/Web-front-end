@@ -984,37 +984,37 @@ console.log(Date.now())
 
 ```html
 <body>
-  <h3>插入节点</h3>
-  <p>在现有 dom 结构基础上插入新的元素节点</p>
-	<hr>
-  <button class="btn1">在任意节点前插入</button>
-  <ul>
-    <li>HTML</li>
-    <li>CSS</li>
-    <li>JavaScript</li>
-  </ul>
-  <script>
-    // 点击按钮，在已有 DOM 中插入新节点
-    const btn1 = document.querySelector('.btn1')
-    btn1.addEventListener('click', function () {
+    <h3>插入节点</h3>
+    <p>在现有 dom 结构基础上插入新的元素节点</p>
+    <hr>
+    <button class="btn1">在任意节点前插入</button>
+    <ul>
+        <li>HTML</li>
+        <li>CSS</li>
+        <li>JavaScript</li>
+    </ul>
+    <script>
+        // 点击按钮，在已有 DOM 中插入新节点
+        const btn1 = document.querySelector('.btn1')
+        btn1.addEventListener('click', function () {
 
-      // 第 2 个 li 元素
-      const relative = document.querySelector('li:nth-child(2)')
+            // 第 2 个 li 元素
+            const relative = document.querySelector('li:nth-child(2)')
 
-      // 1. 动态创建新的节点
-      const li1 = document.createElement('li')
-      li1.style.color = 'red'
-      li1.innerText = 'Web APIs'
+            // 1. 动态创建新的节点
+            const li1 = document.createElement('li')
+            li1.style.color = 'red'
+            li1.innerText = 'Web APIs'
 
-      // 复制现有的节点
-      const li2 = document.querySelector('li:first-child').cloneNode(true)
-      li2.style.color = 'blue'
+            // 复制现有的节点
+            const li2 = document.querySelector('li:first-child').cloneNode(true)
+            li2.style.color = 'blue'
 
-      // 2. 在 relative 节点前插入
-      document.querySelector('ul').insertBefore(li1, relative)
-      document.querySelector('ul').insertBefore(li2, relative)
-    })
-  </script>
+            // 2. 在 relative 节点前插入
+            document.querySelector('ul').insertBefore(li1, relative)
+            document.querySelector('ul').insertBefore(li2, relative)
+        })
+    </script>
 </body>
 ```
 
