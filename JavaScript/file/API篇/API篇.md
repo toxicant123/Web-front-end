@@ -1170,7 +1170,7 @@ DOM 树中的任意节点都不是孤立存在的，它们要么是父子关系�
 - `previousSibling` 获取前一个节点，以相对位置查找节点，实际应用中非常灵活。
 - `nextSibling` 获取后一个节点，以相对位置查找节点，实际应用中非常灵活。
 
-## js组成
+## 16 js组成
 
 JavaScript的组成
 
@@ -1185,7 +1185,7 @@ JavaScript的组成
 
 ![67604738945](assets/1676047389456.png)
 
-## window对象
+## 17 window对象
 
 **BOM** (Browser Object Model ) 是浏览器对象模型
 
@@ -1196,15 +1196,15 @@ JavaScript的组成
 
 ![67604743636](assets/1676047436362.png)
 
-## 定时器-延迟函数
+## 18 定时器-延迟函数
 
 JavaScript 内置的一个用来让代码延迟执行的函数，叫 setTimeout
 
 **语法：**
 
-~~~JavaScript
+```JavaScript
 setTimeout(回调函数, 延迟时间)
-~~~
+```
 
 setTimeout 仅仅只执行一次，所以可以理解为就是把一段代码延迟执行, 平时省略window
 
@@ -1212,16 +1212,16 @@ setTimeout 仅仅只执行一次，所以可以理解为就是把一段代码延
 
 清除延时函数：
 
-~~~JavaScript
+```JavaScript
 clearTimeout(timerId)
-~~~
+```
 
 >注意点
 >
 >1. 延时函数需要等待,所以后面的代码先执行
 >2. 返回值是一个正整数，表示定时器的编号
 
-~~~html
+```html
 <body>
   <script>
     // 定时器之延迟函数
@@ -1241,9 +1241,9 @@ clearTimeout(timerId)
 
   </script>
 </body>
-~~~
+```
 
-## location对象
+## 19 location对象
 
 location (地址) 它拆分并保存了 URL 地址的各个组成部分， 它是一个对象
 
@@ -1254,7 +1254,7 @@ location (地址) 它拆分并保存了 URL 地址的各个组成部分， 它�
 | hash      | 属性，获取地址中的啥希值，符号 # 后面部分            |
 | reload()  | 方法，用来刷新当前页面，传入参数 true 时表示强制刷新 |
 
-~~~html
+```html
 <body>
   <form>
     <input type="text" name="search"> <button>搜索</button>
@@ -1283,9 +1283,9 @@ location (地址) 它拆分并保存了 URL 地址的各个组成部分， 它�
     })
   </script>
 </body>
-~~~
+```
 
-## navigator对象
+## 20 navigator对象
 
 navigator是对象，该对象下记录了浏览器自身的相关信息
 
@@ -1293,20 +1293,20 @@ navigator是对象，该对象下记录了浏览器自身的相关信息
 
 - 通过 userAgent 检测浏览器的版本及平台
 
-~~~javascript
-// 检测 userAgent（浏览器信息）
-(function () {
-  const userAgent = navigator.userAgent
-  // 验证是否为Android或iPhone
-  const android = userAgent.match(/(Android);?[\s\/]+([\d.]+)?/)
-  const iphone = userAgent.match(/(iPhone\sOS)\s([\d_]+)/)
-  // 如果是Android或iPhone，则跳转至移动站点
-  if (android || iphone) {
-    location.href = 'http://m.itcast.cn'
+```javascript
+// 检测 userAgent（浏览器信息）
+(function () {
+  const userAgent = navigator.userAgent
+  // 验证是否为Android或iPhone
+  const android = userAgent.match(/(Android);?[\s\/]+([\d.]+)?/)
+  const iphone = userAgent.match(/(iPhone\sOS)\s([\d_]+)/)
+  // 如果是Android或iPhone，则跳转至移动站点
+  if (android || iphone) {
+    location.href = 'http://m.itcast.cn'
   }})();
-~~~
+```
 
-## histroy对象
+## 21 histroy对象
 
 history (历史)是对象，主要管理历史记录， 该对象与浏览器地址栏的操作相对应，如前进、后退等
 
@@ -1320,7 +1320,7 @@ history对象一般在实际开发中比较少用，但是会在一些OA 办公�
 
 ![67604784659](assets/1676047846593.png)
 
-~~~html
+```html
 <body>
   <button class="back">←后退</button>
   <button class="forward">前进→</button>
@@ -1342,9 +1342,9 @@ history对象一般在实际开发中比较少用，但是会在一些OA 办公�
   </script>
 </body>
 
-~~~
+```
 
-## 本地存储（今日重点）
+## 22 本地存储（今日重点）
 
 本地存储：将数据存储在本地浏览器中
 
@@ -1358,7 +1358,7 @@ history对象一般在实际开发中比较少用，但是会在一些OA 办公�
 
 2、容量较大，sessionStorage和 localStorage 约 5M 左右
 
-###  localStorage（重点）
+### 22.1 localStorage（重点）
 
 **作用:** 数据可以长期保留在本地浏览器中，刷新页面和关闭页面，数据也不会丢失
 
@@ -1366,7 +1366,7 @@ history对象一般在实际开发中比较少用，但是会在一些OA 办公�
 
 ![67604963508](assets/1676049635087.png)
 
-~~~html
+```html
 <!DOCTYPE html>
 <html lang="en">
 
@@ -1392,9 +1392,9 @@ history对象一般在实际开发中比较少用，但是会在一些OA 办公�
 </body>
 
 </html>
-~~~
+```
 
-### sessionStorage（了解）
+### 22.2 sessionStorage（了解）
 
 特性：
 
@@ -1407,7 +1407,7 @@ history对象一般在实际开发中比较少用，但是会在一些OA 办公�
 
 删除：sessionStorage.removeItem(key)
 
-### localStorage 存储复杂数据类型
+### 22.3 localStorage 存储复杂数据类型
 
 **问题：**本地只能存储字符串,无法存储复杂数据类型.
 
@@ -1421,7 +1421,7 @@ JSON字符串：
 - 属性名使用双引号引起来，不能单引号
 - 属性值如果是字符串型也必须双引号
 
-~~~html
+```html
 <body>
   <script>
     // 本地存储复杂数据类型
@@ -1438,7 +1438,7 @@ JSON字符串：
 
   </script>
 </body>
-~~~
+```
 
 
 
@@ -1448,7 +1448,7 @@ JSON字符串：
 
 **语法：**JSON.parse(JSON字符串)
 
-~~~html
+```html
 <body>
   <script>
     // 本地存储复杂数据类型
@@ -1468,11 +1468,11 @@ JSON字符串：
 
   </script>
 </body>
-~~~
+```
 
-## 综合案例
+## 23 综合案例
 
-### 数组map 方法
+### 23.1 数组map 方法
 
 **使用场景：**
 
@@ -1480,32 +1480,28 @@ map 可以遍历数组处理数据，并且返回新的数组
 
 **语法：**
 
-~~~javascript
-<body>
-  <script>
-  const arr = ['red', 'blue', 'pink']
-  // 1. 数组 map方法 处理数据并且 返回一个数组
-   const newArr = arr.map(function (ele, index) {
+```javascript
+const arr = ['red', 'blue', 'pink']
+// 1. 数组 map方法 处理数据并且 返回一个数组
+const newArr = arr.map(function (ele, index) {
     // console.log(ele)  // 数组元素
     // console.log(index) // 索引号
     return ele + '颜色'
-	})
+})
 console.log(newArr)
-</script>
-</body>
-~~~
+```
 
 >map 也称为映射。映射是个术语，指两个元素的集之间元素相互“对应”的关系。
 >
 >map重点在于有返回值，forEach没有返回值（undefined）
 
-### 数组join方法
+### 23.2 数组join方法
 
 **作用：**join() 方法用于把数组中的所有元素转换一个字符串
 
 **语法：**
 
-~~~html
+```html
 <body>
   <script>
     const arr = ['red', 'blue', 'pink']
@@ -1526,7 +1522,7 @@ console.log(newArr)
     console.log(newArr.join('|'))  //red颜色|blue颜色|pink颜色
   </script>
 </body>
-~~~
+```
 
 
 
