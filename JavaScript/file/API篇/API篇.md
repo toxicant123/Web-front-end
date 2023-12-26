@@ -1062,73 +1062,78 @@ DOM 树中的任意节点都不是孤立存在的，它们要么是父子关系�
 
 ```html
 <body>
-  <button class="btn1">所有的子节点</button>
-  <!-- 获取 ul 的子节点 -->
-  <ul>
-    <li>HTML</li>
-    <li>CSS</li>
-    <li>JavaScript 基础</li>
-    <li>Web APIs</li>
-  </ul>
-  <script>
-    const btn1 = document.querySelector('.btn1')
-    btn1.addEventListener('click', function () {
-      // 父节点
-      const ul = document.querySelector('ul')
+    <button class="btn1">所有的子节点</button>
+    <!-- 获取 ul 的子节点 -->
+    <ul>
+        <li>HTML</li>
+        <li>CSS</li>
+        <li>JavaScript 基础</li>
+        <li>Web APIs</li>
+    </ul>
+    <script>
+        const btn1 = document.querySelector('.btn1')
+        btn1.addEventListener('click', function () {
+            // 父节点
+            const ul = document.querySelector('ul')
 
-      // 所有的子节点
-      console.log(ul.childNodes)
-      // 只包含元素子节点
-      console.log(ul.children)
-    })
-  </script>
+            // 所有的子节点
+            console.log(ul.childNodes)
+            // 只包含元素子节点
+            console.log(ul.children)
+        })
+    </script>
 </body>
 ```
 
 结论：
-
 - `childNodes` 获取全部的子节点，回车换行会被认为是空白文本节点
 - `children` 只获取元素类型节点
 
 ```html
 <body>
-  <table>
-    <tr>
-      <td width="60">序号</td>
-      <td>课程名</td>
-      <td>难度</td>
-      <td width="80">操作</td>
-    </tr>
-    <tr>
-      <td>1</td>
-      <td><span>HTML</span></td>
-      <td>初级</td>
-      <td><button>变色</button></td>
-    </tr>
-    <tr>
-      <td>2</td>
-      <td><span>CSS</span></td>
-      <td>初级</td>
-      <td><button>变色</button></td>
-    </tr>
-    <tr>
-      <td>3</td>
-      <td><span>Web APIs</span></td>
-      <td>中级</td>
-      <td><button>变色</button></td>
-    </tr>
-  </table>
-  <script>
-    // 获取所有 button 节点，并添加事件监听
-    const buttons = document.querySelectorAll('table button')
-    for(let i = 0; i < buttons.length; i++) {
-      buttons[i].addEventListener('click', function () {
-        // console.log(this.parentNode); // 父节点 td
-        // console.log(this.parentNode.parentNode); // 爷爷节点 tr
-        this.parentNode.parentNode.style.color = 'red'
-      })
-    }
-  </script>
+    <table>
+        <tr>
+            <td width="60">序号</td>
+            <td>课程名</td>
+            <td>难度</td>
+            <td width="80">操作</td>
+        </tr>
+        <tr>
+            <td>1</td>
+            <td><span>HTML</span></td>
+            <td>初级</td>
+            <td>
+                <button>变色</button>
+            </td>
+        </tr>
+        <tr>
+            <td>2</td>
+            <td><span>CSS</span></td>
+            <td>初级</td>
+            <td>
+                <button>变色</button>
+            </td>
+        </tr>
+        <tr>
+            <td>3</td>
+            <td><span>Web APIs</span></td>
+            <td>中级</td>
+            <td>
+                <button>变色</button>
+            </td>
+        </tr>
+    </table>
+    <script>
+        // 获取所有 button 节点，并添加事件监听
+        const buttons = document.querySelectorAll('table button')
+        for (let i = 0; i < buttons.length; i++) {
+            buttons[i].addEventListener('click', function () {
+                // console.log(this.parentNode); // 父节点 td
+                // console.log(this.parentNode.parentNode); // 爷爷节点 tr
+                this.parentNode.parentNode.style.color = 'red'
+            })
+        }
+    </script>
 </body>
 ```
 
