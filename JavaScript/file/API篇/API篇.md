@@ -1353,10 +1353,8 @@ history对象一般在实际开发中比较少用，但是会在一些OA 办公�
 <https://todomvc.com/examples/vanilla-es6/>    页面刷新数据不丢失
 
 好处：
-
-1、页面刷新或者关闭不丢失数据，实现数据持久化
-
-2、容量较大，sessionStorage和 localStorage 约 5M 左右
+1. 页面刷新或者关闭不丢失数据，实现数据持久化
+2. 容量较大，sessionStorage和 localStorage 约 5M 左右
 
 ### 22.1 localStorage（重点）
 
@@ -1497,7 +1495,7 @@ console.log(newArr)
 
 ### 23.2 数组join方法
 
-**作用：**join() 方法用于把数组中的所有元素转换一个字符串
+**作用**：join() 方法用于把数组中的所有元素转换一个字符串
 
 **语法：**
 
