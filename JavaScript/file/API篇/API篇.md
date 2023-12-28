@@ -1186,7 +1186,6 @@ JavaScript的组成
 ## 17 window对象
 
 **BOM** (Browser Object Model ) 是浏览器对象模型
-
 - window对象是一个全局对象，也可以说是JavaScript中的顶级对象
 - 像document、alert()、console.log()这些都是window的属性，基本BOM的属性和方法都是window的
 - 所有通过var定义在全局作用域中的变量、函数都会变成window对象的属性和方法
@@ -1198,15 +1197,15 @@ JavaScript的组成
 
 JavaScript 内置的一个用来让代码延迟执行的函数，叫 setTimeout
 
-**语法：**
+**语法**：
 
 ```JavaScript
 setTimeout(回调函数, 延迟时间)
 ```
 
-setTimeout 仅仅只执行一次，所以可以理解为就是把一段代码延迟执行, 平时省略window
+setTimeout 仅仅只执行一次，所以可以理解为就是把一段代码延迟执行，平时省略window
 
-间歇函数 setInterval : 每隔一段时间就执行一次， , 平时省略window
+间歇函数 setInterval：每隔一段时间就执行一次，平时省略window
 
 清除延时函数：
 
@@ -1214,31 +1213,25 @@ setTimeout 仅仅只执行一次，所以可以理解为就是把一段代码延
 clearTimeout(timerId)
 ```
 
->注意点
->
->1. 延时函数需要等待,所以后面的代码先执行
->2. 返回值是一个正整数，表示定时器的编号
+注意点
+1. 延时函数需要等待，所以后面的代码先执行
+2. 返回值是一个正整数，表示定时器的编号
 
-```html
-<body>
-  <script>
-    // 定时器之延迟函数
+```javascript
+// 定时器之延迟函数
 
-    // 1. 开启延迟函数
-    let timerId = setTimeout(function () {
-      console.log('我只执行一次')
-    }, 3000)
+// 1. 开启延迟函数
+let timerId = setTimeout(function () {
+  console.log('我只执行一次')
+}, 3000)
 
-    // 1.1 延迟函数返回的还是一个正整数数字，表示延迟函数的编号
-    console.log(timerId)
+// 1.1 延迟函数返回的还是一个正整数数字，表示延迟函数的编号
+console.log(timerId)
 
-    // 1.2 延迟函数需要等待时间，所以下面的代码优先执行
+// 1.2 延迟函数需要等待时间，所以下面的代码优先执行
 
-    // 2. 关闭延迟函数
-    clearTimeout(timerId)
-
-  </script>
-</body>
+// 2. 关闭延迟函数
+clearTimeout(timerId)
 ```
 
 ## 19 location对象
