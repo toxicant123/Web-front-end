@@ -1407,11 +1407,11 @@ history对象一般在实际开发中比较少用，但是会在一些OA 办公�
 
 ### 22.3 localStorage 存储复杂数据类型
 
-**问题：**本地只能存储字符串,无法存储复杂数据类型.
+**问题**：本地只能存储字符串,无法存储复杂数据类型.
 
-**解决：**需要将复杂数据类型转换成 JSON字符串,在存储到本地
+**解决**：需要将复杂数据类型转换成 JSON字符串,在存储到本地
 
-**语法：**JSON.stringify(复杂数据类型)
+**语法**：JSON.stringify(复杂数据类型)
 
 JSON字符串：
 
@@ -1419,23 +1419,18 @@ JSON字符串：
 - 属性名使用双引号引起来，不能单引号
 - 属性值如果是字符串型也必须双引号
 
-```html
-<body>
-  <script>
-    // 本地存储复杂数据类型
-    const goods = {
-      name: '小米',
-      price: 1999
-    }
-    // localStorage.setItem('goods', goods)
-    // console.log(localStorage.getItem('goods'))
+```javascript
+// 本地存储复杂数据类型
+const goods = {
+  name: '小米',
+  price: 1999
+}
+// localStorage.setItem('goods', goods)
+// console.log(localStorage.getItem('goods'))
 
-    // 1. 把对象转换为JSON字符串  JSON.stringify
-    localStorage.setItem('goods', JSON.stringify(goods))
-    // console.log(typeof localStorage.getItem('goods'))
-
-  </script>
-</body>
+// 1. 把对象转换为JSON字符串  JSON.stringify
+localStorage.setItem('goods', JSON.stringify(goods))
+// console.log(typeof localStorage.getItem('goods'))
 ```
 
 
