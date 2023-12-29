@@ -1247,32 +1247,33 @@ location (地址) 它拆分并保存了 URL 地址的各个组成部分， 它�
 
 ```html
 <body>
-  <form>
-    <input type="text" name="search"> <button>搜索</button>
-  </form>
-  <a href="#/music">音乐</a>
-  <a href="#/download">下载</a>
+    <form>
+        <input type="text" name="search">
+        <button>搜索</button>
+    </form>
+    <a href="#/music">音乐</a>
+    <a href="#/download">下载</a>
 
-  <button class="reload">刷新页面</button>
-  <script>
-    // location 对象  
-    // 1. href属性 （重点） 得到完整地址，赋值则是跳转到新地址
-    console.log(location.href)
-    // location.href = 'http://www.itcast.cn'
+    <button class="reload">刷新页面</button>
+    <script>
+        // location 对象  
+        // 1. href属性 （重点） 得到完整地址，赋值则是跳转到新地址
+        console.log(location.href)
+        // location.href = 'http://www.itcast.cn'
 
-    // 2. search属性  得到 ? 后面的地址 
-    console.log(location.search)  // ?search=笔记本
+        // 2. search属性  得到 ? 后面的地址 
+        console.log(location.search)  // ?search=笔记本
 
-    // 3. hash属性  得到 # 后面的地址
-    console.log(location.hash)
+        // 3. hash属性  得到 # 后面的地址
+        console.log(location.hash)
 
-    // 4. reload 方法  刷新页面
-    const btn = document.querySelector('.reload')
-    btn.addEventListener('click', function () {
-      // location.reload() // 页面刷新
-      location.reload(true) // 强制页面刷新 ctrl+f5
-    })
-  </script>
+        // 4. reload 方法  刷新页面
+        const btn = document.querySelector('.reload')
+        btn.addEventListener('click', function () {
+            // location.reload() // 页面刷新
+            location.reload(true) // 强制页面刷新 ctrl+f5
+        })
+    </script>
 </body>
 ```
 
@@ -1287,14 +1288,15 @@ navigator是对象，该对象下记录了浏览器自身的相关信息
 ```javascript
 // 检测 userAgent（浏览器信息）
 (function () {
-  const userAgent = navigator.userAgent
-  // 验证是否为Android或iPhone
-  const android = userAgent.match(/(Android);?[\s\/]+([\d.]+)?/)
-  const iphone = userAgent.match(/(iPhone\sOS)\s([\d_]+)/)
-  // 如果是Android或iPhone，则跳转至移动站点
-  if (android || iphone) {
-    location.href = 'http://m.itcast.cn'
-  }})();
+    const userAgent = navigator.userAgent
+    // 验证是否为Android或iPhone
+    const android = userAgent.match(/(Android);?[\s\/]+([\d.]+)?/)
+    const iphone = userAgent.match(/(iPhone\sOS)\s([\d_]+)/)
+    // 如果是Android或iPhone，则跳转至移动站点
+    if (android || iphone) {
+        location.href = 'http://m.itcast.cn'
+    }
+})();
 ```
 
 ## 21 histroy对象
