@@ -1301,7 +1301,7 @@ navigator是对象，该对象下记录了浏览器自身的相关信息
 
 ## 21 histroy对象
 
-history (历史)是对象，主要管理历史记录， 该对象与浏览器地址栏的操作相对应，如前进、后退等
+history (历史)是对象，主要管理历史记录，该对象与浏览器地址栏的操作相对应，如前进、后退等
 
 **使用场景**
 
@@ -1314,27 +1314,27 @@ history对象一般在实际开发中比较少用，但是会在一些OA 办公�
 ![67604784659](../assets/1676047846593.png)
 
 ```html
+
 <body>
-  <button class="back">←后退</button>
-  <button class="forward">前进→</button>
-  <script>
-    // histroy对象
+    <button class="back">←后退</button>
+    <button class="forward">前进→</button>
+    <script>
+        // histroy对象
 
-    // 1.前进
-    const forward = document.querySelector('.forward')
-    forward.addEventListener('click', function () {
-      // history.forward() 
-      history.go(1)
-    })
-    // 2.后退
-    const back = document.querySelector('.back')
-    back.addEventListener('click', function () {
-      // history.back()
-      history.go(-1)
-    })
-  </script>
+        // 1.前进
+        const forward = document.querySelector('.forward')
+        forward.addEventListener('click', function () {
+            // history.forward() 
+            history.go(1)
+        })
+        // 2.后退
+        const back = document.querySelector('.back')
+        back.addEventListener('click', function () {
+            // history.back()
+            history.go(-1)
+        })
+    </script>
 </body>
-
 ```
 
 ## 22 本地存储（今日重点）
