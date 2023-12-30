@@ -1350,41 +1350,25 @@ history对象一般在实际开发中比较少用，但是会在一些OA 办公�
 
 ### 22.1 localStorage（重点）
 
-**作用:** 数据可以长期保留在本地浏览器中，刷新页面和关闭页面，数据也不会丢失
+**作用**：数据可以长期保留在本地浏览器中，刷新页面和关闭页面，数据也不会丢失
 
-**特性：**以键值对的形式存储，并且存储的是字符串， 省略了window
+**特性**：以键值对的形式存储，并且存储的是字符串，省略了window
 
 ![67604963508](../assets/1676049635087.png)
 
-```html
-<!DOCTYPE html>
-<html lang="en">
+```javascript
+// 本地存储 - localstorage 存储的是字符串 
+// 1. 存储
+localStorage.setItem('age', 18)
 
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>本地存储-localstorage</title>
-</head>
+// 2. 获取
+console.log(typeof localStorage.getItem('age'))
 
-<body>
-  <script>
-    // 本地存储 - localstorage 存储的是字符串 
-    // 1. 存储
-    localStorage.setItem('age', 18)
-
-    // 2. 获取
-    console.log(typeof localStorage.getItem('age'))
-
-    // 3. 删除
-    localStorage.removeItem('age')
-  </script>
-</body>
-
-</html>
+// 3. 删除
+localStorage.removeItem('age')
 ```
 
-### 22.2 sessionStorage（了解）
+### 22.2 sessionStorage
 
 特性：
 
