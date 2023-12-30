@@ -1371,26 +1371,22 @@ localStorage.removeItem('age')
 ### 22.2 sessionStorage
 
 特性：
-
 - 用法跟localStorage基本相同
 - 区别是：当页面浏览器被关闭时，存储在 sessionStorage 的数据会被清除
 
-存储：sessionStorage.setItem(key,value)
-
-获取：sessionStorage.getItem(key)
-
-删除：sessionStorage.removeItem(key)
+存储：`sessionStorage.setItem(key,value)`
+获取：`sessionStorage.getItem(key)`
+删除：`sessionStorage.removeItem(key)`
 
 ### 22.3 localStorage 存储复杂数据类型
 
-**问题**：本地只能存储字符串,无法存储复杂数据类型.
+**问题**：本地只能存储字符串，无法存储复杂数据类型。
 
-**解决**：需要将复杂数据类型转换成 JSON字符串,在存储到本地
+**解决**：需要将复杂数据类型转换成JSON字符串，在存储到本地
 
 **语法**：JSON.stringify(复杂数据类型)
 
 JSON字符串：
-
 - 首先是1个字符串
 - 属性名使用双引号引起来，不能单引号
 - 属性值如果是字符串型也必须双引号
@@ -1415,33 +1411,28 @@ localStorage.setItem('goods', JSON.stringify(goods))
 
 **语法**：JSON.parse(JSON字符串)
 
-```html
-<body>
-  <script>
-    // 本地存储复杂数据类型
-    const goods = {
-      name: '小米',
-      price: 1999
-    }
-    // localStorage.setItem('goods', goods)
-    // console.log(localStorage.getItem('goods'))
+```javascript
+// 本地存储复杂数据类型
+const goods = {
+  name: '小米',
+  price: 1999
+}
+// localStorage.setItem('goods', goods)
+// console.log(localStorage.getItem('goods'))
 
-    // 1. 把对象转换为JSON字符串  JSON.stringify
-    localStorage.setItem('goods', JSON.stringify(goods))
-    // console.log(typeof localStorage.getItem('goods'))
+// 1. 把对象转换为JSON字符串  JSON.stringify
+localStorage.setItem('goods', JSON.stringify(goods))
+// console.log(typeof localStorage.getItem('goods'))
 
-    // 2. 把JSON字符串转换为对象  JSON.parse
-    console.log(JSON.parse(localStorage.getItem('goods')))
-
-  </script>
-</body>
+// 2. 把JSON字符串转换为对象  JSON.parse
+console.log(JSON.parse(localStorage.getItem('goods')))
 ```
 
 ## 23 综合案例
 
 ### 23.1 数组map 方法
 
-**使用场景：**
+**使用场景**：
 
 map 可以遍历数组处理数据，并且返回新的数组
 
