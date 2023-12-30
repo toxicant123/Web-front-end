@@ -1430,13 +1430,13 @@ console.log(JSON.parse(localStorage.getItem('goods')))
 
 ## 23 综合案例
 
-### 23.1 数组map 方法
+### 23.1 数组 map 方法
 
 **使用场景**：
 
 map 可以遍历数组处理数据，并且返回新的数组
 
-**语法：**
+**语法**：
 
 ```javascript
 const arr = ['red', 'blue', 'pink']
@@ -1449,37 +1449,33 @@ const newArr = arr.map(function (ele, index) {
 console.log(newArr)
 ```
 
->map 也称为映射。映射是个术语，指两个元素的集之间元素相互“对应”的关系。
+> map 也称为映射。映射是个术语，指两个元素的集之间元素相互“对应”的关系。
 >
->map重点在于有返回值，forEach没有返回值（undefined）
+> map重点在于有返回值，forEach没有返回值（undefined）
 
 ### 23.2 数组join方法
 
 **作用**：join() 方法用于把数组中的所有元素转换一个字符串
 
-**语法：**
+**语法**：
 
-```html
-<body>
-  <script>
-    const arr = ['red', 'blue', 'pink']
+```javascript
+const arr = ['red', 'blue', 'pink']
 
-    // 1. 数组 map方法 处理数据并且 返回一个数组
-    const newArr = arr.map(function (ele, index) {
-      // console.log(ele)  // 数组元素
-      // console.log(index) // 索引号
-      return ele + '颜色'
-    })
-    console.log(newArr)
+// 1. 数组 map方法 处理数据并且 返回一个数组
+const newArr = arr.map(function (ele, index) {
+  // console.log(ele)  // 数组元素
+  // console.log(index) // 索引号
+  return ele + '颜色'
+})
+console.log(newArr)
 
-    // 2. 数组join方法  把数组转换为字符串
-    // 小括号为空则逗号分割
-    console.log(newArr.join())  // red颜色,blue颜色,pink颜色
-    // 小括号是空字符串，则元素之间没有分隔符
-    console.log(newArr.join(''))  //red颜色blue颜色pink颜色
-    console.log(newArr.join('|'))  //red颜色|blue颜色|pink颜色
-  </script>
-</body>
+// 2. 数组join方法  把数组转换为字符串
+// 小括号为空则逗号分割
+console.log(newArr.join())  // red颜色,blue颜色,pink颜色
+// 小括号是空字符串，则元素之间没有分隔符
+console.log(newArr.join(''))  //red颜色blue颜色pink颜色
+console.log(newArr.join('|'))  //red颜色|blue颜色|pink颜色
 ```
 
 
