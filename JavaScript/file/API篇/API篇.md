@@ -1314,7 +1314,6 @@ history对象一般在实际开发中比较少用，但是会在一些OA 办公�
 ![67604784659](../assets/1676047846593.png)
 
 ```html
-
 <body>
     <button class="back">←后退</button>
     <button class="forward">前进→</button>
@@ -1337,17 +1336,17 @@ history对象一般在实际开发中比较少用，但是会在一些OA 办公�
 </body>
 ```
 
-## 22 本地存储（今日重点）
+## 22 本地存储
 
 本地存储：将数据存储在本地浏览器中
 
 常见的使用场景：
 
-<https://todomvc.com/examples/vanilla-es6/>    页面刷新数据不丢失
+页面刷新数据不丢失：https://todomvc.com/examples/vanilla-es6 
 
 好处：
 1. 页面刷新或者关闭不丢失数据，实现数据持久化
-2. 容量较大，sessionStorage和 localStorage 约 5M 左右
+2. 容量较大，sessionStorage 和 localStorage 约 5M 左右
 
 ### 22.1 localStorage（重点）
 
