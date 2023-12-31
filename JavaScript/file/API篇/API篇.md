@@ -1516,11 +1516,11 @@ console.log(reg.test('java开发'))  // false  如果不符合规则匹配上则
 1. **普通字符**
 - 大多数的字符仅能够描述它们本身，这些字符称作普通字符，例如所有的字母和数字。
 - 普通字符只能够匹配字符串中与它们相同的字符。
-- 比如，规定用户只能输入英文26个英文字母，普通字符的话  /[abcdefghijklmnopqrstuvwxyz]/
+- 比如，规定用户只能输入英文26个英文字母，普通字符的话：[abcdefghijklmnopqrstuvwxyz]
 
 2. **元字符(特殊字符）**
 - 是一些具有特殊含义的字符，可以极大提高了灵活性和强大的匹配功能。
-- 比如，规定用户只能输入英文26个英文字母，换成元字符写法： /[a-z]/
+- 比如，规定用户只能输入英文26个英文字母，换成元字符写法：[a-z]
 
 #### 24.2.1 边界符
 
@@ -1530,34 +1530,30 @@ console.log(reg.test('java开发'))  // false  如果不符合规则匹配上则
 
 >如果 ^ 和 $ 在一起，表示必须是精确匹配
 
-```html
-<body>
-  <script>
-    // 元字符之边界符
-    // 1. 匹配开头的位置 ^
-    const reg = /^web/
-    console.log(reg.test('web前端'))  // true
-    console.log(reg.test('前端web'))  // false
-    console.log(reg.test('前端web学习'))  // false
-    console.log(reg.test('we'))  // false
+```javascript
+// 元字符之边界符
+// 1. 匹配开头的位置 ^
+const reg = /^web/
+console.log(reg.test('web前端'))  // true
+console.log(reg.test('前端web'))  // false
+console.log(reg.test('前端web学习'))  // false
+console.log(reg.test('we'))  // false
 
-    // 2. 匹配结束的位置 $
-    const reg1 = /web$/
-    console.log(reg1.test('web前端'))  //  false
-    console.log(reg1.test('前端web'))  // true
-    console.log(reg1.test('前端web学习'))  // false
-    console.log(reg1.test('we'))  // false  
+// 2. 匹配结束的位置 $
+const reg1 = /web$/
+console.log(reg1.test('web前端'))  //  false
+console.log(reg1.test('前端web'))  // true
+console.log(reg1.test('前端web学习'))  // false
+console.log(reg1.test('we'))  // false  
 
-    // 3. 精确匹配 ^ $
-    const reg2 = /^web$/
-    console.log(reg2.test('web前端'))  //  false
-    console.log(reg2.test('前端web'))  // false
-    console.log(reg2.test('前端web学习'))  // false
-    console.log(reg2.test('we'))  // false 
-    console.log(reg2.test('web'))  // true
-    console.log(reg2.test('webweb'))  // flase 
-  </script>
-</body>
+// 3. 精确匹配 ^ $
+const reg2 = /^web$/
+console.log(reg2.test('web前端'))  //  false
+console.log(reg2.test('前端web'))  // false
+console.log(reg2.test('前端web学习'))  // false
+console.log(reg2.test('we'))  // false 
+console.log(reg2.test('web'))  // true
+console.log(reg2.test('webweb'))  // flase
 ```
 
 #### 24.2.2 量词
@@ -1566,7 +1562,7 @@ console.log(reg.test('java开发'))  // false  如果不符合规则匹配上则
 
 ![67608018538](../assets/1676080185383.png)
 
-> 注意： 逗号左右两侧千万不要出现空格
+> 注意：逗号左右两侧千万不要出现空格
 
 ```html
 <body>
