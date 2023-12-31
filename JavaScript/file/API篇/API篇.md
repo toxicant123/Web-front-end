@@ -1564,60 +1564,56 @@ console.log(reg2.test('webweb'))  // flase
 
 > 注意：逗号左右两侧千万不要出现空格
 
-```html
-<body>
-  <script>
-    // 元字符之量词
-    // 1. * 重复次数 >= 0 次
-    const reg1 = /^w*$/
-    console.log(reg1.test(''))  // true
-    console.log(reg1.test('w'))  // true
-    console.log(reg1.test('ww'))  // true
-    console.log('-----------------------')
+```javascript
+// 元字符之量词
+// 1. * 重复次数 >= 0 次
+const reg1 = /^w*$/
+console.log(reg1.test(''))  // true
+console.log(reg1.test('w'))  // true
+console.log(reg1.test('ww'))  // true
+console.log('-----------------------')
 
-    // 2. + 重复次数 >= 1 次
-    const reg2 = /^w+$/
-    console.log(reg2.test(''))  // false
-    console.log(reg2.test('w'))  // true
-    console.log(reg2.test('ww'))  // true
-    console.log('-----------------------')
+// 2. + 重复次数 >= 1 次
+const reg2 = /^w+$/
+console.log(reg2.test(''))  // false
+console.log(reg2.test('w'))  // true
+console.log(reg2.test('ww'))  // true
+console.log('-----------------------')
 
-    // 3. ? 重复次数  0 || 1 
-    const reg3 = /^w?$/
-    console.log(reg3.test(''))  // true
-    console.log(reg3.test('w'))  // true
-    console.log(reg3.test('ww'))  // false
-    console.log('-----------------------')
+// 3. ? 重复次数  0 || 1 
+const reg3 = /^w?$/
+console.log(reg3.test(''))  // true
+console.log(reg3.test('w'))  // true
+console.log(reg3.test('ww'))  // false
+console.log('-----------------------')
 
 
-    // 4. {n} 重复 n 次
-    const reg4 = /^w{3}$/
-    console.log(reg4.test(''))  // false
-    console.log(reg4.test('w'))  // flase
-    console.log(reg4.test('ww'))  // false
-    console.log(reg4.test('www'))  // true
-    console.log(reg4.test('wwww'))  // false
-    console.log('-----------------------')
+// 4. {n} 重复 n 次
+const reg4 = /^w{3}$/
+console.log(reg4.test(''))  // false
+console.log(reg4.test('w'))  // flase
+console.log(reg4.test('ww'))  // false
+console.log(reg4.test('www'))  // true
+console.log(reg4.test('wwww'))  // false
+console.log('-----------------------')
 
-    // 5. {n,} 重复次数 >= n 
-    const reg5 = /^w{2,}$/
-    console.log(reg5.test(''))  // false
-    console.log(reg5.test('w'))  // false
-    console.log(reg5.test('ww'))  // true
-    console.log(reg5.test('www'))  // true
-    console.log('-----------------------')
+// 5. {n,} 重复次数 >= n 
+const reg5 = /^w{2,}$/
+console.log(reg5.test(''))  // false
+console.log(reg5.test('w'))  // false
+console.log(reg5.test('ww'))  // true
+console.log(reg5.test('www'))  // true
+console.log('-----------------------')
 
-    // 6. {n,m}   n =< 重复次数 <= m
-    const reg6 = /^w{2,4}$/
-    console.log(reg6.test('w'))  // false
-    console.log(reg6.test('ww'))  // true
-    console.log(reg6.test('www'))  // true
-    console.log(reg6.test('wwww'))  // true
-    console.log(reg6.test('wwwww'))  // false
+// 6. {n,m}   n =< 重复次数 <= m
+const reg6 = /^w{2,4}$/
+console.log(reg6.test('w'))  // false
+console.log(reg6.test('ww'))  // true
+console.log(reg6.test('www'))  // true
+console.log(reg6.test('wwww'))  // true
+console.log(reg6.test('wwwww'))  // false
 
-    // 7. 注意事项： 逗号两侧千万不要加空格否则会匹配失败
-
-  </script>
+// 7. 注意事项： 逗号两侧千万不要加空格否则会匹配失败
 ```
 
 #### 24.2.3 范围
@@ -1626,46 +1622,41 @@ console.log(reg2.test('webweb'))  // flase
 
 ![67608029616](../assets/1676080296168.png)
 
-```html
-<body>
-  <script>
-    // 元字符之范围  []  
-    // 1. [abc] 匹配包含的单个字符， 多选1
-    const reg1 = /^[abc]$/
-    console.log(reg1.test('a'))  // true
-    console.log(reg1.test('b'))  // true
-    console.log(reg1.test('c'))  // true
-    console.log(reg1.test('d'))  // false
-    console.log(reg1.test('ab'))  // false
+```javascript
+// 元字符之范围  []  
+// 1. [abc] 匹配包含的单个字符， 多选1
+const reg1 = /^[abc]$/
+console.log(reg1.test('a'))  // true
+console.log(reg1.test('b'))  // true
+console.log(reg1.test('c'))  // true
+console.log(reg1.test('d'))  // false
+console.log(reg1.test('ab'))  // false
 
-    // 2. [a-z] 连字符 单个
-    const reg2 = /^[a-z]$/
-    console.log(reg2.test('a'))  // true
-    console.log(reg2.test('p'))  // true
-    console.log(reg2.test('0'))  // false
-    console.log(reg2.test('A'))  // false
-    // 想要包含小写字母，大写字母 ，数字
-    const reg3 = /^[a-zA-Z0-9]$/
-    console.log(reg3.test('B'))  // true
-    console.log(reg3.test('b'))  // true
-    console.log(reg3.test(9))  // true
-    console.log(reg3.test(','))  // flase
+// 2. [a-z] 连字符 单个
+const reg2 = /^[a-z]$/
+console.log(reg2.test('a'))  // true
+console.log(reg2.test('p'))  // true
+console.log(reg2.test('0'))  // false
+console.log(reg2.test('A'))  // false
+// 想要包含小写字母，大写字母 ，数字
+const reg3 = /^[a-zA-Z0-9]$/
+console.log(reg3.test('B'))  // true
+console.log(reg3.test('b'))  // true
+console.log(reg3.test(9))  // true
+console.log(reg3.test(','))  // flase
 
-    // 用户名可以输入英文字母，数字，可以加下划线，要求 6~16位
-    const reg4 = /^[a-zA-Z0-9_]{6,16}$/
-    console.log(reg4.test('abcd1'))  // false 
-    console.log(reg4.test('abcd12'))  // true
-    console.log(reg4.test('ABcd12'))  // true
-    console.log(reg4.test('ABcd12_'))  // true
+// 用户名可以输入英文字母，数字，可以加下划线，要求 6~16位
+const reg4 = /^[a-zA-Z0-9_]{6,16}$/
+console.log(reg4.test('abcd1'))  // false 
+console.log(reg4.test('abcd12'))  // true
+console.log(reg4.test('ABcd12'))  // true
+console.log(reg4.test('ABcd12_'))  // true
 
-    // 3. [^a-z] 取反符
-    const reg5 = /^[^a-z]$/
-    console.log(reg5.test('a'))  // false 
-    console.log(reg5.test('A'))  // true
-    console.log(reg5.test(8))  // true
-
-  </script>
-</body>
+// 3. [^a-z] 取反符
+const reg5 = /^[^a-z]$/
+console.log(reg5.test('a'))  // false 
+console.log(reg5.test('A'))  // true
+console.log(reg5.test(8))  // true
 ```
 
 #### 24.2.4 字符类
