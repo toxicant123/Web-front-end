@@ -1479,7 +1479,7 @@ console.log(newArr.join('|'))  //red颜色|blue颜色|pink颜色
 ```
 
 
-## 正则表达式
+## 24 正则表达式
 
 **正则表达式**（Regular Expression）是一种字符串匹配的模式（规则）
 
@@ -1490,7 +1490,7 @@ console.log(newArr.join('|'))  //red颜色|blue颜色|pink颜色
 
 ![67607966636]f1676079666366.png)
 
-### 正则基本使用
+### 24.1 正则基本使用
 
 1. 定义规则
 
@@ -1506,7 +1506,7 @@ console.log(newArr.join('|'))  //red颜色|blue颜色|pink颜色
     - `test()方法`   用来查看正则表达式与指定的字符串是否匹配
     - 如果正则表达式与指定的字符串匹配 ，返回`true`，否则`false`
 
-~~~html
+```html
 <body>
   <script>
     // 正则表达式的基本使用
@@ -1519,9 +1519,9 @@ console.log(newArr.join('|'))  //red颜色|blue颜色|pink颜色
     console.log(reg.test('java开发'))  // false  如果不符合规则匹配上则返回 false
   </script>
 </body>
-~~~
+```
 
-### 元字符
+### 24.2 元字符
 
 1. **普通字符:**
 
@@ -1534,7 +1534,7 @@ console.log(newArr.join('|'))  //red颜色|blue颜色|pink颜色
 - 是一些具有特殊含义的字符，可以极大提高了灵活性和强大的匹配功能。
 - 比如，规定用户只能输入英文26个英文字母，换成元字符写法： /[a-z]/
 
-#### 边界符
+#### 24.2.1 边界符
 
 正则表达式中的边界符（位置符）用来提示字符所处的位置，主要有两个字符
 
@@ -1542,7 +1542,7 @@ console.log(newArr.join('|'))  //red颜色|blue颜色|pink颜色
 
 >如果 ^ 和 $ 在一起，表示必须是精确匹配
 
-~~~html
+```html
 <body>
   <script>
     // 元字符之边界符
@@ -1570,9 +1570,9 @@ console.log(newArr.join('|'))  //red颜色|blue颜色|pink颜色
     console.log(reg2.test('webweb'))  // flase 
   </script>
 </body>
-~~~
+```
 
-#### 量词
+#### 24.2.2 量词
 
 量词用来设定某个模式重复次数
 
@@ -1580,7 +1580,7 @@ console.log(newArr.join('|'))  //red颜色|blue颜色|pink颜色
 
 > 注意： 逗号左右两侧千万不要出现空格
 
-~~~html
+```html
 <body>
   <script>
     // 元字符之量词
@@ -1634,15 +1634,15 @@ console.log(newArr.join('|'))  //red颜色|blue颜色|pink颜色
     // 7. 注意事项： 逗号两侧千万不要加空格否则会匹配失败
 
   </script>
-~~~
+```
 
-#### 范围
+#### 24.2.3 范围
 
 表示字符的范围，定义的规则限定在某个范围，比如只能是英文字母，或者数字等等，用表示范围
 
 ![67608029616](../assets/1676080296168.png)
 
-~~~html
+```html
 <body>
   <script>
     // 元字符之范围  []  
@@ -1682,9 +1682,9 @@ console.log(newArr.join('|'))  //red颜色|blue颜色|pink颜色
 
   </script>
 </body>
-~~~
+```
 
-#### 字符类
+#### 24.2.4 字符类
 
 某些常见模式的简写方式，区分字母和数字
 
@@ -1692,13 +1692,13 @@ console.log(newArr.join('|'))  //red颜色|blue颜色|pink颜色
 
 ![67608037232](../assets/1676080372325.png)
 
-## 替换和修饰符
+## 25 替换和修饰符
 
 replace 替换方法，可以完成字符的替换
 
 ![67608043716](../assets/1676080437160.png)
 
-~~~html
+```html
 <body>
   <script>
     // 替换和修饰符
@@ -1708,14 +1708,14 @@ replace 替换方法，可以完成字符的替换
     // const strEnd = str.replace(/前端/, 'web') 只能替换一个
   </script>
 </body>
-~~~
+```
 
 修饰符约束正则执行的某些细节行为，如是否区分大小写、是否支持多行匹配等
 
 - i 是单词 ignore 的缩写，正则匹配时字母不区分大小写
 - g 是单词 global 的缩写，匹配所有满足正则表达式的结果
 
-~~~html
+```html
 <body>
   <script>
     // 替换和修饰符
@@ -1729,19 +1729,19 @@ replace 替换方法，可以完成字符的替换
     console.log(strEnd) 
   </script>
 </body>
-~~~
+```
 
-## 正则插件
+## 26 正则插件
 
 ![67608054863](../assets/1676080548639.png)
 
 
 
-## change 事件
+## 27 change 事件
 
 给input注册 change 事件，值被修改并且失去焦点后触发
 
-## 判断是否有类
+## 28 判断是否有类
 
 ![67608061879](../assets/1676080618794.png)
 
