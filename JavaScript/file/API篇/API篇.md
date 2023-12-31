@@ -1483,7 +1483,6 @@ console.log(newArr.join('|'))  //red颜色|blue颜色|pink颜色
 **正则表达式**（Regular Expression）是一种字符串匹配的模式（规则）
 
 **使用场景**：
-
 - 例如验证表单：手机号表单要求用户只能输入11位的数字 (匹配)
 - 过滤掉页面内容中的一些敏感词(替换)，或从字符串中获取我们想要的特定部分(提取)等
 
@@ -1493,41 +1492,33 @@ console.log(newArr.join('|'))  //red颜色|blue颜色|pink颜色
 
 1. 定义规则
    ~~~JavaScript
-   const reg =  /表达式/
+   const reg = /表达式/
    ~~~
-
     - 其中` /   / `是正则表达式字面量
     - 正则表达式也是`对象 `
-
 2. 使用正则
-    - `test()方法`   用来查看正则表达式与指定的字符串是否匹配
+    - `test()方法`用来查看正则表达式与指定的字符串是否匹配
     - 如果正则表达式与指定的字符串匹配 ，返回`true`，否则`false`
 
-```html
-<body>
-  <script>
-    // 正则表达式的基本使用
-    const str = 'web前端开发'
-    // 1. 定义规则
-    const reg = /web/
+```javascript
+// 正则表达式的基本使用
+const str = 'web前端开发'
+// 1. 定义规则
+const reg = /web/
 
-    // 2. 使用正则  test()
-    console.log(reg.test(str))  // true  如果符合规则匹配上则返回true
-    console.log(reg.test('java开发'))  // false  如果不符合规则匹配上则返回 false
-  </script>
-</body>
+// 2. 使用正则  test()
+console.log(reg.test(str))  // true  如果符合规则匹配上则返回true
+console.log(reg.test('java开发'))  // false  如果不符合规则匹配上则返回 false
 ```
 
 ### 24.2 元字符
 
-1. **普通字符:**
-
+1. **普通字符**
 - 大多数的字符仅能够描述它们本身，这些字符称作普通字符，例如所有的字母和数字。
 - 普通字符只能够匹配字符串中与它们相同的字符。
 - 比如，规定用户只能输入英文26个英文字母，普通字符的话  /[abcdefghijklmnopqrstuvwxyz]/
 
 2. **元字符(特殊字符）**
-
 - 是一些具有特殊含义的字符，可以极大提高了灵活性和强大的匹配功能。
 - 比如，规定用户只能输入英文26个英文字母，换成元字符写法： /[a-z]/
 
