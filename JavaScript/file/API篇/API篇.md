@@ -1678,7 +1678,7 @@ replace 替换方法，可以完成字符的替换
 const str = '欢迎大家学习前端，相信大家一定能学好前端，都成为前端大神'
 // 1. 替换  replace  需求：把前端替换为 web
 // 1.1 replace 返回值是替换完毕的字符串
-const strEnd = str.replace(/前端/, 'web') 只能替换一个
+const strEnd = str.replace(/前端/, 'web') //只能替换一个
 ```
 
 修饰符约束正则执行的某些细节行为，如是否区分大小写、是否支持多行匹配等
