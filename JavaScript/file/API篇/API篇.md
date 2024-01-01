@@ -1686,27 +1686,21 @@ const strEnd = str.replace(/前端/, 'web') 只能替换一个
 - i 是单词 ignore 的缩写，正则匹配时字母不区分大小写
 - g 是单词 global 的缩写，匹配所有满足正则表达式的结果
 
-```html
-<body>
-  <script>
-    // 替换和修饰符
-    const str = '欢迎大家学习前端，相信大家一定能学好前端，都成为前端大神'
-    // 1. 替换  replace  需求：把前端替换为 web
-    // 1.1 replace 返回值是替换完毕的字符串
-    // const strEnd = str.replace(/前端/, 'web') 只能替换一个
+```javascript
+// 替换和修饰符
+const str = '欢迎大家学习前端，相信大家一定能学好前端，都成为前端大神'
+// 1. 替换  replace  需求：把前端替换为 web
+// 1.1 replace 返回值是替换完毕的字符串
+// const strEnd = str.replace(/前端/, 'web') 只能替换一个
 
-    // 2. 修饰符 g 全部替换
-    const strEnd = str.replace(/前端/g, 'web')
-    console.log(strEnd) 
-  </script>
-</body>
+// 2. 修饰符 g 全部替换
+const strEnd = str.replace(/前端/g, 'web')
+console.log(strEnd)
 ```
 
 ## 26 正则插件
 
 ![67608054863](../assets/1676080548639.png)
-
-
 
 ## 27 change 事件
 
