@@ -221,6 +221,19 @@
             }, 1000)
         })
 
+        const username = document.querySelector('[name=username]')
+        username.addEventListener('change', verifyName)
+
+        function verifyName() {
+            const span = username.nextElementSibling
+            const reg = /^[a-zA-Z0-9-_]{6,10}$/
+            if (!reg.test(username.value)) {
+                span.innerHTML = '输入不合法，请输入6-10位'
+                return
+            }
+            span.innerHTML = ''
+        }
+
     </script>
 </body>
 
