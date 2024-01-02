@@ -200,7 +200,26 @@
         </div>
     </div>
     <script>
-
+        const code = document.querySelector('.code')
+        let flag = true
+        code.addEventListener('click', function () {
+            if (!flag) {
+                return
+            } else {
+                flag = false
+            }
+            let i = 5
+            code.innerHTML = `0${i}秒后重新获取`
+            let timerId = setInterval(function () {
+                i--
+                code.innerHTML = `0${i}秒后重新获取`
+                if (i === 0) {
+                    clearInterval(timerId)
+                    code.innerHTML = `重新获取`
+                    flag = true
+                }
+            }, 1000)
+        })
 
     </script>
 </body>
