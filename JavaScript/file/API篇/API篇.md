@@ -1713,7 +1713,5 @@ console.log(strEnd)
 元素.classList.contains() 看看有没有包含某个类，如果有则返回true，么有则返回false
 
 
-123
-
 
 
