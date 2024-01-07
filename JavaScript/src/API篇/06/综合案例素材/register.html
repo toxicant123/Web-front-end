@@ -221,18 +221,74 @@
             }, 1000)
         })
 
-        const username = document.querySelector('[name=username]')
-        username.addEventListener('change', verifyName)
+        /**
+         *
+         * @param {Element | {value}} ele
+         * @param {RegExp} reg
+         * @param {string} msg
+         * @return {(function(): void)|*}
+         */
+        function verify(ele, reg, msg) {
+            return function () {
+                const span = ele.nextElementSibling
+                if (!reg.test(ele.value)) {
+                    span.innerHTML = msg
+                    return
+                }
+                span.innerHTML = ''
+            }
+        }
 
-        function verifyName() {
-            const span = username.nextElementSibling
-            const reg = /^[a-zA-Z0-9-_]{6,10}$/
-            if (!reg.test(username.value)) {
-                span.innerHTML = '输入不合法，请输入6-10位'
+        const username = document.querySelector('[name=username]')
+        const usernameReg = /^[a-zA-Z0-9-_]{6,10}$/;
+        username.addEventListener('change', verify(username, usernameReg, '输入不合法，请输入6-10位'))
+
+        const phone = document.querySelector('[name=phone]')
+        const phoneReg = /^1(3\d|4[5-9]|5[0-35-9]|6[567]|7[0-8]|8\d|9[0-35-9])\d{8}$/;
+        phone.addEventListener('change', verify(phone, phoneReg, '输入不合法，请输入11位手机号码'))
+
+        const codeInput = document.querySelector('[name=code]');
+        const codeInputReg = /^\d{6}$/;
+        codeInput.addEventListener('change', verify(codeInput, codeInputReg, '输入不合法，请输入6位数字'))
+
+        const password = document.querySelector('[name=password]')
+        const passwordReg = /^[a-zA-Z0-9-_]{6,20}$/;
+        password.addEventListener('change', verify(password, passwordReg, '输入不合法，请输入6~20位数字字母符号组成的密码'))
+
+        const confirm = document.querySelector('[name=confirm]')
+        confirm.addEventListener('change', verifyConfirm)
+
+        function verifyConfirm () {
+            const span = confirm.nextElementSibling
+            console.log(confirm.value !== password.value)
+            if (confirm.value !== password.value) {
+                console.log(1)
+                span.innerText = '两次密码输入不一致'
                 return
             }
-            span.innerHTML = ''
+            span.innerText = ''
         }
+
+        const queren = document.querySelector('.icon-queren')
+        queren.addEventListener('click', function () {
+            this.classList.toggle('icon-queren2')
+        })
+
+        const form = document.querySelector('form')
+        form.addEventListener('submit', function (e) {
+            if (!queren.classList.contains('icon-queren2')) {
+                alert('请勾选同意协议')
+                e.preventDefault()
+            }
+
+            if (!usernameReg.test(username.value)
+                || !phoneReg.test(phone.value)
+                || !codeInputReg.test(codeInput.value)
+                || !passwordReg.test(password.value)
+                || confirm.value !== password.value) {
+                e.preventDefault()
+            }
+        })
 
     </script>
 </body>
