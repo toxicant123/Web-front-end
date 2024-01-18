@@ -164,7 +164,8 @@
             `
         }).join('')
 
-
+        const total = goodsList.reduce((prev, item) => prev + item.price * item.count, 0).toFixed(2)
+        document.querySelector('.amount').innerHTML = total
     </script>
 </body>
 
