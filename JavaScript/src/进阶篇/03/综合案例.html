@@ -66,6 +66,7 @@
 <body>
     <button id="delete">删除</button>
     <button id="login">登录</button>
+    <button id="add">新增</button>
 
     <!-- <div class="modal">
       <div class="header">温馨提示 <i>x</i></div>
@@ -75,6 +76,44 @@
 
     <script>
 
+        function Modal(title = '',  message = '') {
+            this.modalBox = document.createElement('div')
+            this.modalBox.className = 'modal'
+            this.modalBox.innerHTML = `
+                <div class="header">${title}<i>x</i></div>
+                <div class="body">${message}</div>
+            `
+
+        }
+
+        Modal.prototype.open = function () {
+            const box = document.querySelector('.modal')
+            box && box.remove()
+            document.body.append(this.modalBox)
+            this.modalBox.querySelector('i').addEventListener('click', () => {
+                console.log(this)
+                this.close()
+            })
+        }
+
+        Modal.prototype.close = function () {
+            this.modalBox.remove()
+        }
+
+        document.querySelector('#delete').addEventListener('click', () => {
+            const del = new Modal('温馨的提示', '您没有权限删除操作')
+            del.open()
+        })
+
+        document.querySelector('#login').addEventListener('click', () => {
+            const login = new Modal('友情的提示', '您还没登录呢')
+            login.open()
+        })
+
+        document.querySelector('#add').addEventListener('click', () => {
+            const add = new Modal('强烈提示', '您没有新增权限')
+            add.open()
+        })
     </script>
 </body>
 
