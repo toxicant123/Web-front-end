@@ -5,4 +5,3 @@ fs.readFile('1.txt', 'utf8', (err, dataStr) => {
 
     console.log(err, dataStr)
 })
-
