@@ -24,7 +24,15 @@ fs.writeFile('2.txt', 'Hello, Nodejs!', err => {
 })
 ```
 
+### 1.3 __dirname 和 __filename
 
+* __dirname 表示当前js文件所处的文件夹名称
+* __filename 表示当前js文件的名称
+
+```js
+console.log(__dirname)
+console.log(__filename)
+```
 
 
 
