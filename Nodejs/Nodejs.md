@@ -36,7 +36,7 @@ console.log(__filename)
 
 建议使用`__dirname`来定位文件
 
-
+### 1.4 path
 
 
 
