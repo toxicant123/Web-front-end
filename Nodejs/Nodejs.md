@@ -59,9 +59,23 @@ const extName = path.extname(path2);
 console.log(extName);
 ```
 
+## 2 http
 
+### 2.1 建立http服务器
 
+```js
+const http = require('http')
 
+const server = http.createServer();
+
+server.on('request', (req, res) => {
+    console.log("someone visit our server")
+})
+
+server.listen(8080, () => {
+    console.log('server running at local')
+})
+```
 
 
 
