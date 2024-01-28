@@ -38,7 +38,17 @@ console.log(__filename)
 
 ### 1.4 path
 
-be happy
+请使用path拼接路径
+
+```js
+const path = require('path');
+
+const path1 = path.join('/a', '/b/c', '../', './', '/d');
+console.log(path1)
+
+const path2 = path.join(__dirname, '1.txt')
+console.log(path2)
+```
 
 
 
