@@ -4,3 +4,4 @@ module.exports = {
         console.log("log from 1.js")
     }
 }
+
