@@ -99,7 +99,35 @@ server.listen(8080, () => {
 
 ### 3.1 module.exports 与 exports
 
+通过require()方法导入js文件中的变量，通过`module.exports`和`exports`导出js文件中的变量
 
+main.js：
+
+```js
+const js1 = require('./1.js');
+
+console.log(js1.name)
+
+js1.log()
+```
+
+1.js：
+
+```js
+module.exports = {
+    name: '1.js',
+    log() {
+        console.log("log from 1.js")
+    }
+}
+```
+
+注意：你可以使用`exports`来做到同样的效果，但它们两者的关系类似：
+
+```js
+let exports = {}
+module.exports = exports
+```
 
 ### 3.2 CommonJS模块化规范
 
