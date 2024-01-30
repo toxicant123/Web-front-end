@@ -97,6 +97,10 @@ server.listen(8080, () => {
 
 ## 3 模块化
 
+### 3.1 module.exports 与 exports
+
+
+
 ### 3.2 CommonJS模块化规范
 
 1. 每个模块每部，module变量代表当前模块
