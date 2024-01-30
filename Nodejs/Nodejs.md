@@ -152,6 +152,8 @@ npm包规范结构：
 * 包的顶级目录下要必须包含package.json这个包管理配置文件
 * package.json中必须包含name, version, main这三个属性，分别代表包的名字、版本号、包的入口。
 
+### 3.4 开发属于自己的npm包
+
 
 
 
