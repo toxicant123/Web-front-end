@@ -99,6 +99,8 @@ server.listen(8080, () => {
 
 ### 3.1 module.exports 与 exports
 
+module对象是每个js文件的内置对象，提供了很多有用的信息
+
 通过require()方法导入js文件中的变量，通过`module.exports`和`exports`导出js文件中的变量
 
 main.js：
@@ -135,10 +137,15 @@ module.exports = exports
 2. module变量是一个对象，它的exports属性（即module.exports）是对外的接口
 3. 加载某个模块，其实是加载该模块的module.exports属性。require()方法用于加载模块
 
+### 3.3 npm包
 
-
-
-
+npm包可以分为两类：
+* 项目包  
+  安装到项目的node_modules目录中的包都是项目包
+  - 开发依赖包：被记录到devDependencies中的包，会在开发期间用到
+  - 核心依赖包：被记录到dependencies中的包，会在开发期间和项目上线后用到
+* 全局包  
+  在执行`npm install`命令时，如果提供了`-g`参数，则会把包安装为全局包
 
 
 
