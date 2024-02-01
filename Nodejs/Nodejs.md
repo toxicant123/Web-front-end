@@ -184,7 +184,7 @@ npm包规范结构：
 
 ## 4 express
 
-### 4.1 
+### 4.1 express对外提供接口
 
 ```js
 const express = require('express')
@@ -218,9 +218,20 @@ app.listen(80, () => {
 })
 ```
 
+### 4.2 托管静态资源
 
+```js
+const express = require('express')
+const app = express()
 
+app.use(express.static('public'))
 
+app.listen(80, () => {
+    console.log("static resource server begin...")
+})
+```
+
+### 4.3 托管多份静态资源
 
 
 
