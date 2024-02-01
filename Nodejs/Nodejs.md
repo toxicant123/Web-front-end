@@ -233,7 +233,17 @@ app.listen(80, () => {
 
 ### 4.3 托管多份静态资源
 
+```js
+const express = require('express')
+const app = express()
 
+app.use('/public', express.static('public'))
+app.use('/private', express.static('private'))
+
+app.listen(80, () => {
+    console.log("static resource server begin...")
+})
+```
 
 
 
