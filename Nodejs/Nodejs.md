@@ -329,3 +329,57 @@ app.listen(80, () => {
 2. express.json 解析 JSON 格式的请求体数据（有兼容性，仅在 4.16.0+ 版本中可用）
 3. express.urlencoded 解析 URL-encoded 格式的请求体数据（有兼容性，仅在 4.16.0+ 版本中可用）
 
+### 4.8 Cors
+
+#### 4.8.1 基本介绍
+
+如果指定了 Access-Control-Allow-Origin 字段的值为通配符 *，表示允许来自任何域的请求
+
+默认情况下，CORS 仅支持客户端向服务器发送如下的 9 个请求头：
+* Accept
+* Accept-Language
+* Content-Language
+* DPR
+* Downlink
+* Save-Data
+* Viewport-Width
+* Width 
+* Content-Type （值仅限于 text/plain、multipart/form-data、application/x-www-form-urlencoded 三者之一）
+
+如果客户端向服务器发送了额外的请求头信息，则需要在服务器端，通过 Access-Control-Allow-Headers 对额外的请求头进行声明，否则这次请求会失败！
+
+默认情况下，CORS 仅支持客户端发起 GET、POST、HEAD 请求。如果客户端希望通过 PUT、DELETE 等方式请求服务器的资源，则需要在服务器端，通过 Access-Control-Alow-Methods 来指明实际请求所允许使用的 HTTP 方法。
+
+#### 4.8.2 Cors的分类
+
+客户端在请求 CORS 接口时，根据请求方式和请求头的不同，可以将 CORS 的请求分为两大类，分别是：
+1. 简单请求
+2. 预检请求
+
+同时满足以下两大条件的请求，就属于简单请求：
+1. 请求方式：GET、POST、HEAD 三者之一
+2. HTTP 头部信息不超过以下几种字段：无自定义头部字段、Accept、Accept-Language、Content-Language、DPR、Downlink、Save-Data、Viewport-Width、Width 、Content-Type（只有三个值application/x-www-formurlencoded、multipart/form-data、text/plain）
+
+只要符合以下任何一个条件的请求，都需要进行预检请求：
+1. 请求方式为 GET、POST、HEAD 之外的请求 Method 类型
+2. 请求头中包含自定义头部字段
+3. 向服务器发送了 application/json 格式的数据
+
+在浏览器与服务器正式通信之前，浏览器会先发送 OPTION 请求进行预检，以获知服务器是否允许该实际请求，所以这一次的 OPTION 请求称为“预检请求”。服务器成功响应预检请求后，才会发送真正的请求，并且携带真实数据。
+
+简单请求和预检请求的区别：
+* 简单请求的特点：客户端与服务器之间只会发生一次请求。
+* 预检请求的特点：客户端与服务器之间会发生两次请求，OPTION 预检请求成功之后，才会发起真正的请求。
+
+
+
+
+
+
+
+
+
+
+
+
+
