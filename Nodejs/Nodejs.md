@@ -383,7 +383,7 @@ const db = mysql.createPool({
     port: '3306',
     user: 'root',
     password: '123456',
-    database: 'test'
+    database: 'nodejs'
 })
 
 db.query('select 1 ', (err, results) => {
