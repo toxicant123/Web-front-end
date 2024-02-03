@@ -371,9 +371,32 @@ app.listen(80, () => {
 * 简单请求的特点：客户端与服务器之间只会发生一次请求。
 * 预检请求的特点：客户端与服务器之间会发生两次请求，OPTION 预检请求成功之后，才会发起真正的请求。
 
+## 5 MySQL
 
+### 5.1 测试与mysql的链接
 
+```js
+const mysql = require('mysql');
 
+const db = mysql.createPool({
+    host: '127.0.0.1',
+    port: '3306',
+    user: 'root',
+    password: '123456',
+    database: 'test'
+})
+
+db.query('select 1 ', (err, results) => {
+    if (err) {
+        console.log(err.message)
+        return
+    }
+
+    console.log(results)
+})
+```
+
+### 5.2 
 
 
 
