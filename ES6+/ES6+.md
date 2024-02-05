@@ -100,7 +100,23 @@ let f = e => console.log(e)
 
 注意：箭头函数不会更改 this 指向，用来指定回调函数会非常合适
 
-### 7. rest 参数
+### 7. 参数默认值
+
+```js
+function add(a = 1, b = 2, c = 3) {
+    return a + b + c;
+}
+
+console.log(add())
+
+function add2({n1 = 4, n2 = 5, n3 = 6}) {
+    return n1 + n2 + n3;
+}
+
+console.log(add2({}))
+```
+
+### 8. 
 
 
 
