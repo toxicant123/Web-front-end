@@ -116,14 +116,52 @@ function add2({n1 = 4, n2 = 5, n3 = 6}) {
 console.log(add2({}))
 ```
 
-### 8. 
+### 8. rest 参数
 
+ES6 引入 rest 参数，用于获取函数的实参，用来代替 arguments
 
+```js
+function add(a, ...arr) {
+    arr.push(a)
+    return arr.reduce((p, c) => p + c)
+}
 
+console.log(add(1, 2, 3, 4))
+```
 
+注意：rest 参数非常适合不定个数参数函数的场景
 
+### 9. spread 扩展运算符
 
+扩展运算符（spread）也是三个点（...）。它好比 rest 参数的逆运算，将一个数组转为用逗号分隔的参数序列，对数组进行解包。
 
+```js
+const arr1 = [1, 2]
+const arr2 = [3, 4]
 
+const arr = [...arr1, ...arr2]
+
+const obj1 = {
+    a: 1,
+    b: 2
+}
+
+const obj2 = {
+    c: 3,
+    d: 4
+}
+
+const obj = {
+    ...obj1,
+    ...obj2
+}
+
+console.log(arr, obj)
+```
+
+常用于：
+1. 数组的合并
+2. 数组的克隆
+3. 将伪数组转为真正的数组
 
 
