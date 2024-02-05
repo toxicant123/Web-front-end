@@ -20,3 +20,61 @@ const 关键字用来声明常量，const 声明有以下特点
 5) 块儿级作用域
 
 应用场景：声明对象类型使用 const，非对象类型声明选择 let
+
+### 3. 变量的解构赋值
+
+ES6 允许按照一定模式，从数组和对象中提取值，对变量进行赋值，这被称为解构赋值。
+
+```js
+const user = {
+    id: 3,
+    name: 'Tom',
+    hobby: 'Jack',
+    action() {
+        console.log('catch!')
+    }
+}
+
+const {id, name, hobby, action} = user;
+
+console.log(id, name, hobby)
+action()
+```
+
+### 4. 模板字符串
+
+```js
+const user = {
+    id: 3,
+    name: 'Tom',
+    hobby: 'Jack',
+    action() {
+        console.log('catch!')
+    }
+}
+
+let str = `user id is ${user.id}, name is ${user.name}, hobby is ${user.hobby}`
+
+console.log(str)
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
