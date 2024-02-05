@@ -43,6 +43,10 @@ action()
 
 ### 4. 模板字符串
 
+模板字符串（template string）是增强版的字符串，用反引号（`）标识，特点：
+1) 字符串中可以出现换行符
+2) 可以使用 ${xxx} 形式输出变量
+
 ```js
 const user = {
     id: 3,
@@ -58,16 +62,45 @@ let str = `user id is ${user.id}, name is ${user.name}, hobby is ${user.hobby}`
 console.log(str)
 ```
 
+### 5. 简化对象写法
 
+ES6 允许在大括号里面，直接写入变量和函数，作为对象的属性和方法。这样的书写更加简洁。
 
+```js
+let id = 3
+let name = 'Tom'
+let hobby = 'Jack'
 
+function action() {
+    console.log('catch!')
+}
 
+const user = {
+    id,
+    name,
+    hobby,
+    action
+}
+```
 
+### 6. 箭头函数
 
+ES6 允许使用「箭头」（=>）定义函数。
 
+```js
+let f = e => console.log(e)
+```
 
+箭头函数的注意点：
+1) 如果形参只有一个，则小括号可以省略
+2) 函数体如果只有一条语句，则花括号可以省略，函数的返回值为该条语句的执行结果
+3) 箭头函数 this 指向声明时所在作用域下 this 的值
+4) 箭头函数不能作为构造函数实例化
+5) 不能使用 arguments
 
+注意：箭头函数不会更改 this 指向，用来指定回调函数会非常合适
 
+### 7. rest 参数
 
 
 
