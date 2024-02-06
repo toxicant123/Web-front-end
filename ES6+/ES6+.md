@@ -166,13 +166,57 @@ console.log(arr, obj)
 
 ### 10. Symbol
 
-unknow
+unknown
 
+### 11. 迭代器
 
+遍历器（Iterator）就是一种机制。它是一种接口，为各种不同的数据结构提供统一的访问机制。任何数据结构只要部署 Iterator 接口，就可以完成遍历操作。
+1) ES6 创造了一种新的遍历命令 for...of 循环，Iterator 接口主要供 for...of 消费
+2) 原生具备 iterator 接口的数据(可用 for of 遍历)
+   1) Array
+   2) Arguments
+   3) Set
+   4) Map
+   5) String
+   6) TypedArray
+   7) NodeList
+3) 工作原理
+   1) 创建一个指针对象，指向当前数据结构的起始位置
+   2) 第一次调用对象的 next 方法，指针自动指向数据结构的第一个成员
+   3) 接下来不断调用 next 方法，指针一直往后移动，直到指向最后一个成员
+   4) 每调用 next 方法返回一个包含 value 和 done 属性的对象
 
+注: 需要自定义遍历数据的时候，要想到迭代器。
 
+自定义迭代器：
 
+```js
+const user = {
+    id: 3,
+    name: 'Tom',
+    items: [
+        'book',
+        'flower',
+        'food',
+        'scarf'
+    ],
+    [Symbol.iterator]() {
+        let index = 0
+        return {
+            next: () => {
+                return {
+                    value: this.items[index],
+                    done: index++ === this.items.length
+                }
+            }
+        }
+    }
+}
 
+for (let e of user) {
+    console.log(e)
+}
+```
 
 
 
