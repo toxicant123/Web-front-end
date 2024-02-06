@@ -218,9 +218,30 @@ for (let e of user) {
 }
 ```
 
+### 12. 生成器
 
+生成器函数是 ES6 提供的一种异步编程解决方案，语法行为与传统函数完全不同
 
+```js
 
+function * info(arg1) {
+
+    let arg2 = yield `A lot of ${arg1} is coming`
+
+    let arg3 = yield `Weapon is under the ${arg2}`
+
+    let arg4 = yield `Car is full of ${arg3}`
+
+    return `Go and get it, ${arg4}`
+}
+
+let infos = info('enemy');
+
+console.log(infos.next().value)
+console.log(infos.next('desk').value)
+console.log(infos.next('oil').value)
+console.log(infos.next('John').value)
+```
 
 
 
