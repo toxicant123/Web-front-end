@@ -223,7 +223,6 @@ for (let e of user) {
 生成器函数是 ES6 提供的一种异步编程解决方案，语法行为与传统函数完全不同
 
 ```js
-
 function * info(arg1) {
 
     let arg2 = yield `A lot of ${arg1} is coming`
@@ -243,7 +242,37 @@ console.log(infos.next('oil').value)
 console.log(infos.next('John').value)
 ```
 
+启动程序1s后控制台输出111，再过2s输出222，再过3s输出333
 
+```js
+function one() {
+    setTimeout(() => {
+        console.log(111)
+        iterator.next()
+    },1000)
+}
+
+function two() {
+    setTimeout(() => {
+        console.log(222)
+        iterator.next()
+    }, 2000)
+}
+function three() {
+    setTimeout(() => {
+        console.log(333)
+    }, 3000)
+}
+
+function * gen() {
+    yield one()
+    yield two()
+    yield three()
+}
+
+let iterator = gen();
+iterator.next()
+```
 
 
 
