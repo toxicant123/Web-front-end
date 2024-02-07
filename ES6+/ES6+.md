@@ -331,3 +331,56 @@ p.then(v => {
     console.log('读取失败')
 })
 ```
+
+#### 13.3 Promise封装ajax
+
+```js
+const p = new Promise((resolve, reject) => {
+    const xhr = new XMLHttpRequest()
+
+    xhr.open('GET', 'http://localhost:8080/hello')
+
+    xhr.send()
+
+    xhr.onreadystatechange = () => {
+        if (xhr.readyState === 4) {
+            if (xhr.status >= 200 && xhr.status <= 300) {
+                resolve(xhr.response)
+            } else {
+                reject(xhr.status)
+            }
+        }
+    }
+})
+
+p.then(v => {
+    console.log(v)
+}, r => {
+    console.log(r)
+})
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
