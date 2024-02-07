@@ -416,10 +416,29 @@ p.then(r => {
 })
 ```
 
+### 14. Set
 
+ES6 提供了新的数据结构 Set（集合）。它类似于数组，但成员的值都是唯一的，集合实现了 iterator 接口，所以可以使用『扩展运算符』和『for...of...』进行遍历，集合的属性和方法：
+1) size 返回集合的元素个数
+2) add 增加一个新元素，返回当前集合
+3) delete 删除元素，返回 boolean 值
+4) has 检测集合中是否包含某个元素，返回 boolean 值
+5) clear 清空集合，返回 undefined
 
+```js
+const set = new Set(['a', 'a', 'b', 'b', 'b', 'c', 'd', 'd'])
 
+for (let element of set) {
+    console.log(element)
+}
 
+console.log(set.size)
+set.add('f')
+set.delete('a')
+console.log(set.has('b'))
+set.clear()
+console.log(set.size)
+```
 
 
 
