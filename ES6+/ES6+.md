@@ -360,6 +360,25 @@ p.then(v => {
 })
 ```
 
+#### 13.4 then方法
+
+```js
+const p = new Promise((resolve, reject) => {
+    setTimeout(() => {
+        resolve('用户数据')
+    }, 1000)
+})
+
+p.then(v => {
+    console.log(v)
+    return 'data2'
+}, r => {
+    console.log(r)
+}).then(v => {
+    console.log(v)
+})
+```
+
 
 
 
