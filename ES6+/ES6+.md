@@ -274,10 +274,41 @@ let iterator = gen();
 iterator.next()
 ```
 
+### 13. Promise
 
+Promise 是 ES6 引入的异步编程的新解决方案。语法上 Promise 是一个构造函数，用来封装异步操作并可以获取其成功或失败的结果。
 
+#### 13.1 Promise实例化
 
+```js
+const p = new Promise((resolve, reject) => {
+    setTimeout(() => {
+        let random = Math.random()
+        let data
+        if (random > 0.5) {
+            data = {
+                status: 1,
+                msg: 'success',
+                data: 200
+            }
+            resolve(data)
+        } else {
+            data = {
+                status: 0,
+                msg: 'fail',
+                data: 0
+            }
+            reject(data)
+        }
+    }, 1000)
+})
 
+p.then(v => {
+    console.log(v)
+}, r => {
+    console.log(r)
+})
+```
 
-
+#### 13.2 Promise读取文件
 
