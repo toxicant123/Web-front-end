@@ -312,3 +312,22 @@ p.then(v => {
 
 #### 13.2 Promise读取文件
 
+```js
+const fs = require('fs')
+
+const p = new Promise((resolve, reject) => {
+    fs.readFile('./resources/论诗五首.txt', (err, data) => {
+        if (err) {
+            reject(err)
+        }
+
+        resolve(data)
+    })
+})
+
+p.then(v => {
+    console.log(v.toString())
+}, r => {
+    console.log('读取失败')
+})
+```
