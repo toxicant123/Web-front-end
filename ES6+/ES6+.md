@@ -379,7 +379,42 @@ p.then(v => {
 })
 ```
 
+链式调用：
 
+```js
+const fs = require('fs')
+
+// fs.readFile('./resources/论诗五首.txt', (err1, data1) => {
+//     fs.readFile('./resources/江雪.txt', (err2, data2) => {
+//         fs.readFile('./resources/送友人.txt', (err3, data3) => {
+//             let result = data1 + '\r\n' + data2 + '\r\n' + data3
+//             console.log(result)
+//         })
+//     })
+// })
+
+const p = new Promise((resolve, reject) => {
+    fs.readFile('./resources/论诗五首.txt', (err, data) => {
+        resolve(data)
+    })
+})
+
+p.then(r => {
+    return new Promise((resolve, reject) => {
+        fs.readFile('./resources/江雪.txt', (err, data) => {
+            resolve(r + '\r\n' + data)
+        })
+    })
+}).then(r => {
+    return new Promise((resolve, reject) => {
+        fs.readFile('./resources/送友人.txt', (err, data) => {
+            resolve(r + '\r\n' + data)
+        })
+    })
+}).then(r => {
+    console.log(r)
+})
+```
 
 
 
