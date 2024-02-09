@@ -512,8 +512,29 @@ class SmartPhone extends Phone {
 }
 ```
 
+### 17. 数值扩展
 
+#### 17.1. 二进制和八进制
 
+ES6 提供了二进制和八进制数值的新的写法，分别用前缀 0b 和 0o 表示。
+
+#### 17.2. Number.isFinite() 与 Number.isNaN()
+
+Number.isFinite() 用来检查一个数值是否为有限的
+
+Number.isNaN() 用来检查一个值是否为 NaN
+
+#### 17.3. Number.parseInt() 与 Number.parseFloat()
+
+ES6 将全局方法 parseInt 和 parseFloat，移植到 Number 对象上面，使用不变。
+
+#### 17.4. Math.trunc
+
+用于去除一个数的小数部分，返回整数部分。
+
+#### 17.5 Number.isInteger
+
+Number.isInteger() 用来判断一个数值是否为整数
 
 
 
