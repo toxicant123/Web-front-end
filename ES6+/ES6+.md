@@ -543,7 +543,7 @@ ES6 新增了一些 Object 对象的方法
 2) Object.assign 对象的合并，将源对象的所有可枚举属性，复制到目标对象
 3) \_\_proto__、setPrototypeOf、 setPrototypeOf 可以直接设置对象的原型
 
-
+### 19. 模块化
 
 
 
