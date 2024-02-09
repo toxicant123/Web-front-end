@@ -462,7 +462,54 @@ ES6 提供了更接近传统语言的写法，引入了 Class（类）这个概�
 6) 父类方法可以重写
 
 ```js
+class Phone {
 
+    static name = '手机'
+
+    static change() {
+        console.log('我可以改变世界！')
+    }
+
+    constructor(brand, price) {
+        this.brand = brand
+        this.price = price
+    }
+
+    call() {
+        console.log('我可以打电话')
+    }
+}
+
+class SmartPhone extends Phone {
+    constructor(brand, price, color, size) {
+        super(brand, price)
+        this.size = size
+        this._color = color;
+    }
+
+    photo() {
+        console.log('拍照')
+    }
+
+    playGame() {
+        console.log('玩游戏')
+    }
+
+    call() {
+        console.log('我可以进行视频通话')
+    }
+
+
+    get color() {
+        console.log('color属性被读取了')
+        return this._color;
+    }
+
+    set color(value) {
+        console.log('color属性被修改了')
+        this._color = value;
+    }
+}
 ```
 
 
