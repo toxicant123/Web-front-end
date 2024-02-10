@@ -556,5 +556,108 @@ ES6 新增了一些 Object 对象的方法
 
 #### 19.2 模块化规范产品
 
+ES6 之前的模块化规范有：
+1) CommonJS => NodeJS、Browserify
+2) AMD => requireJS
+3) CMD => seaJS
+
+#### 19.3 ES6 模块化语法
+
+模块功能主要由两个命令构成：export 和 import。
+* export 命令用于规定模块的对外接口
+* import 命令用于输入其他模块提供的功能
+
+分别暴露：
+
+```js
+export let a = 1
+
+export function A() {
+    console.log('this is func A')
+}
+```
+
+统一暴露：
+
+```js
+let b = 2
+
+function B() {
+    console.log('this is func B')
+}
+
+export {
+    b,
+    B
+}
+```
+
+默认暴露：
+
+```js
+let c = 3
+
+function C() {
+    console.log('this is func C')
+}
+
+export default {
+    c,
+    C
+}
+```
+
+通用导入：
+
+```js
+import * as m1 from './1.js'
+import * as m2 from './2.js'
+import * as m3 from './3.js'
+
+console.log(m1.a, m2.b, m3.default.c)
+
+m1.A()
+m2.B()
+m3.default.C()
+```
+
+解构赋值导入：
+
+```js
+import {a, A} from './1.js'
+import {b as b1, B} from './2.js'
+import {default as m3} from './3.js'
+
+console.log(a, b1, m3.c)
+
+A()
+B()
+m3.C()
+```
+
+简便导入（只能用于导入默认暴露的模块）：
+
+```js
+import m3 from './3.js'
+
+console.log(m3.c)
+m3.C()
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
