@@ -753,6 +753,53 @@ const o = {
 console.log(o)
 ```
 
+### 2. 正则表达式命名捕获组
+
+ES9 允许命名捕获组使用符号『?<name>』,这样获取捕获结果可读性更强
+
+```js
+let str = '<a href="http://www.atguigu.com">尚硅谷</a>';
+
+const reg = /<a href="(?<url>.*)">(?<text>.*)<\/a>/;
+
+const result = reg.exec(str);
+
+console.log(result.groups.url);
+
+console.log(result.groups.text);
+```
+
+### 3. 正则表达式反向断言
+
+ES9 支持反向断言，通过对匹配结果前面的内容进行判断，对匹配进行筛选。
+
+```js
+//声明字符串
+let str = 'JS5211314你知道么555啦啦啦';
+//正向断言
+const reg1 = /\d+(?=啦)/;
+const result1 = reg1.exec(str);
+//反向断言
+const reg2 = /(?<=么)\d+/;
+const result2 = reg2.exec(str);
+console.log(result1, result2);
+```
+
+### 4. 正则表达式 dotAll 模式
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
