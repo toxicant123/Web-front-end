@@ -707,10 +707,51 @@ async function main() {
 main()
 ```
 
+### 2. Object.values 和 Object.entries
+
+1. Object.values()方法返回一个给定对象的所有可枚举属性值的数组
+2. Object.entries()方法返回一个给定对象自身可遍历属性 [key,value] 的数组
+
+### 3. Object.getOwnPropertyDescriptors
+
+该方法返回指定对象所有自身属性的描述对象
+
+## ES9
+
+### 1. Rest/Spread 属性
+
+Rest 参数与 spread 扩展运算符在 ES6 中已经引入，不过 ES6 中只针对于数组，在 ES9 中为对象提供了像数组一样的 rest 参数和扩展运算符
+
+```js
+function connect({host, port, ...user}) {
+    console.log(host, port, user)
+}
+
+connect({
+    host: 'localhost',
+    port: 8080,
+    username: 'admin',
+    password: 123456
+})
 
 
+const o1 = {
+    a: 1,
+    b: 2
+}
 
+const o2 = {
+    c: 3,
+    d: 4
+}
 
+const o = {
+    ...o1,
+    ...o2
+}
+
+console.log(o)
+```
 
 
 
