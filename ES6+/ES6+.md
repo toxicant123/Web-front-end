@@ -644,8 +644,29 @@ console.log(m3.c)
 m3.C()
 ```
 
+## ES7
 
+### 1. Array.prototype.includes
 
+includes 方法用来检测数组中是否包含某个元素，返回布尔类型值
+
+```js
+const arr = [1, 2, 3, 4, 5]
+
+console.log(arr.includes(1), arr.includes(6))
+```
+
+### 2. 指数操作符
+
+在 ES7 中引入指数运算符「**」，用来实现幂运算，功能与 Math.pow 结果相同
+
+```js
+let num = 2 ** 10
+
+console.log(num)
+```
+
+## ES8
 
 
 
