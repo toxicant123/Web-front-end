@@ -787,9 +787,33 @@ console.log(result1, result2);
 
 ### 4. 正则表达式 dotAll 模式
 
+正则表达式中点.匹配除回车外的任何单字符，标记『s』改变这种行为，允许行终止符出现
 
+```js
+let str = `
+<ul>
+ <li>
+ <a>肖生克的救赎</a>
+ <p>上映日期: 1994-09-10</p>
+ </li>
+ <li>
+ <a>阿甘正传</a>
+ <p>上映日期: 1994-07-06</p>
+ </li>
+</ul>`;
+//声明正则
+const reg = /<li>.*?<a>(.*?)<\/a>.*?<p>(.*?)<\/p>/gs;
+let result;
+//执行匹配
+let data = [];
+while (result = reg.exec(str)) {
+    data.push({title: result[1], time: result[2]});
+}
+//输出结果
+console.log(data);
+```
 
-
+## ES10
 
 
 
