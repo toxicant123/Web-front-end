@@ -824,7 +824,7 @@ let o = Object.fromEntries([
 ])
 ```
 
-### 2. trimStart 和 trimEnd
+### 2. String.prototype.trimStart 和 String.prototype.trimEnd
 
 ```js
 let str = '   a    '
@@ -834,10 +834,25 @@ console.log(1 + str.trimStart() + 1)
 console.log(1 + str.trimEnd() + 1)
 ```
 
+### 3. Array.prototype.flat 与 flatMap
 
+```js
+let arr = [[1, 2], [3, 4], [5, 6]]
 
+console.log(arr.flat())
 
+console.log(arr.flatMap(e => e.map(e => e + 5)))
+```
 
+### 4. Symbol.prototype.description
+
+```js
+let s = Symbol('a')
+
+console.log(s.description)
+```
+
+## ES11
 
 
 
