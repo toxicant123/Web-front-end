@@ -854,7 +854,33 @@ console.log(s.description)
 
 ## ES11
 
+### 1. 私有属性
 
+```js
+class Person {
+    name
+
+    #age = 1
+
+    #weight
+
+    constructor(name, age, weight) {
+        this.name = name
+        this.#age = age
+        this.#weight = weight
+    }
+
+    get age() {
+        return this.#age
+    }
+}
+
+const p = new Person('Tom', 7, '15');
+
+console.log(p.age)
+```
+
+### 2. Promise.allSettled
 
 
 
