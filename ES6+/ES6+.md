@@ -815,10 +815,24 @@ console.log(data);
 
 ## ES10
 
+### 1. Object.fromEntries
 
+```js
+let o = Object.fromEntries([
+    [1, 2],
+    ['a', 'b']
+])
+```
 
+### 2. trimStart 和 trimEnd
 
+```js
+let str = '   a    '
 
+console.log(1 + str.trim() + 1)
+console.log(1 + str.trimStart() + 1)
+console.log(1 + str.trimEnd() + 1)
+```
 
 
 
