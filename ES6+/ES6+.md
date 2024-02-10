@@ -882,6 +882,29 @@ console.log(p.age)
 
 ### 2. Promise.allSettled
 
+```js
+const p1 = new Promise((resolve, reject) => {
+    setTimeout(() => {
+        resolve('商品数量 - 1')
+    }, 1000)
+})
+
+const p2 = new Promise((resolve, reject) => {
+    setTimeout(() => {
+        reject('出错啦')
+    }, 1000)
+})
+
+const result = Promise.allSettled([p1, p2])
+
+result.then(v => {
+    console.log('success')
+    console.log(v)
+}, r => {
+    console.log('failed')
+    console.log(r)
+})
+```
 
 
 
