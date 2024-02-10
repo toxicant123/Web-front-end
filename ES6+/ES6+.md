@@ -668,8 +668,44 @@ console.log(num)
 
 ## ES8
 
+### 1. async 和 await
 
+async 和 await 两种语法结合可以让异步代码像同步代码一样：
+1. async 函数的返回值为 promise 对象
+2. promise 对象的结果由 async 函数执行的返回值决定
+3. await 必须写在 async 函数中
+4. await 右侧的表达式一般为 promise 对象
+5. await 返回的是 promise 成功的值
+6. await 的 promise 失败了, 就会抛出异常, 需要通过 try...catch 捕获处理
 
+读取文件：
+
+```js
+const fs = require('fs')
+
+function read(path) {
+    return new Promise((resolve, reject) => {
+        fs.readFile(path, (err, data) => {
+            if (err) {
+                throw err
+            }
+            resolve(data)
+        })
+    })
+}
+
+async function main() {
+    let s1 = await read('./resources/江雪.txt')
+
+    let s2 = await read('./resources/论诗五首.txt')
+
+    let s3 = await read('./resources/送友人.txt')
+
+    console.log(s1.toString(), s2.toString(), s3.toString())
+}
+
+main()
+```
 
 
 
