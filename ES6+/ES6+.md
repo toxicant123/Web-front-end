@@ -952,6 +952,8 @@ console.log(BigInt(1234))
 console.log(n + 55n)
 ```
 
+### 6. globalThis
 
-
-
+```js
+console.log(globalThis)
+```
