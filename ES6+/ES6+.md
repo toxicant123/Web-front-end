@@ -906,5 +906,27 @@ result.then(v => {
 })
 ```
 
+### 3. String.prototype.matchAll
 
+```js
+let str = `
+<ul>
+ <li>
+ <a>肖生克的救赎</a>
+ <p>上映日期: 1994-09-10</p>
+ </li>
+ <li>
+ <a>阿甘正传</a>
+ <p>上映日期: 1994-07-06</p>
+ </li>
+</ul>`;
+
+const reg = /<li>.*?<a>(.*?)<\/a>.*?<p>(.*?)<\/p>/sg;
+
+const result = str.matchAll(reg)
+
+for (let e of result) {
+    console.log(e)
+}
+```
 
