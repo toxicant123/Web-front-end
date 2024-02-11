@@ -930,3 +930,28 @@ for (let e of result) {
 }
 ```
 
+### 4. 动态import
+
+```js
+setTimeout(() => {
+    import('./hello.js').then(v => {
+        v.hello()
+    })
+}, 1000)
+```
+
+### 5. BigInt
+
+```js
+let n = 521n;
+
+console.log(n, typeof n)
+
+console.log(BigInt(1234))
+
+console.log(n + 55n)
+```
+
+
+
+
