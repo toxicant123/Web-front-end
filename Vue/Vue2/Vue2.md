@@ -9,7 +9,7 @@
 
 ## 二、什么是Vue
 
-概念：Vue (读音 /vjuː/，类似于 view) 是一套 **构建用户界面 ** 的 **渐进式** **框架**
+概念：Vue (读音 /vjuː/，类似于 view) 是一套 **构建用户界面** 的 **渐进式** **框架**
 
 Vue2官网：<https://v2.cn.vuejs.org/>
 
@@ -33,8 +33,6 @@ Vue2官网：<https://v2.cn.vuejs.org/>
 
    场景：整站开发
 
-
-
 ### 3.什么是框架
 
 所谓框架：就是一套完整的解决方案
@@ -50,25 +48,13 @@ Vue2官网：<https://v2.cn.vuejs.org/>
 - 库，类似工具箱，是一堆方法的集合，比如 axios、lodash、echarts等
 - 框架，是一套完整的解决方案，实现了大部分功能，我们只需要按照一定的规则去编码即可。
 
-下图是 库 和 框架的对比。
+下图是 库 和 框架 的对比。
 
 ![68187662027](assets/1681876620277.png)
 
 框架的特点：有一套必须让开发者遵守的**规则**或者**约束**
 
 咱们学框架就是学习的这些规则 [官网](https://v2.cn.vuejs.org/)
-
-### 总结：什么是Vue？
-
-Vue是什么：
-
-什么是构建用户界面：
-
-什么是渐进式：
-
-什么是框架：
-
-
 
 ## 三、创建Vue实例
 
@@ -125,8 +111,8 @@ obj.fn()
 
 插值表达式语法：{{ 表达式 }}
 
-```js
-<h3>{{title}}<h3>
+```vue
+<h3>{{title}}</h3>
 
 <p>{{nickName.toUpperCase()}}</p>
 
@@ -141,7 +127,7 @@ obj.fn()
 
 ### 3.错误用法
 
-```js
+```vue
 1.在插值表达式中使用的数据 必须在data中进行了提供
 <p>{{hobby}}</p>  //如果在data中不存在 则会报错
 
@@ -247,23 +233,22 @@ vue 中的指令按照不同的用途可以分为如下 6 大类：
 
 代码演示：
 
-```js
- 
-  <div id="app">
+```vue
+<div id="app">
     <h2>个人信息</h2>
-	// 既然指令是vue提供的特殊的html属性，所以咱们写的时候就当成属性来用即可
-    <p v-text="uname">姓名：</p> 
+    // 既然指令是vue提供的特殊的html属性，所以咱们写的时候就当成属性来用即可
+    <p v-text="uname">姓名：</p>
     <p v-html="intro">简介：</p>
-  </div> 
+</div>
 
 <script>
-        const app = new Vue({
-            el:'#app',
-            data:{
-                uname:'张三',
-                intro:'<h2>这是一个<strong>非常优秀</strong>的boy<h2>'
-            }
-        })
+    const app = new Vue({
+        el: '#app',
+        data: {
+            uname: '张三',
+            intro: '<h2>这是一个<strong>非常优秀</strong>的boy<h2>'
+        }
+    })
 </script>
 ```
 
@@ -293,21 +278,21 @@ vue 中的指令按照不同的用途可以分为如下 6 大类：
 
    示例代码：
 
-   ```js
-     <div id="app">
-       <div class="box">我是v-show控制的盒子</div>
-       <div class="box">我是v-if控制的盒子</div>
-     </div>
-
-     <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
-     <script>
-       const app = new Vue({
-         el: '#app',
-         data: {
+   ```vue
+   <div id="app">
+   <div class="box">我是v-show控制的盒子</div>
+   <div class="box">我是v-if控制的盒子</div>
+   </div>
+   
+   <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+   <script>
+   const app = new Vue({
+       el: '#app',
+       data: {
            flag: false
-         }
-       })
-     </script>
+       }
+   })
+   </script>
    ```
 
 3. v-else 和 v-else-if
@@ -316,10 +301,27 @@ vue 中的指令按照不同的用途可以分为如下 6 大类：
     2. 语法：v-else  v-else-if="表达式"
     3. 需要紧接着v-if使用
 
+```vue
+<div id="app">
+<div class="box">我是v-show控制的盒子</div>
+<div class="box">我是v-if控制的盒子</div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+<script>
+const app = new Vue({
+    el: '#app',
+    data: {
+        flag: false
+    }
+})
+</script>
+```
+   
 示例代码：
 
-```js
-  <div id="app">
+```vue
+<div id="app">
     <p>性别：♂ 男</p>
     <p>性别：♀ 女</p>
     <hr>
@@ -327,19 +329,19 @@ vue 中的指令按照不同的用途可以分为如下 6 大类：
     <p>成绩评定B：奖励周末郊游</p>
     <p>成绩评定C：奖励零食礼包</p>
     <p>成绩评定D：惩罚一周不能玩手机</p>
-  </div>
-  
-  <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
-  <script>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+<script>
 
     const app = new Vue({
-      el: '#app',
-      data: {
-        gender: 2,
-        score: 95
-      }
+        el: '#app',
+        data: {
+            gender: 2,
+            score: 95
+        }
     })
-  </script>
+</script>
 ```
 
 
@@ -355,7 +357,7 @@ vue 中的指令按照不同的用途可以分为如下 6 大类：
 
 1. 内联语句
 
-   ```js
+   ```vue
    <div id="app">
        <button @click="count--">-</button>
        <span>{{ count }}</span>
@@ -379,20 +381,21 @@ vue 中的指令按照不同的用途可以分为如下 6 大类：
     - 事件处理函数应该写到一个跟data同级的配置项（methods）中
     - methods中的函数内部的this都指向Vue实例
 
-```js
+```vue
 <div id="app">
+    <div></div>
     <button>切换显示隐藏</button>
     <h1 v-show="isShow">黑马程序员</h1>
-  </div>
-  <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
-  <script>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+<script>
     const app = new Vue({
-      el: '#app',
-      data: {
-        isShow: true
-      }
+        el: '#app',
+        data: {
+            isShow: true
+        }
     })
-  </script>
+</script>
 ```
 
 3.给事件处理函数传参
