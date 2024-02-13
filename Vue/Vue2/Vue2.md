@@ -181,17 +181,12 @@ vue 中的指令按照不同的用途可以分为如下 6 大类：
 内容渲染指令用来辅助开发者渲染 DOM 元素的文本内容。常用的内容渲染指令有如下2 个：
 
 - v-text（类似innerText）
-
-- - 使用语法：`<p v-text="uname">hello</p>`，意思是将 uame 值渲染到 p 标签中
-- 类似 innerText，使用该语法，会覆盖 p 标签原有内容
-
-
+  - 使用语法：`<p v-text="uname">hello</p>`，意思是将 uame 值渲染到 p 标签中
+  - 类似 innerText，使用该语法，会覆盖 p 标签原有内容
 - v-html（类似 innerHTML）
-
-
-- - 使用语法：`<p v-html="intro">hello</p>`，意思是将 intro 值渲染到 p 标签中
-- 类似 innerHTML，使用该语法，会覆盖 p 标签原有内容
-- 类似 innerHTML，使用该语法，能够将HTML标签的样式呈现出来。
+  - 使用语法：`<p v-html="intro">hello</p>`，意思是将 intro 值渲染到 p 标签中
+  - 类似 innerHTML，使用该语法，会覆盖 p 标签原有内容
+  - 类似 innerHTML，使用该语法，能够将HTML标签的样式呈现出来。
 
 代码演示：
 
@@ -219,20 +214,18 @@ vue 中的指令按照不同的用途可以分为如下 6 大类：
 条件判断指令，用来辅助开发者按需控制 DOM 的显示与隐藏。条件渲染指令有如下两个，分别是：
 
 1. v-show
-
-    1. 作用：  控制元素显示隐藏
-    2. 语法：  v-show = "表达式"   表达式值为 true 显示， false 隐藏
-    3. 原理：  切换 display:none 控制显示隐藏
+    1. 作用：控制元素显示隐藏
+    2. 语法：v-show = "表达式"，表达式值为 true 显示， false 隐藏
+    3. 原理：切换 display:none 控制显示隐藏
     4. 场景：频繁切换显示隐藏的场景
 
    ![68189122828](assets/1681891228284.png)
 
 2. v-if
-
-    1. 作用：  控制元素显示隐藏（条件渲染）
-    2. 语法：  v-if= "表达式"          表达式值 true显示， false 隐藏
-    3. 原理：  基于条件判断，是否创建 或 移除元素节点
-    4. 场景：  要么显示，要么隐藏，不频繁切换的场景
+    1. 作用：控制元素显示隐藏（条件渲染）
+    2. 语法：v-if= "表达式"，表达式值 true 显示，false 隐藏
+    3. 原理：基于条件判断，是否创建 或 移除元素节点
+    4. 场景：要么显示，要么隐藏，不频繁切换的场景
 
    ![68189123775](assets/1681891237750.png)
 
@@ -240,41 +233,40 @@ vue 中的指令按照不同的用途可以分为如下 6 大类：
 
    ```vue
    <div id="app">
-   <div class="box">我是v-show控制的盒子</div>
-   <div class="box">我是v-if控制的盒子</div>
+       <div class="box">我是v-show控制的盒子</div>
+       <div class="box">我是v-if控制的盒子</div>
    </div>
    
    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
    <script>
-   const app = new Vue({
-       el: '#app',
-       data: {
-           flag: false
-       }
-   })
+       const app = new Vue({
+           el: '#app',
+           data: {
+               flag: false
+           }
+       })
    </script>
    ```
 
 3. v-else 和 v-else-if
-
     1. 作用：辅助v-if进行判断渲染
     2. 语法：v-else  v-else-if="表达式"
     3. 需要紧接着v-if使用
 
 ```vue
 <div id="app">
-<div class="box">我是v-show控制的盒子</div>
-<div class="box">我是v-if控制的盒子</div>
+    <div class="box">我是v-show控制的盒子</div>
+    <div class="box">我是v-if控制的盒子</div>
 </div>
 
 <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
 <script>
-const app = new Vue({
-    el: '#app',
-    data: {
-        flag: false
-    }
-})
+    const app = new Vue({
+        el: '#app',
+        data: {
+            flag: false
+        }
+    })
 </script>
 ```
    
