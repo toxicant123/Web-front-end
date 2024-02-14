@@ -215,7 +215,7 @@ vue 中的指令按照不同的用途可以分为如下 6 大类：
 
 1. v-show
     1. 作用：控制元素显示隐藏
-    2. 语法：v-show = "表达式"，表达式值为 true 显示， false 隐藏
+    2. 语法：v-show = "表达式"，表达式值为 true 显示，false 隐藏
     3. 原理：切换 display:none 控制显示隐藏
     4. 场景：频繁切换显示隐藏的场景
 
@@ -333,7 +333,7 @@ vue 中的指令按照不同的用途可以分为如下 6 大类：
     <button>切换显示隐藏</button>
     <h1 v-show="isShow">黑马程序员</h1>
 </div>
-<script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+
 <script>
     const app = new Vue({
         el: '#app',
@@ -344,52 +344,49 @@ vue 中的指令按照不同的用途可以分为如下 6 大类：
 </script>
 ```
 
-3.给事件处理函数传参
+3. 给事件处理函数传参
 
 - 如果不传递任何参数，则方法无需加小括号；methods方法中可以直接使用 e 当做事件对象
-
-
 - 如果传递了参数，则实参 `$event` 表示事件对象，固定用法。
 
-```js
- <style>
+```vue
+<style>
     .box {
-      border: 3px solid #000000;
-      border-radius: 10px;
-      padding: 20px;
-      margin: 20px;
-      width: 200px;
+        border: 3px solid #000000;
+        border-radius: 10px;
+        padding: 20px;
+        margin: 20px;
+        width: 200px;
     }
-    h3 {
-      margin: 10px 0 20px 0;
-    }
-    p {
-      margin: 20px;
-    }
-  </style>
 
- <div id="app">
+    h3 {
+        margin: 10px 0 20px 0;
+    }
+
+    p {
+        margin: 20px;
+    }
+</style>
+
+<div id="app">
     <div class="box">
-      <h3>小黑自动售货机</h3>
-      <button>可乐5元</button>
-      <button>咖啡10元</button>
-      <button>牛奶8元</button>
+        <h3>小黑自动售货机</h3>
+        <button>可乐5元</button>
+        <button>咖啡10元</button>
+        <button>牛奶8元</button>
     </div>
     <p>银行卡余额：{{ money }}元</p>
-  </div>
+</div>
 
-  <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
-  <script>
+<script>
     const app = new Vue({
-      el: '#app',
-      data: {
-        money: 100
-      }
+        el: '#app',
+        data: {
+            money: 100
+        }
     })
-  </script>
+</script>
 ```
-
-
 
 ## 十一、属性绑定指令
 
