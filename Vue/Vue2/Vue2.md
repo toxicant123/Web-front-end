@@ -376,9 +376,9 @@ vue 中的指令按照不同的用途可以分为如下 6 大类：
 <div id="app">
     <div class="box">
         <h3>小黑自动售货机</h3>
-        <button>可乐5元</button>
-        <button>咖啡10元</button>
-        <button>牛奶8元</button>
+        <button @click="buy(5)">可乐5元</button>
+        <button @click="buy(10)">咖啡10元</button>
+        <button @click="buy(8)">牛奶8元</button>
     </div>
     <p>银行卡余额：{{ money }}元</p>
 </div>
@@ -387,7 +387,12 @@ vue 中的指令按照不同的用途可以分为如下 6 大类：
     const app = new Vue({
         el: '#app',
         data: {
-            money: 100
+            money: 1000
+        },
+        methods: {
+            buy(num) {
+                this.money -= num
+            }
         }
     })
 </script>
