@@ -303,42 +303,47 @@ vue 中的指令按照不同的用途可以分为如下 6 大类：
 
 1. 内联语句
 
-   ```vue
-   <div id="app">
-       <button @click="count--">-</button>
-       <span>{{ count }}</span>
-       <button v-on:click="count++">+</button>
-   </div>
-   
-   <script>
-       const app = new Vue({
-           el: '#app',
-           data: {
-               count: 100
-           }
-       })
-   </script>
-   ```
-
-2. 事件处理函数
-
-   注意：
-
-    - 事件处理函数应该写到一个跟data同级的配置项（methods）中
-    - methods中的函数内部的this都指向Vue实例
-
 ```vue
 <div id="app">
-    <div></div>
-    <button>切换显示隐藏</button>
-    <h1 v-show="isShow">黑马程序员</h1>
+    <button @click="count--">-</button>
+    <span>{{ count }}</span>
+    <button v-on:click="count++">+</button>
 </div>
 
 <script>
     const app = new Vue({
         el: '#app',
         data: {
+            count: 100
+        }
+    })
+</script>
+```
+
+2. 事件处理函数
+
+   注意：
+    - 事件处理函数应该写到一个跟data同级的配置项（methods）中
+    - methods中的函数内部的this都指向Vue实例
+
+```vue
+<div id="app">
+    <button @click="change">切换显示隐藏</button>
+    <h1 v-show="isShow">黑马程序员</h1>
+</div>
+
+<script src="./js/vue.js"></script>
+
+<script>
+    const app = new Vue({
+        el: '#app',
+        data: {
             isShow: true
+        },
+        methods: {
+            change() {
+                this.isShow = !this.isShow
+            }
         }
     })
 </script>
