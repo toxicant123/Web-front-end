@@ -237,7 +237,6 @@ vue 中的指令按照不同的用途可以分为如下 6 大类：
        <div class="box">我是v-if控制的盒子</div>
    </div>
    
-   <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
    <script>
        const app = new Vue({
            el: '#app',
@@ -259,7 +258,6 @@ vue 中的指令按照不同的用途可以分为如下 6 大类：
     <div class="box">我是v-if控制的盒子</div>
 </div>
 
-<script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
 <script>
     const app = new Vue({
         el: '#app',
@@ -283,9 +281,7 @@ vue 中的指令按照不同的用途可以分为如下 6 大类：
     <p>成绩评定D：惩罚一周不能玩手机</p>
 </div>
 
-<script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
 <script>
-
     const app = new Vue({
         el: '#app',
         data: {
@@ -296,15 +292,13 @@ vue 中的指令按照不同的用途可以分为如下 6 大类：
 </script>
 ```
 
-
-
 ## 十、事件绑定指令
 
 使用Vue时，如需为DOM注册事件，及其的简单，语法如下：
 
-- <button v-on:事件名="内联语句">按钮</button>
-- <button v-on:事件名="处理函数">按钮</button>
-- <button v-on:事件名="处理函数(实参)">按钮</button>
+- \<button v-on:事件名="内联语句">按钮\</button>
+- \<button v-on:事件名="处理函数">按钮\</button>
+- \<button v-on:事件名="处理函数(实参)">按钮\</button>
 - `v-on:` 简写为 **@**
 
 1. 内联语句
@@ -314,16 +308,16 @@ vue 中的指令按照不同的用途可以分为如下 6 大类：
        <button @click="count--">-</button>
        <span>{{ count }}</span>
        <button v-on:click="count++">+</button>
-     </div>
-     <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
-     <script>
+   </div>
+   
+   <script>
        const app = new Vue({
-         el: '#app',
-         data: {
-           count: 100
-         }
+           el: '#app',
+           data: {
+               count: 100
+           }
        })
-     </script>
+   </script>
    ```
 
 2. 事件处理函数
