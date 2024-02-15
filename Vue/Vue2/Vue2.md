@@ -428,51 +428,52 @@ vue 中的指令按照不同的用途可以分为如下 6 大类：
 </script>
 ```
 
-
-
 ## 十二、小案例-波仔的学习之旅
 
 需求：默认展示数组中的第一张图片，点击上一页下一页来回切换数组中的图片
 
 实现思路：
+1. 数组存储图片路径 ['url1','url2','url3'，...]
+2. 可以准备个下标index 去数组中取图片地址。
+3. 通过v-bind给src绑定当前的图片地址
+4. 点击上一页下一页只需要修改下标的值即可
+5. 当展示第一张的时候，上一页按钮应该隐藏。展示最后一张的时候，下一页按钮应该隐藏
 
-1.数组存储图片路径 ['url1','url2','url3'，...]
+```vue
 
-2.可以准备个下标index 去数组中取图片地址。
-
-3.通过v-bind给src绑定当前的图片地址
-
-4.点击上一页下一页只需要修改下标的值即可
-
-5.当展示第一张的时候，上一页按钮应该隐藏。展示最后一张的时候，下一页按钮应该隐藏
-
-```js
- <div id="app">
-    <button>上一页</button>
+<div id="app">
+    <button @click="changeIndex(-1)" v-show="index > 0">上一页</button>
     <div>
-      <img src alt="">
+        <img :src="getImageSrc()" alt="">
     </div>
-    <button>下一页</button>
-  </div>
-  <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
-  <script>
+    <button @click="changeIndex(1)" v-show="index < list.length - 1">下一页</button>
+</div>
+
+<script>
     const app = new Vue({
-      el: '#app',
-      data: {
-        list: [
-          './imgs/11-00.gif',
-          './imgs/11-01.gif',
-          './imgs/11-02.gif',
-          './imgs/11-03.gif',
-          './imgs/11-04.png',
-          './imgs/11-05.png',
-        ]
-      }
+        el: '#app',
+        data: {
+            list: [
+                './imgs/11-00.gif',
+                './imgs/11-01.gif',
+                './imgs/11-02.gif',
+                './imgs/11-03.gif',
+                './imgs/11-04.png',
+                './imgs/11-05.png',
+            ],
+            index: 0
+        },
+        methods: {
+            changeIndex(n) {
+                this.index += n
+            },
+            getImageSrc() {
+                return this.list[this.index]
+            }
+        }
     })
-  </script>
+</script>
 ```
-
-
 
 ## 十三、列表渲染指令
 
