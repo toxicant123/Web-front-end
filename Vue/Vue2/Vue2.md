@@ -535,34 +535,39 @@ item从1 开始
 
 准备代码：
 
-```js
+```vue
 <div id="app">
     <h3>小黑的书架</h3>
     <ul>
-      <li>
-        <span>《红楼梦》</span>
-        <span>曹雪芹</span>
-        <button>删除</button>
-      </li>
+        <li v-for="(item, index) in booksList">
+            <span>{{ item.name }}</span>
+            <span>{{ item.author }}</span>
+            <button @click="del(item)">删除</button>
+        </li>
     </ul>
-  </div>
-  <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
-  <script>
+</div>
+
+<script src="./js/vue.js"></script>
+
+<script>
     const app = new Vue({
-      el: '#app',
-      data: {
-        booksList: [
-          { id: 1, name: '《红楼梦》', author: '曹雪芹' },
-          { id: 2, name: '《西游记》', author: '吴承恩' },
-          { id: 3, name: '《水浒传》', author: '施耐庵' },
-          { id: 4, name: '《三国演义》', author: '罗贯中' }
-        ]
-      }
+        el: '#app',
+        data: {
+            booksList: [
+                {id: 1, name: '《红楼梦》', author: '曹雪芹'},
+                {id: 2, name: '《西游记》', author: '吴承恩'},
+                {id: 3, name: '《水浒传》', author: '施耐庵'},
+                {id: 4, name: '《三国演义》', author: '罗贯中'}
+            ]
+        },
+        methods: {
+            del(item) {
+                this.booksList = this.booksList.filter(e => e.id !== item.id)
+            }
+        }
     })
-  </script>
+</script>
 ```
-
-
 
 ## 十五、v-for中的key
 
