@@ -487,7 +487,7 @@ v-for 指令需要使用 `(item, index) in arr` 形式的特殊语法，其中�
 
 此语法也可以遍历**对象和数字**
 
-```js
+```vue
 //遍历对象
 <div v-for="(value, key, index) in object">{{value}}</div>
 value:对象中的值
@@ -499,15 +499,37 @@ index:遍历索引从0开始
 item从1 开始
 ```
 
+```vue
+<div id="app">
+    <h3>小黑水果店</h3>
+    <ul>
+        <li v-for="(item, index) in list">
+            {{ item }} - {{ index }}
+        </li>
+    </ul>
+</div>
 
+<script>
+    const app = new Vue({
+        el: '#app',
+        data: {
+            list: [
+                '西瓜',
+                '苹果',
+                '鸭梨',
+                '榴莲'
+            ]
+        }
+    })
+</script>
+```
 
 ## 十四、小案例-小黑的书架
 
 需求：
 
-1.根据左侧数据渲染出右侧列表（v-for）
-
-2.点击删除按钮时，应该把当前行从列表中删除（获取当前行的id，利用filter进行过滤）
+1. 根据左侧数据渲染出右侧列表（v-for）
+2. 点击删除按钮时，应该把当前行从列表中删除（获取当前行的id，利用filter进行过滤）
 
 ![68189663267](assets/1681896632672.png)
 
