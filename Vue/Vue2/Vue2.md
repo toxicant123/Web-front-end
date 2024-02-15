@@ -401,32 +401,31 @@ vue 中的指令按照不同的用途可以分为如下 6 大类：
 
 ## 十一、属性绑定指令
 
-1. **作用：**动态设置html的标签属性 比如：src、url、title
-2. **语法**：**v-bind:**属性名=“表达式”
-3. **v-bind:**可以简写成 =>   **:**
+1. 作用：动态设置html的标签属性 比如：src、url、title
+2. 语法：v-bind:属性名=“表达式”
+3. v-bind：可以简写成 => :
 
 比如，有一个图片，它的 `src` 属性值，是一个图片地址。这个地址在数据 data 中存储。
 
 则可以这样设置属性值：
+- `<img v-bind:src="url"/>`
+- `<img :src="url"/>`（v-bind可以省略）
 
-- `<img v-bind:src="url" />`
-- `<img :src="url" />`   （v-bind可以省略）
-
-```js
-  <div id="app">
+```vue
+<div id="app">
     <img v-bind:src="imgUrl" v-bind:title="msg" alt="">
     <img :src="imgUrl" :title="msg" alt="">
-  </div>
-  <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
-  <script>
+</div>
+
+<script>
     const app = new Vue({
-      el: '#app',
-      data: {
-        imgUrl: './imgs/10-02.png',
-        msg: 'hello 波仔'
-      }
+        el: '#app',
+        data: {
+            imgUrl: './imgs/10-02.png',
+            msg: 'hello 波仔'
+        }
     })
-  </script>
+</script>
 ```
 
 
