@@ -670,8 +670,8 @@ item从1 开始
 
 ### 3.v-model修饰符
 
-- v-model.trim  —>去除首位空格
-- v-model.number —>转数字
+- v-model.trim —> 去除首位空格
+- v-model.number —> 转数字
 
 ### 4.事件修饰符
 
