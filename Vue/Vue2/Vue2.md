@@ -643,7 +643,7 @@ item从1 开始
 
 ### 1.什么是指令修饰符？
 
-所谓指令修饰符就是通过“.”指明一些指令**后缀** 不同的**后缀**封装了不同的处理操作  —> 简化代码
+所谓指令修饰符就是通过“.”指明一些指令**后缀**不同的**后缀**封装了不同的处理操作 —> 简化代码
 
 ### 2.按键修饰符
 
@@ -651,23 +651,21 @@ item从1 开始
 
 代码演示：
 
-```js
-  <div id="app">
-    <h3>@keyup.enter  →  监听键盘回车事件</h3>
+```vue
+<div id="app">
+    <h3>@keyup.enter → 监听键盘回车事件</h3>
     <input v-model="username" type="text">
-  </div>
-  <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
-  <script>
+</div>
+
+<script>
     const app = new Vue({
-      el: '#app',
-      data: {
-        username: ''
-      },
-      methods: {
-        
-      }
+        el: '#app',
+        data: {
+            username: ''
+        },
+        methods: {}
     })
-  </script>
+</script>
 ```
 
 ### 3.v-model修饰符
