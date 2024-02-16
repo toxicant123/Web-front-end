@@ -22,14 +22,14 @@
             <ul class="todo-list">
                 <li class="todo" v-for="(item, index) in list" :key="item.id">
                     <div class="view">
-                        <span class="index">{{ item.id }}.</span> <label>{{ item.name }}</label>
+                        <span class="index">{{ index + 1 }}.</span> <label>{{ item.name }}</label>
                         <button class="destroy" @click="removeTask(item.id)"></button>
                     </div>
                 </li>
             </ul>
         </section>
         <!-- 统计和清空 -->
-        <footer class="footer">
+        <footer class="footer" v-show="list.length > 0">
             <!-- 统计 -->
             <span class="todo-count">合 计:<strong> {{ list.length }} </strong></span>
             <!-- 清空 -->
@@ -67,10 +67,11 @@
                 addTask() {
                     if (this.taskName) {
                         this.list.push({
-                            id: this.list.length,
+                            id: this.getId(),
                             name: this.taskName
                         })
                     }
+                    console.log(this.list)
                     this.taskName = ''
                 },
                 removeTask(id) {
@@ -78,6 +79,13 @@
                 },
                 removeAllTask() {
                     this.list = []
+                },
+                getId() {
+                    if (this.list.length > 0) {
+                        return Math.max(...this.list.map(ie => ie.id)) + 1
+                    } else {
+                        return 1
+                    }
                 }
             }
         })
