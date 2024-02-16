@@ -579,13 +579,13 @@ item从1 开始
 
 实例代码：
 
-```js
+```vue
 <ul>
-  <li v-for="(item, index) in booksList" :key="item.id">
-    <span>{{ item.name }}</span>
-    <span>{{ item.author }}</span>
-    <button @click="del(item.id)">删除</button>
-  </li>
+    <li v-for="(item, index) in booksList" :key="item.id">
+        <span>{{ item.name }}</span>
+        <span>{{ item.author }}</span>
+        <button @click="del(item.id)">删除</button>
+    </li>
 </ul>
 ```
 
