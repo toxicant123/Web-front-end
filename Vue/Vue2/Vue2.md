@@ -595,43 +595,38 @@ item从1 开始
 ## 十六、双向绑定指令
 
 所谓双向绑定就是：
-
 1. 数据改变后，呈现的页面结果会更新
 2. 页面结果更新后，数据也会随之而变
 
-**作用：** 给**表单元素**（input、radio、select）使用，双向绑定数据，可以快速 **获取** 或 **设置** 表单元素内容
+**作用**： 给**表单元素**（input、radio、select）使用，双向绑定数据，可以快速 **获取** 或 **设置** 表单元素内容
 
-**语法：**v-model="变量"
+**语法**：v-model="变量"
 
-**需求：**使用双向绑定实现以下需求
+**需求**：使用双向绑定实现以下需求
 
 1. 点击登录按钮获取表单中的内容
 2. 点击重置按钮清空表单中的内容
 
 ![68191312573](assets/1681913125738.png)
 
-
-
-```js
+```vue
 <div id="app">
     账户：<input type="text"> <br><br>
     密码：<input type="password"> <br><br>
     <button>登录</button>
     <button>重置</button>
-  </div>
-  <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
-  <script>
+</div>
+
+<script>
     const app = new Vue({
-      el: '#app',
-      data: {
-        username: '',
-        password: ''
-      },
+        el: '#app',
+        data: {
+            username: '',
+            password: ''
+        }
     })
-  </script>
+</script>
 ```
-
-
 
 ## 十七、综合案例-小黑记事本
 
