@@ -536,18 +536,16 @@ item从1 开始
 准备代码：
 
 ```vue
-<div id="app">
+    <div id="app">
     <h3>小黑的书架</h3>
     <ul>
-        <li v-for="(item, index) in booksList">
+        <li v-for="(item, index) in booksList" :key="item.id">
             <span>{{ item.name }}</span>
             <span>{{ item.author }}</span>
-            <button @click="del(item)">删除</button>
+            <button @click="del(item.id)">删除</button>
         </li>
     </ul>
 </div>
-
-<script src="./js/vue.js"></script>
 
 <script>
     const app = new Vue({
@@ -561,8 +559,8 @@ item从1 开始
             ]
         },
         methods: {
-            del(item) {
-                this.booksList = this.booksList.filter(e => e.id !== item.id)
+            del(id) {
+                this.booksList = this.booksList.filter(e => e.id !== id)
             }
         }
     })
@@ -571,11 +569,11 @@ item从1 开始
 
 ## 十五、v-for中的key
 
-**语法：** key="唯一值"
+**语法**：key="唯一值"
 
-**作用：**给列表项添加的**唯一标识**。便于Vue进行列表项的**正确排序复用**。
+**作用**：给列表项添加的**唯一标识**。便于Vue进行列表项的**正确排序复用**。
 
-**为什么加key：**Vue 的默认行为会尝试原地修改元素（**就地复用**）
+**为什么加key**：Vue 的默认行为会尝试原地修改元素（**就地复用**）
 
 实例代码：
 
@@ -590,12 +588,9 @@ item从1 开始
 ```
 
 注意：
-
-1.  key 的值只能是字符串 或 数字类型
+1. key 的值只能是字符串或数字类型
 2. key 的值必须具有唯一性
-3. 推荐使用  id 作为 key（唯一），不推荐使用 index 作为 key（会变化，不对应）
-
-
+3. 推荐使用 id 作为 key（唯一），不推荐使用 index 作为 key（会变化，不对应）
 
 ## 十六、双向绑定指令
 
