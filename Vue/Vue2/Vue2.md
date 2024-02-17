@@ -679,55 +679,55 @@ item从1 开始
 - @事件名.prevent  —>阻止默认行为
 - @事件名.stop.prevent —>可以连用 即阻止事件冒泡也阻止默认行为
 
-```js
- <style>
+```vue
+<style>
     .father {
-      width: 200px;
-      height: 200px;
-      background-color: pink;
-      margin-top: 20px;
+        width: 200px;
+        height: 200px;
+        background-color: pink;
+        margin-top: 20px;
     }
-    .son {
-      width: 100px;
-      height: 100px;
-      background-color: skyblue;
-    }
-  </style>
 
- <div id="app">
+    .son {
+        width: 100px;
+        height: 100px;
+        background-color: skyblue;
+    }
+</style>
+
+<div id="app">
     <h3>v-model修饰符 .trim .number</h3>
     姓名：<input v-model="username" type="text"><br>
     年纪：<input v-model="age" type="text"><br>
 
-    
-    <h3>@事件名.stop     →  阻止冒泡</h3>
+
+    <h3>@事件名.stop → 阻止冒泡</h3>
     <div @click="fatherFn" class="father">
-      <div @click="sonFn" class="son">儿子</div>
+        <div @click="sonFn" class="son">儿子</div>
     </div>
 
-    <h3>@事件名.prevent  →  阻止默认行为</h3>
+    <h3>@事件名.prevent → 阻止默认行为</h3>
     <a @click href="http://www.baidu.com">阻止默认行为</a>
-  </div>
+</div>
 
-  <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
-  <script>
+<script>
     const app = new Vue({
-      el: '#app',
-      data: {
-        username: '',
-        age: '',
-      },
-      methods: {
-        fatherFn () {
-          alert('老父亲被点击了')
+        el: '#app',
+        data: {
+            username: '',
+            age: '',
         },
-        sonFn (e) {
-          // e.stopPropagation()
-          alert('儿子被点击了')
+        methods: {
+            fatherFn() {
+                alert('老父亲被点击了')
+            },
+            sonFn(e) {
+                // e.stopPropagation()
+                alert('儿子被点击了')
+            }
         }
-      }
     })
-  </script>
+</script>
 ```
 
 
