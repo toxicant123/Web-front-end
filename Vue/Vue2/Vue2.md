@@ -703,11 +703,11 @@ item从1 开始
 
     <h3>@事件名.stop → 阻止冒泡</h3>
     <div @click="fatherFn" class="father">
-        <div @click="sonFn" class="son">儿子</div>
+        <div @click.stop="sonFn" class="son">儿子</div>
     </div>
 
     <h3>@事件名.prevent → 阻止默认行为</h3>
-    <a @click href="http://www.baidu.com">阻止默认行为</a>
+    <a @click.prevent href="http://www.baidu.com">阻止默认行为</a>
 </div>
 
 <script>
@@ -730,19 +730,15 @@ item从1 开始
 </script>
 ```
 
-
-
 ## 三、v-bind对样式控制的增强-操作class
 
-为了方便开发者进行样式控制， Vue 扩展了 v-bind 的语法，可以针对 **class 类名** 和 **style 行内样式** 进行控制 。
+为了方便开发者进行样式控制，Vue 扩展了 v-bind 的语法，可以针对 **class 类名** 和 **style 行内样式** 进行控制。
 
 ### 1.语法：
 
 ```html
-<div> :class = "对象/数组">这是一个div</div>
+<div :class = "对象/数组">这是一个div</div>
 ```
-
-
 
 ### 2.对象语法
 
@@ -752,9 +748,7 @@ item从1 开始
 <div class="box" :class="{ 类名1: 布尔值, 类名2: 布尔值 }"></div>
 ```
 
-​    适用场景：一个类名，来回切换
-
-
+适用场景：一个类名，来回切换
 
 ### 3.数组语法
 
