@@ -911,58 +911,63 @@ item从1 开始
 ### 3.进度条案例
 
 ```html
- <style>
+    <style>
     .progress {
-      height: 25px;
-      width: 400px;
-      border-radius: 15px;
-      background-color: #272425;
-      border: 3px solid #272425;
-      box-sizing: border-box;
-      margin-bottom: 30px;
+        height: 25px;
+        width: 400px;
+        border-radius: 15px;
+        background-color: #272425;
+        border: 3px solid #272425;
+        box-sizing: border-box;
+        margin-bottom: 30px;
     }
+
     .inner {
-      width: 50%;
-      height: 20px;
-      border-radius: 10px;
-      text-align: right;
-      position: relative;
-      background-color: #409eff;
-      background-size: 20px 20px;
-      box-sizing: border-box;
-      transition: all 1s;
+        width: 50%;
+        height: 20px;
+        border-radius: 10px;
+        text-align: right;
+        position: relative;
+        background-color: #409eff;
+        background-size: 20px 20px;
+        box-sizing: border-box;
+        transition: all 1s;
     }
+
     .inner span {
-      position: absolute;
-      right: -20px;
-      bottom: -25px;
+        position: absolute;
+        right: -20px;
+        bottom: -25px;
     }
-  </style>
+</style>
 
 <div id="app">
     <div class="progress">
-      <div class="inner">
-        <span>50%</span>
-      </div>
+        <div class="inner" :style="{ width: percentage + '%' }">
+            <span>{{ percentage }}%</span>
+        </div>
     </div>
-    <button>设置25%</button>
-    <button>设置50%</button>
-    <button>设置75%</button>
-    <button>设置100%</button>
-  </div>
+    <button @click="setting(25)">设置25%</button>
+    <button @click="setting(50)">设置50%</button>
+    <button @click="setting(75)">设置75%</button>
+    <button @click="setting(100)">设置100%</button>
+</div>
 
-  <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
-  <script>
+<script src="../../js/vue.js"></script>
+<script>
     const app = new Vue({
-      el: '#app',
-      data: {
-
-      }
+        el: '#app',
+        data: {
+            percentage: 50
+        },
+        methods: {
+            setting(num) {
+                this.percentage = num
+            }
+        }
     })
-  </script>
+</script>
 ```
-
-
 
 ## 六、v-model在其他表单元素的使用
 
