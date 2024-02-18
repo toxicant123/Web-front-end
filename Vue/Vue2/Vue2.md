@@ -734,10 +734,10 @@ item从1 开始
 
 为了方便开发者进行样式控制，Vue 扩展了 v-bind 的语法，可以针对 **class 类名** 和 **style 行内样式** 进行控制。
 
-### 1.语法：
+### 1.语法
 
 ```html
-<div :class = "对象/数组">这是一个div</div>
+<div :class="对象/数组">这是一个div</div>
 ```
 
 ### 2.对象语法
@@ -758,12 +758,12 @@ item从1 开始
 <div class="box" :class="[ 类名1, 类名2, 类名3 ]"></div>
 ```
 
-使用场景:批量添加或删除类
+使用场景：批量添加或删除类
 
 ### 4.代码练习
 
 ```vue
-<style>
+    <style>
     .box {
         width: 200px;
         height: 200px;
@@ -785,11 +785,11 @@ item从1 开始
 
 <div id="app">
     <!--绑定对象-->
-    <div class="box">黑马程序员</div>
+    <div class="box" :class="{pink: true, big: true}">黑马程序员</div>
     <!--绑定数组-->
-    <div class="box">黑马程序员</div>
+    <div class="box" :class="['pink', 'big']">黑马程序员</div>
 </div>
-<script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+
 <script>
     const app = new Vue({
         el: '#app',
@@ -798,78 +798,85 @@ item从1 开始
 </script>
 ```
 
-
-
 ## 四、京东秒杀-tab栏切换导航高亮
 
-### 1.需求：
+### 1.需求
 
-​	当我们点击哪个tab页签时，哪个tab页签就高亮
+当我们点击哪个tab页签时，哪个tab页签就高亮
 
-### 2.准备代码:
+### 2.准备代码
 
 ```html
- <style>
+    <style>
     * {
-      margin: 0;
-      padding: 0;
-    }
-    ul {
-      display: flex;
-      border-bottom: 2px solid #e01222;
-      padding: 0 10px;
-    }
-    li {
-      width: 100px;
-      height: 50px;
-      line-height: 50px;
-      list-style: none;
-      text-align: center;
-    }
-    li a {
-      display: block;
-      text-decoration: none;
-      font-weight: bold;
-      color: #333333;
-    }
-    li a.active {
-      background-color: #e01222;
-      color: #fff;
+        margin: 0;
+        padding: 0;
     }
 
-  </style>
+    ul {
+        display: flex;
+        border-bottom: 2px solid #e01222;
+        padding: 0 10px;
+    }
+
+    li {
+        width: 100px;
+        height: 50px;
+        line-height: 50px;
+        list-style: none;
+        text-align: center;
+    }
+
+    li a {
+        display: block;
+        text-decoration: none;
+        font-weight: bold;
+        color: #333333;
+    }
+
+    li a.active {
+        background-color: #e01222;
+        color: #fff;
+    }
+
+</style>
 
 <div id="app">
     <ul>
-      <li><a class="active" href="#">京东秒杀</a></li>
-      <li><a href="#">每日特价</a></li>
-      <li><a href="#">品类秒杀</a></li>
+        <li v-for="(item, index) in list" :key="item.id">
+            <a href="#" :class="getActiveClass(index)" @click="change(index)">{{ item.name }}</a>
+        </li>
     </ul>
-  </div>
-  <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
-  <script>
+</div>
+
+<script>
     const app = new Vue({
-      el: '#app',
-      data: {
-        list: [
-          { id: 1, name: '京东秒杀' },
-          { id: 2, name: '每日特价' },
-          { id: 3, name: '品类秒杀' }
-        ]
-      }
+        el: '#app',
+        data: {
+            list: [
+                {id: 1, name: '京东秒杀'},
+                {id: 2, name: '每日特价'},
+                {id: 3, name: '品类秒杀'}
+            ],
+            activeIndex: 0
+        },
+        methods: {
+            change(index) {
+                this.activeIndex = index
+            },
+            getActiveClass(index) {
+                return this.activeIndex === index ? 'active' : null
+            }
+        }
     })
-  </script>
+</script>
 ```
 
-### 3.思路：
+### 3.思路
 
-1.基于数据，动态渲染tab（v-for）
-
-2.准备一个下标 记录高亮的是哪一个 tab
-
-3.基于下标动态切换class的类名
-
-
+1. 基于数据，动态渲染tab（v-for）
+2. 准备一个下标 记录高亮的是哪一个 tab
+3. 基于下标动态切换class的类名
 
 ## 五、v-bind对有样式控制的增强-操作style
 
