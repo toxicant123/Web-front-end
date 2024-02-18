@@ -1169,79 +1169,83 @@ item从1 开始
 
 3. 通过代码比较
 
-```html
+```vue
 <style>
     table {
-      border: 1px solid #000;
-      text-align: center;
-      width: 300px;
+        border: 1px solid #000;
+        text-align: center;
+        width: 300px;
     }
-    th,td {
-      border: 1px solid #000;
+
+    th, td {
+        border: 1px solid #000;
     }
+
     h3 {
-      position: relative;
+        position: relative;
     }
+
     span {
-      position: absolute;
-      left: 145px;
-      top: -4px;
-      width: 16px;
-      height: 16px;
-      color: white;
-      font-size: 12px;
-      text-align: center;
-      border-radius: 50%;
-      background-color: #e63f32;
+        position: absolute;
+        left: 145px;
+        top: -4px;
+        width: 16px;
+        height: 16px;
+        color: white;
+        font-size: 12px;
+        text-align: center;
+        border-radius: 50%;
+        background-color: #e63f32;
     }
-  </style>
+</style>
 
 <div id="app">
-    <h3>小黑的礼物清单🛒<span>?</span></h3>
+    <h3>小黑的礼物清单🛒<span>{{ totalCount }}}</span></h3>
+    <h3>小黑的礼物清单🛒<span>{{ totalCount }}}</span></h3>
+    <h3>小黑的礼物清单🛒<span>{{ totalCount }}}</span></h3>
+    <h3>小黑的礼物清单🛒<span>{{ totalCount }}}</span></h3>
+    <h3>小黑的礼物清单🛒<span>{{ totalCount }}}</span></h3>
     <table>
-      <tr>
-        <th>名字</th>
-        <th>数量</th>
-      </tr>
-      <tr v-for="(item, index) in list" :key="item.id">
-        <td>{{ item.name }}</td>
-        <td>{{ item.num }}个</td>
-      </tr>
+        <tr>
+            <th>名字</th>
+            <th>数量</th>
+        </tr>
+        <tr v-for="(item, index) in list" :key="item.id">
+            <td>{{ item.name }}</td>
+            <td>{{ item.num }}个</td>
+        </tr>
     </table>
 
     <p>礼物总数：{{ totalCount }} 个</p>
-  </div>
-  <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
-  <script>
+</div>
+<script src="../../js/vue.js"></script>
+<script>
     const app = new Vue({
-      el: '#app',
-      data: {
-        // 现有的数据
-        list: [
-          { id: 1, name: '篮球', num: 3 },
-          { id: 2, name: '玩具', num: 2 },
-          { id: 3, name: '铅笔', num: 5 },
-        ]
-      },
-      computed: {
-        totalCount () {
-          let total = this.list.reduce((sum, item) => sum + item.num, 0)
-          return total
+        el: '#app',
+        data: {
+            // 现有的数据
+            list: [
+                {id: 1, name: '篮球', num: 3},
+                {id: 2, name: '玩具', num: 2},
+                {id: 3, name: '铅笔', num: 5},
+            ]
+        },
+        computed: {
+            totalCount() {
+                let total = this.list.reduce((sum, item) => sum + item.num, 0)
+                console.log(total)
+                return total
+            }
         }
-      }
     })
-  </script>
+</script>
 ```
 
 ### 4.总结
 
-1.computed**有缓存特性**，methods**没有缓存**
-
-2.当一个结果依赖其他多个值时，推荐使用计算属性
-
-3.当处理业务逻辑时，推荐使用methods方法，比如事件的处理函数
-
-
+1. computed**有缓存特性**，methods**没有缓存**
+2. 当一个结果依赖其他多个值时，推荐使用计算属性
+3. 当处理业务逻辑时，推荐使用methods方法，比如事件的处理函数
 
 ## 九、计算属性的完整写法
 
