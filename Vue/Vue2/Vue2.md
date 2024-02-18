@@ -889,25 +889,23 @@ item从1 开始
 ### 2.代码练习
 
 ```html
-<style>
+    <style>
     .box {
-      width: 200px;
-      height: 200px;
-      background-color: rgb(187, 150, 156);
+        width: 200px;
+        height: 200px;
+        background-color: rgb(187, 150, 156);
     }
- </style>
- <div id="app">
-    <div class="box"></div>
-  </div>
-  <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
-  <script>
-    const app = new Vue({
-      el: '#app',
-      data: {
+</style>
+<div id="app">
+    <div class="box" :style="{ width: '400px', height: '400px', 'background-color': 'red' }"></div>
+</div>
 
-      }
+<script>
+    const app = new Vue({
+        el: '#app',
+        data: {}
     })
-  </script>
+</script>
 ```
 
 ### 3.进度条案例
