@@ -20,23 +20,11 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <td>1</td>
-                        <td>语文</td>
-                        <td class="red">46</td>
-                        <td><a href="#">删除</a></td>
-                    </tr>
-                    <tr>
-                        <td>2</td>
-                        <td>英语</td>
-                        <td>80</td>
-                        <td><a href="#">删除</a></td>
-                    </tr>
-                    <tr>
-                        <td>3</td>
-                        <td>数学</td>
-                        <td>100</td>
-                        <td><a href="#">删除</a></td>
+                    <tr v-for="(item, index) in list" :key="item.id">
+                        <td>{{ item.id }}</td>
+                        <td>{{ item.subject }}</td>
+                        <td :class="getRedClass(item.score)">{{ item.score }}</td>
+                        <td><a href="#" @click="removeScore(item.id)">删除</a></td>
                     </tr>
                 </tbody>
                 <tbody>
@@ -50,8 +38,8 @@
                 <tfoot>
                     <tr>
                         <td colspan="5">
-                            <span>总分：246</span>
-                            <span style="margin-left: 50px">平均分：79</span>
+                            <span>总分：{{ totalScore }}</span>
+                            <span style="margin-left: 50px">平均分：{{ avgScore }}</span>
                         </td>
                     </tr>
                 </tfoot>
@@ -64,6 +52,7 @@
                     <input
                             type="text"
                             placeholder="请输入科目"
+                            v-model="subject"
                     />
                 </div>
             </div>
@@ -73,13 +62,14 @@
                     <input
                             type="text"
                             placeholder="请输入分数"
+                            v-model="score"
                     />
                 </div>
             </div>
             <div class="form-item">
                 <div class="label"></div>
                 <div class="input">
-                    <button class="submit">添加</button>
+                    <button class="submit" @click="addScore">添加</button>
                 </div>
             </div>
         </div>
@@ -97,6 +87,43 @@
                 ],
                 subject: '',
                 score: ''
+            },
+            computed: {
+                totalScore() {
+                    return this.list.reduce((p, c) => p + c.score, 0)
+                },
+                avgScore() {
+                    if (this.list.length === 0) {
+                        return 0
+                    }
+                    return this.list.reduce((p, c) => p + c.score, 0) / this.list.length
+                }
+            },
+            methods: {
+                addScore() {
+                    if (!this.subject) {
+                        return alert('请输入科目')
+                    }
+
+                    if (!this.score) {
+                        return alert('请输入分数')
+                    }
+                    let id = Math.max(0, ...this.list.map(ie => ie.id)) + 1
+                    this.list.push({
+                        id,
+                        subject: this.subject,
+                        score: +this.score
+                    })
+                    this.subject = ''
+                    this.score = ''
+                    console.log(this.list)
+                },
+                removeScore(id) {
+                    this.list = this.list.filter(ie => id !== ie.id)
+                },
+                getRedClass(score) {
+                    return score >= 60 ? '' : 'red'
+                }
             }
         })
     </script>
