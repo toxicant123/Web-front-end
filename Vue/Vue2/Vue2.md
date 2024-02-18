@@ -1218,7 +1218,7 @@ item从1 开始
 
     <p>礼物总数：{{ totalCount }} 个</p>
 </div>
-<script src="../../js/vue.js"></script>
+
 <script>
     const app = new Vue({
         el: '#app',
@@ -1252,52 +1252,56 @@ item从1 开始
 **既然计算属性也是属性，能访问，应该也能修改了？**
 
 1. 计算属性默认的简写，只能读取访问，不能 "修改"
-2. 如果要 "修改"  → 需要写计算属性的完整写法
+2. 如果要 "修改" → 需要写计算属性的完整写法
 
 ![68204182296](assets/1682041822963.png)
 
 完整写法代码演示
 
-```html
- <div id="app">
+```vue
+<div id="app">
     姓：<input type="text" v-model="firstName"> +
     名：<input type="text" v-model="lastName"> =
-    <span></span><br><br> 
-    <button>改名卡</button>
-  </div>
-  <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
-  <script>
+    <span>{{ fullName }}</span><br><br>
+    <button @click="changeName">改名卡</button>
+</div>
+<script src="../../js/vue.js"></script>
+<script>
     const app = new Vue({
-      el: '#app',
-      data: {
- 		firstName: '刘',
-        lastName: '备'
-      },
-      computed: {
-
-      },
-      methods: {
-
-      }
+        el: '#app',
+        data: {
+            firstName: '刘',
+            lastName: '备'
+        },
+        computed: {
+            fullName: {
+                get() {
+                    return this.firstName + this.lastName
+                },
+                set(name) {
+                    this.firstName = name.slice(0, 1)
+                    this.lastName = name.slice(1)
+                }
+            }
+        },
+        methods: {
+            changeName() {
+                this.fullName = '吕布'
+            }
+        }
     })
-  </script>
+</script>
 ```
-
-
 
 ## 十、综合案例-成绩案例
 
 ![68204248931](assets/1682042489319.png)
 
 功能描述：
-
-1.渲染功能
-
-2.删除功能
-
-3.添加功能
-
-4.统计总分，求平均分
+1. 渲染功能
+2. 删除功能
+3. 添加功能
+4. 统计总分，求平均分
 
 
 
