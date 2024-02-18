@@ -763,7 +763,7 @@ item从1 开始
 ### 4.代码练习
 
 ```vue
-    <style>
+<style>
     .box {
         width: 200px;
         height: 200px;
@@ -806,8 +806,8 @@ item从1 开始
 
 ### 2.准备代码
 
-```html
-    <style>
+```vue
+<style>
     * {
         margin: 0;
         padding: 0;
@@ -888,8 +888,8 @@ item从1 开始
 
 ### 2.代码练习
 
-```html
-    <style>
+```vue
+<style>
     .box {
         width: 200px;
         height: 200px;
@@ -910,8 +910,8 @@ item从1 开始
 
 ### 3.进度条案例
 
-```html
-    <style>
+```vue
+<style>
     .progress {
         height: 25px;
         width: 400px;
@@ -988,8 +988,8 @@ item从1 开始
 
 ### 2.代码准备
 
-```html
-    <style>
+```vue
+<style>
     textarea {
         display: block;
         width: 240px;
@@ -1057,12 +1057,12 @@ item从1 开始
 
 ### 1.概念
 
-基于**现有的数据**，计算出来的**新属性**。 **依赖**的数据变化，**自动**重新计算。
+基于**现有的数据**，计算出来的**新属性**。**依赖**的数据变化，**自动**重新计算。
 
 ### 2.语法
 
 1. 声明在 **computed 配置项**中，一个计算属性对应一个函数
-2. 使用起来和普通属性一样使用  {{ 计算属性名}}
+2. 使用起来和普通属性一样使用 {{ 计算属性名 }}
 
 ### 3.注意
 
@@ -1080,54 +1080,59 @@ item从1 开始
 
 ### 5.代码准备
 
-```html
+```vue
 <style>
     table {
-      border: 1px solid #000;
-      text-align: center;
-      width: 240px;
+        border: 1px solid #000;
+        text-align: center;
+        width: 240px;
     }
-    th,td {
-      border: 1px solid #000;
+
+    th, td {
+        border: 1px solid #000;
     }
+
     h3 {
-      position: relative;
+        position: relative;
     }
-  </style>
+</style>
 
 <div id="app">
     <h3>小黑的礼物清单</h3>
     <table>
-      <tr>
-        <th>名字</th>
-        <th>数量</th>
-      </tr>
-      <tr v-for="(item, index) in list" :key="item.id">
-        <td>{{ item.name }}</td>
-        <td>{{ item.num }}个</td>
-      </tr>
+        <tr>
+            <th>名字</th>
+            <th>数量</th>
+        </tr>
+        <tr v-for="(item, index) in list" :key="item.id">
+            <td>{{ item.name }}</td>
+            <td>{{ item.num }}个</td>
+        </tr>
     </table>
 
     <!-- 目标：统计求和，求得礼物总数 -->
-    <p>礼物总数：? 个</p>
-  </div>
-  <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
-  <script>
+    <p>礼物总数：{{ totalCount }} 个</p>
+</div>
+
+<script>
     const app = new Vue({
-      el: '#app',
-      data: {
-        // 现有的数据
-        list: [
-          { id: 1, name: '篮球', num: 1 },
-          { id: 2, name: '玩具', num: 2 },
-          { id: 3, name: '铅笔', num: 5 },
-        ]
-      }
+        el: '#app',
+        data: {
+            // 现有的数据
+            list: [
+                {id: 1, name: '篮球', num: 1},
+                {id: 2, name: '玩具', num: 2},
+                {id: 3, name: '铅笔', num: 5},
+            ]
+        },
+        computed: {
+            totalCount() {
+                return this.list.reduce((p, c) => p + c.num, 0)
+            }
+        }
     })
-  </script>
+</script>
 ```
-
-
 
 ## 八、computed计算属性 VS methods方法
 
@@ -1139,23 +1144,18 @@ item从1 开始
 
 1. 写在computed配置项中
 2. 作为属性，直接使用
-    - js中使用计算属性： this.计算属性
-    - 模板中使用计算属性：{{计算属性}}
-
-
+   - js中使用计算属性： this.计算属性
+   - 模板中使用计算属性：{{计算属性}}
 
 ### 2.methods计算属性
 
 作用：给Vue实例提供一个**方法**，调用以**处理业务逻辑**。
 
 语法：
-
 1. 写在methods配置项中
 2. 作为方法调用
     - js中调用：this.方法名()
-    - 模板中调用 {{方法名()}}  或者 @事件名=“方法名”
-
-
+    - 模板中调用 {{方法名()}} 或者 @事件名=“方法名”
 
 ### 3.计算属性的优势
 
