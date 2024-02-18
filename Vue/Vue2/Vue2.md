@@ -760,27 +760,27 @@ item从1 开始
 
 使用场景:批量添加或删除类
 
-
-
 ### 4.代码练习
 
-```html
- <style>
+```vue
+<style>
     .box {
-      width: 200px;
-      height: 200px;
-      border: 3px solid #000;
-      font-size: 30px;
-      margin-top: 10px;
+        width: 200px;
+        height: 200px;
+        border: 3px solid #000;
+        font-size: 30px;
+        margin-top: 10px;
     }
+
     .pink {
-      background-color: pink;
+        background-color: pink;
     }
+
     .big {
-      width: 300px;
-      height: 300px;
+        width: 300px;
+        height: 300px;
     }
-  </style>
+</style>
 
 
 <div id="app">
@@ -788,16 +788,14 @@ item从1 开始
     <div class="box">黑马程序员</div>
     <!--绑定数组-->
     <div class="box">黑马程序员</div>
-  </div>
-  <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
-  <script>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+<script>
     const app = new Vue({
-      el: '#app',
-      data: {
-
-      }
+        el: '#app',
+        data: {}
     })
-  </script>
+</script>
 ```
 
 
