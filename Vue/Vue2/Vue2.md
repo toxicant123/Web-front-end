@@ -971,80 +971,87 @@ item从1 开始
 
 ## 六、v-model在其他表单元素的使用
 
-### 1.讲解内容：
+### 1.讲解内容
 
 常见的表单元素都可以用 v-model 绑定关联  →  快速 **获取** 或 **设置** 表单元素的值
 
-它会根据  **控件类型** 自动选取  **正确的方法** 来更新元素
+它会根据**控件类型**自动选取**正确的方法**来更新元素
 
-```js
-输入框  input:text   ——> value
-文本域  textarea	 ——> value
-复选框  input:checkbox  ——> checked
-单选框  input:radio   ——> checked
-下拉菜单 select    ——> value
+```text
+输入框   input:text     ——> value
+文本域   textarea	   ——> value
+复选框   input:checkbox ——> checked
+单选框   input:radio    ——> checked
+下拉菜单 select         ——> value
 ...
 ```
 
 ### 2.代码准备
 
 ```html
- <style>
+    <style>
     textarea {
-      display: block;
-      width: 240px;
-      height: 100px;
-      margin: 10px 0;
+        display: block;
+        width: 240px;
+        height: 100px;
+        margin: 10px 0;
     }
-  </style>
- <div id="app">
+</style>
+<div id="app">
     <h3>小黑学习网</h3>
     姓名：
-      <input type="text"> 
-      <br><br>
+    <input type="text" v-model="name">
+    <br><br>
     是否单身：
-      <input type="checkbox"> 
-      <br><br>
-    <!-- 
+    <input type="checkbox" v-model="isSingle">
+    <br><br>
+    <!--
       前置理解：
         1. name:  给单选框加上 name 属性 可以分组 → 同一组互相会互斥
         2. value: 给单选框加上 value 属性，用于提交给后台的数据
       结合 Vue 使用 → v-model
     -->
-    性别: 
-      <input type="radio">男
-      <input type="radio">女
-      <br><br>
-    <!-- 
+    性别:
+    <input type="radio" name="gender" value="1" v-model="gender">男
+    <input type="radio" name="gender" value="2" v-model="gender">女
+    <br><br>
+    <!--
       前置理解：
         1. option 需要设置 value 值，提交给后台
         2. select 的 value 值，关联了选中的 option 的 value 值
       结合 Vue 使用 → v-model
     -->
     所在城市:
-      <select>
-        <option>北京</option>
-        <option>上海</option>
-        <option>成都</option>
-        <option>南京</option>
-      </select>
-      <br><br>
+    <select v-model="city">
+        <option value="BeiJing">北京</option>
+        <option value="ShangHai">上海</option>
+        <option value="ChengDu">成都</option>
+        <option value="NanJing">南京</option>
+    </select>
+    <br><br>
     自我描述：
-      <textarea></textarea> 
-    <button>立即注册</button>
-  </div>
-  <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
-  <script>
+    <textarea v-model="describe"></textarea>
+    <button @click="log">立即注册</button>
+</div>
+
+<script>
     const app = new Vue({
-      el: '#app',
-      data: {
-
-      }
+        el: '#app',
+        data: {
+            name: '',
+            isSingle: false,
+            gender: 1,
+            city: 'BeiJing',
+            describe: ''
+        },
+        methods: {
+            log() {
+                console.log(this.name, this.isSingle, this.gender, this.city, this.describe)
+            }
+        }
     })
-  </script>
+</script>
 ```
-
-
 
 ## 七、computed计算属性
 
