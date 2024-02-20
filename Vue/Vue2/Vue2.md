@@ -1340,26 +1340,30 @@ item从1 开始
    }
    ```
 
-### 3.侦听器代码准备
+### 3.翻译案例
 
-```html
- <style>
-      * {
+```vue
+<style>
+    * {
         margin: 0;
         padding: 0;
         box-sizing: border-box;
         font-size: 18px;
-      }
-      #app {
+    }
+
+    #app {
         padding: 10px 20px;
-      }
-      .query {
+    }
+
+    .query {
         margin: 10px 0;
-      }
-      .box {
+    }
+
+    .box {
         display: flex;
-      }
-      textarea {
+    }
+
+    textarea {
         width: 300px;
         height: 160px;
         font-size: 18px;
@@ -1367,140 +1371,106 @@ item从1 开始
         outline: none;
         resize: none;
         padding: 10px;
-      }
-      textarea:hover {
+    }
+
+    textarea:hover {
         border: 1px solid #1589f5;
-      }
-      .transbox {
+    }
+
+    .transbox {
         width: 300px;
         height: 160px;
         background-color: #f0f0f0;
         padding: 10px;
         border: none;
-      }
-      .tip-box {
+    }
+
+    .tip-box {
         width: 300px;
         height: 25px;
         line-height: 25px;
         display: flex;
-      }
-      .tip-box span {
+    }
+
+    .tip-box span {
         flex: 1;
         text-align: center;
-      }
-      .query span {
-        font-size: 18px;
-      }
+    }
 
-      .input-wrap {
+    .query span {
+        font-size: 18px;
+    }
+
+    .input-wrap {
         position: relative;
-      }
-      .input-wrap span {
+    }
+
+    .input-wrap span {
         position: absolute;
         right: 15px;
         bottom: 15px;
         font-size: 12px;
-      }
-      .input-wrap i {
+    }
+
+    .input-wrap i {
         font-size: 20px;
         font-style: normal;
-      }
-    </style>
+    }
+</style>
 
- <div id="app">
-      <!-- 条件选择框 -->
-      <div class="query">
+<div id="app">
+    <!-- 条件选择框 -->
+    <div class="query">
         <span>翻译成的语言：</span>
         <select>
-          <option value="italy">意大利</option>
-          <option value="english">英语</option>
-          <option value="german">德语</option>
+            <option value="italy">意大利</option>
+            <option value="english">英语</option>
+            <option value="german">德语</option>
         </select>
-      </div>
+    </div>
 
-      <!-- 翻译框 -->
-      <div class="box">
+    <!-- 翻译框 -->
+    <div class="box">
         <div class="input-wrap">
-          <textarea v-model="words"></textarea>
-          <span><i>⌨️</i>文档翻译</span>
+            <textarea v-model="words"></textarea>
+            <span><i>⌨️</i>文档翻译</span>
         </div>
         <div class="output-wrap">
-          <div class="transbox">mela</div>
+            <div class="transbox">{{ result }}</div>
         </div>
-      </div>
     </div>
-    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
-    <script>
-      // 接口地址：https://applet-base-api-t.itheima.net/api/translate
-      // 请求方式：get
-      // 请求参数：
-      // （1）words：需要被翻译的文本（必传）
-      // （2）lang： 需要被翻译成的语言（可选）默认值-意大利
-      // -----------------------------------------------
-      
-      const app = new Vue({
+</div>
+<script src="../../js/vue.js"></script>
+<script src="../../js/axios.js"></script>
+<script>
+
+    const app = new Vue({
         el: '#app',
         data: {
-          words: ''
+            words: '',
+            timer: null,
+            result: ''
         },
-        // 具体讲解：(1) watch语法 (2) 具体业务实现
-      })
-    </script>
-```
-
-
-
-## 十二、翻译案例-代码实现
-
-```js
-  <script>
-      // 接口地址：https://applet-base-api-t.itheima.net/api/translate
-      // 请求方式：get
-      // 请求参数：
-      // （1）words：需要被翻译的文本（必传）
-      // （2）lang： 需要被翻译成的语言（可选）默认值-意大利
-      // -----------------------------------------------
-      
-      const app = new Vue({
-        el: '#app',
-        data: {
-           //words: ''
-           obj: {
-            words: ''
-          },
-          result: '', // 翻译结果
-          // timer: null // 延时器id
-        },
-        // 具体讲解：(1) watch语法 (2) 具体业务实现
         watch: {
-          // 该方法会在数据变化时调用执行
-          // newValue新值, oldValue老值（一般不用）
-          // words (newValue) {
-          //   console.log('变化了', newValue)
-          // }
-
-          'obj.words' (newValue) {
-            // console.log('变化了', newValue)
-            // 防抖: 延迟执行 → 干啥事先等一等，延迟一会，一段时间内没有再次触发，才执行
-            clearTimeout(this.timer)
-            this.timer = setTimeout(async () => {
-              const res = await axios({
-                url: 'https://applet-base-api-t.itheima.net/api/translate',
-                params: {
-                  words: newValue
+            words(newValue) {
+                if (this.timer) {
+                    clearTimeout(this.timer)
                 }
-              })
-              this.result = res.data.data
-              console.log(res.data.data)
-            }, 300)
-          }
+                this.timer = setTimeout(async () => {
+                    const res = await axios({
+                        url: 'https://applet-base-api-t.itheima.net/api/translate',
+                        params: {
+                            words: newValue
+                        }
+                    })
+
+                    this.result = res.data.data
+                }, 300)
+            }
         }
-      })
-    </script>
+    })
+</script>
 ```
-
-
 
 ## 十三、watch侦听器
 
