@@ -730,7 +730,7 @@ item从1 开始
 </script>
 ```
 
-## 三、v-bind对样式控制的增强-操作class
+## 十九、v-bind对样式控制的增强-操作class
 
 为了方便开发者进行样式控制，Vue 扩展了 v-bind 的语法，可以针对 **class 类名** 和 **style 行内样式** 进行控制。
 
@@ -798,7 +798,7 @@ item从1 开始
 </script>
 ```
 
-## 四、京东秒杀-tab栏切换导航高亮
+## 二十、京东秒杀-tab栏切换导航高亮
 
 ### 1.需求
 
@@ -878,7 +878,7 @@ item从1 开始
 2. 准备一个下标 记录高亮的是哪一个 tab
 3. 基于下标动态切换class的类名
 
-## 五、v-bind对有样式控制的增强-操作style
+## 二一、v-bind对有样式控制的增强-操作style
 
 ### 1.语法
 
@@ -969,7 +969,7 @@ item从1 开始
 </script>
 ```
 
-## 六、v-model在其他表单元素的使用
+## 二二、v-model在其他表单元素的使用
 
 ### 1.讲解内容
 
@@ -1053,7 +1053,7 @@ item从1 开始
 </script>
 ```
 
-## 七、computed计算属性
+## 二三、computed计算属性
 
 ### 1.概念
 
@@ -1134,7 +1134,7 @@ item从1 开始
 </script>
 ```
 
-## 八、computed计算属性 VS methods方法
+## 二四、computed计算属性 VS methods方法
 
 ### 1.computed计算属性
 
@@ -1247,7 +1247,7 @@ item从1 开始
 2. 当一个结果依赖其他多个值时，推荐使用计算属性
 3. 当处理业务逻辑时，推荐使用methods方法，比如事件的处理函数
 
-## 九、计算属性的完整写法
+## 二五、计算属性的完整写法
 
 **既然计算属性也是属性，能访问，应该也能修改了？**
 
@@ -1293,7 +1293,7 @@ item从1 开始
 </script>
 ```
 
-## 十、综合案例-成绩案例
+## 二六、综合案例-成绩案例
 
 ![68204248931](assets/1682042489319.png)
 
@@ -1309,7 +1309,7 @@ item从1 开始
 3. v-model的修饰符 .trim、.number、判断数据是否为空后 再添加、添加后清空文本框的数据
 4. 使用计算属性 computed 计算总分和平均分的值
 
-## 十一、watch侦听器（监视器）
+## 二七、watch侦听器（监视器）
 
 ### 1.作用：
 
@@ -1471,7 +1471,7 @@ item从1 开始
 </script>
 ```
 
-## 十三、watch侦听器
+## 二八、watch侦听器
 
 ### 1.语法
 
@@ -1491,7 +1491,7 @@ data: {
 watch: { // watch 完整写法
     对象: {
         deep: true, // 深度监视
-        immdiate: true, //立即执行handler函数
+        immediate: true, //立即执行handler函数
         handler (newValue) {
             console.log(newValue)
         }
@@ -1509,76 +1509,179 @@ watch: { // watch 完整写法
 
 ### 3.代码实现
 
-```js
- <script> 
-      const app = new Vue({
+```vue
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-size: 18px;
+    }
+
+    #app {
+        padding: 10px 20px;
+    }
+
+    .query {
+        margin: 10px 0;
+    }
+
+    .box {
+        display: flex;
+    }
+
+    textarea {
+        width: 300px;
+        height: 160px;
+        font-size: 18px;
+        border: 1px solid #dedede;
+        outline: none;
+        resize: none;
+        padding: 10px;
+    }
+
+    textarea:hover {
+        border: 1px solid #1589f5;
+    }
+
+    .transbox {
+        width: 300px;
+        height: 160px;
+        background-color: #f0f0f0;
+        padding: 10px;
+        border: none;
+    }
+
+    .tip-box {
+        width: 300px;
+        height: 25px;
+        line-height: 25px;
+        display: flex;
+    }
+
+    .tip-box span {
+        flex: 1;
+        text-align: center;
+    }
+
+    .query span {
+        font-size: 18px;
+    }
+
+    .input-wrap {
+        position: relative;
+    }
+
+    .input-wrap span {
+        position: absolute;
+        right: 15px;
+        bottom: 15px;
+        font-size: 12px;
+    }
+
+    .input-wrap i {
+        font-size: 20px;
+        font-style: normal;
+    }
+</style>
+
+<div id="app">
+    <!-- 条件选择框 -->
+    <div class="query">
+        <span>翻译成的语言：</span>
+        <select v-model="item.lang">
+            <option value="italy">意大利</option>
+            <option value="english">英语</option>
+            <option value="german">德语</option>
+        </select>
+    </div>
+
+    <!-- 翻译框 -->
+    <div class="box">
+        <div class="input-wrap">
+            <textarea v-model="item.words"></textarea>
+            <span><i>⌨️</i>文档翻译</span>
+        </div>
+        <div class="output-wrap">
+            <div class="transbox">{{ result }}</div>
+        </div>
+    </div>
+</div>
+<script src="../../js/vue.js"></script>
+<script src="../../js/axios.js"></script>
+<script>
+
+    const app = new Vue({
         el: '#app',
         data: {
-          obj: {
-            words: '小黑',
-            lang: 'italy'
-          },
-          result: '', // 翻译结果
+            item: {
+                words: '',
+                lang: 'italy'
+            },
+            timer: null,
+            result: '',
+
         },
         watch: {
-          obj: {
-            deep: true, // 深度监视
-            immediate: true, // 立刻执行，一进入页面handler就立刻执行一次
-            handler (newValue) {
-              clearTimeout(this.timer)
-              this.timer = setTimeout(async () => {
-                const res = await axios({
-                  url: 'https://applet-base-api-t.itheima.net/api/translate',
-                  params: newValue
-                })
-                this.result = res.data.data
-                console.log(res.data.data)
-              }, 300)
-            }
-          } 
+            item: {
+                handler(newValue) {
+                    if (this.timer) {
+                        clearTimeout(this.timer)
+                    }
+                    this.timer = setTimeout(async () => {
+                        const res = await axios({
+                            url: 'https://applet-base-api-t.itheima.net/api/translate',
+                            params: {
+                                words: newValue
+                            }
+                        })
+
+                        this.result = res.data.data
+                    }, 300)
+                },
+                deep: true
+            },
         }
-      })
-    </script>
+    })
+</script>
 ```
 
 ### 4.总结
 
 watch侦听器的写法有几种？
 
-1.简单写法
+1. 简单写法
 
-```js
+```vue
 watch: {
- 数据属性名 (newValue, oldValue) {
-    一些业务逻辑 或 异步操作。 
-  },
-  '对象.属性名' (newValue, oldValue) {
-    一些业务逻辑 或 异步操作。 
-  }
+    数据属性名 (newValue, oldValue) {
+        // ...
+    },
+    '对象.属性名' (newValue, oldValue) {
+        // ...
+    }
 }
 ```
 
-2.完整写法
+2. 完整写法
 
-```js
+```vue
 watch: {// watch 完整写法
- 数据属性名: {
-    deep: true, // 深度监视(针对复杂类型)
-    immediate: true, // 是否立刻执行一次handler
-  handler (newValue) {
-   console.log(newValue)
-  }
- }
+    数据属性名: {
+        deep: true, // 深度监视(针对复杂类型)
+        immediate: true, // 是否立刻执行一次handler
+        handler(newValue) {
+            console.log(newValue)
+        }
+    }
 }
 ```
 
-## 十四、综合案例
+## 二九、综合案例
 
 购物车案例
 
 ![68205100897](assets/1682051008978.png)
-
-
 
 需求说明：
 
