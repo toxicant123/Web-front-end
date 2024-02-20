@@ -1321,22 +1321,22 @@ item从1 开始
 2. 简单写法：简单类型数据直接监视
 3. 完整写法：添加额外配置项
 
-   ```js
-   data: { 
-     words: '苹果',
-     obj: {
-       words: '苹果'
-     }
+   ```vue
+   data: {
+       words: '苹果',
+       obj: {
+           words: '苹果'
+       }
    },
-
+   
    watch: {
-     // 该方法会在数据变化时，触发执行
-     数据属性名 (newValue, oldValue) {
-       一些业务逻辑 或 异步操作。 
-     },
-     '对象.属性名' (newValue, oldValue) {
-       一些业务逻辑 或 异步操作。 
-     }
+       // 该方法会在数据变化时，触发执行
+       数据属性名(newValue, oldValue) {
+           // ...
+       },
+       '对象.属性名'(newValue, oldValue) {
+           // ...
+       }
    }
    ```
 
@@ -1440,8 +1440,7 @@ item从1 开始
         </div>
     </div>
 </div>
-<script src="../../js/vue.js"></script>
-<script src="../../js/axios.js"></script>
+
 <script>
 
     const app = new Vue({
@@ -1476,36 +1475,33 @@ item从1 开始
 
 ### 1.语法
 
-完整写法 —>添加额外的配置项
+完整写法 —> 添加额外的配置项
 
-1. deep:true 对复杂类型进行深度监听
-2. immdiate:true 初始化 立刻执行一次
+1. deep: true 对复杂类型进行深度监听
+2. immdiate: true 初始化时立刻执行一次
 
-```js
+```vue
 data: {
-  obj: {
-    words: '苹果',
-    lang: 'italy'
-  },
+    obj: {
+        words: '苹果',
+        lang: 'italy'
+    },
 },
 
-watch: {// watch 完整写法
-  对象: {
-    deep: true, // 深度监视
-    immdiate:true,//立即执行handler函数
-    handler (newValue) {
-      console.log(newValue)
-    }
-  }
+watch: { // watch 完整写法
+    对象: {
+        deep: true, // 深度监视
+        immdiate: true, //立即执行handler函数
+        handler (newValue) {
+            console.log(newValue)
+        }
+    }
 }
-
 ```
 
-### 2.需求
+### 2. 需求
 
 ![68205051572](assets/1682050515722.png)
-
-
 
 - 当文本框输入的时候 右侧翻译内容要时时变化
 - 当下拉框中的语言发生变化的时候 右侧翻译的内容依然要时时变化
@@ -1553,7 +1549,7 @@ watch侦听器的写法有几种？
 
 ```js
 watch: {
-  数据属性名 (newValue, oldValue) {
+ 数据属性名 (newValue, oldValue) {
     一些业务逻辑 或 异步操作。 
   },
   '对象.属性名' (newValue, oldValue) {
@@ -1566,17 +1562,15 @@ watch: {
 
 ```js
 watch: {// watch 完整写法
-  数据属性名: {
+ 数据属性名: {
     deep: true, // 深度监视(针对复杂类型)
     immediate: true, // 是否立刻执行一次handler
-    handler (newValue) {
-      console.log(newValue)
-    }
-  }
+  handler (newValue) {
+   console.log(newValue)
+  }
+ }
 }
 ```
-
-
 
 ## 十四、综合案例
 
