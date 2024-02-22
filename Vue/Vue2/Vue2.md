@@ -1707,60 +1707,70 @@ watch: {// watch 完整写法
 
 思考：什么时候可以发送初始化渲染请求？（越早越好）什么时候可以开始操作dom？（至少dom得渲染出来）
 
-Vue生命周期：就是一个Vue实例从创建 到 销毁 的整个过程。
+Vue生命周期：就是一个Vue实例从创建到销毁的整个过程。
 
 生命周期四个阶段：① 创建 ② 挂载 ③ 更新 ④ 销毁
 
-1.创建阶段：创建响应式数据
-
-2.挂载阶段：渲染模板
-
-3.更新阶段：修改数据，更新视图
-
-4.销毁阶段：销毁Vue实例
+1. 创建阶段：创建响应式数据
+2. 挂载阶段：渲染模板
+3. 更新阶段：修改数据，更新视图
+4. 销毁阶段：销毁Vue实例
 
 ![68206593781](assets/1682065937815.png)
 
-
-
-
-
-## 三、Vue生命周期钩子
+## 三一、Vue生命周期钩子
 
 Vue生命周期过程中，会**自动运行一些函数**，被称为【**生命周期钩子**】→  让开发者可以在【**特定阶段**】运行**自己的代码**
 
 ![68206604029](assets/1682066040295.png)
 
-```html
+```vue
 <div id="app">
     <h3>{{ title }}</h3>
     <div>
-      <button @click="count--">-</button>
-      <span>{{ count }}</span>
-      <button @click="count++">+</button>
+        <button @click="count--">-</button>
+        <span>{{ count }}</span>
+        <button @click="count++">+</button>
     </div>
-  </div>
-  <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
-  <script>
+</div>
+<script src="../../js/vue.js"></script>
+<script>
     const app = new Vue({
-      el: '#app',
-      data: {
-        count: 100,
-        title: '计数器'
-      },
-      // 1. 创建阶段（准备数据）
-     
-
-      // 2. 挂载阶段（渲染模板）
-      
-
-      // 3. 更新阶段(修改数据 → 更新视图)
-      
-
-      // 4. 卸载阶段
-     
+        el: '#app',
+        data: {
+            count: 100,
+            title: '计数器'
+        },
+        // 1. 创建阶段（准备数据）
+        beforeCreate() {
+            console.log('beforeCreate')
+        },
+        created() {
+            console.log('created')
+        },
+        // 2. 挂载阶段（渲染模板）
+        beforeMount() {
+            console.log('beforeMount')
+        },
+        mounted() {
+            console.log('mounted')
+        },
+        // 3. 更新阶段(修改数据 → 更新视图)
+        beforeUpdate() {
+            console.log('beforeUpdate')
+        },
+        updated() {
+            console.log('updated')
+        },
+        // 4. 卸载阶段
+        beforeDestroy() {
+            console.log('beforeDestroy')
+        },
+        destroyed() {
+            console.log('destroyed')
+        }
     })
-  </script>
+</script>
 ```
 
 
