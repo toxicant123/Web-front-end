@@ -78,47 +78,51 @@
     </div>
     <script src="../js/vue.js"></script>
     <script>
+        const defaultList = [
+            {
+                id: 1,
+                icon: 'img/火龙果.png',
+                isChecked: true,
+                num: 2,
+                price: 6,
+            },
+            {
+                id: 2,
+                icon: 'img/荔枝.png',
+                isChecked: false,
+                num: 7,
+                price: 20,
+            },
+            {
+                id: 3,
+                icon: 'img/榴莲.png',
+                isChecked: false,
+                num: 3,
+                price: 40,
+            },
+            {
+                id: 4,
+                icon: 'img/鸭梨.png',
+                isChecked: true,
+                num: 10,
+                price: 3,
+            },
+            {
+                id: 5,
+                icon: 'img/樱桃.png',
+                isChecked: false,
+                num: 20,
+                price: 34,
+            },
+        ]
+
+        const storedList = JSON.parse(localStorage.getItem('fruitList'))
+        const resultList = storedList ? storedList : defaultList
         const app = new Vue({
             el: '#app',
             data: {
                 // 水果列表
-                fruitList: [
-                    {
-                        id: 1,
-                        icon: 'img/火龙果.png',
-                        isChecked: true,
-                        num: 2,
-                        price: 6,
-                    },
-                    {
-                        id: 2,
-                        icon: 'img/荔枝.png',
-                        isChecked: false,
-                        num: 7,
-                        price: 20,
-                    },
-                    {
-                        id: 3,
-                        icon: 'img/榴莲.png',
-                        isChecked: false,
-                        num: 3,
-                        price: 40,
-                    },
-                    {
-                        id: 4,
-                        icon: 'img/鸭梨.png',
-                        isChecked: true,
-                        num: 10,
-                        price: 3,
-                    },
-                    {
-                        id: 5,
-                        icon: 'img/樱桃.png',
-                        isChecked: false,
-                        num: 20,
-                        price: 34,
-                    },
-                ],
+                fruitList: resultList,
             },
             methods: {
                 del(id) {
@@ -143,6 +147,14 @@
                 },
                 totalPrice() {
                     return this.fruitList.reduce((p, c) => p + (c.isChecked ? c.num * c.price : 0), 0)
+                }
+            },
+            watch: {
+                fruitList: {
+                    deep: true,
+                    handler(newValue) {
+                        localStorage.setItem('fruitList', JSON.stringify(newValue))
+                    }
                 }
             }
         })
