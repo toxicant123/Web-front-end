@@ -332,8 +332,6 @@ vue 中的指令按照不同的用途可以分为如下 6 大类：
     <h1 v-show="isShow">黑马程序员</h1>
 </div>
 
-<script src="./js/vue.js"></script>
-
 <script>
     const app = new Vue({
         el: '#app',
@@ -953,7 +951,6 @@ item从1 开始
     <button @click="setting(100)">设置100%</button>
 </div>
 
-<script src="../../js/vue.js"></script>
 <script>
     const app = new Vue({
         el: '#app',
@@ -1265,7 +1262,7 @@ item从1 开始
     <span>{{ fullName }}</span><br><br>
     <button @click="changeName">改名卡</button>
 </div>
-<script src="../../js/vue.js"></script>
+
 <script>
     const app = new Vue({
         el: '#app',
@@ -1607,8 +1604,7 @@ watch: { // watch 完整写法
         </div>
     </div>
 </div>
-<script src="../../js/vue.js"></script>
-<script src="../../js/axios.js"></script>
+
 <script>
 
     const app = new Vue({
@@ -1733,7 +1729,7 @@ Vue生命周期过程中，会**自动运行一些函数**，被称为【**生�
         <button @click="count++">+</button>
     </div>
 </div>
-<script src="../../js/vue.js"></script>
+
 <script>
     const app = new Vue({
         el: '#app',
@@ -1773,108 +1769,91 @@ Vue生命周期过程中，会**自动运行一些函数**，被称为【**生�
 </script>
 ```
 
-
-
 ## 四、生命周期钩子小案例
 
-### 1.在created中发送数据
+### 1. 在created中发送数据
 
-```html
- <style>
+```vue
+<style>
     * {
-      margin: 0;
-      padding: 0;
-      list-style: none;
+        margin: 0;
+        padding: 0;
+        list-style: none;
     }
+
     .news {
-      display: flex;
-      height: 120px;
-      width: 600px;
-      margin: 0 auto;
-      padding: 20px 0;
-      cursor: pointer;
+        display: flex;
+        height: 120px;
+        width: 600px;
+        margin: 0 auto;
+        padding: 20px 0;
+        cursor: pointer;
     }
+
     .news .left {
-      flex: 1;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      padding-right: 10px;
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        padding-right: 10px;
     }
+
     .news .left .title {
-      font-size: 20px;
+        font-size: 20px;
     }
+
     .news .left .info {
-      color: #999999;
+        color: #999999;
     }
+
     .news .left .info span {
-      margin-right: 20px;
+        margin-right: 20px;
     }
+
     .news .right {
-      width: 160px;
-      height: 120px;
+        width: 160px;
+        height: 120px;
     }
+
     .news .right img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
     }
-  </style>
+</style>
 
- <div id="app">
+<div id="app">
     <ul>
-      <li class="news">
-        <div class="left">
-          <div class="title">5G商用在即，三大运营商营收持续下降</div>
-          <div class="info">
-            <span>新京报经济新闻</span>
-            <span>2222-10-28 11:50:28</span>
-          </div>
-        </div>
-        <div class="right">
-          <img src="http://ajax-api.itheima.net/public/images/0.webp" alt="">
-        </div>
-      </li>
-
-      <li class="news">
-        <div class="left">
-          <div class="title">5G商用在即，三大运营商营收持续下降</div>
-          <div class="info">
-            <span>新京报经济新闻</span>
-            <span>2222-10-28 11:50:28</span>
-          </div>
-        </div>
-        <div class="right">
-          <img src="http://ajax-api.itheima.net/public/images/0.webp" alt="">
-        </div>
-      </li>
-
-      <li class="news">
-        <div class="left">
-          <div class="title">5G商用在即，三大运营商营收持续下降</div>
-          <div class="info">
-            <span>新京报经济新闻</span>
-            <span>2222-10-28 11:50:28</span>
-          </div>
-        </div>
-        <div class="right">
-          <img src="http://ajax-api.itheima.net/public/images/0.webp" alt="">
-        </div>
-      </li>
+        <li class="news" v-for="(item, index) in list" :key="item.id">
+            <div class="left">
+                <div class="title">{{ item.title }}</div>
+                <div class="info">
+                    <span>{{ item.source }}</span>
+                    <span>{{ item.time }}</span>
+                </div>
+            </div>
+            <div class="right">
+                <img :src="item.img" alt="">
+            </div>
+        </li>
     </ul>
-  </div>
-  <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
-  <script>
+</div>
+
+<script>
     // 接口地址：http://hmajax.itheima.net/api/news
     // 请求方式：get
     const app = new Vue({
-      el: '#app',
-      data: {
-        list: []
-      }
+        el: '#app',
+        data: {
+            list: []
+        },
+        async created() {
+            const res = await axios.get('http://hmajax.itheima.net/api/news')
+            this.list = res.data.data
+            console.log(this.list)
+        }
     })
-  </script>
+</script>
 ```
 
 
