@@ -1771,7 +1771,7 @@ Vue生命周期过程中，会**自动运行一些函数**，被称为【**生�
 
 ## 四、生命周期钩子小案例
 
-### 1. 在created中发送数据
+### 1.在created中发送数据
 
 ```vue
 <style>
@@ -1856,90 +1856,95 @@ Vue生命周期过程中，会**自动运行一些函数**，被称为【**生�
 </script>
 ```
 
-
-
 ### 2.在mounted中获取焦点
 
-```html
- <style>
+```vue
+<style>
     html,
     body {
-      height: 100%;
+        height: 100%;
     }
+
     .search-container {
-      position: absolute;
-      top: 30%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      text-align: center;
+        position: absolute;
+        top: 30%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        text-align: center;
     }
+
     .search-container .search-box {
-      display: flex;
+        display: flex;
     }
+
     .search-container img {
-      margin-bottom: 30px;
+        margin-bottom: 30px;
     }
+
     .search-container .search-box input {
-      width: 512px;
-      height: 16px;
-      padding: 12px 16px;
-      font-size: 16px;
-      margin: 0;
-      vertical-align: top;
-      outline: 0;
-      box-shadow: none;
-      border-radius: 10px 0 0 10px;
-      border: 2px solid #c4c7ce;
-      background: #fff;
-      color: #222;
-      overflow: hidden;
-      box-sizing: content-box;
-      -webkit-tap-highlight-color: transparent;
+        width: 512px;
+        height: 16px;
+        padding: 12px 16px;
+        font-size: 16px;
+        margin: 0;
+        vertical-align: top;
+        outline: 0;
+        box-shadow: none;
+        border-radius: 10px 0 0 10px;
+        border: 2px solid #c4c7ce;
+        background: #fff;
+        color: #222;
+        overflow: hidden;
+        box-sizing: content-box;
+        -webkit-tap-highlight-color: transparent;
     }
+
     .search-container .search-box button {
-      cursor: pointer;
-      width: 112px;
-      height: 44px;
-      line-height: 41px;
-      line-height: 42px;
-      background-color: #ad2a27;
-      border-radius: 0 10px 10px 0;
-      font-size: 17px;
-      box-shadow: none;
-      font-weight: 400;
-      border: 0;
-      outline: 0;
-      letter-spacing: normal;
-      color: white;
+        cursor: pointer;
+        width: 112px;
+        height: 44px;
+        line-height: 41px;
+        line-height: 42px;
+        background-color: #ad2a27;
+        border-radius: 0 10px 10px 0;
+        font-size: 17px;
+        box-shadow: none;
+        font-weight: 400;
+        border: 0;
+        outline: 0;
+        letter-spacing: normal;
+        color: white;
     }
+
     body {
-      background: no-repeat center /cover;
-      background-color: #edf0f5;
+        background: no-repeat center /cover;
+        background-color: #edf0f5;
     }
-  </style>
+</style>
 
 <div class="container" id="app">
-  <div class="search-container">
-    <img src="https://www.itheima.com/images/logo.png" alt="">
-    <div class="search-box">
-      <input type="text" v-model="words" id="inp">
-      <button>搜索一下</button>
+    <div class="search-container">
+        <img src="https://www.itheima.com/images/logo.png" alt="">
+        <div class="search-box">
+            <input type="text" v-model="words" id="inp">
+            <button>搜索一下</button>
+        </div>
     </div>
-  </div>
 </div>
 
-<script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+<script src="../../js/vue.js"></script>
 <script>
-  const app = new Vue({
-    el: '#app',
-    data: {
-      words: ''
-    }
-  })
+    const app = new Vue({
+        el: '#app',
+        data: {
+            words: ''
+        },
+        mounted() {
+            document.querySelector('#inp').focus()
+        }
+    })
 </script>
 ```
-
-
 
 ## 五、案例-小黑记账清单
 
@@ -1949,40 +1954,30 @@ Vue生命周期过程中，会**自动运行一些函数**，被称为【**生�
 
 ### 2.需求分析
 
-1.基本渲染
-
-2.添加功能
-
-3.删除功能
-
-4.饼图渲染
+1. 基本渲染
+2. 添加功能
+3. 删除功能
+4. 饼图渲染
 
 ### 3.思路分析
 
-1.基本渲染
-
-- 立刻发送请求获取数据 created
-- 拿到数据，存到data的响应式数据中
-- 结合数据，进行渲染 v-for
-- 消费统计  —> 计算属性
-
-2.添加功能
-
-- 收集表单数据 v-model，使用指令修饰符处理数据
-- 给添加按钮注册点击事件，对输入的内容做非空判断，发送请求
-- 请求成功后，对文本框内容进行清空
-- 重新渲染列表
-
-3.删除功能
-
-- 注册点击事件，获取当前行的id
-- 根据id发送删除请求
-- 需要重新渲染
-
-4.饼图渲染
-
-- 初始化一个饼图 echarts.init(dom)    mounted钩子中渲染
-- 根据数据试试更新饼图 echarts.setOptions({...})
+1. 基本渲染
+   - 立刻发送请求获取数据 created
+   - 拿到数据，存到data的响应式数据中
+   - 结合数据，进行渲染 v-for
+   - 消费统计  —> 计算属性
+2. 添加功能
+   - 收集表单数据 v-model，使用指令修饰符处理数据
+   - 给添加按钮注册点击事件，对输入的内容做非空判断，发送请求
+   - 请求成功后，对文本框内容进行清空
+   - 重新渲染列表
+3. 删除功能
+   - 注册点击事件，获取当前行的id
+   - 根据id发送删除请求
+   - 需要重新渲染
+4. 饼图渲染
+   - 初始化一个饼图 echarts.init(dom)    mounted钩子中渲染
+   - 根据数据试试更新饼图 echarts.setOptions({...})
 
 ### 4.代码准备
 
