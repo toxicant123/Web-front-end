@@ -44,14 +44,15 @@
                         <div class="td">{{ item.price }}</div>
                         <div class="td">
                             <div class="my-input-number">
-                                <button class="decrease"> -</button>
+                                <button class="decrease" @click="change(item.id, -1)" :disabled="item.num <= 1"> -
+                                </button>
                                 <span class="my-input__inner">{{ item.num }}</span>
-                                <button class="increase"> +</button>
+                                <button class="increase" @click="change(item.id, 1)"> +</button>
                             </div>
                         </div>
                         <div class="td">{{ item.num * item.price }}</div>
                         <div class="td">
-                            <button>删除</button>
+                            <button @click="del(item.id)">删除</button>
                         </div>
                     </div>
                 </div>
@@ -60,14 +61,15 @@
             <div class="bottom">
                 <!-- 全选 -->
                 <label class="check-all">
-                    <input type="checkbox"/>
+                    <input type="checkbox" v-model="isAllChecked"/>
                     全选
                 </label>
                 <div class="right-box">
                     <!-- 所有商品总价 -->
-                    <span class="price-box">总价&nbsp;&nbsp;:&nbsp;&nbsp;¥&nbsp;<span class="price">24</span></span>
+                    <span class="price-box">总价&nbsp;&nbsp;:&nbsp;&nbsp;¥&nbsp;<span class="price">{{ totalPrice
+                        }}</span></span>
                     <!-- 结算按钮 -->
-                    <button class="pay">结算( 6 )</button>
+                    <button class="pay">结算( {{ totalCount }} )</button>
                 </div>
             </div>
         </div>
@@ -118,6 +120,31 @@
                     },
                 ],
             },
+            methods: {
+                del(id) {
+                    this.fruitList = this.fruitList.filter(ie => ie.id !== id)
+                },
+                change(id, changeNum) {
+                    const fruit = this.fruitList.find(item => item.id === id)
+                    fruit.num += changeNum
+                }
+            },
+            computed: {
+                isAllChecked: {
+                    get() {
+                        return this.fruitList.every(ie => ie.isChecked)
+                    },
+                    set(bool) {
+                        this.fruitList.forEach(ie => ie.isChecked = bool)
+                    }
+                },
+                totalCount() {
+                    return this.fruitList.reduce((p, c) => p + (c.isChecked ? c.num : 0), 0)
+                },
+                totalPrice() {
+                    return this.fruitList.reduce((p, c) => p + (c.isChecked ? c.num * c.price : 0), 0)
+                }
+            }
         })
     </script>
 </body>
