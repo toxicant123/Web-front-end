@@ -1981,137 +1981,152 @@ Vue生命周期过程中，会**自动运行一些函数**，被称为【**生�
 
 ### 4.代码准备
 
-```html
- <!-- CSS only -->
-    <link
-      rel="stylesheet"
-      href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css"
-    />
-    <style>
-      .red {
-        color: red!important;
-      }
-      .search {
-        width: 300px;
-        margin: 20px 0;
-      }
-      .my-form {
-        display: flex;
-        margin: 20px 0;
-      }
-      .my-form input {
-        flex: 1;
-        margin-right: 20px;
-      }
-      .table > :not(:first-child) {
-        border-top: none;
-      }
-      .contain {
-        display: flex;
-        padding: 10px;
-      }
-      .list-box {
-        flex: 1;
-        padding: 0 30px;
-      }
-      .list-box  a {
-        text-decoration: none;
-      }
-      .echarts-box {
-        width: 600px;
-        height: 400px;
-        padding: 30px;
-        margin: 0 auto;
-        border: 1px solid #ccc;
-      }
-      tfoot {
-        font-weight: bold;
-      }
-      @media screen and (max-width: 1000px) {
-        .contain {
-          flex-wrap: wrap;
-        }
-        .list-box {
-          width: 100%;
-        }
-        .echarts-box {
-          margin-top: 30px;
-        }
-      }
-    </style>
-
-
-  <div id="app">
-      <div class="contain">
+```vue
+<div id="app">
+    <div class="contain">
         <!-- 左侧列表 -->
         <div class="list-box">
 
-          <!-- 添加资产 -->
-          <form class="my-form">
-            <input type="text" class="form-control" placeholder="消费名称" />
-            <input type="text" class="form-control" placeholder="消费价格" />
-            <button type="button" class="btn btn-primary">添加账单</button>
-          </form>
+            <!-- 添加资产 -->
+            <form class="my-form">
+                <input type="text" class="form-control" placeholder="消费名称" v-model.trim="name"/>
+                <input type="text" class="form-control" placeholder="消费价格" v-model.number="price"/>
+                <button type="button" class="btn btn-primary" @click="add">添加账单</button>
+            </form>
 
-          <table class="table table-hover">
-            <thead>
-              <tr>
-                <th>编号</th>
-                <th>消费名称</th>
-                <th>消费价格</th>
-                <th>操作</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td>1</td>
-                <td>帽子</td>
-                <td>99.00</td>
-                <td><a href="javascript:;">删除</a></td>
-              </tr>
-              <tr>
-                <td>2</td>
-                <td>大衣</td>
-                <td class="red">199.00</td>
-                <td><a href="javascript:;">删除</a></td>
-              </tr>
-            </tbody>
-            <tfoot>
-              <tr>
-                <td colspan="4">消费总计： 298.00</td>
-              </tr>
-            </tfoot>
-          </table>
+            <table class="table table-hover">
+                <thead>
+                    <tr>
+                        <th>编号</th>
+                        <th>消费名称</th>
+                        <th>消费价格</th>
+                        <th>操作</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr v-for="(item, index) in list" :key="item.id">
+                        <td>{{ index + 1 }}</td>
+                        <td>{{ item.name }}</td>
+                        <td :class="{ red: item.price > 500 }">{{ item.price.toFixed(2) }}</td>
+                        <td><a href="javascript:;" @click="del(item.id)">删除</a></td>
+                    </tr>
+                </tbody>
+                <tfoot>
+                    <tr>
+                        <td colspan="4">消费总计：{{ totalPrice.toFixed(2) }}</td>
+                    </tr>
+                </tfoot>
+            </table>
         </div>
-        
+
         <!-- 右侧图表 -->
         <div class="echarts-box" id="main"></div>
-      </div>
     </div>
-    <script src="https://cdn.jsdelivr.net/npm/echarts@5.4.0/dist/echarts.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
-    <script>
-      /**
-       * 接口文档地址：
-       * https://www.apifox.cn/apidoc/shared-24459455-ebb1-4fdc-8df8-0aff8dc317a8/api-53371058
-       * 
-       * 功能需求：
-       * 1. 基本渲染
-       * 2. 添加功能
-       * 3. 删除功能
-       * 4. 饼图渲染
-       */
-      const app = new Vue({
+</div>
+
+<script>
+    /**
+     * 接口文档地址：
+     * https://www.apifox.cn/apidoc/shared-24459455-ebb1-4fdc-8df8-0aff8dc317a8/api-53371058
+     *
+     * 功能需求：
+     * 1. 基本渲染
+     * 2. 添加功能
+     * 3. 删除功能
+     * 4. 饼图渲染
+     */
+    const app = new Vue({
         el: '#app',
         data: {
-          
+            list: [],
+            name: '',
+            price: null
         },
-      })
-    </script>
+        computed: {
+            totalPrice() {
+                return this.list.reduce((p, c) => p + c.price, 0)
+            }
+        },
+        async created() {
+            await this.getList()
+        },
+        methods: {
+            async getList() {
+                const res = await axios.get('https://applet-base-api-t.itheima.net/bill', {
+                    params: {
+                        creator: '小黑'
+                    }
+                })
+                this.list = res.data.data
+
+                this.myCharts.setOption({
+                    series: [
+                        {
+                            data: this.list.map(ie => ({name: ie.name, value: ie.price}))
+                        }
+                    ]
+                })
+            },
+            async add() {
+                if (!this.name) {
+                    return alert('请输入消费名称')
+                }
+
+                if (typeof this.price !== 'number') {
+                    return alert('请输入正确的消费名称')
+                }
+
+                await axios.post('https://applet-base-api-t.itheima.net/bill', {
+                    creator: '小黑',
+                    name: this.name,
+                    price: this.price
+                })
+
+                this.getList()
+                this.name = ''
+                this.price = null
+            },
+            async del(id) {
+                await axios.delete(`https://applet-base-api-t.itheima.net/bill/${id}`)
+
+                this.getList()
+            }
+        },
+        async mounted() {
+            this.myCharts = echarts.init(document.querySelector('#main'))
+
+            this.myCharts.setOption({
+                title: {
+                    text: '消费账单列表',
+                    left: 'center'
+                },
+                tooltip: {
+                    trigger: 'item'
+                },
+                legend: {
+                    orient: 'vertical',
+                    left: 'left'
+                },
+                series: [
+                    {
+                        name: '消费账单',
+                        type: 'pie',
+                        radius: '50%',
+                        data: [],
+                        emphasis: {
+                            itemStyle: {
+                                shadowBlur: 10,
+                                shadowOffsetX: 0,
+                                shadowColor: 'rgba(0, 0, 0, 0.5)'
+                            }
+                        }
+                    }
+                ]
+            })
+        }
+    })
+</script>
 ```
-
-
 
 ## 六、工程化开发和脚手架
 
