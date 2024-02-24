@@ -2208,21 +2208,15 @@ Vue CLI 是Vue官方提供的一个**全局命令工具**
 
 ### 2.组件是由三部分构成
 
-- 语法高亮插件
-
-![68216926426](assets/1682169264266.png)
-
+- 语法高亮插件  
+  ![68216926426](assets/1682169264266.png)
 - 三部分构成
-
     - template：结构 （有且只能一个根元素）
     - script:   js逻辑
     -  style： 样式 (可支持less，需要装包)
-
 - 让组件支持less
-
-  （1） style标签，lang="less" 开启less功能
-
-  （2） 装包: yarn add less less-loader -D 或者npm i less less-loader -D
+  1. style标签，lang="less" 开启less功能
+  2. 装包: yarn add less less-loader -D 或者npm i less less-loader -D
 
 ## 十、普通组件的注册使用-局部注册
 
@@ -2241,7 +2235,7 @@ Vue CLI 是Vue官方提供的一个**全局命令工具**
 
 ### 4.注意：
 
-组件名规范 —> 大驼峰命名法， 如 HmHeader
+组件名规范 —> 大驼峰命名法，如：HmHeader
 
 ### 5.语法：
 
@@ -2252,16 +2246,14 @@ Vue CLI 是Vue官方提供的一个**全局命令工具**
 import 组件对象 from '.vue文件路径'
 import HmHeader from './components/HmHeader'
 
-export default {  // 局部注册
-  components: {
-   '组件名': 组件对象,
-    HmHeader:HmHeaer,
-    HmHeader
-  }
+export default {  // 局部注册
+    components: {
+        '组件名': 组件对象,
+        HmHeader: HmHeaer,
+        HmHeader
+    }
 }
 ```
-
-
 
 ### 6.练习
 
@@ -2269,81 +2261,73 @@ export default {  // 局部注册
 
 ![68222790287](assets/1682227902873.png)
 
-
-
 ```vue
 <template>
-  <div class="hm-header">
-    我是hm-header
-  </div>
+    <div class="hm-header">
+        我是hm-header
+    </div>
 </template>
 
 <script>
-export default {
-
-}
+    export default {}
 </script>
 
 <style>
-.hm-header {
-  height: 100px;
-  line-height: 100px;
-  text-align: center;
-  font-size: 30px;
-  background-color: #8064a2;
-  color: white;
-}
+    .hm-header {
+        height: 100px;
+        line-height: 100px;
+        text-align: center;
+        font-size: 30px;
+        background-color: #8064a2;
+        color: white;
+    }
 </style>
 ```
 
 ```vue
 <template>
-  <div class="hm-main">
-    我是hm-main
-  </div>
+    <div class="hm-main">
+        我是hm-main
+    </div>
 </template>
 
 <script>
-export default {
-
-}
+    export default {}
 </script>
 
 <style>
-.hm-main {
-  height: 400px;
-  line-height: 400px;
-  text-align: center;
-  font-size: 30px;
-  background-color: #f79646;
-  color: white;
-  margin: 20px 0;
-}
+    .hm-main {
+        height: 400px;
+        line-height: 400px;
+        text-align: center;
+        font-size: 30px;
+        background-color: #f79646;
+        color: white;
+        margin: 20px 0;
+    }
 </style>
 ```
 
 ```vue
 <template>
-  <div class="hm-footer">
-    我是hm-footer
-  </div>
+    <div class="hm-footer">
+        我是hm-footer
+    </div>
 </template>
 
 <script>
-export default {
-
-}
+    export default {}
 </script>
 
 <style>
-.hm-footer {
-  height: 100px;
-  line-height: 100px;
-  text-align: center;
-  font-size: 30px;
-  background-color: #4f81bd;
-  color: white;
-}
+    .hm-footer {
+        height: 100px;
+        line-height: 100px;
+        text-align: center;
+        font-size: 30px;
+        background-color: #4f81bd;
+        color: white;
+    }
 </style>
 ```
 
