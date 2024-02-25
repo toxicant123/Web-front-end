@@ -2569,7 +2569,6 @@ App.vue
 ![68230890309](assets/1682308903094.png)
 
 思考：
-
 1. 组件之间有哪些关系？
 2. 对应的组件通信方案有哪几类？
 
@@ -2580,15 +2579,9 @@ App.vue
 
 ![68231807380](assets/1682318073803.png)
 
-
-
 ### 4.通信解决方案
 
 ![68231811109](assets/1682318111090.png)
-
-
-
-
 
 ### 5.父子通信流程
 
@@ -2596,8 +2589,6 @@ App.vue
 2. 子组件利用 **$emit** 通知父组件修改更新
 
 ![68231844456](assets/1682318444566.png)
-
-
 
 ### 6.父向子通信代码示例
 
@@ -2607,46 +2598,45 @@ App.vue
 
 ```vue
 <template>
-  <div class="app" style="border: 3px solid #000; margin: 10px">
-    我是APP组件 
-    <Son></Son>
-  </div>
+    <div class="app" style="border: 3px solid #000; margin: 10px">
+        我是APP组件
+        <Son></Son>
+    </div>
 </template>
 
 <script>
-import Son from './components/Son.vue'
-export default {
-  name: 'App',
-  data() {
-    return {
-      myTitle: '学前端，就来黑马程序员',
+    import Son from './components/Son.vue'
+
+    export default {
+        name: 'App',
+        data() {
+            return {
+                myTitle: '学前端，就来黑马程序员',
+            }
+        },
+        components: {
+            Son,
+        },
     }
-  },
-  components: {
-    Son,
-  },
-}
 </script>
 
 <style>
 </style>
 ```
 
-
-
 子组件Son.vue
 
 ```vue
 <template>
-  <div class="son" style="border:3px solid #000;margin:10px">
-    我是Son组件
-  </div>
+    <div class="son" style="border:3px solid #000;margin:10px">
+        我是Son组件
+    </div>
 </template>
 
 <script>
-export default {
-  name: 'Son-Child',
-}
+    export default {
+        name: 'Son-Child',
+    }
 </script>
 
 <style>
@@ -2656,13 +2646,10 @@ export default {
 
 ![68231871178](assets/1682318711785.png)
 
-父向子传值步骤
-
+父向子传值步骤：
 1. 给子组件以添加属性的方式传值
 2. 子组件内部通过props接收
 3. 模板中直接使用 props接收的值
-
-
 
 ### 7.子向父通信代码示例
 
