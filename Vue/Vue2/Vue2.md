@@ -2212,8 +2212,8 @@ Vue CLI 是Vue官方提供的一个**全局命令工具**
   ![68216926426](assets/1682169264266.png)
 - 三部分构成
     - template：结构 （有且只能一个根元素）
-    - script:   js逻辑
-    -  style： 样式 (可支持less，需要装包)
+    - script: js逻辑
+    - style：样式 (可支持less，需要装包)
 - 让组件支持less
   1. style标签，lang="less" 开启less功能
   2. 装包: yarn add less less-loader -D 或者npm i less less-loader -D
@@ -2331,14 +2331,6 @@ export default {  // 局部注册
 </style>
 ```
 
-### 7.总结
-
-- A组件内部注册的局部组件能在B组件使用吗
-- 局部注册组件的步骤是什么
-- 使用组件时 应该按照什么命名法
-
-
-
 ## 十一、普通组件的注册使用-全局注册
 
 ### 1.特点：
@@ -2358,7 +2350,7 @@ export default {  // 局部注册
 
 ### 4.注意
 
-组件名规范 —> 大驼峰命名法， 如 HmHeader
+组件名规范 —> 大驼峰命名法，如 HmHeader
 
 ### 5.语法
 
@@ -2380,37 +2372,33 @@ Vue.component('HmButton', HmButton)
 
 ```vue
 <template>
-  <button class="hm-button">通用按钮</button>
+    <button class="hm-button">通用按钮</button>
 </template>
 
 <script>
-export default {
-
-}
+    export default {}
 </script>
 
 <style>
-.hm-button {
-  height: 50px;
-  line-height: 50px;
-  padding: 0 20px;
-  background-color: #3bae56;
-  border-radius: 5px;
-  color: white;
-  border: none;
-  vertical-align: middle;
-  cursor: pointer;
-}
+    .hm-button {
+        height: 50px;
+        line-height: 50px;
+        padding: 0 20px;
+        background-color: #3bae56;
+        border-radius: 5px;
+        color: white;
+        border: none;
+        vertical-align: middle;
+        cursor: pointer;
+    }
 </style>
 ```
 
-### 7.总结
+```js
+import HmButton from "@/components/HmButton.vue";
 
-1.全局注册组件应该在哪个文件中注册以及语法是什么？
-
-2.全局组件在项目中的任何一个组件中可不可以使用？
-
-
+Vue.component('HmButton', HmButton)
+```
 
 ## 十二、综合案例
 
@@ -2419,8 +2407,6 @@ export default {
 ### 2.小兔仙组件拆分示意图
 
 ![68226549162](assets/1682265491628.png)
-
-
 
 ### 3.开发思路
 
