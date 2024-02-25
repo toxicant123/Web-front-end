@@ -2415,16 +2415,13 @@ Vue.component('HmButton', HmButton)
 3. 拆分封装通用小组件  (局部或全局注册)  
    将来 → 通过 js 动态渲染，实现功能
 
+## 四一、scoped解决样式冲突
 
-## 二、scoped解决样式冲突
+### **1.默认情况**
 
-### **1.默认情况**：
-
-写在组件中的样式会 **全局生效** →  因此很容易造成多个组件之间的样式冲突问题。
+写在组件中的样式会 **全局生效** → 因此很容易造成多个组件之间的样式冲突问题。
 
 1. **全局样式**: 默认组件中的样式会作用到全局，任何一个组件中都会受到此样式的影响
-
-
 2. **局部样式**: 可以给组件加上**scoped** 属性,可以**让样式只作用于当前组件**
 
 ### 2.代码演示
@@ -2433,15 +2430,13 @@ BaseOne.vue
 
 ```vue
 <template>
-  <div class="base-one">
-    BaseOne
-  </div>
+    <div class="base-one">
+        BaseOne
+    </div>
 </template>
 
 <script>
-export default {
-
-}
+    export default {}
 </script>
 <style scoped>
 </style>
@@ -2451,15 +2446,13 @@ BaseTwo.vue
 
 ```vue
 <template>
-  <div class="base-one">
-    BaseTwo
-  </div>
+    <div class="base-one">
+        BaseTwo
+    </div>
 </template>
 
 <script>
-export default {
-
-}
+    export default {}
 </script>
 
 <style scoped>
@@ -2470,41 +2463,34 @@ App.vue
 
 ```vue
 <template>
-  <div id="app">
-    <BaseOne></BaseOne>
-    <BaseTwo></BaseTwo>
-  </div>
+    <div id="app">
+        <BaseOne/>
+        <BaseTwo/>
+    </div>
 </template>
 
 <script>
-import BaseOne from './components/BaseOne'
-import BaseTwo from './components/BaseTwo'
-export default {
-  name: 'App',
-  components: {
-    BaseOne,
-    BaseTwo
-  }
-}
+    import BaseOne from '@/components/BaseOne'
+    import BaseTwo from '@/components/BaseTwo'
+
+    export default {
+        name: 'App',
+        components: {
+            BaseOne,
+            BaseTwo
+        }
+    }
 </script>
 ```
 
 ### 3.scoped原理
 
-1. 当前组件内标签都被添加**data-v-hash值** 的属性
+1. 当前组件内标签都被添加**data-v-hash值**的属性
 2. css选择器都被添加 [**data-v-hash值**] 的属性选择器
 
 最终效果: **必须是当前组件的元素**, 才会有这个自定义属性, 才会被这个样式作用到
 
 ![68230651737](assets/1682306517375.png)
-
-### 4.总结
-
-1. style的默认样式是作用到哪里的？
-2. scoped的作用是什么？
-3. style中推不推荐加scoped？
-
-
 
 ## 三、data必须是一个函数
 
