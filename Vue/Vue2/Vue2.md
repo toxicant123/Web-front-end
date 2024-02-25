@@ -2600,7 +2600,7 @@ App.vue
 <template>
     <div class="app" style="border: 3px solid #000; margin: 10px">
         我是APP组件
-        <Son></Son>
+        <Son :title="myTitle"/>
     </div>
 </template>
 
@@ -2616,7 +2616,7 @@ App.vue
         },
         components: {
             Son,
-        },
+        }
     }
 </script>
 
@@ -2629,18 +2629,18 @@ App.vue
 ```vue
 <template>
     <div class="son" style="border:3px solid #000;margin:10px">
-        我是Son组件
+        我是Son组件 {{ title }}
     </div>
 </template>
 
 <script>
     export default {
         name: 'Son-Child',
+        props: ['title']
     }
 </script>
 
 <style>
-
 </style>
 ```
 
@@ -2658,19 +2658,68 @@ App.vue
 ![68231896563](assets/1682318965635.png)
 
 子向父传值步骤
-
 1. $emit触发事件，给父组件发送消息通知
 2. 父组件监听$emit触发的事件
 3. 提供处理函数，在函数的性参中获取传过来的参数
 
-### 8.总结
+```vue
+<template>
+    <div class="app" style="border: 3px solid #000; margin: 10px">
+        我是APP组件
+        <Son :title="myTitle" @changeTitle="receiveChange"/>
+    </div>
+</template>
 
-1. 组件关系分类有哪两种
-2. 父子组件通信的流程是什么？
-    1. 父向子
-    2. 子向父
+<script>
+    import Son from './components/Son.vue'
 
+    export default {
+        name: 'App',
+        data() {
+            return {
+                myTitle: '学前端，就来黑马程序员',
+            }
+        },
+        components: {
+            Son,
+        },
+        methods: {
+            receiveChange(data) {
+                this.myTitle = data
+            }
+        }
+    }
+</script>
 
+<style>
+</style>
+```
+
+子组件Son.vue
+
+```vue
+<template>
+    <div class="son" style="border:3px solid #000;margin:10px">
+        我是Son组件 {{ title }}
+        <button @click="changeFn">修改title</button>
+    </div>
+</template>
+
+<script>
+    export default {
+        name: 'Son-Child',
+        props: ['title'],
+        methods: {
+            changeFn() {
+                this.$emit('changeTitle', +new Date())
+            }
+        }
+    }
+</script>
+
+<style>
+</style>
+```
 
 ## 五、什么是props
 
