@@ -2488,7 +2488,7 @@ App.vue
 1. 当前组件内标签都被添加**data-v-hash值**的属性
 2. css选择器都被添加 [**data-v-hash值**] 的属性选择器
 
-最终效果: **必须是当前组件的元素**, 才会有这个自定义属性, 才会被这个样式作用到
+最终效果: **必须是当前组件的元素**，才会有这个自定义属性，才会被这个样式作用到
 
 ![68230651737](assets/1682306517375.png)
 
@@ -2508,27 +2508,27 @@ BaseCount.vue
 
 ```vue
 <template>
-  <div class="base-count">
-    <button @click="count--">-</button>
-    <span>{{ count }}</span>
-    <button @click="count++">+</button>
-  </div>
+    <div class="base-count">
+        <button @click="count--">-</button>
+        <span>{{ count }}</span>
+        <button @click="count++">+</button>
+    </div>
 </template>
 
 <script>
-export default {
-  data: function () {
-    return {
-      count: 100,
+    export default {
+        data: function () {
+            return {
+                count: 100,
+            }
+        },
     }
-  },
-}
 </script>
 
 <style>
-.base-count {
-  margin: 20px;
-}
+    .base-count {
+        margin: 20px;
+    }
 </style>
 ```
 
@@ -2536,29 +2536,24 @@ App.vue
 
 ```vue
 <template>
-  <div class="app">
-    <BaseCount></BaseCount>
-  </div>
+    <div class="app">
+        <BaseCount/>
+    </div>
 </template>
 
 <script>
-import BaseCount from './components/BaseCount'
-export default {
-  components: {
-    BaseCount,
-  },
-}
+    import BaseCount from '@/components/BaseCount'
+
+    export default {
+        components: {
+            BaseCount,
+        },
+    }
 </script>
 
 <style>
 </style>
 ```
-
-### 3.总结
-
-data写成函数的目的是什么？
-
-
 
 ## 四、组件通信
 
