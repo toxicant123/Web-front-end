@@ -2932,35 +2932,32 @@ props: {
 
 ```vue
 <script>
-export default {
-  // 完整写法（类型、默认值、非空、自定义校验）
-  props: {
-    w: {
-      type: Number,
-      //required: true,
-      default: 0,
-      validator(val) {
-        // console.log(val)
-        if (val >= 100 || val <= 0) {
-          console.error('传入的范围必须是0-100之间')
-          return false
-        } else {
-          return true
+    export default {
+        // 完整写法（类型、默认值、非空、自定义校验）
+        props: {
+            w: {
+                type: Number,
+                //required: true,
+                default: 0,
+                validator(val) {
+                    // console.log(val)
+                    if (val >= 100 || val <= 0) {
+                        console.error('传入的范围必须是0-100之间')
+                        return false
+                    } else {
+                        return true
+                    }
+                }
+            }
         }
-      },
-    },
-  },
-}
+    }
 </script>
 ```
 
 ### 3.注意
 
-1.default和required一般不同时写（因为当时必填项时，肯定是有值的）
-
-2.default后面如果是简单类型的值，可以直接写默认。如果是复杂类型的值，则需要以函数的形式return一个默认值
-
-
+1. default和required一般不同时写（因为当时必填项时，肯定是有值的）
+2. default后面如果是简单类型的值，可以直接写默认。如果是复杂类型的值，则需要以函数的形式return一个默认值
 
 ## 八、props&data、单向数据流
 
@@ -2970,12 +2967,12 @@ export default {
 
 ### 2.区别
 
-- data 的数据是**自己**的  →   随便改
-- prop 的数据是**外部**的  →   不能直接改，要遵循 **单向数据流**
+- data 的数据是**自己**的 → 随便改
+- prop 的数据是**外部**的 → 不能直接改，要遵循 **单向数据流**
 
 ### 3.单向数据流：
 
-父级props 的数据更新，会向下流动，影响子组件。这个数据流动是单向的
+父级 props 的数据更新，会向下流动，影响子组件。这个数据流动是单向的
 
 ### 4.代码演示
 
@@ -2983,24 +2980,24 @@ App.vue
 
 ```vue
 <template>
-  <div class="app">
-    <BaseCount></BaseCount>
-  </div>
+    <div class="app">
+        <BaseCount></BaseCount>
+    </div>
 </template>
 
 <script>
-import BaseCount from './components/BaseCount.vue'
-export default {
-  components:{
-    BaseCount
-  },
-  data(){
-  },
-}
+    import BaseCount from './components/BaseCount.vue'
+
+    export default {
+        components: {
+            BaseCount
+        },
+        data() {
+        },
+    }
 </script>
 
 <style>
-
 </style>
 ```
 
@@ -3008,44 +3005,38 @@ BaseCount.vue
 
 ```vue
 <template>
-  <div class="base-count">
-    <button @click="count--">-</button>
-    <span>{{ count }}</span>
-    <button @click="count++">+</button>
-  </div>
+    <div class="base-count">
+        <button @click="count--">-</button>
+        <span>{{ count }}</span>
+        <button @click="count++">+</button>
+    </div>
 </template>
 
 <script>
-export default {
-  // 1.自己的数据随便修改  （谁的数据 谁负责）
-   data () {
-     return {
-       count: 100,
-     }
-   },
-  // 2.外部传过来的数据 不能随便修改
-  //props: {
-  //  count: {
-  //    type: Number,
-  //  }, 
-  //}
-}
+    export default {
+        // 1.自己的数据随便修改  （谁的数据 谁负责）
+        data() {
+            return {
+                count: 100,
+            }
+        },
+        // 2.外部传过来的数据 不能随便修改
+        //props: {
+        //  count: {
+        //    type: Number,
+        //  }, 
+        //}
+    }
 </script>
 
 <style>
-.base-count {
-  margin: 20px;
-}
+    .base-count {
+        margin: 20px;
+    }
 </style>
 ```
 
 ![68232373422](assets/1682323734228.png)
-
-### 5.口诀
-
-**谁的数据谁负责**
-
-
 
 ## 九、综合案例-组件拆分
 
@@ -3054,11 +3045,9 @@ export default {
 - 拆分基础组件
 - 渲染待办任务
 - 添加任务
--  删除任务
--  底部合计 和 清空功能
--  持久化存储
-
-
+- 删除任务
+- 底部合计 和 清空功能
+- 持久化存储
 
 ### 2.拆分基础组件
 
