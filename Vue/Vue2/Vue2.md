@@ -2981,7 +2981,7 @@ App.vue
 ```vue
 <template>
     <div class="app">
-        <BaseCount></BaseCount>
+        <BaseCount :giveCount="666"></BaseCount>
     </div>
 </template>
 
@@ -2991,9 +2991,7 @@ App.vue
     export default {
         components: {
             BaseCount
-        },
-        data() {
-        },
+        }
     }
 </script>
 
@@ -3009,6 +3007,7 @@ BaseCount.vue
         <button @click="count--">-</button>
         <span>{{ count }}</span>
         <button @click="count++">+</button>
+        <button @click="call(3)">touch</button>
     </div>
 </template>
 
@@ -3017,15 +3016,18 @@ BaseCount.vue
         // 1.自己的数据随便修改  （谁的数据 谁负责）
         data() {
             return {
-                count: 100,
+                count: 0,
             }
         },
         // 2.外部传过来的数据 不能随便修改
-        //props: {
-        //  count: {
-        //    type: Number,
-        //  }, 
-        //}
+        props: {
+            giveCount: {
+                type: Number,
+            }
+        },
+        mounted() {
+            this.count = this.giveCount
+        }
     }
 </script>
 
@@ -3054,8 +3056,6 @@ BaseCount.vue
 咱们可以把小黑记事本原有的结构拆成三部分内容：头部（TodoHeader）、列表(TodoMain)、底部(TodoFooter)
 
 ![68232559841](assets/1682325598418.png)
-
-
 
 ## 十、综合案例-列表渲染
 
