@@ -2733,8 +2733,8 @@ App.vue
 
 ### 3.特点
 
-1. 可以传递 **任意数量**的prop
-2. 可以传递 **任意类型**的prop
+1. 可以传递**任意数量**的prop
+2. 可以传递**任意类型**的prop
 
 ![68232015691](assets/1682320156914.png)
 
@@ -2744,35 +2744,36 @@ App.vue
 
 ```vue
 <template>
-  <div class="app">
-    <UserInfo
-      :username="username"
-      :age="age"
-      :isSingle="isSingle"
-      :car="car"
-      :hobby="hobby"
-    ></UserInfo>
-  </div>
+    <div class="app">
+        <UserInfo
+            :username="username"
+            :age="age"
+            :isSingle="isSingle"
+            :car="car"
+            :hobby="hobby"
+        ></UserInfo>
+    </div>
 </template>
 
 <script>
-import UserInfo from './components/UserInfo.vue'
-export default {
-  data() {
-    return {
-      username: '小帅',
-      age: 28,
-      isSingle: true,
-      car: {
-        brand: '宝马',
-      },
-      hobby: ['篮球', '足球', '羽毛球'],
+    import UserInfo from './components/UserInfo.vue'
+
+    export default {
+        data() {
+            return {
+                username: '小帅',
+                age: 28,
+                isSingle: true,
+                car: {
+                    brand: '宝马',
+                },
+                hobby: ['篮球', '足球', '羽毛球'],
+            }
+        },
+        components: {
+            UserInfo,
+        },
     }
-  },
-  components: {
-    UserInfo,
-  },
-}
 </script>
 
 <style>
@@ -2783,31 +2784,32 @@ export default {
 
 ```vue
 <template>
-  <div class="userinfo">
-    <h3>我是个人信息组件</h3>
-    <div>姓名：</div>
-    <div>年龄：</div>
-    <div>是否单身：</div>
-    <div>座驾：</div>
-    <div>兴趣爱好：</div>
-  </div>
+    <div class="userinfo">
+        <h3>我是个人信息组件</h3>
+        <div>姓名：{{ username }}</div>
+        <div>年龄：{{ age }}</div>
+        <div>是否单身：{{ isSingle }}</div>
+        <div>座驾：{{ car.brand }}</div>
+        <div>兴趣爱好：{{ hobby.join('、') }}</div>
+    </div>
 </template>
 
 <script>
-export default {
-  
-}
+    export default {
+        props: ['username', 'age', 'isSingle', 'car', 'hobby']
+    }
 </script>
 
 <style>
-.userinfo {
-  width: 300px;
-  border: 3px solid #000;
-  padding: 20px;
-}
-.userinfo > div {
-  margin: 20px 10px;
-}
+    .userinfo {
+        width: 300px;
+        border: 3px solid #000;
+        padding: 20px;
+    }
+
+    .userinfo > div {
+        margin: 20px 10px;
+    }
 </style>
 ```
 
@@ -2819,7 +2821,7 @@ export default {
 
 ### 2.作用
 
-为组件的 prop 指定**验证要求**，不符合要求，控制台就会有**错误提示**  → 帮助开发者，快速发现错误
+为组件的 prop 指定**验证要求**，不符合要求，控制台就会有**错误提示** → 帮助开发者，快速发现错误
 
 ### 3.语法
 
@@ -2836,23 +2838,24 @@ App.vue
 
 ```vue
 <template>
-  <div class="app">
-    <BaseProgress :w="width"></BaseProgress>
-  </div>
+    <div class="app">
+        <BaseProgress :w="width"></BaseProgress>
+    </div>
 </template>
 
 <script>
-import BaseProgress from './components/BaseProgress.vue'
-export default {
-  data() {
-    return {
-      width: 30,
+    import BaseProgress from './components/BaseProgress.vue'
+
+    export default {
+        data() {
+            return {
+                width: 30,
+            }
+        },
+        components: {
+            BaseProgress,
+        },
     }
-  },
-  components: {
-    BaseProgress,
-  },
-}
 </script>
 
 <style>
@@ -2863,47 +2866,49 @@ BaseProgress.vue
 
 ```vue
 <template>
-  <div class="base-progress">
-    <div class="inner" :style="{ width: w + '%' }">
-      <span>{{ w }}%</span>
+    <div class="base-progress">
+        <div class="inner" :style="{ width: w + '%' }">
+            <span>{{ w }}%</span>
+        </div>
     </div>
-  </div>
 </template>
 
 <script>
-export default {
-  props: ['w'],
-}
+    export default {
+        props: {
+            w: Number
+        }
+    }
 </script>
 
 <style scoped>
-.base-progress {
-  height: 26px;
-  width: 400px;
-  border-radius: 15px;
-  background-color: #272425;
-  border: 3px solid #272425;
-  box-sizing: border-box;
-  margin-bottom: 30px;
-}
-.inner {
-  position: relative;
-  background: #379bff;
-  border-radius: 15px;
-  height: 25px;
-  box-sizing: border-box;
-  left: -3px;
-  top: -2px;
-}
-.inner span {
-  position: absolute;
-  right: 0;
-  top: 26px;
-}
+    .base-progress {
+        height: 26px;
+        width: 400px;
+        border-radius: 15px;
+        background-color: #272425;
+        border: 3px solid #272425;
+        box-sizing: border-box;
+        margin-bottom: 30px;
+    }
+
+    .inner {
+        position: relative;
+        background: #379bff;
+        border-radius: 15px;
+        height: 25px;
+        box-sizing: border-box;
+        left: -3px;
+        top: -2px;
+    }
+
+    .inner span {
+        position: absolute;
+        right: 0;
+        top: 26px;
+    }
 </style>
 ```
-
-
 
 ## 七、props校验完整写法
 
@@ -2911,16 +2916,16 @@ export default {
 
 ```vue
 props: {
-  校验的属性名: {
-    type: 类型,  // Number String Boolean ...
-    required: true, // 是否必填
-    default: 默认值, // 默认值
-    validator (value) {
-      // 自定义校验逻辑
-      return 是否通过校验
-    }
-  }
-},
+    校验的属性名: {
+        type: 类型, // Number String Boolean ...
+        required: true, // 是否必填
+        default: 默认值, // 默认值
+        validator(value) {
+            // 自定义校验逻辑
+            return 是否通过校验
+        }
+    }
+}
 ```
 
 ### 2.代码实例
@@ -3124,9 +3129,9 @@ export default {
 
    ```vue
    created () {
-     Bus.$on('sendMsg', (msg) => {
-       this.msg = msg
-     })
+    Bus.$on('sendMsg', (msg) => {
+     this.msg = msg
+    })
    }
    ```
 
@@ -3263,14 +3268,14 @@ export default {
 
 ```js
 export default {
-  provide () {
-    return {
+ provide () {
+  return {
        // 普通类型【非响应式】
        color: this.color, 
        // 复杂类型【响应式】
        userInfo: this.userInfo, 
-    }
-  }
+  }
+ }
 }
 ```
 
@@ -3278,10 +3283,10 @@ export default {
 
 ```js
 export default {
-  inject: ['color','userInfo'],
-  created () {
-    console.log(this.color, this.userInfo)
-  }
+ inject: ['color','userInfo'],
+ created () {
+  console.log(this.color, this.userInfo)
+ }
 }
 ```
 
@@ -3300,11 +3305,11 @@ v-model本质上是一个语法糖。例如应用在输入框上，就是value�
 
 ```vue
 <template>
-  <div id="app" >
-    <input v-model="msg" type="text">
+ <div id="app" >
+  <input v-model="msg" type="text">
 
-    <input :value="msg" @input="msg = $event.target.value" type="text">
-  </div>
+  <input :value="msg" @input="msg = $event.target.value" type="text">
+ </div>
 </template>
 
 ```
@@ -3436,12 +3441,12 @@ v-model其实就是 :value和@input事件的简写
 ```vue
 <select :value="value" @change="handleChange">...</select>
 props: {
-  value: String
+ value: String
 },
 methods: {
-  handleChange (e) {
-    this.$emit('input', e.target.value)
-  }
+ handleChange (e) {
+  this.$emit('input', e.target.value)
+ }
 }
 ```
 
@@ -3488,7 +3493,7 @@ methods: {
 
 ```vue
 props: {
-  visible: Boolean
+ visible: Boolean
 },
 
 this.$emit('update:visible', false)
@@ -3627,7 +3632,7 @@ export default {
 
 ```html
 mounted () {
-  console.log(this.$refs.chartRef)
+ console.log(this.$refs.chartRef)
 }
 ```
 
@@ -3775,7 +3780,7 @@ $nextTick：**等 DOM更新后**,才会触发执行此方法里的函数体
 
 ```js
 this.$nextTick(() => {
-  this.$refs.inp.focus()
+ this.$refs.inp.focus()
 })
 ```
 
