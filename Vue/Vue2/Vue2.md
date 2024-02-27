@@ -3523,24 +3523,29 @@ v-model其实就是 :value和@input事件的简写
 父组件
 
 ```vue
-//.sync写法
-<BaseDialog :visible.sync="isShow" />
---------------------------------------
-//完整写法
-<BaseDialog 
-  :visible="isShow" 
-  @update:visible="isShow = $event" 
-/>
+<template>
+    //.sync写法
+    <BaseDialog :visible.sync="isShow"/>
+    --------------------------------------
+    //完整写法
+    <BaseDialog
+        :visible="isShow"
+        @update:visible="isShow = $event"
+    />
+</template>
 ```
 
 子组件
 
 ```vue
 props: {
- visible: Boolean
+    isShow: Boolean
 },
-
-this.$emit('update:visible', false)
+methods: {
+    change(){
+        this.$emit('update:isShow', false)    
+    }
+}
 ```
 
 ### 5.代码示例
@@ -3549,24 +3554,29 @@ App.vue
 
 ```vue
 <template>
-  <div class="app">
-    <button @click="openDialog">退出按钮</button>
-    <BaseDialog :isShow="isShow"></BaseDialog>
-  </div>
+    <div class="app">
+        <button @click="openDialog">退出按钮</button>
+        <BaseDialog :isShow.sync="isShow"></BaseDialog>
+    </div>
 </template>
 
 <script>
-import BaseDialog from './components/BaseDialog.vue'
-export default {
-  data() {
-    return {
-      isShow: false,
+    import BaseDialog from './components/BaseDialog.vue'
+    export default {
+        data() {
+            return {
+                isShow: false,
+            }
+        },
+        components: {
+            BaseDialog,
+        },
+        methods: {
+            openDialog() {
+                this.isShow = !this.isShow
+            }
+        }
     }
-  },
-  components: {
-    BaseDialog,
-  },
-}
 </script>
 
 <style>
@@ -3577,82 +3587,83 @@ BaseDialog.vue
 
 ```vue
 <template>
-  <div class="base-dialog-wrap" v-show="isShow">
-    <div class="base-dialog">
-      <div class="title">
-        <h3>温馨提示：</h3>
-        <button class="close">x</button>
-      </div>
-      <div class="content">
-        <p>你确认要退出本系统么？</p>
-      </div>
-      <div class="footer">
-        <button>确认</button>
-        <button>取消</button>
-      </div>
+    <div class="base-dialog-wrap" v-show="isShow">
+        <div class="base-dialog">
+            <div class="title">
+                <h3>温馨提示：</h3>
+                <button class="close">x</button>
+            </div>
+            <div class="content">
+                <p>你确认要退出本系统么？</p>
+            </div>
+            <div class="footer">
+                <button @click="confirm">确认</button>
+                <button @click="confirm">取消</button>
+            </div>
+        </div>
     </div>
-  </div>
 </template>
 
 <script>
-export default {
-  props: {
-    isShow: Boolean,
-  }
-}
+    export default {
+        props: {
+            isShow: Boolean,
+        },
+        methods: {
+            confirm() {
+                this.$emit('update:isShow', false)
+            }
+        }
+    }
 </script>
 
 <style scoped>
-.base-dialog-wrap {
-  width: 300px;
-  height: 200px;
-  box-shadow: 2px 2px 2px 2px #ccc;
-  position: fixed;
-  left: 50%;
-  top: 50%;
-  transform: translate(-50%, -50%);
-  padding: 0 10px;
-}
-.base-dialog .title {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  border-bottom: 2px solid #000;
-}
-.base-dialog .content {
-  margin-top: 38px;
-}
-.base-dialog .title .close {
-  width: 20px;
-  height: 20px;
-  cursor: pointer;
-  line-height: 10px;
-}
-.footer {
-  display: flex;
-  justify-content: flex-end;
-  margin-top: 26px;
-}
-.footer button {
-  width: 80px;
-  height: 40px;
-}
-.footer button:nth-child(1) {
-  margin-right: 10px;
-  cursor: pointer;
-}
+    .base-dialog-wrap {
+        width: 300px;
+        height: 200px;
+        box-shadow: 2px 2px 2px 2px #ccc;
+        position: fixed;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        padding: 0 10px;
+    }
+
+    .base-dialog .title {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        border-bottom: 2px solid #000;
+    }
+
+    .base-dialog .content {
+        margin-top: 38px;
+    }
+
+    .base-dialog .title .close {
+        width: 20px;
+        height: 20px;
+        cursor: pointer;
+        line-height: 10px;
+    }
+
+    .footer {
+        display: flex;
+        justify-content: flex-end;
+        margin-top: 26px;
+    }
+
+    .footer button {
+        width: 80px;
+        height: 40px;
+    }
+
+    .footer button:nth-child(1) {
+        margin-right: 10px;
+        cursor: pointer;
+    }
 </style>
 ```
-
-
-
-### 6.总结
-
-1.父组件如果想让子组件修改传过去的值 必须加什么修饰符？
-
-2.子组件要修改父组件的props值 必须使用什么语法？
-
-
 
 ## 五五、ref和$refs
 
