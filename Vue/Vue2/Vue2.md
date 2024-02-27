@@ -3092,7 +3092,7 @@ BaseCount.vue
 
 ### 1.作用
 
-非父子组件之间，进行简易消息传递。(复杂场景→ Vuex)
+非父子组件之间，进行简易消息传递。（复杂场景 → Vuex）
 
 ### 2.步骤
 
@@ -3100,23 +3100,24 @@ BaseCount.vue
 
    ```js
    import Vue from 'vue'
+   
    const Bus = new Vue()
    export default Bus
    ```
 
-2. A组件（接受方），监听Bus的 $on事件
+2. A组件（接受方），监听Bus的 $on 事件
 
-   ```vue
-   created () {
-    Bus.$on('sendMsg', (msg) => {
-     this.msg = msg
-    })
+   ```js
+   created() {
+       Bus.$on('sendMsg', (msg) => {
+           this.msg = msg
+       })
    }
    ```
 
 3. B组件（发送方），触发Bus的$emit事件
 
-   ```vue
+   ```js
    Bus.$emit('sendMsg', '这是一个消息')
    ```
 
@@ -3128,7 +3129,8 @@ EventBus.js
 
 ```js
 import Vue from 'vue'
-const Bus  =  new Vue()
+
+const Bus = new Vue()
 export default Bus
 ```
 
@@ -3136,31 +3138,32 @@ BaseA.vue(接受方)
 
 ```vue
 <template>
-  <div class="base-a">
-    我是A组件（接收方）
-    <p>{{msg}}</p>  
-  </div>
+    <div class="base-a">
+        我是A组件（接收方）
+        <p>{{msg}}</p>
+    </div>
 </template>
 
 <script>
-import Bus from '../utils/EventBus'
-export default {
-  data() {
-    return {
-      msg: '',
+    import Bus from '../utils/EventBus'
+
+    export default {
+        data() {
+            return {
+                msg: '',
+            }
+        },
     }
-  },
-}
 </script>
 
 <style scoped>
-.base-a {
-  width: 200px;
-  height: 200px;
-  border: 3px solid #000;
-  border-radius: 3px;
-  margin: 10px;
-}
+    .base-a {
+        width: 200px;
+        height: 200px;
+        border: 3px solid #000;
+        border-radius: 3px;
+        margin: 10px;
+    }
 </style>
 ```
 
@@ -3168,26 +3171,26 @@ BaseB.vue(发送方)
 
 ```vue
 <template>
-  <div class="base-b">
-    <div>我是B组件（发布方）</div>
-    <button>发送消息</button>
-  </div>
+    <div class="base-b">
+        <div>我是B组件（发布方）</div>
+        <button>发送消息</button>
+    </div>
 </template>
 
 <script>
-import Bus from '../utils/EventBus'
-export default {
-}
+    import Bus from '../utils/EventBus'
+
+    export default {}
 </script>
 
 <style scoped>
-.base-b {
-  width: 200px;
-  height: 200px;
-  border: 3px solid #000;
-  border-radius: 3px;
-  margin: 10px;
-}
+    .base-b {
+        width: 200px;
+        height: 200px;
+        border: 3px solid #000;
+        border-radius: 3px;
+        margin: 10px;
+    }
 </style>
 ```
 
@@ -3195,21 +3198,22 @@ App.vue
 
 ```vue
 <template>
-  <div class="app">
-    <BaseA></BaseA>
-    <BaseB></BaseB> 
-  </div>
+    <div class="app">
+        <BaseA></BaseA>
+        <BaseB></BaseB>
+    </div>
 </template>
 
 <script>
-import BaseA from './components/BaseA.vue'
-import BaseB from './components/BaseB.vue' 
-export default {
-  components:{
-    BaseA,
-    BaseB
-  }
-}
+    import BaseA from './components/BaseA.vue'
+    import BaseB from './components/BaseB.vue'
+
+    export default {
+        components: {
+            BaseA,
+            BaseB
+        }
+    }
 </script>
 
 <style>
