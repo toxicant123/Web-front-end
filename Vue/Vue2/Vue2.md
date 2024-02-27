@@ -3281,13 +3281,12 @@ v-model本质上是一个语法糖。例如应用在输入框上，就是value�
 
 ```vue
 <template>
- <div id="app" >
-  <input v-model="msg" type="text">
+    <div id="app">
+        <input v-model="msg" type="text">
 
-  <input :value="msg" @input="msg = $event.target.value" type="text">
- </div>
+        <input :value="msg" @input="msg = $event.target.value" type="text">
+    </div>
 </template>
-
 ```
 
 ### 2.作用：
@@ -3306,9 +3305,9 @@ v-model本质上是一个语法糖。例如应用在输入框上，就是value�
 ```vue
 <template>
   <div class="app">
-    <input type="text"  />
-    <br /> 
-    <input type="text" />
+    <input type="text"/>
+    <br/> 
+    <input type="text"/>
   </div>
 </template>
 
