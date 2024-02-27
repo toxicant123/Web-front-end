@@ -6,7 +6,7 @@
         <!-- 列表区域 -->
         <TodoMain :list="list" @delTask="delTask"/>
         <!-- 统计和清空 -->
-        <TodoFooter/>
+        <TodoFooter :list="list" @clear="clearAll"/>
     </section>
 </template>
 
@@ -19,7 +19,7 @@ export default {
     components: {TodoMain, TodoHeader, TodoFooter},
     data() {
         return {
-            list: [
+            list: JSON.parse(localStorage.getItem('list')) || [
                 {
                     id: 1,
                     name: '打篮球'
@@ -44,6 +44,17 @@ export default {
         },
         delTask(id) {
             this.list = this.list.filter(ie => ie.id !== id)
+        },
+        clearAll() {
+            this.list = []
+        }
+    },
+    watch: {
+        list: {
+            deep: true,
+            handler(list) {
+                localStorage.setItem('list', JSON.stringify(list))
+            }
         }
     }
 }
