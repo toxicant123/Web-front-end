@@ -3353,23 +3353,29 @@ App.vue
 
 ```vue
 <template>
-  <div class="app">
-    <BaseSelect></BaseSelect>
-  </div>
+    <div class="app">
+        <BaseSelect :cityId="selectId" @changeId="selectId = $event"/>
+    </div>
 </template>
 
 <script>
-import BaseSelect from './components/BaseSelect.vue'
-export default {
-  data() {
-    return {
-      selectId: '102',
+    import BaseSelect from './components/BaseSelect.vue'
+
+    export default {
+        data() {
+            return {
+                selectId: '102',
+            }
+        },
+        components: {
+            BaseSelect,
+        },
+        watch: {
+            selectId(v) {
+                console.log(v)
+            }
+        }
     }
-  },
-  components: {
-    BaseSelect,
-  },
-}
 </script>
 
 <style>
@@ -3380,20 +3386,32 @@ BaseSelect.vue
 
 ```vue
 <template>
-  <div>
-    <select>
-      <option value="101">北京</option>
-      <option value="102">上海</option>
-      <option value="103">武汉</option>
-      <option value="104">广州</option>
-      <option value="105">深圳</option>
-    </select>
-  </div>
+    <div>
+        <select :value="cityId" @change="handlerChange">
+            <option value="101">北京</option>
+            <option value="102">上海</option>
+            <option value="103">武汉</option>
+            <option value="104">广州</option>
+            <option value="105">深圳</option>
+        </select>
+    </div>
 </template>
 
 <script>
-export default {
-}
+    export default {
+        props: {
+            cityId: {
+                type: String,
+                required: true,
+                default: '101'
+            }
+        },
+        methods: {
+            handlerChange(e) {
+                this.$emit('changeId', e.target.value)
+            }
+        }
+    }
 </script>
 
 <style>
