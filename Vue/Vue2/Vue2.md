@@ -3436,24 +3436,71 @@ v-model其实就是 :value和@input事件的简写
 子组件
 
 ```vue
-<select :value="value" @change="handleChange">...</select>
-props: {
- value: String
-},
-methods: {
- handleChange (e) {
-  this.$emit('input', e.target.value)
- }
-}
+<template>
+    <div>
+        <select :value="value" @change="handlerChange">
+            <option value="101">北京</option>
+            <option value="102">上海</option>
+            <option value="103">武汉</option>
+            <option value="104">广州</option>
+            <option value="105">深圳</option>
+        </select>
+    </div>
+</template>
+
+<script>
+    export default {
+        props: {
+            value: {
+                type: String,
+                required: true,
+                default: '101'
+            }
+        },
+        methods: {
+            handlerChange(e) {
+                this.$emit('input', e.target.value)
+            }
+        }
+    }
+</script>
+
+<style>
+</style>
 ```
 
 父组件
 
 ```vue
-<BaseSelect v-model="selectId"></BaseSelect>
+<template>
+    <div class="app">
+        <BaseSelect v-model="selectId"/>
+    </div>
+</template>
+
+<script>
+    import BaseSelect from './components/BaseSelect.vue'
+
+    export default {
+        data() {
+            return {
+                selectId: '102',
+            }
+        },
+        components: {
+            BaseSelect,
+        },
+        watch: {
+            selectId(v) {
+                console.log(v)
+            }
+        }
+    }
+</script>
+
+<style>
+</style>
 ```
-
-
 
 ## 五四、.sync修饰符
 
