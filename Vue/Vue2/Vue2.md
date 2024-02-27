@@ -3669,25 +3669,25 @@ BaseDialog.vue
 
 ### 1.作用
 
-利用ref 和 $refs 可以用于 获取 dom 元素 或 组件实例
+利用 ref 和 $refs 可以用于获取 dom 元素或组件实例
 
-### 2.特点：
+### 2.特点
 
-查找范围 →  当前组件内(更精确稳定)
+查找范围 → 当前组件内（更精确稳定）
 
 ### 3.语法
 
-1.给要获取的盒子添加ref属性
+1. 给要获取的盒子添加ref属性
 
 ```html
 <div ref="chartRef">我是渲染图表的容器</div>
 ```
 
-2.获取时通过 $refs获取  this.\$refs.chartRef 获取
+2. 获取时通过 $refs 获取：`this.$refs.chartRef`
 
-```html
+```vue
 mounted () {
- console.log(this.$refs.chartRef)
+    console.log(this.$refs.chartRef)
 }
 ```
 
@@ -3695,26 +3695,25 @@ mounted () {
 
 之前只用document.querySelect('.box') 获取的是整个页面中的盒子
 
-
-
 ### 5.代码示例
 
 App.vue
 
 ```vue
 <template>
-  <div class="app">
-    <BaseChart></BaseChart>
-  </div>
+    <div class="app">
+        <BaseChart></BaseChart>
+    </div>
 </template>
 
 <script>
-import BaseChart from './components/BaseChart.vue'
-export default {
-  components:{
-    BaseChart
-  }
-}
+    import BaseChart from './components/BaseChart.vue'
+
+    export default {
+        components: {
+            BaseChart
+        }
+    }
 </script>
 
 <style>
@@ -3725,50 +3724,53 @@ BaseChart.vue
 
 ```vue
 <template>
-  <div class="base-chart-box" ref="baseChartBox">子组件</div>
+    <div class="base-chart-box" ref="baseChartBox">子组件</div>
 </template>
 
 <script>
-// yarn add echarts 或者 npm i echarts
-import * as echarts from 'echarts'
+    import * as echarts from 'echarts/core';
+    import {GridComponent} from 'echarts/components';
+    import {BarChart} from 'echarts/charts';
+    import {CanvasRenderer} from 'echarts/renderers';
 
-export default {
-  mounted() {
-    // 基于准备好的dom，初始化echarts实例
-    var myChart = echarts.init(document.querySelect('.base-chart-box'))
-    // 绘制图表
-    myChart.setOption({
-      title: {
-        text: 'ECharts 入门示例',
-      },
-      tooltip: {},
-      xAxis: {
-        data: ['衬衫', '羊毛衫', '雪纺衫', '裤子', '高跟鞋', '袜子'],
-      },
-      yAxis: {},
-      series: [
-        {
-          name: '销量',
-          type: 'bar',
-          data: [5, 20, 36, 10, 10, 20],
+    echarts.use([GridComponent, BarChart, CanvasRenderer]);
+
+    export default {
+        mounted() {
+            // 基于准备好的dom，初始化echarts实例
+            const myChart = echarts.init(this.$refs.baseChartBox)
+            // 绘制图表
+            myChart.setOption({
+                title: {
+                    text: 'ECharts 入门示例',
+                },
+                tooltip: {},
+
+                xAxis: {
+                    data: ['衬衫', '羊毛衫', '雪纺衫', '裤子', '高跟鞋', '袜子'],
+                },
+                yAxis: {},
+                series: [
+                    {
+                        name: '销量',
+                        type: 'bar',
+                        data: [5, 20, 36, 10, 10, 20],
+                    },
+                ],
+            })
         },
-      ],
-    })
-  },
-}
+    }
 </script>
 
 <style scoped>
-.base-chart-box {
-  width: 400px;
-  height: 300px;
-  border: 3px solid #000;
-  border-radius: 6px;
-}
+    .base-chart-box {
+        width: 400px;
+        height: 300px;
+        border: 3px solid #000;
+        border-radius: 6px;
+    }
 </style>
 ```
-
-
 
 ## 五六、异步更新 & $nextTick
 
