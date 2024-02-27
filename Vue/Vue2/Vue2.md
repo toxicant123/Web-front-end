@@ -3153,6 +3153,9 @@ BaseA.vue(接受方)
                 msg: '',
             }
         },
+        created() {
+            Bus.$on('sendMessage', msg => this.msg = msg)
+        }
     }
 </script>
 
@@ -3173,14 +3176,20 @@ BaseB.vue(发送方)
 <template>
     <div class="base-b">
         <div>我是B组件（发布方）</div>
-        <button>发送消息</button>
+        <button @click="clickSend">发送消息</button>
     </div>
 </template>
 
 <script>
     import Bus from '../utils/EventBus'
 
-    export default {}
+    export default {
+        methods: {
+            clickSend() {
+                Bus.$emit('sendMessage', '今日晴天，适合郊游')
+            }
+        }
+    }
 </script>
 
 <style scoped>
@@ -3220,20 +3229,6 @@ App.vue
 
 </style>
 ```
-
-### 4.总结
-
-1.非父子组件传值借助什么？
-
-2.什么是事件总线
-
-3.发送方应该调用事件总线的哪个方法
-
-4.接收方应该调用事件总线的哪个方法
-
-5.一个组件发送数据，可不可以被多个组件接收
-
-
 
 ## 十五、非父子通信-provide&inject
 
