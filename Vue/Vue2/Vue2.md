@@ -3277,7 +3277,7 @@ export default {
 
 ### 1.原理：
 
-v-model本质上是一个语法糖。例如应用在输入框上，就是value属性 和 input事件 的合写
+v-model本质上是一个语法糖。例如应用在输入框上，就是 value 属性和 input 事件的合写
 
 ```vue
 <template>
@@ -3304,36 +3304,42 @@ v-model本质上是一个语法糖。例如应用在输入框上，就是value�
 
 ```vue
 <template>
-  <div class="app">
-    <input type="text"/>
-    <br/> 
-    <input type="text"/>
-  </div>
+    <div class="app">
+        <input type="text" v-model="msg1"/>
+        <br/>
+        <input type="text" :value="msg2" @input="msg2 = $event.target.value"/>
+    </div>
 </template>
 
 <script>
-export default {
-  data() {
-    return {
-      msg1: '',
-      msg2: '',
+    export default {
+        data() {
+            return {
+                msg1: '',
+                msg2: '',
+            }
+        },
+        watch: {
+            msg1(v) {
+                console.log(v)
+            },
+            msg2(v) {
+                console.log(v)
+            }
+        }
     }
-  },
-}
-</script> 
+</script>
 <style>
 </style>
 ```
 
 ### 5.v-model使用在其他表单元素上的原理
 
-不同的表单元素， v-model在底层的处理机制是不一样的。比如给checkbox使用v-model
+不同的表单元素，v-model在底层的处理机制是不一样的。比如给checkbox使用v-model
 
 底层处理的是 checked属性和change事件。
 
 **不过咱们只需要掌握应用在文本框上的原理即可**
-
-
 
 ## 五二、表单类组件封装
 
@@ -3393,8 +3399,6 @@ export default {
 <style>
 </style>
 ```
-
-
 
 ## 五三、v-model简化代码
 
