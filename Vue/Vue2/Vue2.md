@@ -3230,7 +3230,7 @@ App.vue
 </style>
 ```
 
-## 十五、非父子通信-provide&inject
+## 五十、非父子通信-provide&inject
 
 ### 1.作用
 
@@ -3246,25 +3246,25 @@ App.vue
 
 ```js
 export default {
- provide () {
-  return {
-       // 普通类型【非响应式】
-       color: this.color, 
-       // 复杂类型【响应式】
-       userInfo: this.userInfo, 
-  }
- }
+    provide() {
+        return {
+            // 普通类型【非响应式】
+            color: this.color,
+            // 复杂类型【响应式】
+            userInfo: this.userInfo,
+        }
+    }
 }
 ```
 
-2.子/孙组件 inject获取数据
+2. 子/孙组件 inject获取数据
 
 ```js
 export default {
- inject: ['color','userInfo'],
- created () {
-  console.log(this.color, this.userInfo)
- }
+    inject: ['color', 'userInfo'],
+    created() {
+        console.log(this.color, this.userInfo)
+    }
 }
 ```
 
@@ -3273,9 +3273,7 @@ export default {
 - provide提供的简单类型的数据不是响应式的，复杂类型数据是响应式。（推荐提供复杂类型数据）
 - 子/孙组件通过inject获取的数据，不能在自身组件内修改
 
-
-
-## 十六、v-model原理
+## 五一、v-model原理
 
 ### 1.原理：
 
@@ -3338,7 +3336,7 @@ export default {
 
 
 
-## 十七、表单类组件封装
+## 五二、表单类组件封装
 
 ### 1.需求目标
 
@@ -3399,7 +3397,7 @@ export default {
 
 
 
-## 十八、v-model简化代码
+## 五三、v-model简化代码
 
 ### 1.目标：
 
@@ -3436,7 +3434,7 @@ methods: {
 
 
 
-## 十九、.sync修饰符
+## 五四、.sync修饰符
 
 ### 1.作用
 
@@ -3588,7 +3586,7 @@ export default {
 
 
 
-## 二十、ref和$refs
+## 五五、ref和$refs
 
 ### 1.作用
 
@@ -3693,7 +3691,7 @@ export default {
 
 
 
-## 二十一、异步更新 & $nextTick
+## 五六、异步更新 & $nextTick
 
 ### 1.需求
 
