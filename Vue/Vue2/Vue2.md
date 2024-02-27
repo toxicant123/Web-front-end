@@ -2241,7 +2241,7 @@ Vue CLI 是Vue官方提供的一个**全局命令工具**
 
 ![68222796681](assets/1682227966812.png)
 
-```js
+```vue
 // 导入需要注册的组件
 import 组件对象 from '.vue文件路径'
 import HmHeader from './components/HmHeader'
@@ -3107,7 +3107,7 @@ BaseCount.vue
 
 2. A组件（接受方），监听Bus的 $on 事件
 
-   ```js
+   ```vue
    created() {
        Bus.$on('sendMsg', (msg) => {
            this.msg = msg
@@ -3140,7 +3140,7 @@ BaseA.vue(接受方)
 <template>
     <div class="base-a">
         我是A组件（接收方）
-        <p>{{msg}}</p>
+        <p>{{ msg }}</p>
     </div>
 </template>
 
