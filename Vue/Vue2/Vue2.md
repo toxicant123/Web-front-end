@@ -3906,40 +3906,32 @@ App.vue
 </div>
 ```
 
-### 6.总结
-
-1.自定义指令的作用是什么？
-
-2.使用自定义指令的步骤是哪两步？
-
-
-
 ## 五八、自定义指令-指令的值
 
 ### 1.需求
 
-实现一个 color 指令 - 传入不同的颜色, 给标签设置文字颜色
+实现一个 color 指令 - 传入不同的颜色，给标签设置文字颜色
 
 ### 2.语法
 
-1.在绑定指令时，可以通过“等号”的形式为指令 绑定 具体的参数值
+1. 在绑定指令时，可以通过“等号”的形式为指令 绑定 具体的参数值
 
 ```html
 <div v-color="color">我是内容</div>
 ```
 
-2.通过 binding.value 可以拿到指令值，**指令值修改会 触发 update 函数**
+2. 通过 binding.value 可以拿到指令值，**指令值修改会 触发 update 函数**
 
 ```js
 directives: {
- color: {
-  inserted (el, binding) {
-   el.style.color = binding.value
-  },
-  update (el, binding) {
-   el.style.color = binding.value
-  }
- }
+    color: {
+        inserted(el, binding) {
+            el.style.color = binding.value
+        },
+        update(el, binding) {
+            el.style.color = binding.value
+        }
+    }
 }
 ```
 
@@ -3949,34 +3941,33 @@ App.vue
 
 ```vue
 <template>
-  <div>
-     <!--显示红色--> 
-    <h2 v-color="color1">指令的值1测试</h2>
-     <!--显示蓝色--> 
-    <h2 v-color="color2">指令的值2测试</h2>
-     <button>
-        改变第一个h1的颜色
-    </button>
-  </div>
+    <div>
+        <h2 v-color="color">content 1</h2>
+        <h2 v-color="color">content 2</h2>
+        <button @click="color = 'orange'">push</button>
+    </div>
 </template>
 
 <script>
-export default {
-  data () {
-    return {
-      color1: 'red',
-      color2: 'blue'
+    export default {
+        data() {
+            return {
+                color: 'red'
+            }
+        },
+        directives: {
+            color: {
+                inserted(el, bind) {
+                    el.style.color = bind.value
+                },
+                update(el, bind) {
+                    el.style.color = bind.value
+                }
+            }
+        }
     }
-  }
-}
 </script>
-
-<style>
-
-</style>
 ```
-
-
 
 ## 五九、自定义指令-v-loading指令的封装
 
