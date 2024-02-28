@@ -3868,7 +3868,7 @@ this.$nextTick(() => {
   ```
 
 - 局部注册
-  ```js
+  ```vue
   //在Vue组件的配置项中
   directives: {
       "指令名": {
@@ -3922,7 +3922,7 @@ App.vue
 
 2. 通过 binding.value 可以拿到指令值，**指令值修改会 触发 update 函数**
 
-```js
+```vue
 directives: {
     color: {
         inserted(el, binding) {
@@ -4435,13 +4435,16 @@ App.vue
     <div>
         <MyDialog>
             <template v-slot:head>
-                这是标题
+                <div>这是标题</div>
             </template>
             <template v-slot:content>
-                这是文本
+                <div>这是内容</div>
             </template>
             <template #footer>
-                <button>这是按钮</button>
+                <div>
+                    <button>关闭</button>
+                    <button>确认</button>
+                </div>
             </template>
         </MyDialog>
     </div>
@@ -4498,6 +4501,7 @@ export default {
     margin: 0;
     padding: 0;
 }
+
 .dialog {
     width: 470px;
     height: 230px;
@@ -4506,6 +4510,7 @@ export default {
     margin: 40px auto;
     border-radius: 5px;
 }
+
 .dialog-header {
     height: 70px;
     line-height: 70px;
@@ -4513,21 +4518,25 @@ export default {
     border-bottom: 1px solid #ccc;
     position: relative;
 }
+
 .dialog-header .close {
     position: absolute;
     right: 0px;
     top: 0px;
     cursor: pointer;
 }
+
 .dialog-content {
     height: 80px;
     font-size: 18px;
     padding: 15px 0;
 }
+
 .dialog-footer {
     display: flex;
     justify-content: flex-end;
 }
+
 .dialog-footer button {
     width: 65px;
     height: 35px;
@@ -4538,6 +4547,7 @@ export default {
     margin-left: 10px;
     border-radius: 3px;
 }
+
 .dialog-footer button:last-child {
     background-color: #007acc;
     color: #fff;
@@ -4567,26 +4577,27 @@ export default {
 
 ### 4.使用步骤
 
-1. 给 slot 标签, 以 添加属性的方式传值
+1. 给 slot 标签，以添加属性的方式传值
 
    ```vue
    <slot :id="item.id" msg="测试文本"></slot>
    ```
 
-2. 所有添加的属性, 都会被收集到一个对象中
+2. 所有添加的属性，都会被收集到一个对象中
 
    ```vue
    { id: 3, msg: '测试文本' }
    ```
 
-3. 在template中, 通过  ` #插槽名= "obj"` 接收，默认插槽名为 default
+3. 在template中，通过`#插槽名= "obj"`接收，默认插槽名为 default
 
    ```vue
    <MyTable :list="list">
-    <template #default="obj">
-     <button @click="del(obj.id)">删除</button>
-    </template>
+       <template #default="obj">
+           <button @click="del(obj.id)">删除</button>
+       </template>
    </MyTable>
+
    ```
 
 ### 5.代码示例
@@ -4595,97 +4606,85 @@ MyTable.vue
 
 ```vue
 <template>
-  <table class="my-table">
-    <thead>
-      <tr>
-        <th>序号</th>
-        <th>姓名</th>
-        <th>年纪</th>
-        <th>操作</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td>1</td>
-        <td>赵小云</td>
-        <td>19</td>
-        <td>
-          <button>
-          	查看    
-    	  </button>
-        </td>
-      </tr>
-        <tr>
-        <td>1</td>
-        <td>张小花</td>
-        <td>19</td>
-        <td>
-          <button>
-          	查看    
-    	  </button>
-        </td>
-      </tr>
-        <tr>
-        <td>1</td>
-        <td>孙大明</td>
-        <td>19</td>
-        <td>
-          <button>
-          	查看    
-    	  </button>
-        </td>
-      </tr>
-    </tbody>
-  </table>
+    <table class="my-table">
+        <thead>
+            <tr>
+                <th>序号</th>
+                <th>姓名</th>
+                <th>年纪</th>
+                <th>操作</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr v-for="(item, index) in data" :key="item.id">
+                <td>{{ index + 1 }}</td>
+                <td>{{ item.name }}</td>
+                <td>{{ item.age }}</td>
+                <td>
+                    <slot :row="item" msg="test"></slot>
+                </td>
+            </tr>
+        </tbody>
+    </table>
 </template>
 
 <script>
 export default {
-  props: {
-    data: Array
-  }
+    props: {
+        data: {
+            type: Array,
+            required: true
+        }
+    }
 }
 </script>
 
 <style scoped>
 .my-table {
-  width: 450px;
-  text-align: center;
-  border: 1px solid #ccc;
-  font-size: 24px;
-  margin: 30px auto;
+    width: 450px;
+    text-align: center;
+    border: 1px solid #ccc;
+    font-size: 24px;
+    margin: 30px auto;
 }
+
 .my-table thead {
-  background-color: #1f74ff;
-  color: #fff;
+    background-color: #1f74ff;
+    color: #fff;
 }
+
 .my-table thead th {
-  font-weight: normal;
+    font-weight: normal;
 }
+
 .my-table thead tr {
-  line-height: 40px;
+    line-height: 40px;
 }
+
 .my-table th,
 .my-table td {
-  border-bottom: 1px solid #ccc;
-  border-right: 1px solid #ccc;
+    border-bottom: 1px solid #ccc;
+    border-right: 1px solid #ccc;
 }
+
 .my-table td:last-child {
-  border-right: none;
+    border-right: none;
 }
+
 .my-table tr:last-child td {
-  border-bottom: none;
+    border-bottom: none;
 }
+
 .my-table button {
-  width: 65px;
-  height: 35px;
-  font-size: 18px;
-  border: 1px solid #ccc;
-  outline: none;
-  border-radius: 3px;
-  cursor: pointer;
-  background-color: #ffffff;
-  margin-left: 5px;
+    width: 65px;
+    height: 35px;
+    font-size: 18px;
+    border: 1px solid #ccc;
+    outline: none;
+    border-radius: 3px;
+    cursor: pointer;
+    background-color: #ffffff;
+    margin-left: 5px;
 }
 </style>
 ```
@@ -4694,43 +4693,52 @@ App.vue
 
 ```vue
 <template>
-  <div>
-    <MyTable :data="list"></MyTable>
-    <MyTable :data="list2"></MyTable>
-  </div>
+    <div>
+        <MyTable :data="list">
+            <template #default="obj">
+                <button @click="del(obj.row.id)">删除</button>
+            </template>
+        </MyTable>
+        <MyTable :data="list2">
+            <template #default="obj">
+                <button @click="show(obj)">查看</button>
+            </template>
+        </MyTable>
+    </div>
 </template>
 
 <script>
-  import MyTable from './components/MyTable.vue'
-  export default {
-    data () {
-      return {
-     	list: [
-            { id: 1, name: '张小花', age: 18 },
-            { id: 2, name: '孙大明', age: 19 },
-            { id: 3, name: '刘德忠', age: 17 },
-          ],
-          list2: [
-            { id: 1, name: '赵小云', age: 18 },
-            { id: 2, name: '刘蓓蓓', age: 19 },
-            { id: 3, name: '姜肖泰', age: 17 },
-          ]
-      }
+import MyTable from './components/MyTable.vue'
+
+export default {
+    data() {
+        return {
+            list: [
+                {id: 1, name: '张小花', age: 18},
+                {id: 2, name: '孙大明', age: 19},
+                {id: 3, name: '刘德忠', age: 17},
+            ],
+            list2: [
+                {id: 1, name: '赵小云', age: 18},
+                {id: 2, name: '刘蓓蓓', age: 19},
+                {id: 3, name: '姜肖泰', age: 17},
+            ]
+        }
     },
     components: {
-      MyTable
+        MyTable
+    },
+    methods: {
+        del(id) {
+            this.list = this.list.filter(ie => ie.id !== id)
+        },
+        show(obj) {
+            console.log(`message is ${obj.msg}, id is ${obj.row.id}, name is ${obj.row.name}, age is ${obj.row.age}`)
+        }
     }
-  }
+}
 </script>
 ```
-
-### 6.总结
-
-1.作用域插槽的作用是什么？
-
-2.作用域插槽的使用步骤是什么？
-
-
 
 ## 六四、综合案例 - 商品列表-MyTag组件抽离
 
