@@ -3861,10 +3861,10 @@ this.$nextTick(() => {
   ```js
   //在main.js中
   Vue.directive('指令名', {
-    "inserted" (el) {
-      // 可以对 el 标签，扩展额外功能
+   "inserted" (el) {
+    // 可以对 el 标签，扩展额外功能
       el.focus()
-    }
+   }
   })
   ```
 
@@ -3873,12 +3873,12 @@ this.$nextTick(() => {
   ```vue
   //在Vue组件的配置项中
   directives: {
-    "指令名": {
-      inserted () {
-        // 可以对 el 标签，扩展额外功能
+   "指令名": {
+    inserted () {
+     // 可以对 el 标签，扩展额外功能
         el.focus()
-      }
-    }
+    }
+   }
   }
   ```
 
@@ -3938,14 +3938,14 @@ App.vue
 
 ```js
 directives: {
-  color: {
-    inserted (el, binding) {
-      el.style.color = binding.value
-    },
-    update (el, binding) {
-      el.style.color = binding.value
-    }
-  }
+ color: {
+  inserted (el, binding) {
+   el.style.color = binding.value
+  },
+  update (el, binding) {
+   el.style.color = binding.value
+  }
+ }
 }
 ```
 
@@ -4012,13 +4012,13 @@ export default {
 
 ```css
 .loading:before {
-  content: "";
-  position: absolute;
-  left: 0;
-  top: 0;
-  width: 100%;
-  height: 100%;
-  background: #fff url("./loading.gif") no-repeat center;
+ content: "";
+ position: absolute;
+ left: 0;
+ top: 0;
+ width: 100%;
+ height: 100%;
+ background: #fff url("./loading.gif") no-repeat center;
 }
 ```
 
@@ -4421,9 +4421,9 @@ v-slot写起来太长，vue给我们提供一个简单写法 **v-slot —> #**
 
    ```vue
    <MyTable :list="list">
-     <template #default="obj">
-       <button @click="del(obj.id)">删除</button>
-     </template>
+    <template #default="obj">
+     <button @click="del(obj.id)">删除</button>
+    </template>
    </MyTable>
    ```
 
@@ -5256,8 +5256,8 @@ Vue 官方的一个路由插件，是一个第三方包
 
    ```vue
    new Vue({
-     render: h => h(App),
-     router:router
+    render: h => h(App),
+    router:router
    }).$mount('#app')
 
    ```
@@ -5307,12 +5307,12 @@ App.vue
 
 ```vue
 <div class="footer_wrap">
-  <a href="#/find">发现音乐</a>
-  <a href="#/my">我的音乐</a>
-  <a href="#/friend">朋友</a>
+ <a href="#/find">发现音乐</a>
+ <a href="#/my">我的音乐</a>
+ <a href="#/friend">朋友</a>
 </div>
 <div class="top">
-  <router-view></router-view>
+ <router-view></router-view>
 </div>
 ```
 
