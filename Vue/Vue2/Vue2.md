@@ -4138,8 +4138,6 @@ App.vue
 </style>
 ```
 
-
-
 ## 六十、插槽-默认插槽
 
 ### 1.作用
@@ -4150,7 +4148,7 @@ App.vue
 
 ### 2.需求
 
-将需要多次显示的对话框,封装成一个组件
+将需要多次显示的对话框，封装成一个组件
 
 ### 3.问题
 
@@ -4158,13 +4156,11 @@ App.vue
 
 ### 4.插槽的基本语法
 
-1. 组件内需要定制的结构部分，改用**<slot></slot>**占位
-2. 使用组件时, **<MyDialog></MyDialog>**标签内部, 传入结构替换slot
+1. 组件内需要定制的结构部分，改用**\<slot>\</slot>**占位
+2. 使用组件时，**\<MyDialog>\</MyDialog>**标签内部, 传入结构替换slot
 3. 给插槽传入内容时，可以传入**纯文本、html标签、组件**
 
 ![68241032979](assets/1682410329794.png)
-
-
 
 ### 5.代码示例
 
@@ -4172,81 +4168,86 @@ MyDialog.vue
 
 ```vue
 <template>
-  <div class="dialog">
-    <div class="dialog-header">
-      <h3>友情提示</h3>
-      <span class="close">✖️</span>
-    </div>
+    <div class="dialog">
+        <div class="dialog-header">
+            <h3>友情提示</h3>
+            <span class="close">✖️</span>
+        </div>
 
-    <div class="dialog-content">
-      您确定要进行删除操作吗？
+        <div class="dialog-content">
+            <slot></slot>
+        </div>
+        <div class="dialog-footer">
+            <button>取消</button>
+            <button>确认</button>
+        </div>
     </div>
-    <div class="dialog-footer">
-      <button>取消</button>
-      <button>确认</button>
-    </div>
-  </div>
 </template>
 
 <script>
-export default {
-  data () {
-    return {
-
+    export default {
+        data() {
+            return {}
+        }
     }
-  }
-}
 </script>
 
 <style scoped>
-* {
-  margin: 0;
-  padding: 0;
-}
-.dialog {
-  width: 470px;
-  height: 230px;
-  padding: 0 25px;
-  background-color: #ffffff;
-  margin: 40px auto;
-  border-radius: 5px;
-}
-.dialog-header {
-  height: 70px;
-  line-height: 70px;
-  font-size: 20px;
-  border-bottom: 1px solid #ccc;
-  position: relative;
-}
-.dialog-header .close {
-  position: absolute;
-  right: 0px;
-  top: 0px;
-  cursor: pointer;
-}
-.dialog-content {
-  height: 80px;
-  font-size: 18px;
-  padding: 15px 0;
-}
-.dialog-footer {
-  display: flex;
-  justify-content: flex-end;
-}
-.dialog-footer button {
-  width: 65px;
-  height: 35px;
-  background-color: #ffffff;
-  border: 1px solid #e1e3e9;
-  cursor: pointer;
-  outline: none;
-  margin-left: 10px;
-  border-radius: 3px;
-}
-.dialog-footer button:last-child {
-  background-color: #007acc;
-  color: #fff;
-}
+    * {
+        margin: 0;
+        padding: 0;
+    }
+
+    .dialog {
+        width: 470px;
+        height: 230px;
+        padding: 0 25px;
+        background-color: #ffffff;
+        margin: 40px auto;
+        border-radius: 5px;
+    }
+
+    .dialog-header {
+        height: 70px;
+        line-height: 70px;
+        font-size: 20px;
+        border-bottom: 1px solid #ccc;
+        position: relative;
+    }
+
+    .dialog-header .close {
+        position: absolute;
+        right: 0px;
+        top: 0px;
+        cursor: pointer;
+    }
+
+    .dialog-content {
+        height: 80px;
+        font-size: 18px;
+        padding: 15px 0;
+    }
+
+    .dialog-footer {
+        display: flex;
+        justify-content: flex-end;
+    }
+
+    .dialog-footer button {
+        width: 65px;
+        height: 35px;
+        background-color: #ffffff;
+        border: 1px solid #e1e3e9;
+        cursor: pointer;
+        outline: none;
+        margin-left: 10px;
+        border-radius: 3px;
+    }
+
+    .dialog-footer button:last-child {
+        background-color: #007acc;
+        color: #fff;
+    }
 </style>
 ```
 
@@ -4254,46 +4255,41 @@ App.vue
 
 ```vue
 <template>
-  <div>
-    <MyDialog>
-    </MyDialog>
-  </div>
+    <div>
+        <MyDialog>
+            你确认要删除吗？
+        </MyDialog>
+        <MyDialog>
+            你确认要退出吗？
+        </MyDialog>
+    </div>
 </template>
 
 <script>
-import MyDialog from './components/MyDialog.vue'
-export default {
-  data () {
-    return {
+    import MyDialog from './components/MyDialog.vue'
 
+    export default {
+        data() {
+            return {}
+        },
+        components: {
+            MyDialog
+        }
     }
-  },
-  components: {
-    MyDialog
-  }
-}
 </script>
 
 <style>
-body {
-  background-color: #b3b3b3;
-}
+    body {
+        background-color: #b3b3b3;
+    }
 </style>
 ```
-
-### 6.总结
-
-场景：组件内某一部分结构不确定，想要自定义怎么办
-
-使用：插槽的步骤分为哪几步？
-
-
 
 ## 六一、插槽-后备内容（默认值）
 
 ### 1.问题
 
-通过插槽完成了内容的定制，传什么显示什么, 但是如果不传，则是空白
+通过插槽完成了内容的定制，传什么显示什么，但是如果不传，则是空白
 
 ![68241149461](assets/1682411494612.png)
 
