@@ -4293,7 +4293,7 @@ App.vue
 
 ![68241149461](assets/1682411494612.png)
 
-能否给插槽设置 默认显示内容 呢？
+能否给插槽设置默认显示内容呢？
 
 ### 2.插槽的后备内容
 
@@ -4301,7 +4301,7 @@ App.vue
 
 ### 3.语法
 
-在 <slot> 标签内，放置内容, 作为默认显示内容
+在 <slot> 标签内，放置内容，作为默认显示内容
 
 ![68241233912](assets/1682412365046.png)
 
@@ -4317,40 +4317,92 @@ App.vue
 
 ### 5.代码示例
 
-App.vue
+MyDialog.vue
 
 ```vue
 <template>
-  <div>
-    <MyDialog></MyDialog>
-    <MyDialog>
-      你确认要退出么
-    </MyDialog>
-  </div>
+    <div class="dialog">
+        <div class="dialog-header">
+            <h3>友情提示</h3>
+            <span class="close">✖️</span>
+        </div>
+
+        <div class="dialog-content">
+            <slot>默认提示信息</slot>
+        </div>
+        <div class="dialog-footer">
+            <button>取消</button>
+            <button>确认</button>
+        </div>
+    </div>
 </template>
 
 <script>
-import MyDialog from './components/MyDialog.vue'
-export default {
-  data () {
-    return {
-
+    export default {
+        data() {
+            return {}
+        }
     }
-  },
-  components: {
-    MyDialog
-  }
-}
 </script>
 
-<style>
-body {
-  background-color: #b3b3b3;
-}
+<style scoped>
+    * {
+        margin: 0;
+        padding: 0;
+    }
+
+    .dialog {
+        width: 470px;
+        height: 230px;
+        padding: 0 25px;
+        background-color: #ffffff;
+        margin: 40px auto;
+        border-radius: 5px;
+    }
+
+    .dialog-header {
+        height: 70px;
+        line-height: 70px;
+        font-size: 20px;
+        border-bottom: 1px solid #ccc;
+        position: relative;
+    }
+
+    .dialog-header .close {
+        position: absolute;
+        right: 0px;
+        top: 0px;
+        cursor: pointer;
+    }
+
+    .dialog-content {
+        height: 80px;
+        font-size: 18px;
+        padding: 15px 0;
+    }
+
+    .dialog-footer {
+        display: flex;
+        justify-content: flex-end;
+    }
+
+    .dialog-footer button {
+        width: 65px;
+        height: 35px;
+        background-color: #ffffff;
+        border: 1px solid #e1e3e9;
+        cursor: pointer;
+        outline: none;
+        margin-left: 10px;
+        border-radius: 3px;
+    }
+
+    .dialog-footer button:last-child {
+        background-color: #007acc;
+        color: #fff;
+    }
 </style>
 ```
-
-
 
 ## 六二、插槽-具名插槽
 
