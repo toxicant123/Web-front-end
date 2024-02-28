@@ -4410,7 +4410,7 @@ MyDialog.vue
 
 一个组件内有多处结构，需要外部传入标签，进行定制 ![68241313487](assets/1682413134876.png)
 
-上面的弹框中有**三处不同**，但是**默认插槽**只能**定制一个位置**，这时候怎么办呢?
+上面的弹框中有**三处不同**，但是**默认插槽**只能**定制一个位置**，这时候怎么办呢？
 
 ### 2.具名插槽语法
 
@@ -4426,13 +4426,124 @@ MyDialog.vue
 
 v-slot写起来太长，vue给我们提供一个简单写法 **v-slot —> #**
 
-### 4.总结
+### 4. 代码示例
 
-- 组件内 有多处不确定的结构 怎么办?
-- 具名插槽的语法是什么？
-- v-slot:插槽名可以简化成什么?
+App.vue
 
+```vue
+<template>
+    <div>
+        <MyDialog>
+            <template v-slot:head>
+                这是标题
+            </template>
+            <template v-slot:content>
+                这是文本
+            </template>
+            <template #footer>
+                <button>这是按钮</button>
+            </template>
+        </MyDialog>
+    </div>
+</template>
 
+<script>
+import MyDialog from './components/MyDialog.vue'
+
+export default {
+    data() {
+        return {}
+    },
+    components: {
+        MyDialog
+    }
+}
+</script>
+
+<style>
+body {
+    background-color: #b3b3b3;
+}
+</style>
+```
+
+MyDialog.vue
+
+```vue
+<template>
+    <div class="dialog">
+        <div class="dialog-header">
+            <slot name="head"></slot>
+        </div>
+
+        <div class="dialog-content">
+            <slot name="content"></slot>
+        </div>
+        <div class="dialog-footer">
+            <slot name="footer"></slot>
+        </div>
+    </div>
+</template>
+
+<script>
+export default {
+    data() {
+        return {}
+    },
+}
+</script>
+
+<style scoped>
+* {
+    margin: 0;
+    padding: 0;
+}
+.dialog {
+    width: 470px;
+    height: 230px;
+    padding: 0 25px;
+    background-color: #ffffff;
+    margin: 40px auto;
+    border-radius: 5px;
+}
+.dialog-header {
+    height: 70px;
+    line-height: 70px;
+    font-size: 20px;
+    border-bottom: 1px solid #ccc;
+    position: relative;
+}
+.dialog-header .close {
+    position: absolute;
+    right: 0px;
+    top: 0px;
+    cursor: pointer;
+}
+.dialog-content {
+    height: 80px;
+    font-size: 18px;
+    padding: 15px 0;
+}
+.dialog-footer {
+    display: flex;
+    justify-content: flex-end;
+}
+.dialog-footer button {
+    width: 65px;
+    height: 35px;
+    background-color: #ffffff;
+    border: 1px solid #e1e3e9;
+    cursor: pointer;
+    outline: none;
+    margin-left: 10px;
+    border-radius: 3px;
+}
+.dialog-footer button:last-child {
+    background-color: #007acc;
+    color: #fff;
+}
+</style>
+```
 
 ## 六三、作用域插槽
 
