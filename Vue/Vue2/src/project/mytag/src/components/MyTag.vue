@@ -1,11 +1,18 @@
 <template>
     <div class="my-tag">
-        <!-- <input
-          class="input"
-          type="text"
-          placeholder="输入标签"
-        /> -->
-        <div class="text">
+        <input
+            v-if="isEdit"
+            v-focus
+            ref="inp"
+            @blur="isEdit = false"
+            class="input"
+            type="text"
+            placeholder="输入标签"
+        />
+        <div
+            v-else
+            @dblclick="handleClick"
+            class="text">
             茶具
         </div>
     </div>
@@ -13,7 +20,18 @@
 
 <script>
 export default {
-    name: "MyTag"
+    name: "MyTag",
+    data() {
+        return {
+            isEdit: false
+        }
+    },
+    methods: {
+        handleClick() {
+            this.isEdit = true
+            // this.$nextTick(() => this.$refs.inp.focus())
+        }
+    }
 }
 </script>
 
