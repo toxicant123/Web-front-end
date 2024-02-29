@@ -1,36 +1,33 @@
 <template>
     <div class="table-case">
-        <table class="my-table">
-            <thead>
-                <tr>
-                    <th>编号</th>
-                    <th>名称</th>
-                    <th>图片</th>
-                    <th width="100px">标签</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr v-for="(item, index) in goods" :key="item.id">
-                    <td>{{ index + 1 }}</td>
-                    <td>{{ item.name }}</td>
-                    <td>
-                        <img :src="item.picture"/>
-                    </td>
-                    <td>
-                        <MyTag :tag.sync="item.tag"/>
-                    </td>
-                </tr>
-            </tbody>
-        </table>
+        <MyTable :list="goods">
+            <template #head>
+                <th>编号</th>
+                <th>名称</th>
+                <th>图片</th>
+                <th width="100px">标签</th>
+            </template>
+            <template #body="obj">
+                <td>{{ obj.index + 1 }}</td>
+                <td>{{ obj.item.name }}</td>
+                <td>
+                    <img :src="obj.item.picture"/>
+                </td>
+                <td>
+                    <MyTag :tag.sync="obj.item.tag"/>
+                </td>
+            </template>
+        </MyTable>
     </div>
 </template>
 
 <script>
+import MyTable from "@/components/MyTable.vue";
 import MyTag from "@/components/MyTag.vue";
 
 export default {
     name: 'TableCase',
-    components: {MyTag},
+    components: {MyTag, MyTable},
     data() {
         return {
             goods: [
@@ -74,44 +71,6 @@ export default {
         height: 100px;
         object-fit: contain;
         vertical-align: middle;
-    }
-
-    .my-table {
-        width: 100%;
-        border-spacing: 0;
-
-        img {
-            width: 100px;
-            height: 100px;
-            object-fit: contain;
-            vertical-align: middle;
-        }
-
-        th {
-            background: #f5f5f5;
-            border-bottom: 2px solid #069;
-        }
-
-        td {
-            border-bottom: 1px dashed #ccc;
-        }
-
-        td,
-        th {
-            text-align: center;
-            padding: 10px;
-            transition: all 0.5s;
-
-            &.red {
-                color: red;
-            }
-        }
-
-        .none {
-            height: 100px;
-            line-height: 100px;
-            color: #999;
-        }
     }
 }
 </style>
