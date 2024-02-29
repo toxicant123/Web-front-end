@@ -17,7 +17,7 @@
                         <img :src="item.picture"/>
                     </td>
                     <td>
-                        <MyTag/>
+                        <MyTag :tag.sync="item.tag"/>
                     </td>
                 </tr>
             </tbody>
