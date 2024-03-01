@@ -4790,8 +4790,6 @@ export default {
 
 访问路径 和 组件的对应关系如何确定呢？ **路由**
 
-
-
 ### 2.路由的介绍
 
 生活中的路由：设备和ip的映射关系
@@ -4801,13 +4799,6 @@ export default {
 Vue中的路由：**路径和组件**的**映射**关系
 
 ![68244304037](assets/1682443040372.png)
-
-### 3.总结
-
-- 什么是路由
-- Vue中的路由是什么
-
-
 
 ## 十六、路由的基本使用
 
@@ -4825,7 +4816,7 @@ Vue 官方的一个路由插件，是一个第三方包
 
 ### 4.官网
 
-<https://v3.router.vuejs.org/zh/>
+https://v3.router.vuejs.org/zh/
 
 ### 5.VueRouter的使用（5+2）
 
@@ -4834,37 +4825,35 @@ Vue 官方的一个路由插件，是一个第三方包
 1. 下载 VueRouter 模块到当前工程，版本3.6.5
 
    ```bash
-   yarn add vue-router@3.6.5
+   npm i vue-router@3.6.5
    ```
 
-2. main.js中引入VueRouter
+2. 在main.js中引入VueRouter
 
-   ```vue
+   ```js
    import VueRouter from 'vue-router'
    ```
 
-3. 安装注册
+3. 在main.js中安装注册
 
-   ```vue
+   ```js
    Vue.use(VueRouter)
    ```
 
-4. 创建路由对象
+4. 在main.js中创建路由对象
 
-   ```vue
+   ```js
    const router = new VueRouter()
    ```
 
-5. 注入，将路由对象注入到new Vue实例中，建立关联
+5. 在main.js中注入，将路由对象注入到new Vue实例中，建立关联
 
-   ```vue
+   ```js
    new Vue({
-    render: h => h(App),
-    router:router
+       render: h => h(App),
+       router
    }).$mount('#app')
-
    ```
-
 
 当我们配置完以上5步之后 就可以看到浏览器地址栏中的路由 变成了 /#/的形式。表示项目的路由已经被Vue-Router管理了
 
@@ -4874,7 +4863,7 @@ Vue 官方的一个路由插件，是一个第三方包
 
 main.js
 
-```vue
+```js
 // 路由的使用步骤 5 + 2
 // 5个基础步骤
 // 1. 下载 v3.6.5
@@ -4883,7 +4872,6 @@ main.js
 // 3. 安装注册 Vue.use(Vue插件)
 // 4. 创建路由对象
 // 5. 注入到new Vue中，建立关联
-
 
 import VueRouter from 'vue-router'
 Vue.use(VueRouter) // VueRouter插件初始化
@@ -4895,8 +4883,6 @@ new Vue({
   router
 }).$mount('#app')
 ```
-
-
 
 ### 7.两个核心步骤
 
