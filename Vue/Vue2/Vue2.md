@@ -4952,7 +4952,7 @@ App.vue
 
 **模糊匹配（用的多）**
 
-to="/my"  可以匹配 /my    /my/a    /my/b    ....
+to="/my" 可以匹配 /my、/my/a、/my/b....
 
 只要是以/my开头的路径 都可以和 to="/my"匹配到
 
@@ -4960,15 +4960,9 @@ to="/my"  可以匹配 /my    /my/a    /my/b    ....
 
 **精确匹配**
 
-to="/my" 仅可以匹配  /my
+to="/my" 仅可以匹配 /my
 
 ### 3.在地址栏中输入二级路由查看类名的添加
-
-### 4.总结
-
-- router-link 会自动给当前导航添加两个类名，有什么区别呢？
-
-
 
 ## 三、声明式导航-自定义类名（了解）
 
@@ -4980,40 +4974,30 @@ router-link的**两个高亮类名 太长了**，我们希望能定制怎么办
 
 ### 2.解决方案
 
-我们可以在创建路由对象时，额外配置两个配置项即可。 `linkActiveClass`和`linkExactActiveClass`
+我们可以在创建路由对象时，额外配置两个配置项即可。`linkActiveClass`和`linkExactActiveClass`
 
 ```js
 const router = new VueRouter({
-  routes: [...],
-  linkActiveClass: "类名1",
-  linkExactActiveClass: "类名2"
+    routes: [...],
+    linkActiveClass: "类名1",
+    linkExactActiveClass: "类名2"
 })
 ```
 
 ![68249372945](assets/1682493729456.png)
-
-
 
 ### 3.代码演示
 
 ```js
 // 创建了一个路由对象
 const router = new VueRouter({
-  routes: [
-    ...
-  ], 
-  linkActiveClass: 'active', // 配置模糊匹配的类名
-  linkExactActiveClass: 'exact-active' // 配置精确匹配的类名
+    routes: [
+        ...
+    ],
+    linkActiveClass: 'active', // 配置模糊匹配的类名
+    linkExactActiveClass: 'exact-active' // 配置精确匹配的类名
 })
 ```
-
-
-
-### 4.总结
-
-如何自定义router-link的两个**高亮类名**
-
-
 
 ## 四、声明式导航-查询参数传参
 
