@@ -5690,8 +5690,6 @@ export default {
 
 ② name 命名路由跳转传参
 
-
-
 ### 4.path路径跳转传参（query传参）
 
 ```js
@@ -5699,11 +5697,11 @@ export default {
 this.$router.push('/路径?参数名1=参数值1&参数2=参数值2')
 //完整写法
 this.$router.push({
- path: '/路径',
- query: {
-  参数名1: '参数值1',
-  参数名2: '参数值2'
- }
+    path: '/路径',
+    query: {
+        参数名1: '参数值1',
+        参数名2: '参数值2'
+    }
 })
 ```
 
@@ -5711,20 +5709,21 @@ this.$router.push({
 
 ### 5.path路径跳转传参（动态路由传参）
 
-```
+```js
 //简单写法
 this.$router.push('/路径/参数值')
 //完整写法
 this.$router.push({
- path: '/路径/参数值'
+    path: '/路径/参数值',
+    params: {
+        参数名1: '参数值1'
+    }
 })
 ```
 
 接受参数的方式依然是：$route.params.参数值
 
-**注意：**path不能配合params使用
-
-
+**注意：** path不能配合params使用
 
 ## 十二、编程式导航-name命名路由传参
 
@@ -5732,11 +5731,11 @@ this.$router.push({
 
 ```js
 this.$router.push({
- name: '路由名字',
- query: {
-  参数名1: '参数值1',
-  参数名2: '参数值2'
- }
+    name: '路由名字',
+    query: {
+        参数名1: '参数值1',
+        参数名2: '参数值2'
+    }
 })
 ```
 
@@ -5744,10 +5743,10 @@ this.$router.push({
 
 ```js
 this.$router.push({
- name: '路由名字',
- params: {
-  参数名: '参数值',
- }
+    name: '路由名字',
+    params: {
+        参数名: '参数值',
+    }
 })
 ```
 
@@ -5755,56 +5754,51 @@ this.$router.push({
 
 编程式导航，如何跳转传参？
 
-1.path路径跳转
-
-- query传参
-
-  ```js
-  this.$router.push('/路径?参数名1=参数值1&参数2=参数值2')
-  this.$router.push({
-   path: '/路径',
-   query: {
-    参数名1: '参数值1',
-    参数名2: '参数值2'
-   }
-  })
-  ```
-
-- 动态路由传参
-
-  ```js
-  this.$router.push('/路径/参数值')
-  this.$router.push({
-   path: '/路径/参数值'
-  })
-  ```
-
-2.name命名路由跳转
-
-- query传参
-
-  ```js
-  this.$router.push({
-   name: '路由名字',
-   query: {
-    参数名1: '参数值1',
-    参数名2: '参数值2'
-   }
-  })
-  ```
-
-- 动态路由传参 (需要配动态路由)
-
-  ```js
-  this.$router.push({
-   name: '路由名字',
-   params: {
-    参数名: '参数值',
-   }
-  })
-  ```
-
-
+1. path路径跳转
+   - query传参
+   
+     ```js
+     this.$router.push('/路径?参数名1=参数值1&参数2=参数值2')
+     this.$router.push({
+         path: '/路径',
+         query: {
+             参数名1: '参数值1',
+             参数名2: '参数值2'
+         }
+     })
+     ```
+   
+   - 动态路由传参
+   
+     ```js
+     this.$router.push('/路径/参数值')
+     this.$router.push({
+         path: '/路径/参数值'
+     })
+     ```
+2. name命名路由跳转
+   - query传参
+   
+     ```js
+     this.$router.push({
+         name: '路由名字',
+         query: {
+             参数名1: '参数值1',
+             参数名2: '参数值2'
+         }
+     })
+     ```
+   
+   - 动态路由传参 (需要配动态路由)
+   
+     ```js
+     this.$router.push({
+         name: '路由名字',
+         params: {
+             参数名: '参数值',
+         }
+     })
+     ```
 
 ## 十三、面经基础版-案例效果分析
 
