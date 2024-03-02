@@ -5714,10 +5714,7 @@ this.$router.push({
 this.$router.push('/路径/参数值')
 //完整写法
 this.$router.push({
-    path: '/路径/参数值',
-    params: {
-        参数名1: '参数值1'
-    }
+    path: '/路径/参数值'
 })
 ```
 
@@ -5813,47 +5810,39 @@ this.$router.push({
 
 ### 3.实现思路分析：配置路由+功能实现
 
-1.配置路由
-
-- 首页和面经详情页，两个一级路由
-- 首页内嵌套4个可切换的页面（嵌套二级路由）
-
-2.实现功能
-
-- 首页请求渲染
-- **跳转传参** 到 详情页，详情页动态渲染
-- 组件缓存，性能优化
+1. 配置路由
+   - 首页和面经详情页，两个一级路由
+   - 首页内嵌套4个可切换的页面（嵌套二级路由）
+2. 实现功能
+   - 首页请求渲染
+   - **跳转传参** 到 详情页，详情页动态渲染
+   - 组件缓存，性能优化
 
 ![68256025535](assets/1682560255356.png)
 
 ## 十四、面经基础版-一级路由配置
 
-1.把文档中准备的素材拷贝到项目中
+1. 把文档中准备的素材拷贝到项目中
 
-2.针对router/index.js文件 进行一级路由配置
+2. 针对router/index.js文件 进行一级路由配置
 
 ```js
-...
 import Layout from '@/views/Layout.vue'
 import ArticleDetail from '@/views/ArticleDetail.vue'
-...
-
 
 const router = new VueRouter({
-  routes: [
-    {
-      path: '/',
-      component: Layout
-    },
-    {
-      path: '/detail',
-      component: ArticleDetail
-    }
-  ]
+    routes: [
+        {
+            path: '/',
+            component: Layout
+        },
+        {
+            path: '/detail',
+            component: ArticleDetail
+        }
+    ]
 })
 ```
-
-
 
 ## 十五、面经基础版-二级路由配置
 
@@ -5868,11 +5857,9 @@ const router = new VueRouter({
 - 在一级路由下，配置children属性即可
 - 配置二级路由的出口
 
-
-
 1.在一级路由下，配置children属性
 
-**注意**:一级的路由path 需要加 `/`   二级路由的path不需要加 `/`
+**注意**：一级的路由path 需要加`/`，二级路由的path不需要加 `/`
 
 ```js
 const router = new VueRouter({
@@ -6022,18 +6009,18 @@ Layout.vue
 
 ### 2.代码实现
 
-1.安装axios
+1. 安装axios
 
-`yarn add axios `  `npm i axios`
+`yarn add axios` or `npm i axios`
 
-2.接口文档
+2. 接口文档
 
 ```vue
 请求地址: https://mock.boxuegu.com/mock/3083/articles
 请求方式: get
 ```
 
-3.created中发送请求，获取数据，存储到data中
+3. created中发送请求，获取数据，存储到data中
 
 ```vue
  data() {
@@ -6289,11 +6276,9 @@ App.vue
 
 ### 5.keep-alive的三个属性
 
-① include  ： 组件名数组，只有匹配的组件**会被缓存**
-
-② exclude ： 组件名数组，任何匹配的组件都**不会被缓存**
-
-③ max       ： 最多可以**缓存多少**组件实例
+1. include：组件名数组，只有匹配的组件**会被缓存**
+2. exclude：组件名数组，任何匹配的组件都**不会被缓存**
+3. max：最多可以**缓存多少**组件实例
 
 
 
