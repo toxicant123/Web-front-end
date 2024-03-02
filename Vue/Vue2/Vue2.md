@@ -5231,13 +5231,13 @@ new Vue({
 
   ```js
   const router = new VueRouter({
-    routes: [
-      ...,
-      { 
-        path: '/search/:words', 
-        component: Search 
-      }
-    ]
+      routes: [
+          {
+              path: '/search/:words',
+              component:
+              Search
+          }
+      ]
   })
   ```
 
@@ -5250,55 +5250,233 @@ new Vue({
   $route.**params**.参数名
 
   > params后面的参数名要和动态路由配置的参数保持一致
-
-
-
+  
 ### 2.查询参数传参 VS 动态路由传参
 
-1.  查询参数传参  (比较适合传**多个参数**)
-
-1. 跳转：to="/path?参数名=值&参数名2=值"
-2. 获取：$route.query.参数名
-
-2. 动态路由传参 (**优雅简洁**，传单个参数比较方便)
-
-    1. 配置动态路由：path: "/path/:参数名"
-    2. 跳转：to="/path/参数值"
-    3. 获取：$route.params.参数名
+1. 查询参数传参（比较适合传**多个参数**）
+   1. 跳转：to="/path?参数名=值&参数名2=值"
+   2. 获取：$route.query.参数名
+2. 动态路由传参（**优雅简洁**，传单个参数比较方便）
+   1. 配置动态路由：path: "/path/:参数名"
+   2. 跳转：to="/path/参数值"
+   3. 获取：$route.params.参数名
 
    注意：动态路由也可以传多个参数，但一般只传一个
 
-### 3.总结
+### 3. 代码演示
 
-声明式导航跳转时, 有几种方式传值给路由页面？
+App.vue
 
-- 查询参数传参（多个参数）
-- 动态路由传参（一个参数，优雅简洁）
+```vue
+<template>
+    <div id="app">
+        <div class="link">
+            <router-link to="/home">首页</router-link>
+            <router-link to="/search">搜索页</router-link>
+        </div>
 
+        <router-view></router-view>
+    </div>
+</template>
 
+<script>
+    export default {};
+</script>
+
+<style scoped>
+    .link {
+        height: 50px;
+        line-height: 50px;
+        background-color: #495150;
+        display: flex;
+        margin: -8px -8px 50px;
+    }
+
+    .link a {
+        display: block;
+        text-decoration: none;
+        background-color: #ad2a26;
+        width: 100px;
+        text-align: center;
+        margin-right: 5px;
+        color: #fff;
+        border-radius: 5px;
+    }
+</style>
+```
+
+Home.vue
+
+```vue
+<template>
+    <div class="home">
+        <div class="logo-box"></div>
+        <div class="search-box">
+            <input type="text">
+            <button>搜索一下</button>
+        </div>
+        <div class="hot-link">
+            热门搜索：
+            <router-link to="/search/黑马程序员">黑马程序员</router-link>
+            <router-link to="/search/前端培训">前端培训</router-link>
+            <router-link to="/search/如何成为前端大牛">如何成为前端大牛</router-link>
+        </div>
+    </div>
+</template>
+
+<script>
+    export default {
+        name: 'FindMusic'
+    }
+</script>
+
+<style>
+    .logo-box {
+        height: 150px;
+        background: url('@/assets/logo.jpeg') no-repeat center;
+    }
+
+    .search-box {
+        display: flex;
+        justify-content: center;
+    }
+
+    .search-box input {
+        width: 400px;
+        height: 30px;
+        line-height: 30px;
+        border: 2px solid #c4c7ce;
+        border-radius: 4px 0 0 4px;
+        outline: none;
+    }
+
+    .search-box input:focus {
+        border: 2px solid #ad2a26;
+    }
+
+    .search-box button {
+        width: 100px;
+        height: 36px;
+        border: none;
+        background-color: #ad2a26;
+        color: #fff;
+        position: relative;
+        left: -2px;
+        border-radius: 0 4px 4px 0;
+    }
+
+    .hot-link {
+        width: 508px;
+        height: 60px;
+        line-height: 60px;
+        margin: 0 auto;
+    }
+
+    .hot-link a {
+        margin: 0 5px;
+    }
+</style>
+```
+
+Search.vue
+
+```vue
+<template>
+    <div class="search">
+        <p>搜索关键字: {{ info }}</p>
+        <p>搜索结果: </p>
+        <ul>
+            <li>.............</li>
+            <li>.............</li>
+            <li>.............</li>
+            <li>.............</li>
+        </ul>
+    </div>
+</template>
+
+<script>
+    export default {
+        name: 'MyFriend',
+        data() {
+            return {
+                info: ''
+            }
+        },
+        created() {
+            this.info = this.$route.params.words
+            // 在created中，获取路由参数
+        }
+    }
+</script>
+
+<style>
+    .search {
+        width: 400px;
+        height: 240px;
+        padding: 0 20px;
+        margin: 0 auto;
+        border: 2px solid #c4c7ce;
+        border-radius: 5px;
+    }
+</style>
+```
+
+router/index.js
+
+```js
+import Home from '@/views/Home'
+import Search from '@/views/Search'
+import Vue from 'vue'
+import VueRouter from 'vue-router'
+
+Vue.use(VueRouter) // VueRouter插件初始化
+
+// 创建了一个路由对象
+const router = new VueRouter({
+    routes: [
+        {path: '/home', component: Home},
+        {path: '/search/:words', component: Search}
+    ]
+})
+
+export default router
+```
+
+main.js
+
+```js
+import Vue from 'vue'
+import App from './App.vue'
+
+import router from "@/router";
+
+Vue.config.productionTip = false
+
+new Vue({
+    render: h => h(App),
+    router
+}).$mount('#app')
+```
 
 ## 六、动态路由参数的可选符(了解)
 
 ### 1.问题
 
-配了路由 path:"/search/:words"  为什么按下面步骤操作，会未匹配到组件，显示空白？
+配了路由 path:"/search/:words" 为什么按下面步骤操作，会未匹配到组件，显示空白？
 
 ![68249723830](assets/1682497238305.png)
 
 ### 2.原因
 
-/search/:words  表示，**必须要传参数**。如果不传参数，也希望匹配，可以加个可选符"？"
+/search/:words 表示，**必须要传参数**。如果不传参数，也希望匹配，可以加个可选符"？"
 
 ```js
 const router = new VueRouter({
-  routes: [
- 	...
-    { path: '/search/:words?', component: Search }
-  ]
+    routes: [
+        {path: '/search/:words?', component: Search}
+    ]
 })
 ```
-
-
 
 ## 七、Vue路由-重定向
 
@@ -5312,8 +5490,6 @@ const router = new VueRouter({
 
 **重定向** → 匹配 / 后, 强制跳转 /home 路径
 
-
-
 ### 3.语法
 
 ```js
@@ -5322,20 +5498,16 @@ const router = new VueRouter({
 { path:'/' ,redirect:'/home' }
 ```
 
-
-
 ### 4.代码演示
 
 ```
 const router = new VueRouter({
-  routes: [
-    { path: '/', redirect: '/home'},
- 	 ...
-  ]
+ routes: [
+  { path: '/', redirect: '/home'},
+	 ...
+ ]
 })
 ```
-
-
 
 ## 八、Vue路由-404
 
@@ -5355,10 +5527,10 @@ path: "*"   (任意路径) – 前面不匹配就命中最后这个
 import NotFind from '@/views/NotFind'
 
 const router = new VueRouter({
-  routes: [
-    ...
-    { path: '*', component: NotFind } //最后一个
-  ]
+ routes: [
+  ...
+  { path: '*', component: NotFind } //最后一个
+ ]
 })
 ```
 
@@ -5453,7 +5625,7 @@ this.$router.push('路由路径')
 
 //完整写法
 this.$router.push({
-  path: '路由路径'
+ path: '路由路径'
 })
 ```
 
@@ -5477,7 +5649,7 @@ this.$router.push({
 
   ```js
   this.$router.push({
-    name: '路由名'
+   name: '路由名'
   })
   ```
 
@@ -5526,11 +5698,11 @@ this.$router.push({
 this.$router.push('/路径?参数名1=参数值1&参数2=参数值2')
 //完整写法
 this.$router.push({
-  path: '/路径',
-  query: {
-    参数名1: '参数值1',
-    参数名2: '参数值2'
-  }
+ path: '/路径',
+ query: {
+  参数名1: '参数值1',
+  参数名2: '参数值2'
+ }
 })
 ```
 
@@ -5543,7 +5715,7 @@ this.$router.push({
 this.$router.push('/路径/参数值')
 //完整写法
 this.$router.push({
-  path: '/路径/参数值'
+ path: '/路径/参数值'
 })
 ```
 
@@ -5559,11 +5731,11 @@ this.$router.push({
 
 ```js
 this.$router.push({
-  name: '路由名字',
-  query: {
-    参数名1: '参数值1',
-    参数名2: '参数值2'
-  }
+ name: '路由名字',
+ query: {
+  参数名1: '参数值1',
+  参数名2: '参数值2'
+ }
 })
 ```
 
@@ -5571,10 +5743,10 @@ this.$router.push({
 
 ```js
 this.$router.push({
-  name: '路由名字',
-  params: {
-    参数名: '参数值',
-  }
+ name: '路由名字',
+ params: {
+  参数名: '参数值',
+ }
 })
 ```
 
@@ -5589,11 +5761,11 @@ this.$router.push({
   ```js
   this.$router.push('/路径?参数名1=参数值1&参数2=参数值2')
   this.$router.push({
-    path: '/路径',
-    query: {
-      参数名1: '参数值1',
-      参数名2: '参数值2'
-    }
+   path: '/路径',
+   query: {
+    参数名1: '参数值1',
+    参数名2: '参数值2'
+   }
   })
   ```
 
@@ -5602,7 +5774,7 @@ this.$router.push({
   ```js
   this.$router.push('/路径/参数值')
   this.$router.push({
-    path: '/路径/参数值'
+   path: '/路径/参数值'
   })
   ```
 
@@ -5612,11 +5784,11 @@ this.$router.push({
 
   ```js
   this.$router.push({
-    name: '路由名字',
-    query: {
-      参数名1: '参数值1',
-      参数名2: '参数值2'
-    }
+   name: '路由名字',
+   query: {
+    参数名1: '参数值1',
+    参数名2: '参数值2'
+   }
   })
   ```
 
@@ -5624,10 +5796,10 @@ this.$router.push({
 
   ```js
   this.$router.push({
-    name: '路由名字',
-    params: {
-      参数名: '参数值',
-    }
+   name: '路由名字',
+   params: {
+    参数名: '参数值',
+   }
   })
   ```
 
