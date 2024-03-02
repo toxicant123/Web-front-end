@@ -5571,10 +5571,10 @@ export default router
 
 ### 1.问题
 
-路由的路径看起来不自然, 有#，能否切成真正路径形式?
+路由的路径看起来不自然，有#，能否切成真正路径形式？
 
-- hash路由(默认)        例如:  http://localhost:8080/#/home
-- history路由(常用)     例如: http://localhost:8080/home   (以后上线需要服务器端支持，开发环境webpack给规避掉了history模式的问题)
+- hash路由(默认)：例如：http://localhost:8080/#/home
+- history路由(常用)：例如：http://localhost:8080/home   (以后上线需要服务器端支持，开发环境webpack给规避掉了history模式的问题)
 
 ### 2.语法
 
@@ -5600,9 +5600,8 @@ const router = new VueRouter({
 ### 3.语法
 
 两种语法：
-
-- path 路径跳转 （简易方便）
-- name 命名路由跳转 (适合 path 路径长的场景)
+- path 路径跳转（简易方便）
+- name 命名路由跳转（适合 path 路径长的场景）
 
 ### 4.path路径跳转语法
 
@@ -5614,13 +5613,25 @@ this.$router.push('路由路径')
 
 //完整写法
 this.$router.push({
- path: '路由路径'
+    path: '路由路径'
 })
 ```
 
 ### 5.代码演示 path跳转方式
 
-
+```vue
+<script>
+export default {
+    methods: {
+        goSearch() {
+            this.$router.push({
+                path: '/search'
+            })
+        }
+    }
+}
+</script>
+```
 
 ### 6.name命名路由跳转
 
@@ -5638,21 +5649,25 @@ this.$router.push({
 
   ```js
   this.$router.push({
-   name: '路由名'
+      name: '路由名'
   })
   ```
 
-
-
 ### 7.代码演示通过name命名路由跳转
 
-
-
-### 8.总结
-
-编程式导航有几种跳转方式？
-
-
+```vue
+<script>
+export default {
+    methods: {
+        goSearch() {
+            this.$router.push({
+                name: 'se'
+            })
+        }
+    }
+}
+</script>
+```
 
 ## 十一、编程式导航-path路径跳转传参
 
@@ -5664,11 +5679,8 @@ this.$router.push({
 
 ### 2.两种传参方式
 
-1.查询参数
-
-2.动态路由传参
-
-
+1. 查询参数
+2. 动态路由传参
 
 ### 3.传参
 
