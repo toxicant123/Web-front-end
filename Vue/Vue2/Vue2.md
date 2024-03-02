@@ -5016,8 +5016,6 @@ const router = new VueRouter({
 - 查询参数传参
 - 动态路由传参
 
-
-
 ### 3.查询参数传参
 
 - 如何传参？
@@ -5028,47 +5026,45 @@ const router = new VueRouter({
 
   固定用法：$router.query.参数名
 
-
-
 ### 4.代码演示
 
 App.vue
 
 ```vue
 <template>
-  <div id="app">
-    <div class="link">
-      <router-link to="/home">首页</router-link>
-      <router-link to="/search">搜索页</router-link>
-    </div>
+    <div id="app">
+        <div class="link">
+            <router-link to="/home">首页</router-link>
+            <router-link to="/search">搜索页</router-link>
+        </div>
 
-    <router-view></router-view>
-  </div>
+        <router-view></router-view>
+    </div>
 </template>
 
 <script>
-export default {};
+    export default {};
 </script>
 
 <style scoped>
-.link {
-  height: 50px;
-  line-height: 50px;
-  background-color: #495150;
-  display: flex;
-  margin: -8px -8px 0 -8px;
-  margin-bottom: 50px;
-}
-.link a {
-  display: block;
-  text-decoration: none;
-  background-color: #ad2a26;
-  width: 100px;
-  text-align: center;
-  margin-right: 5px;
-  color: #fff;
-  border-radius: 5px;
-}
+    .link {
+        height: 50px;
+        line-height: 50px;
+        background-color: #495150;
+        display: flex;
+        margin: -8px -8px 50px;
+    }
+
+    .link a {
+        display: block;
+        text-decoration: none;
+        background-color: #ad2a26;
+        width: 100px;
+        text-align: center;
+        margin-right: 5px;
+        color: #fff;
+        border-radius: 5px;
+    }
 </style>
 ```
 
@@ -5076,66 +5072,72 @@ Home.vue
 
 ```vue
 <template>
-  <div class="home">
-    <div class="logo-box"></div>
-    <div class="search-box">
-      <input type="text">
-      <button>搜索一下</button>
+    <div class="home">
+        <div class="logo-box"></div>
+        <div class="search-box">
+            <input type="text">
+            <button>搜索一下</button>
+        </div>
+        <div class="hot-link">
+            热门搜索：
+            <router-link to="/search?key=黑马程序员">黑马程序员</router-link>
+            <router-link to="/search?key=前端培训">前端培训</router-link>
+            <router-link to="/search?key=如何成为前端大牛">如何成为前端大牛</router-link>
+        </div>
     </div>
-    <div class="hot-link">
-      热门搜索：
-      <router-link to="">黑马程序员</router-link>
-      <router-link to="">前端培训</router-link>
-      <router-link to="">如何成为前端大牛</router-link>
-    </div>
-  </div>
 </template>
 
 <script>
-export default {
-  name: 'FindMusic'
-}
+    export default {
+        name: 'FindMusic'
+    }
 </script>
 
 <style>
-.logo-box {
-  height: 150px;
-  background: url('@/assets/logo.jpeg') no-repeat center;
-}
-.search-box {
-  display: flex;
-  justify-content: center;
-}
-.search-box input {
-  width: 400px;
-  height: 30px;
-  line-height: 30px;
-  border: 2px solid #c4c7ce;
-  border-radius: 4px 0 0 4px;
-  outline: none;
-}
-.search-box input:focus {
-  border: 2px solid #ad2a26;
-}
-.search-box button {
-  width: 100px;
-  height: 36px;
-  border: none;
-  background-color: #ad2a26;
-  color: #fff;
-  position: relative;
-  left: -2px;
-  border-radius: 0 4px 4px 0;
-}
-.hot-link {
-  width: 508px;
-  height: 60px;
-  line-height: 60px;
-  margin: 0 auto;
-}
-.hot-link a {
-  margin: 0 5px;
-}
+    .logo-box {
+        height: 150px;
+        background: url('@/assets/logo.jpeg') no-repeat center;
+    }
+
+    .search-box {
+        display: flex;
+        justify-content: center;
+    }
+
+    .search-box input {
+        width: 400px;
+        height: 30px;
+        line-height: 30px;
+        border: 2px solid #c4c7ce;
+        border-radius: 4px 0 0 4px;
+        outline: none;
+    }
+
+    .search-box input:focus {
+        border: 2px solid #ad2a26;
+    }
+
+    .search-box button {
+        width: 100px;
+        height: 36px;
+        border: none;
+        background-color: #ad2a26;
+        color: #fff;
+        position: relative;
+        left: -2px;
+        border-radius: 0 4px 4px 0;
+    }
+
+    .hot-link {
+        width: 508px;
+        height: 60px;
+        line-height: 60px;
+        margin: 0 auto;
+    }
+
+    .hot-link a {
+        margin: 0 5px;
+    }
 </style>
 ```
 
@@ -5143,36 +5145,42 @@ Search.vue
 
 ```vue
 <template>
-  <div class="search">
-    <p>搜索关键字: 黑马程序员</p>
-    <p>搜索结果: </p>
-    <ul>
-      <li>.............</li>
-      <li>.............</li>
-      <li>.............</li>
-      <li>.............</li>
-    </ul>
-  </div>
+    <div class="search">
+        <p>搜索关键字: {{ info }}</p>
+        <p>搜索结果: </p>
+        <ul>
+            <li>.............</li>
+            <li>.............</li>
+            <li>.............</li>
+            <li>.............</li>
+        </ul>
+    </div>
 </template>
 
 <script>
-export default {
-  name: 'MyFriend',
-  created () {
-    // 在created中，获取路由参数
-  }
-}
+    export default {
+        name: 'MyFriend',
+        data() {
+            return {
+                info: ''
+            }
+        },
+        created() {
+            this.info = this.$route.query.key
+            // 在created中，获取路由参数
+        }
+    }
 </script>
 
 <style>
-.search {
-  width: 400px;
-  height: 240px;
-  padding: 0 20px;
-  margin: 0 auto;
-  border: 2px solid #c4c7ce;
-  border-radius: 5px;
-}
+    .search {
+        width: 400px;
+        height: 240px;
+        padding: 0 20px;
+        margin: 0 auto;
+        border: 2px solid #c4c7ce;
+        border-radius: 5px;
+    }
 </style>
 ```
 
@@ -5183,14 +5191,15 @@ import Home from '@/views/Home'
 import Search from '@/views/Search'
 import Vue from 'vue'
 import VueRouter from 'vue-router'
+
 Vue.use(VueRouter) // VueRouter插件初始化
 
 // 创建了一个路由对象
 const router = new VueRouter({
-  routes: [
-    { path: '/home', component: Home },
-    { path: '/search', component: Search }
-  ]
+    routes: [
+        {path: '/home', component: Home},
+        {path: '/search', component: Search}
+    ]
 })
 
 export default router
@@ -5198,17 +5207,19 @@ export default router
 
 main.js
 
-```
-...
-import router from './router/index'
-...
+```js
+import Vue from 'vue'
+import App from './App.vue'
+
+import router from "@/router";
+
+Vue.config.productionTip = false
+
 new Vue({
-  render: h => h(App),
-  router
+    render: h => h(App),
+    router
 }).$mount('#app')
 ```
-
-
 
 ## 五、声明式导航-动态路由传参
 
