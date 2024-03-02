@@ -5482,7 +5482,7 @@ const router = new VueRouter({
 
 ### 1.问题
 
-网页打开时， url 默认是 / 路径，未匹配到组件时，会出现空白
+网页打开时，url 默认是 / 路径，未匹配到组件时，会出现空白
 
 ![68249787282](assets/1682497872821.png)
 
@@ -5494,18 +5494,17 @@ const router = new VueRouter({
 
 ```js
 { path: 匹配路径, redirect: 重定向到的路径 },
-比如：
-{ path:'/' ,redirect:'/home' }
+// 比如：
+{ path:'/' , redirect:'/home' }
 ```
 
 ### 4.代码演示
 
-```
+```js
 const router = new VueRouter({
- routes: [
-  { path: '/', redirect: '/home'},
-	 ...
- ]
+    routes: [
+        {path: '/', redirect: '/home'}
+    ]
 })
 ```
 
@@ -5521,16 +5520,15 @@ const router = new VueRouter({
 
 ### 3.语法
 
-path: "*"   (任意路径) – 前面不匹配就命中最后这个
+path: "*" (任意路径) – 前面不匹配就命中最后这个
 
 ```js
-import NotFind from '@/views/NotFind'
+import NotFound from '@/views/NotFound'
 
 const router = new VueRouter({
- routes: [
-  ...
-  { path: '*', component: NotFind } //最后一个
- ]
+    routes: [
+        {path: '*', component: NotFound} //最后一个
+    ]
 })
 ```
 
@@ -5540,15 +5538,13 @@ NotFound.vue
 
 ```vue
 <template>
-  <div>
-    <h1>404 Not Found</h1>
-  </div>
+    <div>
+        <h1>404 Not Found</h1>
+    </div>
 </template>
 
 <script>
-export default {
-
-}
+    export default {}
 </script>
 
 <style>
@@ -5559,22 +5555,17 @@ export default {
 router/index.js
 
 ```js
-...
 import NotFound from '@/views/NotFound'
-...
 
 // 创建了一个路由对象
 const router = new VueRouter({
-  routes: [
-     ...
-    { path: '*', component: NotFound }
-  ]
+    routes: [
+        {path: '*', component: NotFound}
+    ]
 })
 
 export default router
 ```
-
-
 
 ## 九、Vue路由-模式设置
 
@@ -5593,8 +5584,6 @@ const router = new VueRouter({
     routes:[]
 })
 ```
-
-
 
 ## 十、编程式导航-两种路由跳转方式
 
