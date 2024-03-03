@@ -6495,43 +6495,40 @@ vue create vuex-demo
 
 ```html
 <template>
-  <div id="app">
-    <h1>根组件</h1>
-    <input type="text">
-    <Son1></Son1>
-    <hr>
-    <Son2></Son2>
-  </div>
+    <div id="app">
+        <h1>根组件</h1>
+        <input type="text">
+        <Son1></Son1>
+        <hr>
+        <Son2></Son2>
+    </div>
 </template>
 
 <script>
-import Son1 from './components/Son1.vue'
-import Son2 from './components/Son2.vue'
+    import Son1 from './components/Son1.vue'
+    import Son2 from './components/Son2.vue'
 
-export default {
-  name: 'app',
-  data: function () {
-    return {
-
+    export default {
+        name: 'app',
+        data: function () {
+            return {}
+        },
+        components: {
+            Son1,
+            Son2
+        }
     }
-  },
-  components: {
-    Son1,
-    Son2
-  }
-}
 </script>
 
 <style>
-#app {
-  width: 600px;
-  margin: 20px auto;
-  border: 3px solid #ccc;
-  border-radius: 3px;
-  padding: 10px;
-}
+    #app {
+        width: 600px;
+        margin: 20px auto;
+        border: 3px solid #ccc;
+        border-radius: 3px;
+        padding: 10px;
+    }
 </style>
-
 ```
 
 `main.js`
@@ -6543,7 +6540,7 @@ import App from './App.vue'
 Vue.config.productionTip = false
 
 new Vue({
-  render: h => h(App)
+    render: h => h(App)
 }).$mount('#app')
 ```
 
@@ -6551,66 +6548,65 @@ new Vue({
 
 ```html
 <template>
-  <div class="box">
-    <h2>Son1 子组件</h2>
-    从vuex中获取的值: <label></label>
-    <br>
-    <button>值 + 1</button>
-  </div>
+    <div class="box">
+        <h2>Son1 子组件</h2>
+        从vuex中获取的值: <label></label>
+        <br>
+        <button>值 + 1</button>
+    </div>
 </template>
 
 <script>
-export default {
-  name: 'Son1Com'
-}
+    export default {
+        name: 'Son1Com'
+    }
 </script>
 
 <style lang="css" scoped>
-.box{
-  border: 3px solid #ccc;
-  width: 400px;
-  padding: 10px;
-  margin: 20px;
-}
-h2 {
-  margin-top: 10px;
-}
-</style>
+    .box {
+        border: 3px solid #ccc;
+        width: 400px;
+        padding: 10px;
+        margin: 20px;
+    }
 
+    h2 {
+        margin-top: 10px;
+    }
+</style>
 ```
 
 `Son2.vue`
 
 ```html
 <template>
-  <div class="box">
-    <h2>Son2 子组件</h2>
-    从vuex中获取的值:<label></label>
-    <br />
-    <button>值 - 1</button>
-  </div>
+    <div class="box">
+        <h2>Son2 子组件</h2>
+        从vuex中获取的值:<label></label>
+        <br/>
+        <button>值 - 1</button>
+    </div>
 </template>
 
 <script>
-export default {
-  name: 'Son2Com'
-}
+    export default {
+        name: 'Son2Com'
+    }
 </script>
 
 <style lang="css" scoped>
-.box {
-  border: 3px solid #ccc;
-  width: 400px;
-  padding: 10px;
-  margin: 20px;
-}
-h2 {
-  margin-top: 10px;
-}
+    .box {
+        border: 3px solid #ccc;
+        width: 400px;
+        padding: 10px;
+        margin: 20px;
+    }
+
+    h2 {
+        margin-top: 10px;
+    }
 </style>
 ```
-
-
 
 ## 三、vuex 的使用 - 创建仓库
 
@@ -6620,15 +6616,15 @@ h2 {
 
 安装vuex与vue-router类似，vuex是一个独立存在的插件，如果脚手架初始化没有选 vuex，就需要额外安装。
 
-```bash
+```shell
 yarn add vuex@3 或者 npm i vuex@3
 ```
 
 ### 2.新建 `store/index.js` 专门存放 vuex
 
-​	为了维护项目目录的整洁，在src目录下新建一个store目录其下放置一个index.js文件。 (和 `router/index.js` 类似)
+为了维护项目目录的整洁，在src目录下新建一个store目录其下放置一个index.js文件。 (和 `router/index.js` 类似)
 
-​	![68321280582](assets/1683212805824.png)
+![68321280582](assets/1683212805824.png)
 
 ### 3.创建仓库 `store/index.js`
 
@@ -6657,8 +6653,8 @@ import store from './store'
 Vue.config.productionTip = false
 
 new Vue({
-  render: h => h(App),
-  store
+    render: h => h(App),
+    store
 }).$mount('#app')
 ```
 
@@ -6668,14 +6664,11 @@ new Vue({
 
 App.vue
 
-```js
-created(){
+```vue
+created() {
   console.log(this.$store)
 }
 ```
-
-
-
 
 
 ## 四、核心概念 - state 状态
@@ -7531,13 +7524,13 @@ methods:{
 
 computed、methods: {
 
-​     // **...mapState、...mapGetters放computed中；**
+     // **...mapState、...mapGetters放computed中；**
 
-​    //  **...mapMutations、...mapActions放methods中；**
+    //  **...mapMutations、...mapActions放methods中；**
 
-​    ...mapXxxx(**'模块名'**, ['数据项|方法']),
+    ...mapXxxx(**'模块名'**, ['数据项|方法']),
 
-​    ...mapXxxx(**'模块名'**, { 新的名字: 原来的名字 }),
+    ...mapXxxx(**'模块名'**, { 新的名字: 原来的名字 }),
 
 }
 
