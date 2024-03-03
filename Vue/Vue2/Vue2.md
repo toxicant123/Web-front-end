@@ -5857,23 +5857,23 @@ const router = new VueRouter({
 - 在一级路由下，配置children属性即可
 - 配置二级路由的出口
 
-1.在一级路由下，配置children属性
+1. 在一级路由下，配置children属性
 
 **注意**：一级的路由path 需要加`/`，二级路由的path不需要加 `/`
 
 ```js
 const router = new VueRouter({
-  routes: [
-    {
-      path: '/',
-      component: Layout,
-      children:[
-        //children中的配置项 跟一级路由中的配置项一模一样 
-        {path:'xxxx',component:xxxx.vue},
-        {path:'xxxx',component:xxxx.vue},
-      ]
-    }
-  ]
+    routes: [
+        {
+            path: '/',
+            component: Layout,
+            children: [
+                //children中的配置项 跟一级路由中的配置项一模一样 
+                {path: 'xxxx', component: xxxx.vue},
+                {path: 'xxxx', component: xxxx.vue},
+            ]
+        }
+    ]
 })
 ```
 
@@ -5881,9 +5881,7 @@ const router = new VueRouter({
 
 **这些二级路由对应的组件渲染到哪个一级路由下，children就配置到哪个路由下边**
 
-
-
-2.配置二级路由的出口 <router-view></router-view>
+2. 配置二级路由的出口 <router-view></router-view>
 
 **注意：** 配置了嵌套路由，一定配置对应的路由出口，否则不会渲染出对应的组件
 
@@ -5891,12 +5889,11 @@ Layout.vue
 
 ```vue
 <template>
-  <div class="h5-wrapper">
-    <div class="content">
-      <router-view></router-view>
+    <div class="h5-wrapper">
+        <div class="content">
+            <router-view></router-view>
+        </div>
     </div>
-  ....
-  </div>
 </template>
 ```
 
@@ -5905,64 +5902,58 @@ Layout.vue
 router/index.js
 
 ```js
-...
 import Article from '@/views/Article.vue'
 import Collect from '@/views/Collect.vue'
 import Like from '@/views/Like.vue'
 import User from '@/views/User.vue'
-...
 
 const router = new VueRouter({
-  routes: [
-    {
-      path: '/',
-      component: Layout,
-      redirect: '/article',
-      children:[
+    routes: [
         {
-          path:'/article',
-          component:Article
-        },
-        {
-          path:'/collect',
-          component:Collect
-        },
-        {
-          path:'/like',
-          component:Like
-        },
-        {
-          path:'/user',
-          component:User
+            path: '/',
+            component: Layout,
+            redirect: '/article',
+            children: [
+                {
+                    path: '/article',
+                    component: Article
+                },
+                {
+                    path: '/collect',
+                    component: Collect
+                },
+                {
+                    path: '/like',
+                    component: Like
+                },
+                {
+                    path: '/user',
+                    component: User
+                }
+            ]
         }
-      ]
-    },
-    ....
-  ]
+    ]
 })
-
 ```
 
 Layout.vue
 
 ```vue
 <template>
-  <div class="h5-wrapper">
-    <div class="content">
-      <!-- 内容部分 -->
-      <router-view></router-view>
+    <div class="h5-wrapper">
+        <div class="content">
+            <!-- 内容部分 -->
+            <router-view></router-view>
+        </div>
+        <nav class="tabbar">
+            <a href="#/article">面经</a>
+            <a href="#/collect">收藏</a>
+            <a href="#/like">喜欢</a>
+            <a href="#/user">我的</a>
+        </nav>
     </div>
-    <nav class="tabbar">
-      <a href="#/article">面经</a>
-      <a href="#/collect">收藏</a>
-      <a href="#/like">喜欢</a>
-      <a href="#/user">我的</a>
-    </nav>
-  </div>
 </template>
 ```
-
-
 
 ## 十六、面经基础版-二级导航高亮
 
@@ -5976,36 +5967,30 @@ Layout.vue
 Layout.vue
 
 ```vue
-....
+<template>
     <nav class="tabbar">
-      <router-link to="/article">面经</router-link>
-      <router-link to="/collect">收藏</router-link>
-      <router-link to="/like">喜欢</router-link>
-      <router-link to="/user">我的</router-link>
+        <router-link to="/article">面经</router-link>
+        <router-link to="/collect">收藏</router-link>
+        <router-link to="/like">喜欢</router-link>
+        <router-link to="/user">我的</router-link>
     </nav>
+</template>
 
 <style>
-   a.router-link-active {
-      color: orange;
+    a.router-link-active {
+        color: orange;
     }
 </style>
 ```
-
-
 
 ## 十七、面经基础版-首页请求渲染
 
 ### 1.步骤分析
 
-1.安装axios
-
-2.看接口文档，确认请求方式，请求地址，请求参数
-
-3.created中发送请求，获取数据，存储到data中
-
-4.页面动态渲染
-
-
+1. 安装axios
+2. 看接口文档，确认请求方式，请求地址，请求参数
+3. created中发送请求，获取数据，存储到data中
+4. 页面动态渲染
 
 ### 2.代码实现
 
@@ -6016,47 +6001,45 @@ Layout.vue
 2. 接口文档
 
 ```vue
-请求地址: https://mock.boxuegu.com/mock/3083/articles
-请求方式: get
+请求地址：https://mock.boxuegu.com/mock/3083/articles
+请求方式：get
 ```
 
 3. created中发送请求，获取数据，存储到data中
 
 ```vue
- data() {
+data() {
     return {
-      articelList: [],
+        articelList: [],
     }
-  },
-  async created() {
-    const {  data: { result: { rows } }} = await axios.get('https://mock.boxuegu.com/mock/3083/articles')
+},
+async created() {
+    const {data: {result: {rows}}} = await axios.get('https://mock.boxuegu.com/mock/3083/articles')
     this.articelList = rows
-  },
+},
 ```
 
-4.页面动态渲染
+4. 页面动态渲染
 
 ```vue
 <template>
-  <div class="article-page">
-    <div class="article-item" v-for="item in articelList" :key="item.id">
-      <div class="head">
-        <img :src="item.creatorAvatar" alt="" />
-        <div class="con">
-          <p class="title">{{ item.stem }}</p>
-          <p class="other">{{ item.creatorName }} | {{ item.createdAt }}</p>
+    <div class="article-page">
+        <div class="article-item" v-for="item in articelList" :key="item.id">
+            <div class="head">
+                <img :src="item.creatorAvatar" alt=""/>
+                <div class="con">
+                    <p class="title">{{ item.stem }}</p>
+                    <p class="other">{{ item.creatorName }} | {{ item.createdAt }}</p>
+                </div>
+            </div>
+            <div class="body">
+                {{item.content}}
+            </div>
+            <div class="foot">点赞 {{item.likeCount}} | 浏览 {{item.views}}</div>
         </div>
-      </div>
-      <div class="body">
-        {{item.content}}
-      </div>
-      <div class="foot">点赞 {{item.likeCount}} | 浏览 {{item.views}}</div>
     </div>
-  </div>
 </template>
 ```
-
-
 
 ## 十八、面经基础版-查询参数传参
 
@@ -6064,36 +6047,33 @@ Layout.vue
 
 跳转详情页需要把当前点击的文章id传给详情页，获取数据
 
-- 查询参数传参  this.$router.push('/detail?参数1=参数值&参数2=参数值')
-- 动态路由传参  先改造路由 在传参  this.$router.push('/detail/参数值')
-
-
+- 查询参数传参：this.$router.push('/detail?参数1=参数值&参数2=参数值')
+- 动态路由传参：先改造路由再传参：this.$router.push('/detail/参数值')
 
 ### 2.查询参数传参实现
 
 Article.vue
 
 ```vue
+
 <template>
-  <div class="article-page">
-    <div class="article-item" 
-      v-for="item in articelList" :key="item.id" 
-      @click="$router.push(`/detail?id=${item.id}`)">
-     ...
+    <div class="article-page">
+        <div class="article-item"
+             v-for="item in articelList" :key="item.id"
+             @click="$router.push(`/detail?id=${item.id}`)">
+            ...
+        </div>
     </div>
-  </div>
 </template>
 ```
 
 ArticleDetail.vue
 
 ```vue
-  created(){
+created(){
     console.log(this.$route.query.id)
-  }
+}
 ```
-
-
 
 ## 十九、面经基础版-动态路由传参
 
@@ -6110,32 +6090,28 @@ ArticleDetail.vue
 router/index.js
 
 ```js
-...
-  {
-      path: '/detail/:id',
-      component: ArticleDetail
-  }
+{
+    path: '/detail/:id',
+    component: ArticleDetail
+}
 ```
 
 Article.vue
 
 ```vue
-<div class="article-item" 
-     v-for="item in articelList" :key="item.id" 
+<div class="article-item"
+     v-for="item in articelList" :key="item.id"
      @click="$router.push(`/detail/${item.id}`)">
-       ....
- </div>
+</div>
 ```
 
 ArticleDetail.vue
 
 ```vue
-  created(){
+created(){
     console.log(this.$route.params.id)
-  }
+}
 ```
-
-
 
 ### 3.额外优化功能点-点击回退跳转到上一页
 
@@ -6143,14 +6119,12 @@ ArticleDetail.vue
 
 ```vue
 <template>
-  <div class="article-detail-page">
-    <nav class="nav"><span class="back" @click="$router.back()">&lt;</span> 面经详情</nav>
-     ....
-  </div>
+    <div class="article-detail-page">
+        <nav class="nav"><span class="back" @click="$router.back()">&lt;</span> 面经详情</nav>
+        ....
+    </div>
 </template>
 ```
-
-
 
 ## 二十、面经基础版-详情页渲染
 
@@ -6161,18 +6135,14 @@ ArticleDetail.vue
 - 在created中发送请求
 - 页面动态渲染
 
-
-
 ### 2.代码实现
 
 接口文档
 
 ```vue
- 请求地址: https://mock.boxuegu.com/mock/3083/articles/:id
- 请求方式: get
+ 请求地址：https://mock.boxuegu.com/mock/3083/articles/:id
+ 请求方式：get
 ```
-
-
 
 在created中发送请求
 
