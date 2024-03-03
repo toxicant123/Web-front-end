@@ -6463,7 +6463,7 @@ Vuex 是一个 Vue 的 状态管理工具，状态就是数据。
 
 Vuex就像《近视眼镜》, 你自然会知道什么时候需要用它~
 
-## 二、需求：多组件共享数据
+## 九四、需求：多组件共享数据
 
 目标：基于脚手架创建项目，构建 vuex 多组件数据共享环境
 
@@ -6608,7 +6608,7 @@ new Vue({
 </style>
 ```
 
-## 三、vuex 的使用 - 创建仓库
+## 九五、vuex 的使用 - 创建仓库
 
 ![68321278417](assets/1683212784179.png)
 
@@ -6670,7 +6670,7 @@ created() {
 }
 ```
 
-## 四、核心概念 - state 状态
+## 九六、核心概念 - state 状态
 
 ### 1.目标
 
@@ -6751,7 +6751,7 @@ console.log(store.state.count)
 
 每次都像这样一个个的提供计算属性，太麻烦了，我们有没有简单的语法帮我们获取state中的值呢？
 
-## 五、通过辅助函数  - mapState获取 state中的数据
+## 九七、通过辅助函数  - mapState获取 state中的数据
 
 >mapState是辅助函数，帮助我们把store中的数据映射到 组件的计算属性中, 它属于一种方便的用法
 
@@ -6791,7 +6791,7 @@ computed: {
  <div> state的数据：{{ count }}</div>
 ```
 
-## 六、开启严格模式及Vuex的单项数据流
+## 九八、开启严格模式及Vuex的单项数据流
 
 ### 1.目标
 
@@ -6824,7 +6824,7 @@ methods: {
 
 ![68321471957](assets/1683215821033.png)
 
-## 七、核心概念-mutations
+## 九九、核心概念-mutations
 
 ### 1.定义mutations
 
@@ -6842,14 +6842,14 @@ const store = new Vuex.Store({
 
 mutations是一个对象，对象中存放修改state的方法
 
-```js
+```vue
 mutations: {
     // 方法里参数 第一个参数是当前store的state属性
     // payload 载荷 运输参数 调用mutaiions的时候 可以传递参数 传递载荷
-    addCount (state) {
-      state.count += 1
+    addCount(state) {
+        state.count += 1
     }
-  },
+}
 ```
 
 ### 3.组件中提交 mutations
@@ -6858,25 +6858,7 @@ mutations: {
 this.$store.commit('addCount')
 ```
 
-### 4.练习
-
-1.在mutations中定义个点击按钮进行 +5 的方法
-
-2.在mutations中定义个点击按钮进行 改变title 的方法
-
-3.在组件中调用mutations修改state中的值
-
-### 5.总结
-
-通过mutations修改state的步骤
-
-1.定义 mutations 对象，对象中存放修改 state 的方法
-
-2.组件中提交调用 mutations(通过$store.commit('mutations的方法名'))
-
-
-
-## 八、带参数的 mutations
+## 一百、带参数的 mutations
 
 ### 1.目标：
 
@@ -6894,7 +6876,6 @@ this.$store.commit('addCount')
 
 ```js
 mutations: {
-  ...
   addCount (state, count) {
     state.count = count
   }
@@ -6917,9 +6898,7 @@ this.$store.commit('addCount', {
 })
 ```
 
-
-
-## 九、练习-mutations的减法功能
+## 一零一、练习-mutations的减法功能
 
 ![68321724875](assets/1683217248752.png)
 
