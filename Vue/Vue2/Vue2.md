@@ -6870,23 +6870,23 @@ this.$store.commit('addCount')
 
 ![68321700423](assets/1683217004239.png)
 
-提交 mutation 是可以传递参数的  `this.$store.commit('xxx',  参数)`
+提交 mutation 是可以传递参数的：`this.$store.commit('xxx',  参数)`
 
 #### 2.1 提供mutation函数（带参数）
 
-```js
+```vue
 mutations: {
-  addCount (state, count) {
-    state.count = count
-  }
-},
+    addCount(state, count) {
+        state.count = count
+    }
+}
 ```
 
 #### 2.2 提交mutation
 
-```jsx
-handle ( ) {
-  this.$store.commit('addCount', 10)
+```vue
+handle() {
+    this.$store.commit('addCount', 10)
 }
 ```
 
@@ -6911,17 +6911,21 @@ this.$store.commit('addCount', {
 Son2.vue
 
 ```vue
+<template>
     <button @click="subCount(1)">值 - 1</button>
     <button @click="subCount(5)">值 - 5</button>
     <button @click="subCount(10)">值 - 10</button>
+</template>
 
-    export default {
-        methods:{
-             subCount (n) { 
-                this.$store.commit('addCount', n)
+<script>
+export default {
+    methods: {
+        subCount(n) {
+            this.$store.commit('addCount', n)
         },
-        }
     }
+}
+</script>
 ```
 
 store/index.js
@@ -6933,8 +6937,6 @@ mutations:{
     },
 }
 ```
-
-
 
 ## 十、练习-Vuex中的值和组件中的input双向绑定
 
@@ -6953,38 +6955,40 @@ mutations:{
 App.vue
 
 ```vue
-<input :value="count" @input="handleInput" type="text">
+<template>
+    <input :value="count" @input="handleInput" type="text">
+</template>
 
+<script>
 export default {
-  methods: {
-    handleInput (e) {
-      // 1. 实时获取输入框的值
-      const num = +e.target.value
-      // 2. 提交mutation，调用mutation函数
-      this.$store.commit('changeCount', num)
+    methods: {
+        handleInput(e) {
+            // 1. 实时获取输入框的值
+            const num = +e.target.value
+            // 2. 提交mutation，调用mutation函数
+            this.$store.commit('changeCount', num)
+        }
     }
-  }
 }
+</script>
 ```
 
 store/index.js
 
-```js
+```vue
 mutations: { 
-   changeCount (state, newCount) {
-      state.count = newCount
-   }
+    changeCount (state, newCount) {
+        state.count = newCount
+    }
 },
 ```
-
-
 
 ## 十一、辅助函数- mapMutations
 
 > mapMutations和mapState很像，它把位于mutations中的方法提取了出来，我们可以将它导入
 
-```js
-import  { mapMutations } from 'vuex'
+```vue
+import { mapMutations } from 'vuex'
 methods: {
     ...mapMutations(['addCount'])
 }
@@ -6994,22 +6998,20 @@ methods: {
 
 ```js
 methods: {
-      // commit(方法名, 载荷参数)
-      addCount () {
-          this.$store.commit('addCount')
-      }
+    // commit(方法名, 载荷参数)
+    addCount() {
+        this.$store.commit('addCount')
+    }
  }
 ```
 
 此时，就可以直接通过this.addCount调用了
 
-```jsx
-<button @click="addCount">值+1</button>
+```vue
+<button @click="addCount">值 + 1</button>
 ```
 
 但是请注意： Vuex中mutations中要求不能写异步代码，如果有异步的ajax请求，应该放置在actions中
-
-
 
 ## 十二、核心概念 - actions
 
