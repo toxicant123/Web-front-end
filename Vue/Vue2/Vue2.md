@@ -6333,11 +6333,11 @@ npm run serve
 
 ## 二十三、ESlint代码规范及手动修复
 
-代码规范：一套写代码的约定规则。例如：赋值符号的左右是否需要空格？一句结束是否是要加;？...
+代码规范：一套写代码的约定规则。例如：赋值符号的左右是否需要空格？一句结束是否是要加`;`？...
 
 >  没有规矩不成方圆
 
-ESLint:是一个代码检查工具，用来检查你的代码是否符合指定的规则(你和你的团队可以自行约定一套规则)。在创建项目时，我们使用的是 [JavaScript Standard Style](https://standardjs.com/readme-zhcn.html) 代码风格的规则。
+ESLint是一个代码检查工具，用来检查你的代码是否符合指定的规则(你和你的团队可以自行约定一套规则)。在创建项目时，我们使用的是 [JavaScript Standard Style](https://standardjs.com/readme-zhcn.html) 代码风格的规则。
 
 #### 1.JavaScript Standard Style 规范说明
 
@@ -6364,14 +6364,13 @@ import App from './App.vue'
 
 import './styles/index.less'
 import router from './router'
+
 Vue.config.productionTip = false
 
-new Vue ( {
-  render: h => h(App),
-  router
+new Vue({
+    render: h => h(App),
+    router
 }).$mount('#app')
-
-
 ```
 
 按下保存代码之后：
@@ -6382,8 +6381,6 @@ new Vue ( {
 
 > eslint 是来帮助你的。心态要好，有错，就改。
 
-
-
 #### 3.手动修正
 
 根据错误提示来一项一项手动修正。
@@ -6393,8 +6390,6 @@ new Vue ( {
 打开 [ESLint 规则表](https://zh-hans.eslint.org/docs/latest/rules/)，使用页面搜索（Ctrl + F）这个代码，查找对该规则的一个释义。
 
 ![68294279221](assets/1682942792219.png)
-
-
 
 ## 二十四、通过eslint插件来实现自动修正
 
