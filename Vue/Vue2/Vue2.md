@@ -6147,56 +6147,51 @@ ArticleDetail.vue
 在created中发送请求
 
 ```vue
- data() {
+data() {
     return {
-      articleDetail:{}
+        articleDetail: {}
     }
-  },
-  async created() {
+},
+async created() {
     const id = this.$route.params.id
-    const {data:{result}} = await axios.get(
-      `https://mock.boxuegu.com/mock/3083/articles/${id}`
+    const {data: {result}} = await axios.get(
+        `https://mock.boxuegu.com/mock/3083/articles/${id}`
     )
     this.articleDetail = result
-  },
+},
 ```
-
-
 
 页面动态渲染
 
 ```vue
 <template>
-  <div class="article-detail-page">
-    <nav class="nav">
-      <span class="back" @click="$router.back()">&lt;</span> 面经详情
-    </nav>
-    <header class="header">
-      <h1>{{articleDetail.stem}}</h1>
-      <p>{{articleDetail.createAt}} | {{articleDetail.views}} 浏览量 | {{articleDetail.likeCount}} 点赞数</p>
-      <p>
-        <img
-          :src="articleDetail.creatorAvatar"
-          alt=""
-        />
-        <span>{{articleDetail.creatorName}}</span>
-      </p>
-    </header>
-    <main class="body">
-      {{articleDetail.content}}
-    </main>
-  </div>
+    <div class="article-detail-page">
+        <nav class="nav">
+            <span class="back" @click="$router.back()">&lt;</span> 面经详情
+        </nav>
+        <header class="header">
+            <h1>{{articleDetail.stem}}</h1>
+            <p>{{articleDetail.createAt}} | {{articleDetail.views}} 浏览量 | {{articleDetail.likeCount}} 点赞数</p>
+            <p>
+                <img
+                    :src="articleDetail.creatorAvatar"
+                    alt=""
+                />
+                <span>{{articleDetail.creatorName}}</span>
+            </p>
+        </header>
+        <main class="body">
+            {{articleDetail.content}}
+        </main>
+    </div>
 </template>
-
 ```
-
-
 
 ## 二十一、面经基础版-缓存组件
 
 ### 1.问题
 
-从面经列表 点到 详情页，又点返回，数据重新加载了 →  **希望回到原来的位置**
+从面经列表点到详情页，又点返回，数据重新加载了 →  **希望回到原来的位置**
 
 ![68257863006](assets/1682578630060.png)
 
@@ -6204,13 +6199,9 @@ ArticleDetail.vue
 
 当路由被**跳转**后，原来所看到的组件就**被销毁**了（会执行组件内的beforeDestroy和destroyed生命周期钩子），**重新返回**后组件又被**重新创建**了（会执行组件内的beforeCreate,created,beforeMount,Mounted生命周期钩子），**所以数据被加载了**
 
-
-
 ### 3.解决方案
 
 利用keep-alive把原来的组件给缓存下来
-
-
 
 ### 4.什么是keep-alive
 
@@ -6228,21 +6219,17 @@ App.vue
 
 ```vue
 <template>
-  <div class="h5-wrapper">
-    <keep-alive>
-      <router-view></router-view>
-    </keep-alive>
-  </div>
+    <div class="h5-wrapper">
+        <keep-alive>
+            <router-view></router-view>
+        </keep-alive>
+    </div>
 </template>
 ```
 
-
-
 **问题：**
 
-缓存了所有被切换的组件
-
-
+缓存了所有被切换的组件，但有些组件不想被缓存，例如ArticleDetail
 
 ### 5.keep-alive的三个属性
 
@@ -6250,53 +6237,29 @@ App.vue
 2. exclude：组件名数组，任何匹配的组件都**不会被缓存**
 3. max：最多可以**缓存多少**组件实例
 
-
-
 App.vue
 
 ```vue
 <template>
-  <div class="h5-wrapper">
-    <keep-alive :include="['LayoutPage']">
-      <router-view></router-view>
-    </keep-alive>
-  </div>
+    <div class="h5-wrapper">
+        <keep-alive :include="['LayoutPage']">
+            <router-view></router-view>
+        </keep-alive>
+    </div>
 </template>
 ```
-
-
 
 ### 6.额外的两个生命周期钩子
 
 **keep-alive的使用会触发两个生命周期函数**
 
-**activated** 当组件被激活（使用）的时候触发 →  进入这个页面的时候触发
+**activated** 当组件被激活（使用）的时候触发 → 进入这个页面的时候触发
 
-**deactivated** 当组件不被使用的时候触发      →  离开这个页面的时候触发
+**deactivated** 当组件不被使用的时候触发 → 离开这个页面的时候触发
 
 组件**缓存后**就**不会执行**组件的**created, mounted, destroyed** 等钩子了
 
 所以其提供了**actived 和deactived**钩子，帮我们实现业务需求。
-
-
-
-### 7.总结
-
-1.keep-alive是什么
-
-2.keep-alive的优点
-
-3.keep-alive的三个属性 (了解)
-
-4.keep-alive的使用会触发两个生命周期函数(了解)
-
-
-
-
-
-
-
-
 
 ## 二十二、VueCli 自定义创建项目
 
