@@ -6670,12 +6670,11 @@ created() {
 }
 ```
 
-
 ## 四、核心概念 - state 状态
 
 ### 1.目标
 
-明确如何给仓库 提供 数据，如何 使用 仓库的数据
+明确如何给仓库提供数据，如何使用仓库的数据
 
 ### 2.提供数据
 
@@ -6683,16 +6682,16 @@ State提供唯一的公共数据源，所有共享的数据都要统一放到Sto
 
 打开项目中的store.js文件，在state对象中可以添加我们要共享的数据。
 
-```jsx
+```javascript
 // 创建仓库 store
 const store = new Vuex.Store({
-  // state 状态, 即数据, 类似于vue组件中的data,
-  // 区别：
-  // 1.data 是组件自己的数据, 
-  // 2.state 中的数据整个vue项目的组件都能访问到
-  state: {
-    count: 101
-  }
+    // state 状态, 即数据, 类似于vue组件中的data,
+    // 区别：
+    // 1.data 是组件自己的数据, 
+    // 2.state 中的数据整个vue项目的组件都能访问到
+    state: {
+        count: 101
+    }
 })
 ```
 
@@ -6703,29 +6702,23 @@ const store = new Vuex.Store({
 1. 通过$store直接访问  —>  {{  $store.state.count  }}
 2. 通过辅助函数mapState 映射计算属性  —>  {{ count  }}
 
-
-
-
 ### 4.通过$store访问的语法
 
-```js
+```vue
 获取 store：
- 1.Vue模板中获取 this.$store
- 2.js文件中获取 import 导入 store
-
+1. Vue模板中获取 this.$store
+2. js文件中获取 import 导入 store
 
 模板中：     {{ $store.state.xxx }}
 组件逻辑中：  this.$store.state.xxx
 JS模块中：   store.state.xxx
 ```
 
-
-
 ### 5.代码实现
 
 #### 5.1模板中使用
 
-组件中可以使用  **$store** 获取到vuex中的store对象实例，可通过**state**属性属性获取**count**， 如下
+组件中可以使用 **$store** 获取到vuex中的store对象实例，可通过**state**属性属性获取**count**， 如下
 
 ```vue
 <h1>state的数据 - {{ $store.state.count }}</h1>
@@ -6735,12 +6728,12 @@ JS模块中：   store.state.xxx
 
 将state属性定义在计算属性中 https://vuex.vuejs.org/zh/guide/state.html
 
-```js
+```vue
 <h1>state的数据 - {{ count }}</h1>
 
 // 把state中数据，定义在组件内的计算属性中
   computed: {
-    count () {
+    count() {
       return this.$store.state.count
     }
   }
@@ -6748,7 +6741,7 @@ JS模块中：   store.state.xxx
 
 #### 5.3 js文件中使用
 
-```vue
+```js
 //main.js
 
 import store from "@/store"
@@ -6756,9 +6749,7 @@ import store from "@/store"
 console.log(store.state.count)
 ```
 
-每次都像这样一个个的提供计算属性, 太麻烦了,我们有没有简单的语法帮我们获取state中的值呢？
-
-
+每次都像这样一个个的提供计算属性，太麻烦了，我们有没有简单的语法帮我们获取state中的值呢？
 
 ## 五、通过辅助函数  - mapState获取 state中的数据
 
@@ -6782,25 +6773,23 @@ mapState(['count'])
 
 > 上面代码的最终得到的是 **类似于**
 
-```js
-count () {
+```vue
+count() {
     return this.$store.state.count
 }
 ```
 
 ### 3.第三步：利用**展开运算符**将导出的状态映射给计算属性
 
-```js
-  computed: {
-    ...mapState(['count'])
-  }
+```vue
+computed: {
+  ...mapState(['count'])
+}
 ```
 
 ```vue
  <div> state的数据：{{ count }}</div>
 ```
-
-
 
 ## 六、开启严格模式及Vuex的单项数据流
 
@@ -6815,10 +6804,10 @@ count () {
 Son1.vue
 
 ```vue
-button @click="handleAdd">值 + 1</button>
+<button @click="handleAdd">值 + 1</button>
 
 
-methods:{
+methods: {
 	 handleAdd (n) {
       // 错误代码(vue默认不会监测，监测需要成本)
        this.$store.state.count++
@@ -6829,7 +6818,7 @@ methods:{
 
 ### 3.开启严格模式
 
-通过 `strict: true` 可以开启严格模式,开启严格模式后，直接修改state中的值会报错
+通过 `strict: true` 可以开启严格模式，开启严格模式后，直接修改state中的值会报错
 
 > **state数据的修改只能通过mutations，并且mutations必须是同步的**
 
@@ -6840,14 +6829,12 @@ methods:{
 ### 1.定义mutations
 
 ```js
-const store  = new Vuex.Store({
-  state: {
-    count: 0
-  },
-  // 定义mutations
-  mutations: {
-     
-  }
+const store = new Vuex.Store({
+    state: {
+        count: 0
+    },
+    // 定义mutations
+    mutations: {}
 })
 ```
 
