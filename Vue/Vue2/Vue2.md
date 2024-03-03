@@ -6146,7 +6146,7 @@ ArticleDetail.vue
 
 在created中发送请求
 
-```vue
+```js
 data() {
     return {
         articleDetail: {}
@@ -6263,21 +6263,21 @@ App.vue
 
 ## 二十二、VueCli 自定义创建项目
 
-1.安装脚手架 (已安装)
+1. 安装脚手架 (已安装)
 
-```
+```shell
 npm i @vue/cli -g
 ```
 
-2.创建项目
+2. 创建项目
 
-```
+```shell
 vue create hm-exp-mobile
 ```
 
 + 选项
 
-```js
+```log
 Vue CLI v5.0.8
 ? Please pick a preset:
   Default ([Vue 3] babel, eslint)
@@ -6291,7 +6291,7 @@ Vue CLI v5.0.8
 
 + 选择vue的版本
 
-```jsx
+```log
   3.x
 > 2.x
 ```
@@ -6327,11 +6327,9 @@ Vue CLI v5.0.8
 
 + 启动项目
 
-```
+```shell
 npm run serve
 ```
-
-
 
 ## 二十三、ESlint代码规范及手动修复
 
