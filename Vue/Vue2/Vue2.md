@@ -7011,7 +7011,7 @@ methods: {
 <button @click="addCount">值 + 1</button>
 ```
 
-但是请注意： Vuex中mutations中要求不能写异步代码，如果有异步的ajax请求，应该放置在actions中
+但是请注意：Vuex中mutations中要求不能写异步代码，如果有异步的ajax请求，应该放置在actions中
 
 ## 十二、核心概念 - actions
 
@@ -7027,43 +7027,41 @@ methods: {
 
 ### **1.定义actions**
 
-```js
+```vue
 mutations: {
-  changeCount (state, newCount) {
-    state.count = newCount
-  }
-}
-
-
-actions: {
-  setAsyncCount (context, num) {
-    // 一秒后, 给一个数, 去修改 num
-    setTimeout(() => {
-      context.commit('changeCount', num)
-    }, 1000)
-  }
+    changeCount(state, newCount) {
+        state.count = newCount
+    }
 },
+actions: {
+    setAsyncCount(context, num) {
+        // 一秒后, 给一个数, 去修改 num
+        setTimeout(() => {
+            context.commit('changeCount', num)
+        }, 1000)
+    }
+}
 ```
 
 ### **2.组件中通过dispatch调用**
 
-```js
-setAsyncCount () {
-  this.$store.dispatch('setAsyncCount', 666)
+```vue
+setAsyncCount() {
+    this.$store.dispatch('setAsyncCount', 666)
 }
 ```
 
 ![68344198757](assets/1683441987572.png)
 
-## 十三、辅助函数 -mapActions
+## 十三、辅助函数 - mapActions
 
-1.目标：掌握辅助函数 mapActions，映射方法
+1. 目标：掌握辅助函数 mapActions，映射方法
 
 > mapActions 是把位于 actions中的方法提取了出来，映射到组件methods中
 
 Son2.vue
 
-```js
+```vue
 import { mapActions } from 'vuex'
 methods: {
    ...mapActions(['changeCountAction'])
@@ -7071,9 +7069,9 @@ methods: {
 
 //mapActions映射的代码 本质上是以下代码的写法
 //methods: {
-//  changeCountAction (n) {
-//    this.$store.dispatch('changeCountAction', n)
-//  },
+// changeCountAction(n) {
+//  this.$store.dispatch('changeCountAction', n)
+// },
 //}
 ```
 
@@ -7082,8 +7080,6 @@ methods: {
 ```vue
 <button @click="changeCountAction(200)">+异步</button>
 ```
-
-
 
 ## 十四、核心概念 - getters
 

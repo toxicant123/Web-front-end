@@ -8,12 +8,15 @@
         <Son1></Son1>
         <hr>
         <Son2></Son2>
+        <hr>
+        <Son3></Son3>
     </div>
 </template>
 
 <script>
 import Son1 from './components/Son1.vue'
 import Son2 from './components/Son2.vue'
+import Son3 from './components/Son3.vue'
 import {mapState} from "vuex"
 
 
@@ -29,7 +32,8 @@ export default {
     },
     components: {
         Son1,
-        Son2
+        Son2,
+        Son3
     },
     created() {
         console.log(this.$store)

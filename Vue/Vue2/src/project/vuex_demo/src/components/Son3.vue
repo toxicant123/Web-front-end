@@ -1,26 +1,27 @@
 <template>
     <div class="box">
-        <h2>Son1 子组件</h2>
+        <h2>Son3 子组件</h2>
         从vuex中获取的值：title -> <label>{{ this.$store.state.title }}</label>
         <br/>
         从vuex中获取的值：count -> <label>{{ this.$store.state.count }}</label>
         <br/>
-        <button @click="handleAdd(1)">值 + 1</button>
-        <button @click="handleAdd(5)">值 + 5</button>
-        <button @click="handleAdd(10)">值 + 10</button>
-        <button @click="handleChangeTitle">改标题</button>
+        <button @click="handleChange(666)">一秒后修改为666</button>
+        <button @click="handleChangeTitle">一秒后修改标题</button>
     </div>
 </template>
 
 <script>
+import {mapActions} from "vuex";
+
 export default {
-    name: 'Son1Com',
+    name: 'Son3Com',
     methods: {
-        handleAdd(num) {
-            this.$store.state.count += num
+        ...mapActions(['changeTitleAction']),
+        handleChange(num) {
+            this.$store.dispatch('changeCountAction', num)
         },
         handleChangeTitle() {
-            this.$store.state.title = 'Son1 changed the title'
+            this.changeTitleAction('Son3 changed the title')
         }
     }
 }

@@ -21,6 +21,14 @@ const store = new Vuex.Store({
         changeTitle(state, payload) {
             state.title = payload
         }
+    },
+    actions: {
+        changeCountAction(context, num) {
+            setTimeout(() => context.commit('changeCount', num), 1000)
+        },
+        changeTitleAction(context, title) {
+            setTimeout(() => context.commit('changeTitle', title), 1000)
+        }
     }
 })
 

@@ -23,7 +23,7 @@ export default {
             this.delCount(num)
         },
         changeSon2Title() {
-            this.changeTitle('Son2 changed the title')
+            this.$store.commit('changeTitle', 'Son2 changed the title')
         }
     },
     computed: {
