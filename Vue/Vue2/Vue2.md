@@ -6402,7 +6402,7 @@ new Vue({
 
 + 如何配置
 
-```js
+```
 // 当保存的时候，eslint自动帮我们修复错误
 "editor.codeActionsOnSave": {
     "source.fixAll": true
@@ -6416,7 +6416,7 @@ new Vue({
 
 settings.json 参考
 
-```jsx
+```json
 {
     "window.zoomLevel": 2,
     "workbench.iconTheme": "vscode-icons",
