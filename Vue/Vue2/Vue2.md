@@ -7097,12 +7097,12 @@ state: {
 
 ### 1.定义getters
 
-```js
-  getters: {
-    // getters函数的第一个参数是 state
-    // 必须要有返回值
-     filterList:  state =>  state.list.filter(item => item > 5)
-  }
+```vue
+getters: {
+  // getters函数的第一个参数是 state
+  // 必须要有返回值
+   filterList: state => state.list.filter(item => item > 5)
+}
 ```
 
 ### 2.使用getters
@@ -7115,7 +7115,7 @@ state: {
 
 #### 2.2辅助函数 - mapGetters
 
-```js
+```vue
 computed: {
     ...mapGetters(['filterList'])
 }
@@ -7144,8 +7144,6 @@ computed: {
 由此，又有了Vuex的模块化
 
 ![68342575835](assets/1683425758358.png)
-
-
 
 ### **3.模块定义** - 准备 state
 

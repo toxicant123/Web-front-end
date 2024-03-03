@@ -6,7 +6,8 @@ Vue.use(Vuex)
 const store = new Vuex.Store({
     state: {
         title: '大标题',
-        count: 100
+        count: 100,
+        list: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
     },
     mutations: {
         addCount(state, payload) {
@@ -28,6 +29,11 @@ const store = new Vuex.Store({
         },
         changeTitleAction(context, title) {
             setTimeout(() => context.commit('changeTitle', title), 1000)
+        }
+    },
+    getters: {
+        filterList(state) {
+            return state.list.filter(ie => ie > 5)
         }
     }
 })
