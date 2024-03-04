@@ -1,5 +1,7 @@
 import Vue from "vue";
 import Vuex from 'vuex'
+import user from "@/store/modules/user";
+import setting from "@/store/modules/setting";
 
 Vue.use(Vuex)
 
@@ -35,6 +37,10 @@ const store = new Vuex.Store({
         filterList(state) {
             return state.list.filter(ie => ie > 5)
         }
+    },
+    modules: {
+        user,
+        setting
     }
 })
 
