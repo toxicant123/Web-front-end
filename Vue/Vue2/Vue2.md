@@ -7232,19 +7232,19 @@ const store = new Vuex.Store({
 
 `modules/user.js`
 
-```jsx
+```js
 const state = {
-  userInfo: {
-    name: 'zs',
-    age: 18
-  },
-  myMsg: '我的数据'
+    userInfo: {
+        name: 'zs',
+        age: 18
+    },
+    myMsg: '我的数据'
 }
 
 const mutations = {
-  updateMsg (state, msg) {
-    state.myMsg = msg
-  }
+    updateMsg(state, msg) {
+        state.myMsg = msg
+    }
 }
 
 const actions = {}
@@ -7252,11 +7252,11 @@ const actions = {}
 const getters = {}
 
 export default {
-  namespaced: true,
-  state,
-  mutations,
-  actions,
-  getters
+    namespaced: true,
+    state,
+    mutations,
+    actions,
+    getters
 }
 ```
 
@@ -7287,8 +7287,8 @@ mapState辅助函数访问
 
 1. 直接通过模块名访问` $store.getters['模块名/xxx ']`
 2. 通过 mapGetters 映射
-    1. 默认根级别的映射  `mapGetters([ 'xxx' ]) `
-    2. 子模块的映射  `mapGetters('模块名', ['xxx'])` -  需要开启命名空间
+   1. 默认根级别的映射  `mapGetters([ 'xxx' ]) `
+   2. 子模块的映射  `mapGetters('模块名', ['xxx'])` -  需要开启命名空间
 
 ### 3.代码演示
 
@@ -7296,29 +7296,27 @@ mapState辅助函数访问
 
 ```js
 const getters = {
-  // 分模块后，state指代子模块的state
-  UpperCaseName (state) {
-    return state.userInfo.name.toUpperCase()
-  }
+    // 分模块后，state指代子模块的state
+    UpperCaseName(state) {
+        return state.userInfo.name.toUpperCase()
+    }
 }
 ```
 
 Son1.vue 直接访问getters
 
-```html
+```vue
 <!-- 测试访问模块中的getters - 原生 -->
 <div>{{ $store.getters['user/UpperCaseName'] }}</div>
 ```
 
 Son2.vue 通过命名空间访问
 
-```js
+```vue
 computed:{
-  ...mapGetters('user', ['UpperCaseName'])
+    ...mapGetters('user', ['UpperCaseName'])
 }
 ```
-
-
 
 ## 十九、获取模块内的mutations方法
 
@@ -7334,8 +7332,8 @@ computed:{
 
 1. 直接通过 store 调用   $store.commit('模块名/xxx ',  额外参数)
 2. 通过 mapMutations 映射
-    1. 默认根级别的映射  mapMutations([ 'xxx' ])
-    2. 子模块的映射 mapMutations('模块名', ['xxx'])  -  需要开启命名空间
+   1. 默认根级别的映射  mapMutations([ 'xxx' ])
+   2. 子模块的映射 mapMutations('模块名', ['xxx'])  -  需要开启命名空间
 
 ### 4.代码实现
 
@@ -7343,9 +7341,9 @@ computed:{
 
 ```js
 const mutations = {
-  setUser (state, newUserInfo) {
-    state.userInfo = newUserInfo
-  }
+    setUser(state, newUserInfo) {
+        state.userInfo = newUserInfo
+    }
 }
 ```
 
@@ -7353,51 +7351,56 @@ const mutations = {
 
 ```js
 const mutations = {
-  setTheme (state, newTheme) {
-    state.theme = newTheme
-  }
+    setTheme(state, newTheme) {
+        state.theme = newTheme
+    }
 }
 ```
 
 Son1.vue
 
 ```vue
-<button @click="updateUser">更新个人信息</button> 
-<button @click="updateTheme">更新主题色</button>
+<template>
+    <button @click="updateUser">更新个人信息</button>
+    <button @click="updateTheme">更新主题色</button>
+</template>
 
-
+<script>
 export default {
-  methods: {
-    updateUser () {
-      // $store.commit('模块名/mutation名', 额外传参)
-      this.$store.commit('user/setUser', {
-        name: 'xiaowang',
-        age: 25
-      })
-    }, 
-    updateTheme () {
-      this.$store.commit('setting/setTheme', 'pink')
+    methods: {
+        updateUser() {
+            // $store.commit('模块名/mutation名', 额外传参)
+            this.$store.commit('user/setUser', {
+                name: 'xiaowang',
+                age: 25
+            })
+        },
+        updateTheme() {
+            this.$store.commit('setting/setTheme', 'pink')
+        }
     }
-  }
 }
+</script>
 ```
-
-
 
 Son2.vue
 
 ```vue
-<button @click="setUser({ name: 'xiaoli', age: 80 })">更新个人信息</button>
-<button @click="setTheme('skyblue')">更新主题</button>
+<template>
+    <button @click="setUser({ name: 'xiaoli', age: 80 })">更新个人信息</button>
+    <button @click="setTheme('skyblue')">更新主题</button>
+</template>
 
-methods:{
-// 分模块的映射
-...mapMutations('setting', ['setTheme']),
-...mapMutations('user', ['setUser']),
+<script>
+export default {
+    methods: {
+        // 分模块的映射
+        ...mapMutations('setting', ['setTheme']),
+        ...mapMutations('user', ['setUser']),
+    }
 }
+</script>
 ```
-
-
 
 ## 二十、获取模块内的actions方法
 
@@ -7422,19 +7425,17 @@ methods:{
 
 ![68343161569](assets/1683431615694.png)
 
-
-
 `modules/user.js`
 
 ```js
 const actions = {
-  setUserSecond (context, newUserInfo) {
-    // 将异步在action中进行封装
-    setTimeout(() => {
-      // 调用mutation   context上下文，默认提交的就是自己模块的action和mutation
-      context.commit('setUser', newUserInfo)
-    }, 1000)
-  }
+    setUserSecond(context, newUserInfo) {
+        // 将异步在action中进行封装
+        setTimeout(() => {
+            // 调用mutation   context上下文，默认提交的就是自己模块的action和mutation
+            context.commit('setUser', newUserInfo)
+        }, 1000)
+    }
 }
 ```
 
@@ -7454,16 +7455,21 @@ methods:{
 }
 ```
 
-
-
 Son2.vue mapActions映射
 
-```js
-<button @click="setUserSecond({ name: 'xiaoli', age: 80 })">一秒后更新信息</button>
+```vue
+<template>
+    <button @click="setUserSecond({ name: 'xiaoli', age: 80 })">一秒后更新信息</button>
 
-methods:{
-  ...mapActions('user', ['setUserSecond'])
+</template>
+
+<script>
+export default {
+    methods: {
+        ...mapActions('user', ['setUserSecond'])
+    }
 }
+</script>
 ```
 
 ## 二十一、Vuex模块化的使用小结
@@ -7477,7 +7483,7 @@ methods:{
 
 ### 2.借助辅助方法使用
 
-1.import { mapXxxx, mapXxx } from 'vuex'
+1. import { mapXxxx, mapXxx } from 'vuex'
 
 computed、methods: {
 
@@ -7491,9 +7497,7 @@ computed、methods: {
 
 }
 
-2.组件中直接使用 属性 `{{ age }}` 或 方法 `@click="updateAge(2)"`
-
-
+2. 组件中直接使用 属性 `{{ age }}` 或 方法 `@click="updateAge(2)"`
 
 ## 二十二、综合案例 - 创建项目
 
@@ -7518,8 +7522,6 @@ vue create vue-cart-demo
 1. 发请求动态渲染购物车，数据存vuex （存cart模块， 将来还会有user模块，article模块...）
 2. 数字框可以修改数据
 3. 动态计算总价和总数量
-
-
 
 ## 二十三、综合案例-构建vuex-cart模块
 
