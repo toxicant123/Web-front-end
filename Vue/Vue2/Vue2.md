@@ -6938,7 +6938,7 @@ mutations:{
 }
 ```
 
-## 十、练习-Vuex中的值和组件中的input双向绑定
+## 一零二、练习-Vuex中的值和组件中的input双向绑定
 
 ### 1.目标
 
@@ -6983,7 +6983,7 @@ mutations: {
 },
 ```
 
-## 十一、辅助函数- mapMutations
+## 一零三、辅助函数- mapMutations
 
 > mapMutations和mapState很像，它把位于mutations中的方法提取了出来，我们可以将它导入
 
@@ -7013,7 +7013,7 @@ methods: {
 
 但是请注意：Vuex中mutations中要求不能写异步代码，如果有异步的ajax请求，应该放置在actions中
 
-## 十二、核心概念 - actions
+## 一零四、核心概念 - actions
 
 > state是存放数据的，mutations是同步更新数据 (便于监测数据的变化, 更新视图等, 方便于调试工具查看变化)，
 >
@@ -7053,7 +7053,7 @@ setAsyncCount() {
 
 ![68344198757](assets/1683441987572.png)
 
-## 十三、辅助函数 - mapActions
+## 一零五、辅助函数 - mapActions
 
 1. 目标：掌握辅助函数 mapActions，映射方法
 
@@ -7081,7 +7081,7 @@ methods: {
 <button @click="changeCountAction(200)">+异步</button>
 ```
 
-## 十四、核心概念 - getters
+## 一零六、核心概念 - getters
 
 > 除了state之外，有时我们还需要从state中**筛选出符合条件的一些数据**，这些数据是依赖state的，此时会用到getters
 
@@ -7125,11 +7125,11 @@ computed: {
  <div>{{ filterList }}</div>
 ```
 
-## 十五、使用小结
+## 一零七、使用小结
 
 ![68344213391](assets/1683442133911.png)
 
-## 十六、核心概念 - module
+## 一零八、核心概念 - module
 
 ### 1.目标
 
@@ -7147,16 +7147,16 @@ computed: {
 
 ### **3.模块定义** - 准备 state
 
-定义两个模块   **user** 和  **setting**
+定义两个模块：**user**和**setting**
 
-user中管理用户的信息状态  userInfo  `modules/user.js`
+user中管理用户的信息状态userInfo`modules/user.js`
 
-```jsx
+```js
 const state = {
-  userInfo: {
-    name: 'zs',
-    age: 18
-  }
+    userInfo: {
+        name: 'zs',
+        age: 18
+    }
 }
 
 const mutations = {}
@@ -7166,20 +7166,19 @@ const actions = {}
 const getters = {}
 
 export default {
-  state,
-  mutations,
-  actions,
-  getters
+    state,
+    mutations,
+    actions,
+    getters
 }
-
 ```
 
-setting中管理项目应用的  主题色 theme，描述 desc， `modules/setting.js`
+setting中管理项目应用的主题色 theme，描述 desc，`modules/setting.js`
 
-```jsx
+```js
 const state = {
-  theme: 'dark'
-  desc: '描述真呀真不错'
+    theme: 'dark',
+    desc: '描述真呀真不错'
 }
 
 const mutations = {}
@@ -7189,10 +7188,10 @@ const actions = {}
 const getters = {}
 
 export default {
-  state,
-  mutations,
-  actions,
-  getters
+    state,
+    mutations,
+    actions,
+    getters
 }
 ```
 
@@ -7210,13 +7209,11 @@ const store = new Vuex.Store({
 })
 ```
 
-使用模块中的数据,  可以直接通过模块名访问 `$store.state.模块名.xxx`  =>  `$store.state.setting.desc`
+使用模块中的数据，可以直接通过模块名访问`$store.state.模块名.xxx`  =>  `$store.state.setting.desc`
 
 也可以通过 mapState 映射
 
-
-
-## 十七、获取模块内的state数据
+## 一零九、获取模块内的state数据
 
 ### 1.目标：
 
@@ -7228,10 +7225,10 @@ const store = new Vuex.Store({
 
 ### 2.使用模块中的数据
 
-1.  直接通过模块名访问 $store.state.模块名.xxx
-2.  通过 mapState 映射：
-1.  默认根级别的映射  mapState([ 'xxx' ])
-2. 子模块的映射 ：mapState('模块名', ['xxx'])  -  需要开启命名空间 **namespaced:true**
+1. 直接通过模块名访问 $store.state.模块名.xxx
+2. 通过 mapState 映射：
+   1. 默认根级别的映射：mapState([ 'xxx' ])
+   2. 子模块的映射：mapState('模块名', ['xxx'])  -  需要开启命名空间 **namespaced:true**
 
 `modules/user.js`
 
@@ -7278,9 +7275,7 @@ mapState辅助函数访问
 ...mapState('setting', ['theme', 'desc']),
 ```
 
-
-
-## 十八、获取模块内的getters数据
+## 一一零、获取模块内的getters数据
 
 ### 1.目标：
 
