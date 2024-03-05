@@ -7509,7 +7509,7 @@ computed、methods: {
 
    vue3  vue-router4  vuex4/pinia
 
-```
+```shell
 vue create vue-cart-demo
 ```
 
@@ -7518,7 +7518,6 @@ vue create vue-cart-demo
 ![68343295935](assets/1683432959356.png)
 
 需求：
-
 1. 发请求动态渲染购物车，数据存vuex （存cart模块， 将来还会有user模块，article模块...）
 2. 数字框可以修改数据
 3. 动态计算总价和总数量
