@@ -90,8 +90,7 @@ npm run serve
 
 为了更好的实现后面的操作，我们把整体的目录结构做一些调整。
 
-目标:
-
+目标：
 1. 删除初始化的一些默认文件
 2. 修改没删除的文件
 3. 新增我们需要的目录结构
@@ -117,39 +116,35 @@ import VueRouter from 'vue-router'
 
 Vue.use(VueRouter)
 
-const routes = [
-]
+const routes = []
 
 const router = new VueRouter({
-  routes
+    routes
 })
 
 export default router
-
 ```
 
 `App.vue`
 
-```html
+```vue
 <template>
-  <div id="app">
-    <router-view/>
-  </div>
+    <div id="app">
+        <router-view/>
+    </div>
 </template>
 ```
 
 ### 3.新增目录
 
 - src/api 目录
-    - 存储接口模块 (发送ajax请求接口的模块)
+  - 存储接口模块 (发送ajax请求接口的模块)
 - src/utils 目录
-    - 存储一些工具模块 (自己封装的方法)
+  - 存储一些工具模块 (自己封装的方法)
 
-目录效果如下:
+目录效果如下：
 
 ![image-20230616184644176](assets/image-20230616184644176.png)
-
-
 
 ## 04. vant组件库及Vue周边的其他组件库
 
@@ -167,8 +162,6 @@ pc:  [element-ui](https://element.eleme.cn/#/zh-CN)    [element-plus](https://el
 
 移动：[vant-ui](https://vant-contrib.gitee.io/vant/v2/#/zh-CN/)     [Mint UI](http://mint-ui.github.io/docs/#/zh-cn2) (饿了么)    [Cube UI](https://didi.github.io/cube-ui/#/zh-CN/) (滴滴)
 
-
-
 ## 05. 全部导入和按需导入的区别
 
 目标：明确 **全部导入** 和 **按需导入** 的区别
@@ -176,18 +169,14 @@ pc:  [element-ui](https://element.eleme.cn/#/zh-CN)    [element-plus](https://el
 ![68294468866](assets/1682944688666.png)
 
 区别：
-
-1.全部导入会引起项目打包后的体积变大，进而影响用户访问网站的性能
-
-2.按需导入只会导入你使用的组件，进而节约了资源
-
-
+1. 全部导入会引起项目打包后的体积变大，进而影响用户访问网站的性能
+2. 按需导入只会导入你使用的组件，进而节约了资源
 
 ## 06. 全部导入
 
 + 安装vant-ui
 
-```
+```shell
 yarn add vant@latest-v2
 ```
 
@@ -202,7 +191,7 @@ Vue.use(Vant)
 
 - 即可使用
 
-```jsx
+```vue
 <van-button type="primary">主要按钮</van-button>
 <van-button type="info">信息按钮</van-button>
 ```
@@ -210,8 +199,6 @@ Vue.use(Vant)
 ![68294483040](assets/1682944830403.png)
 
 vant-ui提供了很多的组件，全部导入，会导致项目打包变得很大。
-
-
 
 ## 07. 按需导入
 
