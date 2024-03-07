@@ -7678,13 +7678,13 @@ export default {
 </script>
 ```
 
-## 二十六、综合案例-修改数量
+## 一一八、综合案例-修改数量
 
 ![68343734699](assets/1683437346997.png)
 
 1. 注册点击事件
 
-```jsx
+```vue
 <!-- 按钮区域 -->
 <button class="btn btn-light" @click="onBtnClick(-1)">-</button>
 <span class="count">{{item.count}}</span>
@@ -7693,82 +7693,91 @@ export default {
 
 2. 页面中dispatch action
 
-```jsx
-onBtnClick (step) {
-  const newCount = this.item.count + step
-  if (newCount < 1) return
-
-  // 发送修改数量请求
-  this.$store.dispatch('cart/updateCount', {
-    id: this.item.id,
-    count: newCount
-  })
-}
-```
-
-3. 提供action函数
-
-```jsx
-async updateCount (ctx, payload) {
-  await axios.patch('http://localhost:3000/cart/' + payload.id, {
-    count: payload.count
-  })
-  ctx.commit('updateCount', payload)
-}
-```
-
-4. 提供mutation处理函数
-
-```jsx
-mutations: {
-  ...,
-  updateCount (state, payload) {
-    const goods = state.list.find((item) => item.id === payload.id)
-    goods.count = payload.count
-  }
-},
-```
-
-
-
-## 二十七、综合案例-底部总价展示
-
-1. 提供getters
-
-```jsx
-getters: {
-  total(state) {
-    return state.list.reduce((p, c) => p + c.count, 0);
-  },
-  totalPrice (state) {
-    return state.list.reduce((p, c) => p + c.count * c.price, 0);
-  },
-},
-```
-
-2. 动态渲染
-
-```jsx
-<template>
-  <div class="footer-container">
-    <!-- 中间的合计 -->
-    <div>
-      <span>共 {{total}} 件商品，合计：</span>
-      <span class="price">￥{{totalPrice}}</span>
-    </div>
-    <!-- 右侧结算按钮 -->
-    <button class="btn btn-success btn-settle">结算</button>
-  </div>
-</template>
-
+```vue
 <script>
-import { mapGetters } from 'vuex'
 export default {
-  name: 'CartFooter',
-  computed: {
-    ...mapGetters('cart', ['total', 'totalPrice'])
-  }
+    methods: {
+        onBtnClick(step) {
+            const newCount = this.item.count + step
+            if (newCount < 1) return
+
+            // 发送修改数量请求
+            this.$store.dispatch('cart/updateCount', {
+                id: this.item.id,
+                count: newCount
+            })
+        }
+    }
 }
 </script>
 ```
 
+3. 提供action函数
+
+```vue
+<script>
+export default {
+    methods: {
+        async updateCount(ctx, payload) {
+            await axios.patch('http://localhost:3000/cart/' + payload.id, {
+                count: payload.count
+            })
+            ctx.commit('updateCount', payload)
+        }
+    }
+}
+</script>
+```
+
+4. 提供mutation处理函数
+
+```vue
+mutations: {
+    updateCount(state, payload) {
+        const goods = state.list.find((item) => item.id === payload.id)
+        goods.count = payload.count
+    }
+}
+```
+
+## 一一九、综合案例-底部总价展示
+
+1. 提供getters
+
+```javascript
+getters: {
+    total(state) {
+        return state.list.reduce((p, c) => p + c.count, 0);
+    }
+    totalPrice(state) {
+        return state.list.reduce((p, c) => p + c.count * c.price, 0);
+    }
+}
+```
+
+2. 动态渲染
+
+```vue
+<template>
+    <div class="footer-container">
+        <!-- 中间的合计 -->
+        <div>
+            <span>共 {{ total }} 件商品，合计：</span>
+            <span class="price">￥{{ totalPrice }}</span>
+        </div>
+        <!-- 右侧结算按钮 -->
+        <button class="btn btn-success btn-settle">结算</button>
+    </div>
+</template>
+
+<script>
+import {mapGetters} from 'vuex'
+
+export default {
+    name: 'CartFooter',
+    computed: {
+        ...mapGetters('cart', ['total', 'totalPrice'])
+    }
+}
+</script>
+```
