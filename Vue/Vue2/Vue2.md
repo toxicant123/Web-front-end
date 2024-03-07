@@ -7318,7 +7318,7 @@ computed:{
 }
 ```
 
-## 十九、获取模块内的mutations方法
+## 一一一、获取模块内的mutations方法
 
 ### 1.目标：
 
@@ -7402,7 +7402,7 @@ export default {
 </script>
 ```
 
-## 二十、获取模块内的actions方法
+## 一一二、获取模块内的actions方法
 
 ### 1.目标：
 
@@ -7472,7 +7472,7 @@ export default {
 </script>
 ```
 
-## 二十一、Vuex模块化的使用小结
+## 一一三、Vuex模块化的使用小结
 
 ### 1.直接使用
 
@@ -7499,7 +7499,7 @@ computed、methods: {
 
 2. 组件中直接使用 属性 `{{ age }}` 或 方法 `@click="updateAge(2)"`
 
-## 二十二、综合案例 - 创建项目
+## 一一四、综合案例 - 创建项目
 
 1. 脚手架新建项目 (注意：**勾选vuex**)
 
@@ -7522,24 +7522,24 @@ vue create vue-cart-demo
 2. 数字框可以修改数据
 3. 动态计算总价和总数量
 
-## 二十三、综合案例-构建vuex-cart模块
+## 一一五、综合案例-构建vuex-cart模块
 
 1. 新建 `store/modules/cart.js`
 
-```jsx
+```js
 export default {
-  namespaced: true,
-  state () {
-    return {
-      list: []
-    }
-  },
+    namespaced: true,
+    state() {
+        return {
+            list: []
+        }
+    },
 }
 ```
 
 2. 挂载到 vuex 仓库上 `store/cart.js`
 
-```jsx
+```js
 import Vuex from 'vuex'
 import Vue from 'vue'
 
@@ -7548,21 +7548,19 @@ import cart from './modules/cart'
 Vue.use(Vuex)
 
 const store = new Vuex.Store({
-  modules: {
-    cart
-  }
+    modules: {
+        cart
+    }
 })
 
 export default store
 ```
 
-
-
-## 二十四、综合案例-准备后端接口服务环境(了解)
+## 一一六、综合案例-准备后端接口服务环境(了解)
 
 1. 安装全局工具 json-server （全局工具仅需要安装一次）
 
-```
+```shell
 yarn global add json-server 或 npm i json-server  -g
 ```
 
@@ -7570,17 +7568,15 @@ yarn global add json-server 或 npm i json-server  -g
 3. 将资料 index.json 移入 db 目录
 4. 进入 db 目录，执行命令，启动后端接口服务 (使用--watch 参数 可以实时监听 json 文件的修改)
 
+```shell
+json-server --watch index.json
 ```
-json-server  --watch  index.json
-```
 
-
-
-## 二十五、综合案例-请求动态渲染数据
+## 一一七、综合案例-请求动态渲染数据
 
 ### 1.目标
 
-请求获取数据存入 vuex, 映射渲染
+请求获取数据存入 vuex，映射渲染
 
 ![68343647192](assets/1683436471929.png)
 
@@ -7592,99 +7588,95 @@ yarn add axios
 
 2. 准备actions 和 mutations
 
-```jsx
+```js
 import axios from 'axios'
 
 export default {
-  namespaced: true,
-  state () {
-    return {
-      list: []
+    namespaced: true,
+    state() {
+        return {
+            list: []
+        }
+    },
+    mutations: {
+        updateList(state, payload) {
+            state.list = payload
+        }
+    },
+    actions: {
+        async getList(ctx) {
+            const res = await axios.get('http://localhost:3000/cart')
+            ctx.commit('updateList', res.data)
+        }
     }
-  },
-  mutations: {
-    updateList (state, payload) {
-      state.list = payload
-    }
-  },
-  actions: {
-    async getList (ctx) {
-      const res = await axios.get('http://localhost:3000/cart')
-      ctx.commit('updateList', res.data)
-    }
-  }
 }
 ```
 
-3. `App.vue`页面中调用 action,  获取数据
+3. `App.vue`页面中调用 action，获取数据
 
-```jsx
-import { mapState } from 'vuex'
+```js
+import {mapState} from 'vuex'
 
 export default {
-  name: 'App',
-  components: {
-    CartHeader,
-    CartFooter,
-    CartItem
-  },
-  created () {
-    this.$store.dispatch('cart/getList')
-  },
-  computed: {
-    ...mapState('cart', ['list'])
-  }
+    name: 'App',
+    components: {
+        CartHeader,
+        CartFooter,
+        CartItem
+    },
+    created() {
+        this.$store.dispatch('cart/getList')
+    },
+    computed: {
+        ...mapState('cart', ['list'])
+    }
 }
 ```
 
 4. 动态渲染
 
-```jsx
+```vue
 <!-- 商品 Item 项组件 -->
 <cart-item v-for="item in list" :key="item.id" :item="item"></cart-item>
 ```
 
 `cart-item.vue`
 
-```jsx
+```vue
 <template>
-  <div class="goods-container">
-    <!-- 左侧图片区域 -->
-    <div class="left">
-      <img :src="item.thumb" class="avatar" alt="">
-    </div>
-    <!-- 右侧商品区域 -->
-    <div class="right">
-      <!-- 标题 -->
-      <div class="title">{{item.name}}</div>
-      <div class="info">
-        <!-- 单价 -->
-        <span class="price">￥{{item.price}}</span>
-        <div class="btns">
-          <!-- 按钮区域 -->
-          <button class="btn btn-light">-</button>
-          <span class="count">{{item.count}}</span>
-          <button class="btn btn-light">+</button>
+    <div class="goods-container">
+        <!-- 左侧图片区域 -->
+        <div class="left">
+            <img :src="item.thumb" class="avatar" alt="">
         </div>
-      </div>
+        <!-- 右侧商品区域 -->
+        <div class="right">
+            <!-- 标题 -->
+            <div class="title">{{ item.name }}</div>
+            <div class="info">
+                <!-- 单价 -->
+                <span class="price">￥{{ item.price }}</span>
+                <div class="btns">
+                    <!-- 按钮区域 -->
+                    <button class="btn btn-light">-</button>
+                    <span class="count">{{ item.count }}</span>
+                    <button class="btn btn-light">+</button>
+                </div>
+            </div>
+        </div>
     </div>
-  </div>
 </template>
 
 <script>
 export default {
-  name: 'CartItem',
-  props: {
-    item: Object
-  },
-  methods: {
-
-  }
+    name: 'CartItem',
+    props: {
+        item: Object
+    },
+    methods: {}
 }
 </script>
 ```
-
-
 
 ## 二十六、综合案例-修改数量
 
