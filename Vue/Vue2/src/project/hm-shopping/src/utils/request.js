@@ -1,4 +1,5 @@
 import axios from 'axios'
+import { Toast } from 'vant'
 
 const instance = axios.create({
   baseURL: 'http://cba.itlike.com/public/index.php?s=/api/',
@@ -6,7 +7,12 @@ const instance = axios.create({
 })
 
 instance.interceptors.response.use(response => {
-  return response.data
+  const res = response.data
+  if (res.status !== 200) {
+    Toast(res.message)
+    return Promise.reject(res.message)
+  }
+  return res
 }, error => {
   return Promise.reject(error)
 })
