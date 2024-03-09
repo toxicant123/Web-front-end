@@ -27,7 +27,7 @@
 </template>
 
 <script>
-import request from '@/utils/request'
+import { getPicCode } from '@/api/login'
 
 export default {
   name: 'LoginPage',
@@ -43,9 +43,12 @@ export default {
   },
   methods: {
     async getPicCode () {
-      const { data: { base64, key } } = await request.get('/captcha/image')
+      const { data: { base64, key } } = await getPicCode()
       this.picUrl = base64
       this.picKey = key
+
+      // this.$toast('获取图形验证码成功')
+      this.$toast.success('成功')
     }
   }
 }

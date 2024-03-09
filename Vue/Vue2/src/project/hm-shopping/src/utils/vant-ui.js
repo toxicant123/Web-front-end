@@ -4,7 +4,8 @@ import {
   Switch,
   Tabbar,
   TabbarItem,
-  NavBar
+  NavBar,
+  Toast
 } from 'vant'
 
 Vue.use(Button)
@@ -12,3 +13,4 @@ Vue.use(Switch)
 Vue.use(Tabbar)
 Vue.use(TabbarItem)
 Vue.use(NavBar)
+Vue.use(Toast)
