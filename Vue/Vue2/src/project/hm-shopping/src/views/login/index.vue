@@ -27,8 +27,14 @@
 </template>
 
 <script>
+import request from '@/utils/request'
+
 export default {
-  name: 'LoginPage'
+  name: 'LoginPage',
+  created () {
+    const res = request.get('/captcha/image')
+    console.log(res)
+  }
 }
 </script>
 
