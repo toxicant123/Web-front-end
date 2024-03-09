@@ -27,7 +27,7 @@
 </template>
 
 <script>
-import { getPicCode } from '@/api/login'
+import { getMsgCode, getPicCode } from '@/api/login'
 
 export default {
   name: 'LoginPage',
@@ -58,12 +58,20 @@ export default {
     /**
      * 获取短信验证码
      */
-    getCode () {
+    async getCode () {
       if (!this.validFn()) {
         return
       }
 
       if (!this.timer && this.second === this.totalSecond) {
+        await getMsgCode({
+          captchaCode: this.picCode,
+          captchaKey: this.picKey,
+          mobile: this.mobile
+        })
+
+        this.$toast('短信发送成功，请注意查收')
+
         this.timer = setInterval(() => {
           this.second--
 
