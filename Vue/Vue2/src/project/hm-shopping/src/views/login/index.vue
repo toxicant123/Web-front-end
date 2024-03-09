@@ -17,7 +17,7 @@
         </div>
         <div class="form-item">
           <input v-model="msgCode" class="inp" placeholder="请输入短信验证码" type="text">
-          <button @click="getCode">{{ second === totalSecond ? '获取验证码' : second + '秒后重新发送'}}</button>
+          <button @click="getCode">{{ second === totalSecond ? '获取验证码' : second + '秒后重新发送' }}</button>
         </div>
       </div>
 
@@ -48,7 +48,12 @@ export default {
   },
   methods: {
     async getPicCode (isShow) {
-      const { data: { base64, key } } = await getPicCode()
+      const {
+        data: {
+          base64,
+          key
+        }
+      } = await getPicCode()
       this.picUrl = base64
       this.picKey = key
 
@@ -108,10 +113,12 @@ export default {
         return
       }
 
-      await codeLogin({
+      const res = await codeLogin({
         mobile: this.mobile,
         smsCode: this.msgCode
       })
+
+      this.$store.commit('user/setUserInfo', res.data)
 
       this.$toast('登录成功')
       this.$router.push('/')
