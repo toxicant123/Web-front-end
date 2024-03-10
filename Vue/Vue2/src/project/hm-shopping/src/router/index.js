@@ -69,7 +69,6 @@ const authUrls = [
 ]
 
 router.beforeEach((to, from, next) => {
-  console.log(to, from, next)
   if (!authUrls.includes(to.path)) {
     next()
     return
