@@ -49,7 +49,14 @@ export default {
 
       this.history.unshift(key)
 
-      this.$router.push(`/searchlist?search=${key}`)
+      this.$nextTick(() => {
+        this.$router.push({
+          path: '/searchlist',
+          query: {
+            search: key
+          }
+        })
+      })
     },
     clear () {
       this.history = []
