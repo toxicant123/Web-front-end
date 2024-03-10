@@ -11,6 +11,7 @@ import Home from '@/views/layout/home.vue'
 import Category from '@/views/layout/category.vue'
 import Cart from '@/views/layout/cart.vue'
 import User from '@/views/layout/user.vue'
+import store from '@/store'
 
 Vue.use(VueRouter)
 
@@ -60,6 +61,27 @@ const router = new VueRouter({
       component: MyOrder
     }
   ]
+})
+
+const authUrls = [
+  '/pay',
+  '/myorder'
+]
+
+router.beforeEach((to, from, next) => {
+  console.log(to, from, next)
+  if (!authUrls.includes(to.path)) {
+    next()
+    return
+  }
+
+  const token = store.getters.token
+
+  if (token) {
+    next()
+  } else {
+    next('/login')
+  }
 })
 
 export default router
