@@ -204,13 +204,13 @@ vant-ui提供了很多的组件，全部导入，会导致项目打包变得很�
 
 + 安装vant-ui
 
-```
+```shell
 yarn add vant@latest-v2
 ```
 
 + 安装一个插件
 
-```jsd
+```shell
 yarn add babel-plugin-import -D
 ```
 
@@ -242,7 +242,7 @@ Vue.use(Icon)
 
 + `app.vue`中进行测试
 
-```js
+```vue
 <van-button type="primary">主要按钮</van-button>
 <van-button type="info">信息按钮</van-button>
 <van-button type="default">默认按钮</van-button>
@@ -266,19 +266,17 @@ main.js中进行导入
 import '@/utils/vant-ui'
 ```
 
-
-
 ## 08. 项目中的vw适配
 
 官方说明：https://vant-contrib.gitee.io/vant/v2/#/zh-CN/advanced-usage
 
-```js
+```shell
 yarn add postcss-px-to-viewport@1.1.1 -D
 ```
 
 + 项目根目录， 新建postcss的配置文件`postcss.config.js`
 
-```jsx
+```js
 // postcss.config.js
 module.exports = {
   plugins: {
