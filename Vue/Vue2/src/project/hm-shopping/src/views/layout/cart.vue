@@ -50,7 +50,12 @@ import CountBox from '@/components/CountBox.vue'
 
 export default {
   name: 'CartPage',
-  components: { CountBox }
+  components: { CountBox },
+  created () {
+    if (this.$store.getters.token) {
+      this.$store.dispatch('cart/getCartAction')
+    }
+  }
 }
 </script>
 

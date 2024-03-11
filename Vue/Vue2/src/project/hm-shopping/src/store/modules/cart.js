@@ -1,9 +1,25 @@
+import { getCartList } from '@/api/cart'
+
 export default {
   namespaced: true,
   state () {
-    return {}
+    return {
+      cartList: []
+    }
   },
-  mutations: {},
-  actions: {},
+  mutations: {
+    setCartList (state, newList) {
+      state.cartList = newList
+    }
+  },
+  actions: {
+    async getCartAction (context) {
+      const { data } = await getCartList()
+      data.list.forEach(item => {
+        item.isChecked = true
+      })
+      context.commit('setCartList', data.list)
+    }
+  },
   getters: {}
 }

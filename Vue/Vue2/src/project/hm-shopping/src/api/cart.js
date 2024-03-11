@@ -7,3 +7,7 @@ export const addCart = (goodsId, goodsNum, goodsSkuId) => {
     goodsSkuId
   })
 }
+
+export const getCartList = () => {
+  return request.get('/cart/list')
+}
