@@ -14,7 +14,8 @@ import {
   Icon,
   Rate,
   ActionSheet,
-  Dialog
+  Dialog,
+  Checkbox
 } from 'vant'
 
 Vue.use(Button)
@@ -32,3 +33,4 @@ Vue.use(Icon)
 Vue.use(Rate)
 Vue.use(ActionSheet)
 Vue.use(Dialog)
+Vue.use(Checkbox)
