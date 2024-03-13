@@ -28,8 +28,8 @@
     </div>
 
     <div class="footer-fixed">
-      <div  class="all-check">
-        <van-checkbox  icon-size="18"></van-checkbox>
+      <div @click="toggleAllCheck" class="all-check">
+        <van-checkbox :value="isAllChecked" icon-size="18"></van-checkbox>
         全选
       </div>
 
@@ -38,8 +38,8 @@
           <span>合计：</span>
           <span>¥ <i class="totalPrice">{{ selPrice }}</i></span>
         </div>
-        <div v-if="true" class="goPay" :class="{ disabled: selCount === 0 }">结算({{ selCount }})</div>
-        <div v-else class="delete" :class="{ disabled: selCount === 0 }">删除</div>
+        <div v-if="true" class="goPay" :class="{ disabled: isAllChecked }">结算({{ selCount }})</div>
+        <div v-else class="delete" :class="{ disabled: isAllChecked }">删除</div>
       </div>
     </div>
   </div>
@@ -54,7 +54,7 @@ export default {
   components: { CountBox },
   computed: {
     ...mapState('cart', ['cartList']),
-    ...mapGetters('cart', ['cartTotal', 'selCartList', 'selCount', 'selPrice'])
+    ...mapGetters('cart', ['cartTotal', 'selCartList', 'selCount', 'selPrice', 'isAllChecked'])
   },
   created () {
     if (this.$store.getters.token) {
@@ -64,6 +64,9 @@ export default {
   methods: {
     toggleCheck (goodsId) {
       this.$store.commit('cart/toggleCheck', goodsId)
+    },
+    toggleAllCheck () {
+      this.$store.commit('cart/toggleAllCheck', !this.isAllChecked)
     }
   }
 }

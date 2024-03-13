@@ -37,6 +37,9 @@ export default {
     },
     selPrice (state, getters) {
       return getters.selCartList.reduce((p, c) => p + c.goods_num * c.goods.goods_price_min, 0).toFixed(2)
+    },
+    isAllChecked (state) {
+      return state.cartList.every(item => item.isChecked)
     }
   }
 }
