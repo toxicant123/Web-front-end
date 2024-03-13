@@ -32,8 +32,7 @@ export default {
       return getters.selCartList.reduce((p, c) => p + c.goods_num, 0)
     },
     selPrice (state, getters) {
-      console.log(getters.selCartList)
-      return getters.selCartList.filter((p, c) => p + c.goods_num * c.goods.goods_price_min, 0)
+      return getters.selCartList.reduce((p, c) => p + c.goods_num * c.goods.goods_price_min, 0)
     }
   }
 }
