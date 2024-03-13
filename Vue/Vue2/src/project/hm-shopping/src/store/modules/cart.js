@@ -21,5 +21,19 @@ export default {
       context.commit('setCartList', data.list)
     }
   },
-  getters: {}
+  getters: {
+    cartTotal (state) {
+      return state.cartList.reduce((p, c) => p + c.goods_num, 0)
+    },
+    selCartList (state) {
+      return state.cartList.filter(item => item.isChecked)
+    },
+    selCount (state, getters) {
+      return getters.selCartList.reduce((p, c) => p + c.goods_num, 0)
+    },
+    selPrice (state, getters) {
+      console.log(getters.selCartList)
+      return getters.selCartList.filter((p, c) => p + c.goods_num * c.goods.goods_price_min, 0)
+    }
+  }
 }

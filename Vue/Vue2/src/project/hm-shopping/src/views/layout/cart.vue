@@ -36,9 +36,9 @@
       <div class="all-total">
         <div class="price">
           <span>合计：</span>
-          <span>¥ <i class="totalPrice">99.99</i></span>
+          <span>¥ <i class="totalPrice">{{ selPrice }}</i></span>
         </div>
-        <div v-if="true" class="goPay">结算(5)</div>
+        <div v-if="true" class="goPay">结算({{ selCount }})</div>
         <div v-else class="delete">删除</div>
       </div>
     </div>
@@ -47,13 +47,14 @@
 
 <script>
 import CountBox from '@/components/CountBox.vue'
-import { mapState } from 'vuex'
+import { mapGetters, mapState } from 'vuex'
 
 export default {
   name: 'CartPage',
   components: { CountBox },
   computed: {
-    ...mapState('cart', ['cartList'])
+    ...mapState('cart', ['cartList']),
+    ...mapGetters('cart', ['cartTotal', 'selCartList', 'selCount', 'selPrice'])
   },
   created () {
     if (this.$store.getters.token) {
