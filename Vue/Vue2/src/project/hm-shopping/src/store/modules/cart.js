@@ -10,6 +10,10 @@ export default {
   mutations: {
     setCartList (state, newList) {
       state.cartList = newList
+    },
+    toggleCheck (state, payload) {
+      const goods = state.cartList.find(item => item.goods_id === payload)
+      goods.isChecked = !goods.isChecked
     }
   },
   actions: {
