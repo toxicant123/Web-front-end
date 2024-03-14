@@ -287,13 +287,10 @@ module.exports = {
 };
 ```
 
-viewportWidth:设计稿的视口宽度
-
+viewportWidth:设计稿的视口宽度：
 1. vant-ui中的组件就是按照375的视口宽度设计的
 2. 恰好面经项目中的设计稿也是按照375的视口宽度设计的，所以此时 我们只需要配置375就可以了
 3. 如果设计稿不是按照375而是按照750的宽度设计，[那此时这个值该怎么填呢？](https://zhuanlan.zhihu.com/p/366664788)
-
-
 
 ## 09. 路由配置 - 一级路由
 
@@ -315,7 +312,7 @@ viewportWidth:设计稿的视口宽度
 
 `router/index.js` 配置一级路由，新建对应的页面文件
 
-```jsx
+```js
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 import Layout from '@/views/layout'

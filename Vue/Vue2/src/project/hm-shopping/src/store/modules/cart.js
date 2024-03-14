@@ -14,6 +14,11 @@ export default {
     toggleCheck (state, payload) {
       const goods = state.cartList.find(item => item.goods_id === payload)
       goods.isChecked = !goods.isChecked
+    },
+    toggleAllCheck (state, payload) {
+      state.cartList.forEach(item => {
+        item.isChecked = payload
+      })
     }
   },
   actions: {
