@@ -19,3 +19,9 @@ export const changeCount = (goodsId, goodsNum, goodsSkuId) => {
     goodsSkuId
   })
 }
+
+export const delSelect = cartIds => {
+  return request.post('/cart/clear', {
+    cartIds
+  })
+}

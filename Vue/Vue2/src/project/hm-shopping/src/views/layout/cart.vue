@@ -4,7 +4,7 @@
     <!-- 购物车开头 -->
     <div class="cart-title">
       <span class="all">共<i>4</i>件商品</span>
-      <span class="edit">
+      <span class="edit" @click="isEdit = !isEdit">
         <van-icon name="edit" />
         编辑
       </span>
@@ -38,8 +38,8 @@
           <span>合计：</span>
           <span>¥ <i class="totalPrice">{{ selPrice }}</i></span>
         </div>
-        <div v-if="true" class="goPay" :class="{ disabled: isAllChecked }">结算({{ selCount }})</div>
-        <div v-else class="delete" :class="{ disabled: isAllChecked }">删除</div>
+        <div v-if="!isEdit" class="goPay" :class="{ disabled: selCount === 0 }">结算({{ selCount }})</div>
+        <div v-else @click="handleDel" class="delete" :class="{ disabled: selCount === 0 }">删除</div>
       </div>
     </div>
   </div>
@@ -61,6 +61,11 @@ export default {
       this.$store.dispatch('cart/getCartAction')
     }
   },
+  data () {
+    return {
+      isEdit: false
+    }
+  },
   methods: {
     toggleCheck (goodsId) {
       this.$store.commit('cart/toggleCheck', goodsId)
@@ -74,6 +79,23 @@ export default {
         goodsId,
         goodsSkuId
       })
+    },
+    async handleDel () {
+      if (this.selCount === 0) {
+        return
+      }
+
+      await this.$store.dispatch('cart/delSelect')
+      this.isEdit = false
+    }
+  },
+  watch: {
+    isEdit (value) {
+      if (value) {
+        this.$store.commit('cart/toggleAllCheck', false)
+      } else {
+        this.$store.commit('cart/toggleAllCheck', true)
+      }
     }
   }
 }
