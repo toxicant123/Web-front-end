@@ -1,4 +1,4 @@
-import { getCartList } from '@/api/cart'
+import { changeCount, getCartList } from '@/api/cart'
 
 export default {
   namespaced: true,
@@ -28,6 +28,11 @@ export default {
         item.isChecked = true
       })
       context.commit('setCartList', data.list)
+    },
+    async changeCartAction (context, payload) {
+      const { goodsNum, goodsId, goodsSkuId } = payload
+      const res = await changeCount(goodsId, goodsNum, goodsSkuId)
+      console.log(res)
     }
   },
   getters: {
