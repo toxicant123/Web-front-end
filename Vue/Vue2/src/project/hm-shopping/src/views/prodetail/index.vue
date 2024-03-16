@@ -117,12 +117,14 @@ import { getProComments, getProDetail } from '@/api/product'
 import defaultImg from '@/assets/default-avatar.png'
 import CountBox from '@/components/CountBox.vue'
 import { addCart } from '@/api/cart'
+import loginConfirm from '@/mixins/loginConfirm'
 
 export default {
   name: 'ProDetail',
   components: {
     CountBox
   },
+  mixins: [loginConfirm],
   data () {
     return {
       images: [
@@ -164,6 +166,10 @@ export default {
       this.showPannel = true
     },
     async addCart () {
+      if (this.loginConfirm()) {
+        return
+      }
+
       if (!this.$store.getters.token) {
         this.$dialog.confirm({
           title: '温馨提示',
@@ -189,6 +195,10 @@ export default {
       console.log(this.cartTotal)
     },
     goBuyNow () {
+      if (this.loginConfirm()) {
+        return
+      }
+
       this.$router.push({
         path: '/pay',
         query: {
