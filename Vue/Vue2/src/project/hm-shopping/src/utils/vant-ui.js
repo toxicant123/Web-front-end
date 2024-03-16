@@ -15,7 +15,9 @@ import {
   Rate,
   ActionSheet,
   Dialog,
-  Checkbox
+  Checkbox,
+  Tab,
+  Tabs
 } from 'vant'
 
 Vue.use(Button)
@@ -34,3 +36,5 @@ Vue.use(Rate)
 Vue.use(ActionSheet)
 Vue.use(Dialog)
 Vue.use(Checkbox)
+Vue.use(Tab)
+Vue.use(Tabs)
