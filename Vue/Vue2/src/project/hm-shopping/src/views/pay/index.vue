@@ -82,21 +82,21 @@
 
       <!-- 买家留言 -->
       <div class="buytips">
-        <textarea placeholder="选填：买家留言（50字内）" name="" id="" cols="30" rows="10"></textarea>
+        <textarea placeholder="选填：买家留言（50字内）" name="" id="" cols="30" rows="10" v-model="remark"></textarea>
       </div>
     </div>
 
     <!-- 底部提交 -->
     <div class="footer-fixed">
       <div class="left">实付款：<span>￥{{ order.orderTotalPrice }}</span></div>
-      <div class="tipsbtn">提交订单</div>
+      <div class="tipsbtn" @click="submitOrder">提交订单</div>
     </div>
   </div>
 </template>
 
 <script>
 import { getAddressList } from '@/api/address'
-import { checkOrder } from '@/api/order'
+import { checkOrder, submitOrder } from '@/api/order'
 
 export default {
   name: 'PayIndex',
@@ -104,7 +104,8 @@ export default {
     return {
       addressList: [],
       order: {},
-      personal: {}
+      personal: {},
+      remark: ''
     }
   },
   computed: {
@@ -140,7 +141,7 @@ export default {
       let param = {}
       if (this.mode === 'cart') {
         param = { cartIds: this.cartIds }
-      } else {
+      } else if (this.mode === 'buyNow') {
         param = {
           goodsId: this.goodsId,
           goodsSkuId: this.goodsSkuId,
@@ -151,6 +152,28 @@ export default {
       const { data: { order, personal } } = await checkOrder(this.mode, param)
       this.order = order
       this.personal = personal
+    },
+    async submitOrder () {
+      let obj = {}
+      if (this.mode === 'cart') {
+        obj = {
+          cartIds: this.cartIds,
+          remark: this.remark
+        }
+      } else if (this.mode === 'buyNow') {
+        obj = {
+          goodsId: this.goodsId,
+          goodsSkuId: this.goodsSkuId,
+          goodsNum: this.goodsNum,
+          cartIds: this.cartIds,
+          remark: this.remark
+        }
+      }
+
+      await submitOrder(this.mode, obj)
+
+      this.$toast.success('支付成功')
+      this.$router.replace('/myOrder')
     }
   },
   created () {

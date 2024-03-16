@@ -11,3 +11,14 @@ export const checkOrder = (mode, obj) => {
     }
   })
 }
+
+export const submitOrder = (mode, obj) => {
+  return request.post('/checkout/submit', {
+    mode,
+    delivery: 10,
+    couponId: 0,
+    siUsePoints: 0,
+    payType: 10,
+    ...obj
+  })
+}
