@@ -1,6 +1,6 @@
 # Vue3
 
-## Vue3简介
+## 一、Vue3简介
 
 ### 1. Vue2 选项式 API vs Vue3 组合式API
 
@@ -38,23 +38,28 @@
 
 ![image.png](assets/01.png)
 
-## 使用create-vue搭建Vue3项目
-### 1. 认识create-vue
-> create-vue是Vue官方新的脚手架工具，底层切换到了 vite （下一代前端工具链），为开发提供极速响应
+## 二、使用create-vue搭建Vue3项目
 
+### 1. 认识create-vue
+
+> create-vue是Vue官方新的脚手架工具，底层切换到了 vite （下一代前端工具链），为开发提供极速响应
 
 ![image.png](assets/2.png)
 
 ### 2. 使用create-vue创建项目
+
 > 前置条件 - 已安装16.0或更高版本的Node.js
 
 执行如下命令，这一指令将会安装并执行 create-vue
+
 ```bash
 npm init vue@latest
 ```
 
 ![image.png](assets/3.png)
+
 ## 熟悉项目和关键文件
+
 ![image.png](assets/4.png)
 
 ## 组合式API - setup选项
