@@ -58,11 +58,11 @@ npm init vue@latest
 
 ![image.png](assets/3.png)
 
-## 熟悉项目和关键文件
+## 三、熟悉项目和关键文件
 
 ![image.png](assets/4.png)
 
-## 组合式API - setup选项
+## 四、组合式API - setup选项
 
 ### 1. setup选项的写法和执行时机
 
@@ -122,7 +122,7 @@ npm init vue@latest
 </script>
 ```
 
-## 组合式API - reactive和ref函数
+## 五、组合式API - reactive和ref函数
 
 ### 1. reactive
 
@@ -172,30 +172,34 @@ npm init vue@latest
 
 1. 都是用来生成响应式数据
 2. 不同点
-    1. reactive不能处理简单类型的数据
-    2. ref参数类型支持更好，但是必须通过.value做访问修改
-    3. ref函数内部的实现依赖于reactive函数
+   1. reactive不能处理简单类型的数据
+   2. ref参数类型支持更好，但是必须通过.value做访问修改
+   3. ref函数内部的实现依赖于reactive函数
 3. 在实际工作中的推荐
-    1. 推荐使用ref函数，减少记忆负担，小兔鲜项目都使用ref
-## 组合式API - computed
+   1. 推荐使用ref函数，减少记忆负担，小兔鲜项目都使用ref
+
+## 六、组合式API - computed
+
 > 计算属性基本思想和Vue2保持一致，组合式API下的计算属性只是修改了API写法
 
 ```vue
 <script setup>
-// 导入
-import {ref, computed } from 'vue'
-// 原始数据
-const count = ref(0)
-// 计算属性
-const doubleCount = computed(()=>count.value * 2)
+    // 导入
+    import {ref, computed} from 'vue'
+    // 原始数据
+    const count = ref(0)
+    // 计算属性
+    const doubleCount = computed(() => count.value * 2)
 
-// 原始数据
-const list = ref([1,2,3,4,5,6,7,8])
-// 计算属性list
-const filterList = computed(item=>item > 2)
+    // 原始数据
+    const list = ref([1, 2, 3, 4, 5, 6, 7, 8])
+    // 计算属性list
+    const filterList = computed(item => item > 2)
 </script>
 ```
-## 组合式API - watch
+
+## 七、组合式API - watch
+
 > 侦听一个或者多个数据的变化，数据变化时执行回调函数，俩个额外参数 immediate控制立刻执行，deep开启深度侦听
 
 ### 1. 侦听单个数据
