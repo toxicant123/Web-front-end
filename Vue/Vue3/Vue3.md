@@ -233,9 +233,8 @@ npm init vue@latest
         console.log(`count或者name变化了，[newCount, newName],[oldCount,oldName]`)
     })
 </script>
-
 ```
-+
+
 ### 3. immediate
 
 > 在侦听器创建时立即出发回调，响应式数据变化之后继续执行回调
@@ -291,38 +290,50 @@ npm init vue@latest
 </script>
 ```
 
-## 组合式API - 生命周期函数
+## 八、组合式API - 生命周期函数
+
 ### 1. 选项式对比组合式
+
 ![image.png](assets/6.png)
+
 ### 2. 生命周期函数基本使用
+
 > 1. 导入生命周期函数
 > 2. 执行生命周期函数，传入回调
 
 ```vue
-<scirpt setup>
-import { onMounted } from 'vue'
-onMounted(()=>{
-  // 自定义逻辑
-})
+<script setup>
+    import {onMounted} from 'vue'
+
+    onMounted(() => {
+        // 自定义逻辑
+    })
 </script>
 ```
+
 ### 3. 执行多次
+
 > 生命周期函数执行多次的时候，会按照顺序依次执行
 
 ```vue
-<scirpt setup>
-import { onMounted } from 'vue'
-onMounted(()=>{
-  // 自定义逻辑
-})
 
-onMounted(()=>{
-  // 自定义逻辑
-})
+<script setup>
+    import {onMounted} from 'vue'
+
+    onMounted(() => {
+        // 自定义逻辑
+    })
+
+    onMounted(() => {
+        // 自定义逻辑
+    })
 </script>
 ```
-## 组合式API - 父子通信
+
+## 九、组合式API - 父子通信
+
 ### 1. 父传子
+
 > 基本思想
 > 1. 父组件中给子组件绑定属性
 > 2. 子组件内部通过props选项接收数据
