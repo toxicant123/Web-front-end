@@ -3510,7 +3510,7 @@ v-model其实就是 :value和@input事件的简写
 
 ### 2.场景
 
-封装弹框类的基础组件， visible属性 true显示 false隐藏
+封装弹框类的基础组件，visible属性：true显示，false隐藏
 
 ### 3.本质
 
