@@ -349,7 +349,7 @@ npm init vue@latest
 
 ## 十、组合式API - 模版引用
 
-> 概念：通过 ref标识 获取真实的 dom对象或者组件实例对象
+> 概念：通过ref标识，获取真实的dom对象或者组件实例对象
 
 ### 1. 基本使用
 
@@ -361,7 +361,7 @@ npm init vue@latest
 
 ### 2. defineExpose
 
-> 默认情况下在 <script setup>语法糖下组件内部的属性和方法是不开放给父组件访问的，可以通过defineExpose编译宏指定哪些属性和方法容许访问
+> 默认情况下在\<script setup>语法糖下组件内部的属性和方法是不开放给父组件访问的，可以通过defineExpose编译宏指定哪些属性和方法容许访问
 > 说明：指定testMessage属性可以被访问到
 
 ![image.png](assets/10.png)
@@ -376,26 +376,25 @@ npm init vue@latest
 
 ### 2. 跨层传递普通数据
 
-> 实现步骤
+> 实现步骤：
 > 1. 顶层组件通过 `provide` 函数提供数据
 > 2. 底层组件通过 `inject` 函数提供数据
-
 
 ![image.png](assets/12.png)
 
 ### 3. 跨层传递响应式数据
+
 > 在调用provide函数时，第二个参数设置为ref对象
 
 ![image.png](assets/13.png)
 
 ### 4. 跨层传递方法
+
 > 顶层组件可以向底层组件传递方法，底层组件调用方法修改顶层组件的数据
 
 ![image.png](assets/14.png)
 
-
-
-## Vue3.3 新特性-defineOptions
+## 十二、Vue3.3 新特性-defineOptions
 
 背景说明：
 
