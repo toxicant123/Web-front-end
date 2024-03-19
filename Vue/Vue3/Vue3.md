@@ -109,7 +109,7 @@ npm init vue@latest
 </script>
 ```
 
-### 3. <script setup>语法糖
+### 3. \<script setup>语法糖
 
 > script标签添加 setup标记，不需要再写导出语句，默认会添加导出语句
 
@@ -203,82 +203,94 @@ npm init vue@latest
 > 侦听一个或者多个数据的变化，数据变化时执行回调函数，俩个额外参数 immediate控制立刻执行，deep开启深度侦听
 
 ### 1. 侦听单个数据
+
 ```vue
 <script setup>
-  // 1. 导入watch
-  import { ref, watch } from 'vue'
-  const count = ref(0)
-  // 2. 调用watch 侦听变化
-  watch(count, (newValue, oldValue)=>{
-    console.log(`count发生了变化，老值为${oldValue},新值为${newValue}`)
-  })
+    // 1. 导入watch
+    import {ref, watch} from 'vue'
+
+    const count = ref(0)
+    // 2. 调用watch 侦听变化
+    watch(count, (newValue, oldValue) => {
+        console.log(`count发生了变化，老值为${oldValue},新值为${newValue}`)
+    })
 </script>
 ```
+
 ### 2. 侦听多个数据
+
 > 侦听多个数据，第一个参数可以改写成数组的写法
 
 ```vue
 <script setup>
-  // 1. 导入watch
-  import { ref, watch } from 'vue'
-  const count = ref(0)
-  const name = ref('cp')
-  // 2. 调用watch 侦听变化
-  watch([count, name], ([newCount, newName],[oldCount,oldName])=>{
-    console.log(`count或者name变化了，[newCount, newName],[oldCount,oldName])
-  })
-</script>
-```
-### 3. immediate
-> 在侦听器创建时立即出发回调，响应式数据变化之后继续执行回调
+    // 1. 导入watch
+    import {ref, watch} from 'vue'
 
+    const count = ref(0)
+    const name = ref('cp')
+    // 2. 调用watch 侦听变化
+    watch([count, name], ([newCount, newName], [oldCount, oldName]) => {
+        console.log(`count或者name变化了，[newCount, newName],[oldCount,oldName]`)
+    })
+</script>
+
+```
++
+### 3. immediate
+
+> 在侦听器创建时立即出发回调，响应式数据变化之后继续执行回调
 
 ```vue
 <script setup>
-  // 1. 导入watch
-  import { ref, watch } from 'vue'
-  const count = ref(0)
-  // 2. 调用watch 侦听变化
-  watch(count, (newValue, oldValue)=>{
-    console.log(`count发生了变化，老值为${oldValue},新值为${newValue}`)
-  },{
-    immediate: true
-  })
+    // 1. 导入watch
+    import {ref, watch} from 'vue'
+
+    const count = ref(0)
+    // 2. 调用watch 侦听变化
+    watch(count, (newValue, oldValue) => {
+        console.log(`count发生了变化，老值为${oldValue},新值为${newValue}`)
+    }, {
+        immediate: true
+    })
 </script>
 ```
+
 ### 4. deep
+
 > 通过watch监听的ref对象默认是浅层侦听的，直接修改嵌套的对象属性不会触发回调执行，需要开启deep
 
 ```vue
 <script setup>
-  // 1. 导入watch
-  import { ref, watch } from 'vue'
-  const state = ref({ count: 0 })
-  // 2. 监听对象state
-  watch(state, ()=>{
-    console.log('数据变化了')
-  })
-  const changeStateByCount = ()=>{
-    // 直接修改不会引发回调执行
-    state.value.count++
-  }
+    // 1. 导入watch
+    import {ref, watch} from 'vue'
+
+    const state = ref({count: 0})
+    // 2. 监听对象state
+    watch(state, () => {
+        console.log('数据变化了')
+    })
+    const changeStateByCount = () => {
+        // 直接修改不会引发回调执行
+        state.value.count++
+    }
 </script>
 
 <script setup>
-  // 1. 导入watch
-  import { ref, watch } from 'vue'
-  const state = ref({ count: 0 })
-  // 2. 监听对象state 并开启deep
-  watch(state, ()=>{
-    console.log('数据变化了')
-  },{deep:true})
-  const changeStateByCount = ()=>{
-    // 此时修改可以触发回调
-    state.value.count++
-  }
-</script>
+    // 1. 导入watch
+    import {ref, watch} from 'vue'
 
+    const state = ref({count: 0})
+    // 2. 监听对象state 并开启deep
+    watch(state, () => {
+        console.log('数据变化了')
+    }, {deep: true})
+    const changeStateByCount = () => {
+        // 此时修改可以触发回调
+        state.value.count++
+    }
+</script>
 ```
+
 ## 组合式API - 生命周期函数
 ### 1. 选项式对比组合式
 ![image.png](assets/6.png)
