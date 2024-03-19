@@ -316,7 +316,6 @@ npm init vue@latest
 > 生命周期函数执行多次的时候，会按照顺序依次执行
 
 ```vue
-
 <script setup>
     import {onMounted} from 'vue'
 
@@ -338,38 +337,45 @@ npm init vue@latest
 > 1. 父组件中给子组件绑定属性
 > 2. 子组件内部通过props选项接收数据
 
-
 ![image.png](assets/7.png)
 
 ### 2. 子传父
+
 > 基本思想
 > 1. 父组件中给子组件标签通过@绑定事件
 > 2. 子组件内部通过 emit 方法触发事件
 
-
 ![image.png](assets/8.png)
 
-## 组合式API - 模版引用
+## 十、组合式API - 模版引用
+
 > 概念：通过 ref标识 获取真实的 dom对象或者组件实例对象
 
 ### 1. 基本使用
+
 > 实现步骤：
 > 1. 调用ref函数生成一个ref对象
 > 2. 通过ref标识绑定ref对象到标签
 
 ![image.png](assets/9.png)
+
 ### 2. defineExpose
+
 > 默认情况下在 <script setup>语法糖下组件内部的属性和方法是不开放给父组件访问的，可以通过defineExpose编译宏指定哪些属性和方法容许访问
 > 说明：指定testMessage属性可以被访问到
 
 ![image.png](assets/10.png)
-## 组合式API - provide和inject
+
+## 十一、组合式API - provide和inject
+
 ### 1. 作用和场景
+
 > 顶层组件向任意的底层组件传递数据和方法，实现跨层组件通信
 
 ![image.png](assets/11.png)
 
 ### 2. 跨层传递普通数据
+
 > 实现步骤
 > 1. 顶层组件通过 `provide` 函数提供数据
 > 2. 底层组件通过 `inject` 函数提供数据
