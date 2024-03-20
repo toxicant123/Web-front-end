@@ -448,3 +448,5 @@ export default defineConfig({
   }
 })
 ```
+
+## 十四、Pinia
