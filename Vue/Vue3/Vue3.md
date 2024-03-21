@@ -450,3 +450,5 @@ export default defineConfig({
 ```
 
 ## 十四、Pinia
+
+具体用法见[vue3-pinia-demo](src/vue3-pinia-demo)

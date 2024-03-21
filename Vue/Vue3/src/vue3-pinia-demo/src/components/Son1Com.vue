@@ -1,10 +1,13 @@
 <script setup>
+import {useCounterStore} from '@/store/counter'
 
+const counterStore = useCounterStore();
 </script>
 
 <template>
     <div>
-        son1 - 0 - <button>+</button>
+        son1 - {{ counterStore.count }} -
+        <button @click="counterStore.addCount">+</button>
     </div>
 </template>
 
