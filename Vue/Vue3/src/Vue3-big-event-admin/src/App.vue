@@ -16,8 +16,8 @@ const goList = () => {
 <template>
   <div>
     this is App
-    <button @click="$router.push('/home')">跳首页</button>
-    <button @click="goList">跳列表页</button>
+    <el-button @click="$router.push('/home')">跳首页</el-button>
+    <el-button @click="goList">跳列表页</el-button>
   </div>
 </template>
 
