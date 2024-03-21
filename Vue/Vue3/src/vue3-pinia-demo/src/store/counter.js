@@ -20,4 +20,8 @@ export const useCounterStore = defineStore('counter', () => {
         subCount,
         double
     }
+}, {
+    persist: {
+        key: 'hm-counter'
+    }
 })
