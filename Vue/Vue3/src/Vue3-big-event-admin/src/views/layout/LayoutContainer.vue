@@ -3,7 +3,9 @@
 </script>
 
 <template>
-  <router-view/>
+  布局架子
 </template>
 
-<style scoped></style>
+<style scoped>
+
+</style>

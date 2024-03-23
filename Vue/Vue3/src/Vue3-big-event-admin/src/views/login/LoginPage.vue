@@ -3,7 +3,9 @@
 </script>
 
 <template>
-  <router-view/>
+  登录&注册
 </template>
 
-<style scoped></style>
+<style scoped>
+
+</style>

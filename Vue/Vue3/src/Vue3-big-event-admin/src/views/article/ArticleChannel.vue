@@ -3,7 +3,9 @@
 </script>
 
 <template>
-  <router-view/>
+  频道管理
 </template>
 
-<style scoped></style>
+<style scoped>
+
+</style>

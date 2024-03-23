@@ -3,7 +3,9 @@
 </script>
 
 <template>
-  <router-view/>
+  个人详情
 </template>
 
-<style scoped></style>
+<style scoped>
+
+</style>

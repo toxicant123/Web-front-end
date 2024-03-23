@@ -3,7 +3,9 @@
 </script>
 
 <template>
-  <router-view/>
+  更换头像
 </template>
 
-<style scoped></style>
+<style scoped>
+
+</style>

@@ -3,7 +3,9 @@
 </script>
 
 <template>
-  <router-view/>
+  重置密码
 </template>
 
-<style scoped></style>
+<style scoped>
+
+</style>
