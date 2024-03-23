@@ -16,6 +16,23 @@ const rules = {
       required: true,
       message: '请输入用户名',
       trigger: 'blur'
+    },
+    {
+      min: 5,
+      max: 10,
+      message: '用户名必须是5-10位的字符',
+      trigger: 'blur'
+    }
+  ],
+  password: [
+    {
+      required: true,
+      message: '请输入密码',
+      trigger: 'blur'
+    },
+    {
+      pattern: /^\S{6,15}$/,
+      message: '密码必须是6-15位的非空字符'
     }
   ]
 }
@@ -31,7 +48,7 @@ const log = () => {
     <el-col :span="6" :offset="3" class="form">
       <el-form
         :model="formModel"
-        :rule="rules"
+        :rules="rules"
         ref="form"
         size="large"
         autocomplete="off"
@@ -47,8 +64,9 @@ const log = () => {
             placeholder="请输入用户名"
           ></el-input>
         </el-form-item>
-        <el-form-item>
+        <el-form-item prop="password">
           <el-input
+            v-model="formModel.password"
             :prefix-icon="Lock"
             type="password"
             placeholder="请输入密码"
@@ -104,7 +122,6 @@ const log = () => {
           </el-link>
         </el-form-item>
       </el-form>
-      <button @click="log">log out</button>
     </el-col>
   </el-row>
 </template>
