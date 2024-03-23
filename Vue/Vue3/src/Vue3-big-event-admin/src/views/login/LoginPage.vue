@@ -1,8 +1,12 @@
 <script setup>
 import { User, Lock } from '@element-plus/icons-vue'
-import { ref } from 'vue'
+import { ref, watch } from 'vue'
+import { userLoginService, userRegisterService } from '@/api/user.js'
+import { useUserStore } from '@/stores/index.js'
 
-const isRegister = ref(true)
+const userStore = useUserStore()
+
+const isRegister = ref(false)
 
 const formModel = ref({
   username: '',
@@ -32,13 +36,57 @@ const rules = {
     },
     {
       pattern: /^\S{6,15}$/,
-      message: '密码必须是6-15位的非空字符'
+      message: '密码必须是6-15位的非空字符',
+      trigger: 'blur'
+    }
+  ],
+  repassword: [
+    {
+      required: true,
+      message: '请输入密码',
+      trigger: 'blur'
+    },
+    {
+      pattern: /^\S{6,15}$/,
+      message: '密码必须是6-15位的非空字符',
+      trigger: 'blur'
+    },
+    {
+      validator: (rule, value, callback) => {
+        if (value !== formModel.value.password) {
+          callback(new Error('两次输入的密码不一致'))
+        } else {
+          callback()
+        }
+      },
+      message: '两次输入的密码不一致',
+      trigger: 'blur'
     }
   ]
 }
 
-const log = () => {
-  console.log(formModel.value)
+const form = ref(null)
+
+const register = async () => {
+  await form.value.validate()
+  await userRegisterService(formModel.value)
+  ElMessage.success('注册成功')
+  isRegister.value = false
+}
+
+watch(isRegister, () => {
+  formModel.value = {
+    username: '',
+    password: '',
+    repassword: ''
+  }
+})
+
+const login = async () => {
+  await form.value.validate()
+  const res = await userLoginService(formModel.value)
+  ElMessage.success('登录成功')
+  userStore.setToken(res.token)
 }
 </script>
 
@@ -72,15 +120,21 @@ const log = () => {
             placeholder="请输入密码"
           ></el-input>
         </el-form-item>
-        <el-form-item>
+        <el-form-item prop="repassword">
           <el-input
+            v-model="formModel.repassword"
             :prefix-icon="Lock"
             type="password"
             placeholder="请输入再次密码"
           ></el-input>
         </el-form-item>
         <el-form-item>
-          <el-button class="button" type="primary" auto-insert-space>
+          <el-button
+            @click="register"
+            class="button"
+            type="primary"
+            auto-insert-space
+          >
             注册
           </el-button>
         </el-form-item>
@@ -90,15 +144,27 @@ const log = () => {
           </el-link>
         </el-form-item>
       </el-form>
-      <el-form ref="form" size="large" autocomplete="off" v-else>
+      <el-form
+        :model="formModel"
+        :rules="rules"
+        ref="form"
+        size="large"
+        autocomplete="off"
+        v-else
+      >
         <el-form-item>
           <h1>登录</h1>
         </el-form-item>
-        <el-form-item>
-          <el-input :prefix-icon="User" placeholder="请输入用户名"></el-input>
-        </el-form-item>
-        <el-form-item>
+        <el-form-item prop="username">
           <el-input
+            v-model="formModel.username"
+            :prefix-icon="User"
+            placeholder="请输入用户名"
+          ></el-input>
+        </el-form-item>
+        <el-form-item prop="password">
+          <el-input
+            v-model="formModel.password"
             name="password"
             :prefix-icon="Lock"
             type="password"
@@ -112,7 +178,11 @@ const log = () => {
           </div>
         </el-form-item>
         <el-form-item>
-          <el-button class="button" type="primary" auto-insert-space
+          <el-button
+            @click="login"
+            class="button"
+            type="primary"
+            auto-insert-space
             >登录
           </el-button>
         </el-form-item>
