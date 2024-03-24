@@ -1,9 +1,11 @@
 <script setup>
-
+import { zhCn } from 'element-plus/es/locale/index'
 </script>
 
 <template>
-  <router-view />
+  <el-config-provider :locale="zhCn">
+    <router-view />
+  </el-config-provider>
 </template>
 
 <style scoped></style>
