@@ -6,6 +6,10 @@ defineProps({
   modelValue: {
     required: true,
     type: [String, Number]
+  },
+  width: {
+    required: false,
+    type: String
   }
 })
 
@@ -26,6 +30,7 @@ getChannelList()
     style="width: 240px"
     :modelValue="modelValue"
     @update:modelValue="emit('update:modelValue', $event)"
+    :style="{ width }"
   >
     <el-option
       v-for="channel in channelList"

@@ -5,6 +5,7 @@ import { Delete, Edit } from '@element-plus/icons-vue'
 import ChannelSelect from '@/views/article/components/ChannelSelect.vue'
 import { artGetListService } from '@/api/article.js'
 import { formatTime } from '@/utils/format.js'
+import ArticleEdit from '@/components/ArticleEdit.vue'
 
 const articleList = ref([])
 const params = ref({
@@ -15,6 +16,8 @@ const params = ref({
 })
 const total = ref(0)
 const isLoading = ref(true)
+const visibleDrawer = ref(false)
+const articleEditRef = ref()
 
 const getArticleList = async () => {
   isLoading.value = true
@@ -48,8 +51,12 @@ const onReset = () => {
   getArticleList()
 }
 
+const onAddArticle = () => {
+  articleEditRef.value.open({})
+}
+
 const onEditArticle = (row) => {
-  console.log(row)
+  articleEditRef.value.open(row)
 }
 
 const onDelArticle = (row) => {
@@ -60,7 +67,7 @@ const onDelArticle = (row) => {
 <template>
   <PageContainer title="文章管理">
     <template #extra>
-      <el-button>添加文章</el-button>
+      <el-button type="primary" @click="onAddArticle">添加文章</el-button>
     </template>
 
     <el-form inline>
@@ -123,6 +130,8 @@ const onDelArticle = (row) => {
       @current-change="onCurrentChange"
       style="margin-top: 20px; justify-content: flex-end"
     />
+
+    <ArticleEdit ref="articleEditRef"></ArticleEdit>
   </PageContainer>
 </template>
 
