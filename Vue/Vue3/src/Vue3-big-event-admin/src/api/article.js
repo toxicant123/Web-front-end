@@ -1,4 +1,5 @@
 import request from '@/utils/request.js'
+import { executeOnFunctionsWithoutReturn } from 'eslint-plugin-vue/lib/utils/index.js'
 
 export const artGetChannelsService = () => {
   return request.get('/my/cate/list')
@@ -17,5 +18,11 @@ export const artDelChannelService = (id) => {
     params: {
       id
     }
+  })
+}
+
+export const artGetListService = (params) => {
+  return request.get('/my/article/list', {
+    params
   })
 }
