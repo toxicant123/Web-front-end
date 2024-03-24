@@ -1,9 +1,10 @@
 <script setup>
 import PageContainer from '@/components/PageContainer.vue'
 import { ref } from 'vue'
-import { artGetChannelsService } from '@/api/article.js'
+import { artDelChannelService, artGetChannelsService } from '@/api/article.js'
 import { Delete, Edit } from '@element-plus/icons-vue'
 import ChannelEdit from '@/views/article/components/ChannelEdit.vue'
+import { ElMessage, ElMessageBox } from 'element-plus'
 
 const channelList = ref([])
 const isLoading = ref(true)
@@ -18,13 +19,20 @@ const getChannelList = async () => {
 
 getChannelList()
 
-const onEditChannel = (row, $index) => {
+const onEditChannel = (row) => {
   dialogTitle.value = '编辑分类'
   dialog.value.open(row)
 }
 
-const onDelChannel = (row, $index) => {
-  console.log(row, $index)
+const onDelChannel = async (row) => {
+  await ElMessageBox.confirm('你确认要删除该分类么', '温馨提示', {
+    type: 'warning',
+    confirmButtonText: '确认',
+    cancelButtonText: '取消'
+  })
+  await artDelChannelService(row.id)
+  ElMessage.success('删除成功')
+  await getChannelList()
 }
 
 const onAddChannel = () => {

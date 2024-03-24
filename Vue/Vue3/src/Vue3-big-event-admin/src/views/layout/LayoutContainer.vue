@@ -18,20 +18,14 @@ userStore.getUser()
 
 const handleCommand = async (key) => {
   if (key === 'logout') {
-    const result = await ElMessageBox.confirm(
-      '你确认要进行退出么',
-      '温馨提示',
-      {
-        type: 'warning',
-        confirmButtonText: '确认',
-        cancelButtonText: '取消'
-      }
-    )
-    if (result === 'confirm') {
-      userStore.removeToken()
-      userStore.removeUser()
-      router.push('/login')
-    }
+    await ElMessageBox.confirm('你确认要进行退出么', '温馨提示', {
+      type: 'warning',
+      confirmButtonText: '确认',
+      cancelButtonText: '取消'
+    })
+    userStore.removeToken()
+    userStore.removeUser()
+    router.push('/login')
   } else {
     router.push(`/user/${key}`)
   }
