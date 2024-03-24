@@ -13,13 +13,29 @@ const params = ref({
   cate_id: '',
   state: ''
 })
+const total = ref(0)
+const isLoading = ref(true)
 
 const getArticleList = async () => {
+  isLoading.value = true
   const res = await artGetListService(params.value)
   articleList.value = res.data
+  total.value = res.total
+  isLoading.value = false
 }
 
 getArticleList()
+
+const onSizeChange = (size) => {
+  params.value.pagenum = 1
+  params.value.pagesize = size
+  getArticleList()
+}
+
+const onCurrentChange = (page) => {
+  params.value.pagenum = page
+  getArticleList()
+}
 
 const onEditArticle = (row) => {
   console.log(row)
@@ -54,7 +70,7 @@ const onDelArticle = (row) => {
       </el-form-item>
     </el-form>
 
-    <el-table :data="articleList">
+    <el-table :data="articleList" v-loading="isLoading">
       <el-table-column label="文章标题" prop="title">
         <template #default="{ row }">
           <el-link type="primary" :underline="false">{{ row.title }}</el-link>
@@ -86,6 +102,18 @@ const onDelArticle = (row) => {
         </template>
       </el-table-column>
     </el-table>
+
+    <el-pagination
+      v-model:current-page="params.pagenum"
+      v-model:page-size="params.pagesize"
+      :page-sizes="[2, 3, 5, 10, 20, 50, 100]"
+      :background="true"
+      layout="jumper, total, sizes, prev, pager, next"
+      :total="total"
+      @size-change="onSizeChange"
+      @current-change="onCurrentChange"
+      style="margin-top: 20px; justify-content: flex-end"
+    />
   </PageContainer>
 </template>
 
