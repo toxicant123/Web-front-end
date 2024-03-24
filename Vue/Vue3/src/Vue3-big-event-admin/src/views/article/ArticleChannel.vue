@@ -3,9 +3,12 @@ import PageContainer from '@/components/PageContainer.vue'
 import { ref } from 'vue'
 import { artGetChannelsService } from '@/api/article.js'
 import { Delete, Edit } from '@element-plus/icons-vue'
+import ChannelEdit from '@/views/article/components/ChannelEdit.vue'
 
 const channelList = ref([])
 const isLoading = ref(true)
+const dialog = ref(null)
+const dialogTitle = ref('')
 
 const getChannelList = async () => {
   const res = await artGetChannelsService()
@@ -16,18 +19,28 @@ const getChannelList = async () => {
 getChannelList()
 
 const onEditChannel = (row, $index) => {
-  console.log(row, $index)
+  dialogTitle.value = '编辑分类'
+  dialog.value.open(row)
 }
 
 const onDelChannel = (row, $index) => {
   console.log(row, $index)
+}
+
+const onAddChannel = () => {
+  dialogTitle.value = '添加分类'
+  dialog.value.open({})
+}
+
+const onSuccess = async () => {
+  await getChannelList()
 }
 </script>
 
 <template>
   <PageContainer title="文章分类">
     <template #extra>
-      <el-button>按钮</el-button>
+      <el-button @click="onAddChannel">添加分类</el-button>
     </template>
 
     <el-table v-loading="isLoading" :data="channelList" style="width: 100%">
@@ -56,6 +69,8 @@ const onDelChannel = (row, $index) => {
         <el-empty description="没有数据"></el-empty>
       </template>
     </el-table>
+
+    <ChannelEdit ref="dialog" :title="dialogTitle" @success="onSuccess" />
   </PageContainer>
 </template>
 
