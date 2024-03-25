@@ -62,6 +62,14 @@ const onEditArticle = (row) => {
 const onDelArticle = (row) => {
   console.log(row)
 }
+
+const onSuccess = (type) => {
+  if (type === 'add') {
+    const lastPage = Math.ceil((total.value + 1) / params.value.pagesize)
+    params.value.pagenum = lastPage
+  }
+  getArticleList()
+}
 </script>
 
 <template>
@@ -131,7 +139,7 @@ const onDelArticle = (row) => {
       style="margin-top: 20px; justify-content: flex-end"
     />
 
-    <ArticleEdit ref="articleEditRef"></ArticleEdit>
+    <ArticleEdit ref="articleEditRef" @success="onSuccess"></ArticleEdit>
   </PageContainer>
 </template>
 
