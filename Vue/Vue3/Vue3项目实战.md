@@ -2337,8 +2337,6 @@ import '@vueup/vue-quill/dist/vue-quill.snow.css'
 }
 ```
 
-
-
 #### 添加文章功能
 
 1. 封装添加接口
