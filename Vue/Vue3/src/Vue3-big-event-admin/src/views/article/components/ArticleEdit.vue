@@ -4,7 +4,11 @@ import ChannelSelect from '@/views/article/components/ChannelSelect.vue'
 import { Plus } from '@element-plus/icons-vue'
 import { QuillEditor } from '@vueup/vue-quill'
 import '@vueup/vue-quill/dist/vue-quill.snow.css'
-import { artGetDetailService, artPublishService } from '@/api/article.js'
+import {
+  artEditService,
+  artGetDetailService,
+  artPublishService
+} from '@/api/article.js'
 import { baseURL } from '@/utils/request.js'
 import axios from 'axios'
 
@@ -36,7 +40,10 @@ const open = async (row) => {
     const res = await artGetDetailService(row.id)
     formModel.value = res.data
     imgUrl.value = baseURL + formModel.value.cover_img
-    imageUrlToFileObject(imgUrl, formModel.value.cover_img)
+    formModel.value.cover_img = await imageUrlToFileObject(
+      imgUrl,
+      formModel.value.cover_img
+    )
     nextTick(() => {
       editorRef.value.setHTML(res.data.content)
     })
@@ -49,6 +56,28 @@ const open = async (row) => {
   }
 }
 
+async function imageUrlToFileObject(imageUrl, imageName) {
+  try {
+    // Fetch image data using axios
+    const response = await axios.get(imageUrl, {
+      responseType: 'blob' // Ensure response is treated as binary data
+    })
+
+    // Extract image data from the response
+    const imageData = response.data
+
+    // Create a File object from the Blob
+    const file = new File([imageData], imageName, { type: 'image/jpeg' })
+
+    // console.log('Image converted to file object:', file)
+
+    return file
+  } catch (error) {
+    console.error('Error converting image to file object:', error)
+    return null
+  }
+}
+
 const onPublish = async (state) => {
   formModel.value.state = state
 
@@ -58,7 +87,10 @@ const onPublish = async (state) => {
   }
 
   if (formModel.value.id) {
-    console.log('编辑操作')
+    await artEditService(fd)
+    ElMessage.success('修改成功')
+    visibleDrawer.value = false
+    emit('success', 'edit')
   } else {
     await artPublishService(fd)
     ElMessage.success('添加成功')
@@ -109,6 +141,7 @@ defineExpose({
           <quill-editor
             ref="editorRef"
             class="editor"
+            content-type="html"
             v-model:content="formModel.content"
             theme="snow"
           ></quill-editor>

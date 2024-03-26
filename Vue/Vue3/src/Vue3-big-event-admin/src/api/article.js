@@ -37,3 +37,7 @@ export const artGetDetailService = (id) => {
     }
   })
 }
+
+export const artEditService = (data) => {
+  return request.put('/my/article/info', data)
+}

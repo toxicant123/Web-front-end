@@ -59,7 +59,6 @@ const onSubmit = async () => {
 }
 
 const open = (row) => {
-  console.log(row)
   dialogVisible.value = true
   formModel.value = {
     ...row
