@@ -2348,7 +2348,7 @@ export const artPublishService = (data) =>
 
 2. 注册点击事件调用
 
-```jsx
+```vue
 <el-form-item>
   <el-button @click="onPublish('已发布')" type="primary">发布</el-button>
   <el-button @click="onPublish('草稿')" type="info">草稿</el-button>

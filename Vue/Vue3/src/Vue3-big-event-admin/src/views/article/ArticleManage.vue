@@ -5,7 +5,7 @@ import { Delete, Edit } from '@element-plus/icons-vue'
 import ChannelSelect from '@/views/article/components/ChannelSelect.vue'
 import { artGetListService } from '@/api/article.js'
 import { formatTime } from '@/utils/format.js'
-import ArticleEdit from '@/components/ArticleEdit.vue'
+import ArticleEdit from '@/views/article/components/ArticleEdit.vue'
 
 const articleList = ref([])
 const params = ref({
