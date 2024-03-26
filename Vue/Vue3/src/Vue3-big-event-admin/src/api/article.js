@@ -29,3 +29,11 @@ export const artGetListService = (params) => {
 export const artPublishService = (data) => {
   return request.post('/my/article/add', data)
 }
+
+export const artGetDetailService = (id) => {
+  return request.get('/my/article/info', {
+    params: {
+      id
+    }
+  })
+}

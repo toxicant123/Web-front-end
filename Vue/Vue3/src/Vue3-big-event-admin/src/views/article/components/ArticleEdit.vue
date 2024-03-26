@@ -1,10 +1,12 @@
 <script setup>
-import { ref } from 'vue'
+import { nextTick, ref } from 'vue'
 import ChannelSelect from '@/views/article/components/ChannelSelect.vue'
 import { Plus } from '@element-plus/icons-vue'
 import { QuillEditor } from '@vueup/vue-quill'
 import '@vueup/vue-quill/dist/vue-quill.snow.css'
-import { artPublishService } from '@/api/article.js'
+import { artGetDetailService, artPublishService } from '@/api/article.js'
+import { baseURL } from '@/utils/request.js'
+import axios from 'axios'
 
 const visibleDrawer = ref(false)
 const imgUrl = ref('')
@@ -28,14 +30,22 @@ const onSelectFile = (uploadFile) => {
   formModel.value.cover_img = uploadFile.raw
 }
 
-const open = (row) => {
+const open = async (row) => {
   visibleDrawer.value = true
-  console.log(row)
   if (row.id) {
+    const res = await artGetDetailService(row.id)
+    formModel.value = res.data
+    imgUrl.value = baseURL + formModel.value.cover_img
+    imageUrlToFileObject(imgUrl, formModel.value.cover_img)
+    nextTick(() => {
+      editorRef.value.setHTML(res.data.content)
+    })
   } else {
     formModel.value = { ...defaultFrom }
     imgUrl.value = ''
-    editorRef.value.setHTML('')
+    nextTick(() => {
+      editorRef.value.setHTML('')
+    })
   }
 }
 
@@ -64,6 +74,7 @@ defineExpose({
 
 <template>
   <el-drawer
+    ref="abc"
     v-model="visibleDrawer"
     :title="formModel.id ? '编辑文章' : '添加文章'"
     direction="rtl"
