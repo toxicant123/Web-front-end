@@ -1,13 +1,15 @@
 <script setup>
-import { reactive, ref } from 'vue'
+import { ref } from 'vue'
 import PageContainer from '@/components/PageContainer.vue'
 import { useUserStore } from '@/stores/index.js'
+import { userUpdateInfoService } from '@/api/user.js'
 
 const {
-  user: { email, id, nickname, username }
+  user: { email, id, nickname, username },
+  getUser
 } = useUserStore()
 // 表单数据
-const form = reactive({
+const form = ref({
   id,
   username,
   nickname,
@@ -37,8 +39,15 @@ const rules = {
 const formRef = ref(null)
 
 // 提交表单
-const submitForm = () => {
-  console.log('2134')
+const submitForm = async () => {
+  await formRef.value.validate()
+
+  // 提交表单数据
+  await userUpdateInfoService(form.value)
+
+  await getUser()
+
+  ElMessage.success('修改成功')
 }
 </script>
 
@@ -47,7 +56,7 @@ const submitForm = () => {
     <el-form :model="form" :rules="rules" ref="formRef" label-width="100px">
       <!-- 登录名称 -->
       <el-form-item label="登录名称">
-        <el-input v-model="form.loginName" disabled></el-input>
+        <el-input v-model="form.username" disabled></el-input>
       </el-form-item>
 
       <!-- 用户昵称 -->
