@@ -60,7 +60,25 @@ const onEditArticle = (row) => {
 }
 
 const onDelArticle = async (row) => {
+  await ElMessageBox.confirm('你确定要删除这篇文章吗？该操作无法恢复', '警告', {
+    confirmButtonText: '确认',
+    cancelButtonText: '取消',
+    type: 'warning'
+  })
+    .then(() => {
+      ElMessage({
+        type: 'success',
+        message: '删除成功'
+      })
+    })
+    .catch(() => {
+      ElMessage({
+        type: 'info',
+        message: '取消删除'
+      })
+    })
   await artDelService(row.id)
+  getArticleList()
 }
 
 const onSuccess = (type) => {
