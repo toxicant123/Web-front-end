@@ -3,7 +3,7 @@ import PageContainer from '@/components/PageContainer.vue'
 import { ref } from 'vue'
 import { Delete, Edit } from '@element-plus/icons-vue'
 import ChannelSelect from '@/views/article/components/ChannelSelect.vue'
-import { artGetListService } from '@/api/article.js'
+import { artDelService, artGetListService } from '@/api/article.js'
 import { formatTime } from '@/utils/format.js'
 import ArticleEdit from '@/views/article/components/ArticleEdit.vue'
 
@@ -59,8 +59,8 @@ const onEditArticle = (row) => {
   articleEditRef.value.open(row)
 }
 
-const onDelArticle = (row) => {
-  console.log(row)
+const onDelArticle = async (row) => {
+  await artDelService(row.id)
 }
 
 const onSuccess = (type) => {

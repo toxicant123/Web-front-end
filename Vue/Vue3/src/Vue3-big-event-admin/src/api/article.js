@@ -41,3 +41,11 @@ export const artGetDetailService = (id) => {
 export const artEditService = (data) => {
   return request.put('/my/article/info', data)
 }
+
+export const artDelService = (id) => {
+  return request.delete('/my/article/info', {
+    params: {
+      id
+    }
+  })
+}
