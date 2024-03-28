@@ -26,3 +26,7 @@ export const userUpdateInfoService = ({ id, nickname, email }) => {
 export const userUpdateAvatarService = (avatar) => {
   return request.patch('/my/update/avatar', { avatar })
 }
+
+export const userUpdatePasswordService = ({ old_pwd, new_pwd, re_pwd }) => {
+  return request.patch('/my/updatepwd', { old_pwd, new_pwd, re_pwd })
+}

@@ -22,6 +22,8 @@ export const useUserStore = defineStore(
       user.value = res.data
     }
 
+    const setUser = (newUser) => (user.value = newUser)
+
     const removeUser = () => {
       user.value = {}
     }
@@ -32,6 +34,7 @@ export const useUserStore = defineStore(
       removeToken,
       user,
       getUser,
+      setUser,
       removeUser
     }
   },
