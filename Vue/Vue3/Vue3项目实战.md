@@ -2869,8 +2869,6 @@ const onUpdateAvatar = async () => {
 }
 ```
 
-
-
 ### 个人中心项目实战 - 重置密码
 
 chatgpt  prompt
